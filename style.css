@@ -1,6 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,300,600,700,800);
-
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Smooch+Sans:wght@200;500&display=swap');
 html {
   font-size: 100%;
   box-sizing: border-box;
@@ -21,7 +19,6 @@ body {
 *, a {
   color: #ffffff;
     transition: 500ms;
-    
 }
 
 a {
@@ -64,13 +61,16 @@ nav ul {
   padding: 0px;
 }
 nav a {
-  font-size: 1rem;
-  font-family: "Montserrat";
-  font-weight: 500;
+  font-size: 2.2rem;
+  font-family: 'Anton', sans-serif;
+font-family: 'Smooch Sans', sans-serif;
+  font-weight: 400;
+    
 }
 @media (min-width: 42em) {
   nav a {
     font-size: 1.4rem;
+    font-size: 3rem;
   }
 }
 
@@ -143,6 +143,7 @@ nav.flexbox ul li:last-child {
   background-color: #080808;
   border-radius: 3px;
   border: 1px solid rgba(186,15,131, 0.7);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   
 }
 
@@ -156,3 +157,148 @@ nav.flexbox ul li:last-child {
 
 
 
+.title-animated {
+     
+      -webkit-animation:colorchange 20s infinite alternate;
+      
+    }
+
+    @-webkit-keyframes colorchange {
+      0% {
+        
+        color: blue;
+      }
+      
+      10% {
+        
+        color: #94e3fe;
+      }
+      
+      20% {
+        
+        color: #1abc9c;
+      }
+      
+      30% {
+        
+        color: #ff6a00;
+      }
+      
+      40% {
+        
+        color: blue;
+      }
+      
+      50% {
+        
+        color: #74a7fe;
+      }
+      
+      60% {
+        
+        color: blue;
+      }
+      
+      70% {
+        
+        color: #00c7fc;
+      }
+      80% {
+     
+        color: #ffd877;
+      }
+      
+      90% {
+     
+        color: #77bb41;
+      }
+      
+      100% {
+        
+        color: pink;
+      }
+    }
+
+.box{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: #111845a6;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgb(23, 32, 90);
+  border: 2px solid #2a3cad;
+  color: white;
+  padding: 20px;
+}
+
+.box span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  box-sizing: border-box;
+  
+}
+
+.box span:nth-child(1)
+{
+  transform:rotate(0deg);
+}
+
+.box span:nth-child(2)
+{
+  transform:rotate(90deg);
+}
+
+.box span:nth-child(3)
+{
+  transform:rotate(180deg);
+}
+
+.box span:nth-child(4)
+{
+  transform:rotate(270deg);
+}
+
+.box span:before
+{
+  content: '';
+  position: absolute;
+  width:100%;
+  height: 2px;
+  background: #50dfdb;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+  transform:scaleX(0);
+  transform-origin: left;
+  }
+  50%
+  {
+    transform:scaleX(1);
+  transform-origin: left;
+  }
+  50.1%
+  {
+    transform:scaleX(1);
+  transform-origin: right;
+    
+  }
+  
+  100%
+  {
+    transform:scaleX(0);
+  transform-origin: right;
+    
+  }
+  
+  
+} 
