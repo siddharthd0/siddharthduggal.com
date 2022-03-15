@@ -1,0 +1,158 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,300,600,700,800);
+
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  min-height: 100vh;
+  background-color: #1b1b1b;
+  font-family: 'Courier New', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+*, a {
+  color: #ffffff;
+    transition: 500ms;
+    
+}
+
+a {
+  position: relative;
+  text-decoration: none;
+
+}
+.fullwidth a::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  right: 0px;
+  bottom: -3px;
+  left: 0px;
+  background-color: #b51a00;
+}
+a:hover {
+  background: -webkit-linear-gradient(#96d35f, #53d5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    transition: 500ms;
+}
+
+
+nav {
+  margin-bottom: 3rem;
+  padding: 10px;
+  font-size: 1.5rem;
+}
+@media (min-width: 600px) {
+  nav {
+    padding: 20px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+nav ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+nav a {
+  font-size: 1rem;
+  font-family: "Montserrat";
+  font-weight: 500;
+}
+@media (min-width: 42em) {
+  nav a {
+    font-size: 1.4rem;
+  }
+}
+
+nav.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+@media (min-width: 600px) {
+  nav.flexbox {
+    justify-content: space-between;
+  }
+}
+nav.flexbox > a {
+  margin-bottom: 10px;
+}
+@media (min-width: 600px) {
+  nav.flexbox > a {
+    margin-bottom: 0px;
+  }
+}
+nav.flexbox .fullwidth {
+  flex: 0 0 100%;
+  justify-content: center;
+}
+@media (min-width: 600px) {
+  nav.flexbox .fullwidth {
+    flex: 0 1 auto;
+  }
+}
+nav.flexbox ul {
+  display: flex;
+  align-items: center;
+}
+nav.flexbox ul li {
+  flex: 0 0 100px;
+  margin-right: 0px;
+  text-align: center;
+}
+@media (min-width: 600px) {
+  nav.flexbox ul li {
+    flex: 0 0 auto;
+    margin: 1rem;
+  }
+}
+nav.flexbox ul li:last-child {
+  margin-right: 0px;
+}
+
+#logo-image {
+  padding: 0;
+  width: 10%;
+  height: 10%;
+  margin-left: 0rem;
+}
+
+@media (max-width 600px) {
+  #logo-image {
+    float: none;
+    position: absolute;
+  }
+}
+
+#container {
+  margin: 4rem 10rem;
+  padding: 2em;
+  background-color: #080808;
+  border-radius: 3px;
+  border: 1px solid rgba(186,15,131, 0.7);
+  
+}
+
+@media (max-width: 600px) {
+  #container {
+    margin: 1rem 2rem;
+    padding: 1em;
+  }
+}
+
+
+
+
