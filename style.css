@@ -426,3 +426,83 @@ box-shadow: 6px 5px 43px -30px #d95000;
     background-color: #ff9146;
     color: #232323;
 }
+
+/*BLOG CSS FOR POSTS*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900');
+
+
+img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.hentry {
+  max-width: 46em;
+  margin: auto;
+}
+.entry-title {
+  grid-area: header;
+  
+  text-transform: uppercase;
+  margin: 1em 0 0.5em;
+  line-height: 1;
+}
+.featured-image {
+  grid-area: featimg;
+}
+.entry-meta {
+  grid-area: meta;
+  margin-bottom: 2em;
+}
+.entry-content {
+  grid-area: content;
+}
+.entry-footer {
+  grid-area: footer;
+  text-align: right;
+  border-top: 1px solid #777;
+  margin-top: 1em;
+}
+.author, .date {
+  color: #777;
+}
+.author+.date:before {
+    content: " | ";
+}
+.author {
+  a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+@media (min-width: 40em) {
+  .hentry {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+    grid-template-areas: "header header header header" "meta meta meta meta" "featimg featimg featimg featimg" "content content content content" "footer footer footer footer";
+  }
+  .entry-title {
+    font-size: 2.5em;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 50em) {
+  .hentry {
+    grid-template-areas: "header header header header" "featimg featimg featimg featimg" "meta content content content" "footer footer footer footer";
+  }
+  .author, .date {
+    display: block;
+    margin: 1em 0;
+  }
+  .author+.date:before {
+    display: none;
+  }
+  .entry-title {
+    font-size: 3m;
+    margin-bottom: 0.7em;
+  }
+}
+/*END BLOG CSS*/
