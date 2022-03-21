@@ -428,81 +428,92 @@ box-shadow: 6px 5px 43px -30px #d95000;
 }
 
 /*BLOG CSS FOR POSTS*/
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+*{
+  /* I know I could write "margin: 0; padding: 0;". But that's not performant. */
+  font-family: 'Open Sans';
+  line-height: 170%;
+
+}
+body, p, h1, h2{
+  margin: 0;
+  padding: 0;
+}
+
+mark {
+  background-color: black;
+  padding: 0px 3px;
+} 
+
+.wrapper{
+  padding: 100px;
+  margin: 0 0 50px 0;
+  text-align: left;
+  height: 40vh;
+  background: url('https://source.unsplash.com/KqVHRmHVwwM/1600x900') no-repeat center center fixed;
+  background-size: cover;
+  transition: all 0.4s ease;
+}
+.articleText{
+  margin: 0 10% 30px 20%; 
+  width: 60%;
+  max-width: 800px;
+  padding-left: 30px;
+  color: #606060;
+  border-left: 1px solid #d6d6d6;
+
+  transition: all 0.4s ease;
+    
+}
+.introduction{
+  margin-bottom: 20px;
+}
+.accountInfo{
+  transition: all ease 0.5s;
+  display: none;
+  height: 420px;
+  width: 250px;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.accountInfo .header{
+  background: url('https://source.unsplash.com/V6s1cmE39XM/250x250') no-repeat;
+  height: 120px;
+  width: 100%;
+  padding: 20px 10px;
+}
+.accountInfo .profilePicture{
+  z-index: 1;
+  margin: -25px auto 10px auto;
+  background: url('https://source.unsplash.com/LyeduBb2Auk/100x100') no-repeat;
+  height: 100px;
+  width: 100px;
+  border-radius: 5px;
+}
+.accountInfo .profileText{
+  text-align: center;
+  margin-bottom: 20px;
+}
 
 
-img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
-}
-
-.hentry {
-  max-width: 46em;
-  margin: auto;
-}
-.entry-title {
-  grid-area: header;
-  
-  text-transform: uppercase;
-  margin: 1em 0 0.5em;
-  line-height: 1;
-}
-.featured-image {
-  grid-area: featimg;
-}
-.entry-meta {
-  grid-area: meta;
-  margin-bottom: 2em;
-}
-.entry-content {
-  grid-area: content;
-}
-.entry-footer {
-  grid-area: footer;
-  text-align: right;
-  border-top: 1px solid #777;
-  margin-top: 1em;
-}
-.author, .date {
-  color: #777;
-}
-.author+.date:before {
-    content: " | ";
-}
-.author {
-  a {
-    color: #000;
-    font-weight: bold;
-    text-decoration: none;
+@media only screen and (max-width: 1000px) {
+    /* For tablets: */
+  .articleText {
+    margin: 0 10% 30px 10%; 
+    width: 80%;
+    max-width: 800px;
+    padding-left: 0px;
+    border: 0;
   }
 }
-@media (min-width: 40em) {
-  .hentry {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 20px;
-    grid-template-areas: "header header header header" "meta meta meta meta" "featimg featimg featimg featimg" "content content content content" "footer footer footer footer";
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+  .articleText {
+    margin: 0 5% 30px 5%; 
+    width: 90%;
   }
-  .entry-title {
-    font-size: 2.5em;
-    margin-bottom: 0;
-  }
-}
-@media (min-width: 50em) {
-  .hentry {
-    grid-template-areas: "header header header header" "featimg featimg featimg featimg" "meta content content content" "footer footer footer footer";
-  }
-  .author, .date {
-    display: block;
-    margin: 1em 0;
-  }
-  .author+.date:before {
-    display: none;
-  }
-  .entry-title {
-    font-size: 3m;
-    margin-bottom: 0.7em;
+  .wrapper{
+    padding: 5%;
   }
 }
 /*END BLOG CSS*/
