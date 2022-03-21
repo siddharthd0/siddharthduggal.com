@@ -226,27 +226,12 @@ box-shadow: 0 20px 50px #7a7a7a;
 .project-showcase-section {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-gap: 1rem;
-justify-content: center;
-}
-/* Screen larger than 600px? 2 column */
-@media (min-width: 600px) {
-  .project-showcase-section { 
-      grid-template-columns: repeat(2, 1fr);
-
-justify-content: center;
-  }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-/* Screen larger than 900px? 3 columns */
-@media (min-width: 900px) {
-  .project-showcase-section { 
-      grid-template-columns: repeat(3, 1fr);
-
-justify-content: center;
-  }
-}
 
 @keyframes animatedgradient {
 	0% {
@@ -324,9 +309,9 @@ a {
 }
 
 .post-wrap {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  
+ 
+
   width: 400px;
   background-color: #232323;
   -webkit-box-shadow: 6px 5px 43px -22px #ad3e00; 
