@@ -392,3 +392,37 @@ box-shadow: 6px 5px 43px -30px #d95000;
   box-shadow: 0px 2px 10px rgba(48,137,219,.60);
   top: 2px;
 }
+
+/*contact page css*/
+.contact-sub-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.social-media-links {
+    font-size: 3rem;
+
+    margin:auto;
+    
+}
+
+.fa fa-linkedin-square:hover {
+    color: black;
+}
+
+.mail-to-button {
+    font-size: 65px;
+    border-radius: 16px;
+    border-style: solid;
+    border-color: #0042aa;
+    border-width: 5px;
+    background-color: transparent;
+    color: white;
+}
+.mail-to-button:hover {
+    background-color: #ff9146;
+    color: #232323;
+}
