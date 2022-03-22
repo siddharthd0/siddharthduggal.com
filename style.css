@@ -82,7 +82,7 @@ body {
 #container {
   margin: 4rem 10rem;
   padding: 2em;
-  background-color: #080808;
+  background-color: transparent;
   border-radius: 3px;
   border: 1px solid rgba(186,15,131, 0.7);
 box-shadow: 0 20px 50px #7a7a7a;
@@ -394,6 +394,10 @@ box-shadow: 6px 5px 43px -30px #d95000;
 }
 
 /*contact page css*/
+.contact-section {
+    margin-bottom: 2rem;
+    padding-bottom:2rem;
+}
 .contact-sub-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -431,7 +435,7 @@ box-shadow: 6px 5px 43px -30px #d95000;
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
 *{
   /* I know I could write "margin: 0; padding: 0;". But that's not performant. */
-  font-family: 'Open Sans';
+
   line-height: 170%;
 
 }
@@ -517,3 +521,11 @@ mark {
   }
 }
 /*END BLOG CSS*/
+
+/*Contact Email button CSS*/
+
+a:hover i {
+			transform: scale(2);
+       color: #fff;
+		}
+
