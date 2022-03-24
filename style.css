@@ -10,7 +10,7 @@ body {
   padding: 0px;
   min-height: 100vh;
   background-color: #1b1b1b;
-    font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
  
 }
 
@@ -23,64 +23,9 @@ body {
   transition: 500ms;
 }
 
-
-
-/*Navigation Bar CSS*/
-
-.topnav {
-  overflow: hidden;
-  background-color: #232323;
-  box-shadow: 0 20px 50px rgb(23, 32, 90);
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 3rem;
-}
-
-.topnav a:hover {
-  color: #ff4013;
-  transition: all 0.4s ease-in-out;
-}
-
-.topnav a.active {
-  color: #0042aa;
-    
-}
-
-.topnav .icon {
-  display: none;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-/*Navbar end*/
 #container {
-  margin: 4rem 10rem;
+  margin: 3rem 10rem;
+  margin-bottom: 1rem;
   padding: 2em;
   background-color: transparent;
   border-radius: 3px;
@@ -98,65 +43,6 @@ box-shadow: 0 20px 50px #7a7a7a;
 
 
 
-.title-animated {
-       -webkit-animation:colorchange 20s infinite alternate;
-    }
-
-    @-webkit-keyframes colorchange {
-      0% {
-        
-        color: blue;
-      }
-      
-      10% {
-        
-        color: #94e3fe;
-      }
-      
-      20% {
-        
-        color: #1abc9c;
-      }
-      
-      30% {
-        
-        color: #ff6a00;
-      }
-      
-      40% {
-        
-        color: blue;
-      }
-      
-      50% {
-        
-        color: #74a7fe;
-      }
-      
-      60% {
-        
-        color: blue;
-      }
-      
-      70% {
-        
-        color: #00c7fc;
-      }
-      80% {
-     
-        color: #ffd877;
-      }
-      
-      90% {
-     
-        color: #77bb41;
-      }
-      
-      100% {
-        
-        color: pink;
-      }
-    }
 
 
 * {
@@ -296,7 +182,6 @@ p {
 a {
   text-decoration: none;
 }
-
 .blog-posts-wrap {
   width: 100%;
   display: flex;
@@ -393,43 +278,7 @@ box-shadow: 6px 5px 43px -30px #d95000;
   top: 2px;
 }
 
-/*contact page css*/
-.contact-section {
-    margin-bottom: 2rem;
-    padding-bottom:2rem;
-}
-.contact-sub-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.social-media-links {
-    font-size: 3rem;
 
-    margin:auto;
-    
-}
-
-.fa fa-linkedin-square:hover {
-    color: black;
-}
-
-.mail-to-button {
-    font-size: 65px;
-    border-radius: 16px;
-    border-style: solid;
-    border-color: #0042aa;
-    border-width: 5px;
-    background-color: transparent;
-    color: white;
-}
-.mail-to-button:hover {
-    background-color: #ff9146;
-    color: #232323;
-}
 
 /*BLOG CSS FOR POSTS*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
@@ -454,9 +303,10 @@ mark {
   margin: 0 0 50px 0;
   text-align: left;
   height: 40vh;
-  background: url('https://source.unsplash.com/KqVHRmHVwwM/1600x900') no-repeat center center fixed;
+  /*background: url('https://cutewallpaper.org/21/cool-coding-backgrounds/Computer-Programming-Background-Quantum-Computing.png') no-repeat center center fixed;*/
   background-size: cover;
   transition: all 0.4s ease;
+  opacity: .8;
 }
 .articleText{
   margin: 0 10% 30px 20%; 
@@ -486,14 +336,7 @@ mark {
   width: 100%;
   padding: 20px 10px;
 }
-.accountInfo .profilePicture{
-  z-index: 1;
-  margin: -25px auto 10px auto;
-  background: url('https://source.unsplash.com/LyeduBb2Auk/100x100') no-repeat;
-  height: 100px;
-  width: 100px;
-  border-radius: 5px;
-}
+
 .accountInfo .profileText{
   text-align: center;
   margin-bottom: 20px;
@@ -529,3 +372,6 @@ a:hover i {
        color: #fff;
 		}
 
+.highlighted {
+    color: #3a88fe;
+}
