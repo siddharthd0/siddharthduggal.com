@@ -363,14 +363,12 @@ a:hover i {
 	width: 80%;
 }
 
-@media screen and (min-width: 601px) {
-  div.example {
-    font-size: 80px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  h1.name-title{
-    font-size: 30px;
-  }
+.footer-text {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    text-align: center;
+    align-items: center;
+    
+    
+    
 }
