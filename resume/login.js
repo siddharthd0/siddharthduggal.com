@@ -1,5 +1,5 @@
 function checkPswd() {
-        var confirmPassword = "admin";
+        var confirmPassword = "007pphead";
         var password = document.getElementById("pswd").value;
         if (password == confirmPassword) {
              window.location="resume.html";
