@@ -1,0 +1,83 @@
+
+.password-input {
+    font-size: 1.75rem;
+    color: black;
+    background-color: grey;
+    border-radius: 10px;
+   text-align: center;
+    padding: .2rem;
+    display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+    max-width: 400px;
+    margin: 1rem;
+box-shadow: 0 5px 15px #7a7a7a;
+    align-items: center;
+}
+.form-section {
+    margin: auto;
+  width: 50%;
+  border: 3px solid #ffb43f;
+  padding: 10px;
+    margin-top: 5rem;
+    box-shadow: 0 10px 25px #7a7a7a;
+    background-color: #232323;
+    
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #1b1b1b;
+  font-family: 'Roboto Condensed', sans-serif;
+
+     background-image: url('spongebob.jpg');
+}
+.button-thing-lol {
+    display: block;
+  width: 200px;
+  height: 40px;
+  font-size: 18px;
+  color: #333;
+  border: 4px solid #ff8647;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .5s;
+ margin: 1rem;
+    margin-left: 1rem;
+    background-color: #ffc677;
+
+}
+
+.button-thing-lol:hover{
+  color: #fff;
+  background-color: #444444;
+}
+
+.button-thing-lol:hover:after{
+  width: 100%;
+}
+.password-input-entry {
+    width: 5rem;
+    background-color: #fec700;
+    border-radius: 7px;
+    border: 3px white;
+    height: 2rem;
+    margin: 1rem;
+    font-size: 1rem;
+    text-align: center;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #232323;
+   color: white;
+   text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
