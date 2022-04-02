@@ -78,8 +78,8 @@ box-shadow: 0 20px 50px #7a7a7a;
   position: relative;
   border-radius: var(--borderWidth);
    transition: transform .3s;
-    align-items: center;
-  height: 100px;
+ align-items: center;
+  height: 75px;
 }
 .see-more-box:after {
   content: '';
@@ -369,7 +369,4 @@ a:hover i {
     font-size: 1.4rem;
     text-align: center;
     align-items: center;
-    
-    
-    
 }
