@@ -275,6 +275,16 @@ mark {
   transition: all 0.4s ease;
   opacity: .8;
 }
+.wrapperRight{
+  padding: 100px;
+  margin: 0 0 50px 0;
+  text-align: right;
+  height: 40vh;
+  /*background: url('https://cutewallpaper.org/21/cool-coding-backgrounds/Computer-Programming-Background-Quantum-Computing.png') no-repeat center center fixed;*/
+  background-size: cover;
+  transition: all 0.4s ease;
+  opacity: .8;
+}
 .articleText{
   margin: 0 10% 30px 20%; 
   width: 60%;
