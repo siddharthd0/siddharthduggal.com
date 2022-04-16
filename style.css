@@ -391,3 +391,6 @@ a:hover i {
     color: #96d35f;
     background-color: #606060;
 }
+.blog-image {
+    max-width: 500px;
+}
