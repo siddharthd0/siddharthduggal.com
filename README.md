@@ -1,6 +1,6 @@
 # 💼 Portfolio 
 👋
- This is my portfolio website. View it [here](https://siddharthduggal.com). This website was made using Html, CC, and JavaScript.
+ This is my portfolio website. View it [here](https://siddharthduggal.com). This website was made using Html, CCS, and JavaScript.
 
 # ✨ Contributing
 To suggest something open a pull request or issue.
