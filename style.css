@@ -66,7 +66,13 @@ box-shadow: 0 20px 50px #7a7a7a;
   border-radius: var(--borderWidth);
    transition: transform .3s;
     align-items: center;
+    transition: 400ms;
     
+}
+.enlarge:hover {
+  transform: scale(1.022); 
+  transition-duration: 0.5s;
+
 }
 .see-more-box {
   height: 300px;
@@ -207,8 +213,9 @@ box-shadow: 6px 5px 43px -30px #d95000;
 
 .post-wrap:hover {
   top: 30px;
-  transform: scale(1.12);
-    	transition-duration: 0.5s;
+  transform: scale(1.08); 
+  transition-duration: 0.5s;
+  background-color: #393939;
 }
 
 .post-image {
@@ -399,8 +406,8 @@ a:hover i {
     margin-bottom: .8rem;
 }
 .website-button:hover {
-        color: #727af6;
-    background-color: #606060;
+        color: #7ce6e3;
+    background-color: #333333;
 }
 .blog-image {
     max-width: 500px;
