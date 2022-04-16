@@ -9,8 +9,10 @@ body {
   margin: 0px;
   padding: 0px;
   min-height: 100vh;
-/*  background-color: #1b1b1b;*/
-  background-color: #0F0F1E;
+/*  background-color: #1b1b1b;
+  background-color: #0F0F1E;*/
+    background: rgb(1,7,24);
+background: linear-gradient(90deg, rgba(1,7,24,1) 0%, rgba(6,20,54,1) 48%, rgba(5,16,36,1) 95%);
   font-family: 'Roboto Condensed', sans-serif;
  
 }
@@ -205,8 +207,8 @@ box-shadow: 6px 5px 43px -30px #d95000;
 
 .post-wrap:hover {
   top: 30px;
-  transform: scale(1.16);
-    
+  transform: scale(1.12);
+    	transition-duration: 0.5s;
 }
 
 .post-image {
@@ -354,12 +356,13 @@ a:hover i {
 }
 
 .social-icon {
-	background-color: #001337;
+	background-color: #001b4d;
 	padding: 10px;
 	margin: 5px;
 	border-radius: 10px;
 	transition-duration: 0.14s;
     transition: 300ms;
+    
 }
 
 .social-icon:hover {
@@ -396,11 +399,31 @@ a:hover i {
     margin-bottom: .8rem;
 }
 .website-button:hover {
-
-    color:white;
-    color: #96d35f;
+        color: #727af6;
     background-color: #606060;
 }
 .blog-image {
     max-width: 500px;
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #001e57 #232323;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #232323;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #001e57;
+    border-radius: 10px;
+    border: 5px solid #001e57;
+  }
