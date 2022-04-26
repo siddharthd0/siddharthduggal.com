@@ -449,6 +449,10 @@ a:hover i {
     max-width: 500px;
 }
 
+.ebuy-coffee {
+    margin: 1rem;
+}
+
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
