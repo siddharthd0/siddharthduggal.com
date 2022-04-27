@@ -111,7 +111,7 @@ opacity: 0;
 
 }
 .see-more-box {
-  height: 300px;
+  height: 75px;
   background: #111845a6;
   box-sizing: border-box;
   box-shadow: 0 20px 50px rgb(23, 32, 90);
@@ -124,7 +124,7 @@ opacity: 0;
   border-radius: var(--borderWidth);
    transition: transform .3s;
  align-items: center;
-  height: 90px;
+
 }
 .see-more-box:after {
   content: '';
