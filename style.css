@@ -452,7 +452,18 @@ a:hover i {
 .ebuy-coffee {
     margin: 1rem;
 }
-
+.my-resume {
+    float: right;
+    margin-right: 1rem;
+    padding:0;
+    margin-top: .5rem;
+}
+.my-resume a {
+    background-color: #4d798c;
+    border-radius: 25px;
+    padding: 10px 10px 10px 10px;
+    letter-spacing: 1.2px;
+}
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
