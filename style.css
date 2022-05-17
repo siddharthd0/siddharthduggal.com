@@ -27,13 +27,14 @@ background: linear-gradient(90deg, rgba(1,7,24,1) 0%, rgba(6,20,54,1) 48%, rgba(
 }
 
 #container {
-  margin: 3rem 10rem;
+  margin: auto;
+    margin-top: 3rem;
   margin-bottom: 1rem;
   padding: 2em;
   background-color: transparent;
-  border-radius: 3px;
-  border: 1px solid rgba(186,15,131, 0.7);
-box-shadow: 0 20px 50px #001e57;
+  border-radius: 10px;
+ max-width: 930px;
+box-shadow: 0 20px 50px #00266e;
 }
 .sub-title-container {
 	animation-name: floating;
@@ -96,8 +97,8 @@ opacity: 0;
   color: white;
   padding: 20px;
   margin: 1rem;
-  --borderWidth: 3px;
-  background: #1D1F20;
+  --borderWidth: 10px;
+  background: #010d30;
   position: relative;
   border-radius: var(--borderWidth);
    transition: transform .3s;
@@ -118,15 +119,14 @@ opacity: 0;
   color: white;
   padding: 10px;
   margin: 1rem;
-  --borderWidth: 3px;
-  background: #1D1F20;
+  background: #010d30;
   position: relative;
   border-radius: var(--borderWidth);
    transition: transform .3s;
  align-items: center;
 
 }
-.see-more-box:after {
+/*.see-more-box:after {
   content: '';
   position: absolute;
   top: calc(-1 * var(--borderWidth));
@@ -139,7 +139,7 @@ opacity: 0;
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
 }
-.box:after {
+.box:hover {
   content: '';
   position: absolute;
   top: calc(-1 * var(--borderWidth));
@@ -151,7 +151,7 @@ opacity: 0;
   z-index: -1;
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
-}
+}*/
 .project-showcase-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -295,7 +295,6 @@ box-shadow: 6px 5px 43px -30px #d95000;
 /*BLOG CSS FOR POSTS*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
 *{
-  /* I know I could write "margin: 0; padding: 0;". But that's not performant. */
 
   line-height: 140%;
 
@@ -431,9 +430,9 @@ a:hover i {
     align-items: center;
 }
 .website-button {
-    background-color: #444444;
+    background-color: #0c163e;
     padding: .5rem;
-    border-radius: 20px;
+    border-radius: 12px;
     margin-top: .5rem;
     transition: 400ms;
     color: #ADD8E6;
@@ -443,7 +442,7 @@ a:hover i {
 }
 .website-button:hover {
         color: #7ce6e3;
-    background-color: #333333;
+    background-color: #142467;
 }
 .blog-image {
     max-width: 500px;
@@ -468,20 +467,27 @@ a:hover i {
   /* Firefox */
   * {
     scrollbar-width: auto;
-    scrollbar-color: #001e57 #232323;
+    scrollbar-color: #000000 #001e57;
   }
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 16px;
+    width: 10px;
   }
 
   *::-webkit-scrollbar-track {
-    background: #232323;
+    background: #001e57;
   }
 
   *::-webkit-scrollbar-thumb {
     background-color: #001e57;
     border-radius: 10px;
-    border: 5px solid #001e57;
+    border: 5px solid #000000;
   }
+.box p {
+    font-weight: 100;
+}
+.smallerwidth {
+    width: 1000px;
+    margin: auto;
+}

@@ -3,8 +3,8 @@ var $ = function(id) {
 };
 var inc = 0;
 var out = 0;
-var str = 'Siddharth Duggal';
-var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@$%&';
+var str = 'Siddharth';
+var chars = 'DEVELOPERDEVELOPER';
 var t;
 
 var anim = function() {
