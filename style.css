@@ -11,8 +11,7 @@ body {
   min-height: 100vh;
 /*  background-color: #1b1b1b;
   background-color: #0F0F1E;*/
-    background: rgb(1,7,24);
-background: linear-gradient(90deg, rgba(1,7,24,1) 0%, rgba(6,20,54,1) 48%, rgba(5,16,36,1) 95%);
+    background: #121212;
   font-family: 'Roboto Condensed', sans-serif;
  
 }
@@ -34,7 +33,7 @@ background: linear-gradient(90deg, rgba(1,7,24,1) 0%, rgba(6,20,54,1) 48%, rgba(
   background-color: transparent;
   border-radius: 10px;
  max-width: 930px;
-box-shadow: 0 20px 50px #00266e;
+box-shadow: 0 20px 50px #000817;
 }
 .sub-title-container {
 	animation-name: floating;
@@ -93,12 +92,12 @@ opacity: 0;
   height: 300px;
   background: #111845a6;
   box-sizing: border-box;
-  box-shadow: 0 20px 50px rgb(23, 32, 90);
+box-shadow: 0 20px 50px #000817;
   color: white;
   padding: 20px;
   margin: 1rem;
   --borderWidth: 10px;
-  background: #010d30;
+  background: transparent;
   position: relative;
   border-radius: var(--borderWidth);
    transition: transform .3s;
@@ -112,14 +111,14 @@ opacity: 0;
 
 }
 .see-more-box {
+    --borderWidth: 10px;
   height: 75px;
-  background: #111845a6;
+  background: trasparent;
   box-sizing: border-box;
-  box-shadow: 0 20px 50px rgb(23, 32, 90);
+box-shadow: 0 20px 50px #000817;
   color: white;
   padding: 10px;
   margin: 1rem;
-  background: #010d30;
   position: relative;
   border-radius: var(--borderWidth);
    transition: transform .3s;
@@ -237,14 +236,14 @@ a {
 }
 
 .post-wrap {
-  width: 400px;
-  background-color: #232323;
-  -webkit-box-shadow: 6px 5px 43px -22px #ad3e00; 
-box-shadow: 6px 5px 43px -30px #d95000;
+  width: 500px;
+  background-color: transparent;
   transition: all .25s;
   top: 0;
   border-radius: 10px;
   overflow: hidden;
+box-shadow: 0 20px 50px #000817;
+    text-align:center;
 }
 
 .post-wrap:hover {
@@ -262,7 +261,7 @@ box-shadow: 6px 5px 43px -30px #d95000;
 }
 
 .post-body {
-  width: 300px;
+
   padding: 10px;
   margin: 0 auto;
 }
@@ -272,7 +271,8 @@ box-shadow: 6px 5px 43px -30px #d95000;
 }
 
 .post-meta {
-  color: #7B7B7B;
+  color: #1c2333 !important;
+    
 }
 
 .post-meta b {
@@ -281,7 +281,7 @@ box-shadow: 6px 5px 43px -30px #d95000;
 
 .post-title {
   color: #444;
-  font-size: 20px;
+
 }
 
 .post-text {
@@ -302,6 +302,7 @@ box-shadow: 6px 5px 43px -30px #d95000;
 body, p, h1, h2{
   margin: 0;
   padding: 0;
+    color: #cccccc;
 }
 
 mark {
@@ -398,20 +399,20 @@ a:hover i {
 }
 
 .social-icon {
-	background-color: #001b4d;
+	background-color: transparent;
 	padding: 10px;
 	margin: 5px;
 	border-radius: 10px;
 	transition-duration: 0.14s;
     transition: 300ms;
-    
+    border-radius: 10px;
+    border: 3.5px solid transparent;
 }
 
 .social-icon:hover {
-	transform: scale(1.1);
+	transform: scale(1.05);
 	cursor: pointer;
-	filter: brightness(1.2);
-    background-color: #002d83;
+	border: 3.5px solid black;
 }
 
 
@@ -430,7 +431,7 @@ a:hover i {
     align-items: center;
 }
 .website-button {
-    background-color: #0c163e;
+    background-color: #121212;
     padding: .5rem;
     border-radius: 12px;
     margin-top: .5rem;
