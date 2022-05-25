@@ -45,10 +45,13 @@ box-shadow: 0 20px 50px #000817;
 }
 #container h1 {
     margin: 1rem;
-background-image: linear-gradient(45deg,rgb(0, 199, 252),rgb(62, 18, 224),rgb(0, 30, 87),rgb(55,75,249));
+background-image: linear-gradient(45deg,rgb(83, 213, 253),rgb(177, 140, 254),rgb(230, 59, 122),rgb(255, 106, 0));
 color: transparent;
 background-clip: text;
 -webkit-background-clip: text;
+}
+#container p {
+    padding: .5rem;
 }
 
 /*@keyframes floating {
@@ -117,11 +120,7 @@ box-shadow: 0 20px 50px #000817;
 .box:hover {
     border: 1.5px solid white;
 }
-.enlarge:hover {
-  transform: scale(1.022); 
-  transition-duration: 0.5s;
 
-}
 .see-more-box {
     --borderWidth: 10px;
   height: 75px;
@@ -428,9 +427,9 @@ a:hover i {
 }
 
 .social-icon:hover {
-	transform: scale(1.05);
+	transform: scale(1.15);
 	cursor: pointer;
-	border: 3.5px solid white;
+	border: 1.5px solid white;
 }
 
 
@@ -537,4 +536,21 @@ footer p a:hover {
   text-decoration-style: solid;
 }
 
-
+.sub-container-about {
+    border: 2px solid #484848;
+    max-width: 65%;
+    margin: auto;
+    margin-top: 1rem;
+}
+.sub-container-about h1 {
+    margin-bottom: 0 !important;
+}
+.sub-container-about p {
+    margin: 0 !important;
+} 
+.sub-container-about {
+    padding: 1.2rem;
+}
+p {
+    line-height: 1.5rem;
+}
