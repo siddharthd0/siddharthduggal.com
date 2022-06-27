@@ -11,9 +11,9 @@ body {
   min-height: 100vh;
 /*  background-color: #1b1b1b;
   background-color: #0F0F1E;*/
-    background: #121212;
+    background: #020202;
   font-family: 'Roboto Condensed', sans-serif;
- 
+ letter-spacing: .55px;
 }
 
 *, *::before, *::after {
@@ -33,8 +33,8 @@ body {
   background-color: transparent;
   border-radius: 10px;
  max-width: 900px;
-box-shadow: 0 20px 50px #000817;
-    border: 1.5px solid #484848;
+
+
 }
 .sub-title-container {
 	animation-name: floating;
@@ -101,14 +101,14 @@ opacity: 0;
 .box{
   width: 300px;
   height: 300px;
-  background: #111845a6;
+  background: #0e0e0ea6;
   box-sizing: border-box;
-box-shadow: 0 20px 50px #000817;
+
   color: white;
   padding: 20px;
   margin: 1rem;
   --borderWidth: 10px;
-  background: transparent;
+
   position: relative;
   border-radius: var(--borderWidth);
    transition: transform .3s;
@@ -117,16 +117,15 @@ box-shadow: 0 20px 50px #000817;
     border: 1.5px solid transparent;
     
 }
-.box:hover {
-    border: 1.5px solid white;
-}
+
 
 .see-more-box {
+    
     --borderWidth: 10px;
   height: 75px;
-  background: trasparent;
+ background: #0e0e0ea6;
   box-sizing: border-box;
-box-shadow: 0 20px 50px #000817;
+
   color: white;
   padding: 10px;
   margin: 1rem;
@@ -250,12 +249,12 @@ a {
 
 .post-wrap {
   width: 500px;
-  background-color: transparent;
+ background: #0e0e0ea6;
   transition: all .25s;
   top: 0;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 20px 50px #000817;
+
   text-align:center;
     margin: 1rem;
     border: 1.5px solid transparent;
@@ -267,7 +266,6 @@ a {
   transform: scale(1.037); 
   transition-duration: 0.5s;
 
-    border: 1.5px solid white;
 }
 
 .post-image {
@@ -416,7 +414,7 @@ a:hover i {
 }
 
 .social-icon {
-	background-color: transparent;
+	background: #0e0e0ea6;
 	padding: 10px;
 	margin: 5px;
 	border-radius: 10px;
@@ -427,9 +425,9 @@ a:hover i {
 }
 
 .social-icon:hover {
-	transform: scale(1.15);
+	transform: scale(1.1);
 	cursor: pointer;
-	border: 1.5px solid white;
+
 }
 
 
@@ -461,7 +459,7 @@ a:hover i {
 }
 .website-button:hover {
         color: #7ce6e3;
-    background-color: #142467;
+    background-color: #1c2333;
 }
 .blog-image {
     max-width: 500px;
@@ -537,7 +535,7 @@ footer p a:hover {
 }
 
 .sub-container-about {
-    border: 2px solid #484848;
+   background: #0e0e0ea6;
     max-width: 65%;
     margin: auto;
     margin-top: 1rem;
