@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Smooch+Sans:wght@200;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Edu+TAS+Beginner:wght@500&family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Edu+TAS+Beginner:wght@500&family=Quicksand:wght@300&display=swap');
 html {
   font-size: 100%;
   box-sizing: border-box;
@@ -12,8 +14,12 @@ body {
 /*  background-color: #1b1b1b;
   background-color: #0F0F1E;*/
     background: #020202;
-  font-family: 'Roboto Condensed', sans-serif;
- letter-spacing: .55px;
+ /* font-family: 'Roboto Condensed', sans-serif;*/
+ font-family: 'Abel', sans-serif !important;
+font-family: 'Edu TAS Beginner', cursive !important;
+font-family: 'Quicksand', sans-serif !important;
+ letter-spacing: .5px;
+ line-height: .5px;
 }
 
 *, *::before, *::after {
@@ -23,6 +29,16 @@ body {
 *, a {
   color: #ffffff;
   transition: 500ms;
+}
+h1, h2, h3, h4 {
+  font-family: 'Abel', sans-serif;
+  font-family: 'Edu TAS Beginner', cursive;
+  font-family: 'Quicksand', sans-serif;
+}
+p {
+  font-weight: 10;
+  color:#f8f8ff;
+  line-height: .4px;
 }
 
 #container {
@@ -45,7 +61,7 @@ body {
 }
 #container h1 {
     margin: 1rem;
-background-image: linear-gradient(45deg,rgb(83, 213, 253),rgb(177, 140, 254),rgb(230, 59, 122),rgb(255, 106, 0));
+background-image: linear-gradient(45deg,rgb(83, 213, 253),rgb(186, 165, 232),rgb(85, 206, 231),rgb(255, 106, 0));
 color: transparent;
 background-clip: text;
 -webkit-background-clip: text;
@@ -458,8 +474,8 @@ a:hover i {
     margin-bottom: .8rem;
 }
 .website-button:hover {
-        color: #7ce6e3;
-    background-color: #1c2333;
+        color: #c2efee;
+    background-color: #182545;
 }
 .blog-image {
     max-width: 500px;
@@ -551,4 +567,8 @@ footer p a:hover {
 }
 p {
     line-height: 1.5rem;
+}
+.big-font-weight-or-smth-idrk-lol {
+  font-weight: bold !important;
+
 }
