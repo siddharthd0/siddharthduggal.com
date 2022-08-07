@@ -178,12 +178,14 @@ opacity: 0;
   background-size: 300% 300%;
 }*/
 .project-showcase-section {
-  max-width: 800px !important;
-  margin: 0 auto;
-  width: 100%;
+
+
+
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
+
 }
 
 
