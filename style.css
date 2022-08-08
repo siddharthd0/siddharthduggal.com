@@ -434,19 +434,19 @@ a:hover i {
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
   border-radius: 10px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #121212;
+  background: transparent;
   border-radius: 10px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: black;
+  background-color: rgb(121, 120, 120);
   border-radius: 10px;
-  border: 5px solid #000000;
+  border: 6px solid #000000;
 }
 .box p {
   font-weight: 100;
