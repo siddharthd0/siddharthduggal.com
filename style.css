@@ -60,17 +60,7 @@ p {
   animation-timing-function: ease-in-out;
 }
 #container h1 {
-  margin: 1rem;
-  background-image: linear-gradient(
-    45deg,
-    rgb(83, 213, 253),
-    rgb(186, 165, 232),
-    rgb(85, 206, 231),
-    rgb(255, 106, 0)
-  );
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
+ color:white;
 }
 #container p {
   padding: 0.5rem;
