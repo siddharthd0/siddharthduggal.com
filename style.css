@@ -353,7 +353,7 @@ a:hover i {
 }
 
 .social-icon:hover {
-  border: 1px solid rgb(176, 35, 176);
+
   transform: scale(1.1);
   cursor: pointer;
   -webkit-box-shadow: 5px 5px 50px 1px rgba(119, 119, 119, 0.27);
