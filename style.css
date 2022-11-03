@@ -45,13 +45,11 @@ p {
 }
 
 #container {
-  margin: auto;
+
   margin-top: 3rem;
   margin-bottom: 1rem;
-  padding: 2em;
-  background-color: transparent;
-  border-radius: 10px;
-  max-width: 900px;
+
+
 }
 .sub-title-container {
   animation-name: floating;
@@ -467,22 +465,86 @@ footer p a:hover {
 
 .sub-container-about {
   background: #0e0e0ea6;
-  max-width: 600px;
-  margin: auto;
+
   margin-top: 1rem;
 }
-.sub-container-about h1 {
-  margin-bottom: 0 !important;
-}
+
 .sub-container-about p {
   margin: 0 !important;
+  padding: 0 !important;
 }
 .sub-container-about {
   padding: 1.2rem;
+  display:flex;
+  max-width:800px;
+  margin:auto;
+}
+.sub-container-about h2{
+font-size: 2rem ;
+font-weight:bold;
+}
+.sub-container-about a{
+  text-decoration: underline;
+  transition:500ms;
+}
+.sub-container-about a:hover {
+  text-decoration: none;
 }
 p {
   line-height: 1.5rem;
 }
 .big-font-weight-or-smth-idrk-lol {
   font-weight: bold !important;
+}
+
+.sub-text {
+  font-size: 1.2rem;
+}
+.main-description-about {
+  float:left;
+}
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: -50%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
