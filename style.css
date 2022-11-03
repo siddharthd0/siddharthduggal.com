@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abel&family=Edu+TAS+Beginner:wght@500&family=Quicksand:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abel&family=Edu+TAS+Beginner:wght@500&family=Quicksand:wght@300&display=swap");
+
 html {
   font-size: 100%;
   box-sizing: border-box;
@@ -343,21 +344,21 @@ a:hover i {
 }
 
 .social-icon {
-  background: #0e0e0ea6;
   padding: 10px;
   margin: 5px;
-  border-radius: 10px;
   transition-duration: 0.14s;
   transition: 300ms;
-  border-radius: 10px;
+  border-radius: 20px;
   border: 3.5px solid transparent;
 }
 
 .social-icon:hover {
+  border: 1px solid rgb(176, 35, 176);
   transform: scale(1.1);
   cursor: pointer;
   -webkit-box-shadow: 5px 5px 50px 1px rgba(119, 119, 119, 0.27);
   box-shadow: 5px 5px 50px 1px rgba(119, 119, 119, 0.27);
+
 }
 
 .socials {
@@ -365,7 +366,10 @@ a:hover i {
   flex-wrap: wrap;
   justify-content: center;
   justify-self: center;
-  width: 80%;
+
+  background-color: rgba(255, 255, 255, 0.01);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 
 .footer-text {
@@ -464,9 +468,13 @@ footer p a:hover {
 }
 
 .sub-container-about {
-  background: #0e0e0ea6;
+
 
   margin-top: 1rem;
+  background-image: url('/imgs/background-towers.png');
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
 }
 
 .sub-container-about p {
@@ -477,16 +485,22 @@ footer p a:hover {
   padding: 1.2rem;
   display:flex;
   max-width:800px;
-  margin:auto;
+  margin:auto !important;
+  
+  height:300px;
 }
 .sub-container-about h2{
 font-size: 2rem ;
-font-weight:bold;
+font-weight:bold !important;
+color:white !important;
+
 }
 .sub-container-about a{
   text-decoration: underline;
   transition:500ms;
+
 }
+
 .sub-container-about a:hover {
   text-decoration: none;
 }
@@ -547,4 +561,14 @@ p {
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
+}
+.text-bg {
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.01);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  margin-top: 16%;
+
+  
 }
