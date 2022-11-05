@@ -104,7 +104,17 @@ p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  height: 340px;
+  overflow-y: scroll;
+  width: 700px;
+  MARGIN:AUto;
+  margin-top: 1.5rem;
+
+  
 }
+/* overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;*/
 
 @keyframes animatedgradient {
   0% {
@@ -169,10 +179,11 @@ a {
   text-decoration: none;
 }
 .blog-posts-wrap {
-  width: 100%;
+  width: 80%;
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
+  margin:auto;
 
   white-space: nowrap;
 }
@@ -413,30 +424,7 @@ a:hover i {
   padding: 10px 10px 10px 10px;
   letter-spacing: 1.2px;
 }
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
-* {
-  scrollbar-width: auto;
-  scrollbar-color: #000000 black;
-  border-radius: 10px;
-}
 
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 5px;
-  border-radius: 10px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 10px;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: rgb(121, 120, 120);
-  border-radius: 10px;
-  border: 6px solid #000000;
-}
 .box p {
   font-weight: 100;
 }
@@ -451,7 +439,7 @@ a:hover i {
   float: right;
 }
 .page-container {
-  max-width: 1000px;
+  max-width: 1300px;
   margin: auto;
   margin: auto;
   padding: 0 2rem;
@@ -486,6 +474,7 @@ footer p a:hover {
   display:flex;
   max-width:800px;
   margin:auto !important;
+  border-radius:20px;
   
   height:300px;
 }
@@ -572,3 +561,20 @@ p {
 
   
 }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #650b2e;
+  }
+
+  
+  *::-webkit-scrollbar {
+    width: 1px;
+  }
+
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #c87d9a;
+    border-radius: 10px;
+
+  }
