@@ -68,7 +68,7 @@ p {
 /*CSS for projects section on home page*/
 .box {
   width: 300px;
-  height: 300px;
+  height: 280px;
   background: #0e0e0ea6;
   box-sizing: border-box;
 
@@ -171,6 +171,10 @@ p {
 .project-date {
   color: #7a7a7a;
   font-size: 13px;
+  margin-right:14px;
+}
+.github {
+  margin-left:5px;
 }
 
 /* */
@@ -180,12 +184,21 @@ a {
 }
 .blog-posts-wrap {
   width: 80%;
-  display: flex;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  margin:auto;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin:auto !important;
 
   white-space: nowrap;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 300px;
+  overflow-y: scroll;
+  width: 700px;
+  MARGIN:AUto;
+  margin-top: 1.5rem;
 }
 
 .post-link {
@@ -392,11 +405,11 @@ a:hover i {
 } 
 .website-button {
   background-color: #121212;
-  padding: 0.5rem;
+  padding: 5px 5px 3px 5px !important;
   border-radius: 12px;
   margin-top: 0.5rem;
   transition: 400ms;
-  color: #add8e6;
+  color: #B3C0FF
 }
 .project-descriptions {
   margin-bottom: 0.8rem;
@@ -574,7 +587,7 @@ p {
 
 
   *::-webkit-scrollbar-thumb {
-    background-color: #c87d9a;
+    background-color: #e3b6c7;
     border-radius: 10px;
 
   }
