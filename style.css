@@ -105,13 +105,19 @@ p {
   justify-content: center;
   flex-wrap: wrap;
   height: 340px;
-  overflow-y: scroll;
+  overflow: hidden;
   width: 700px;
   MARGIN:AUto;
   margin-top: 1.5rem;
+  transition:500ms; 
 
   
 }
+.project-showcase-section:hover {
+  overflow-y: scroll;
+  transition:500ms; 
+}
+
 /* overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;*/
@@ -189,7 +195,7 @@ a {
   width: 80%;
 
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
   margin:auto !important;
 
   white-space: nowrap;
@@ -197,11 +203,14 @@ a {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  height: 300px;
-  overflow-y: scroll;
+  height: 250px;
+
   width: 700px;
   MARGIN:AUto;
   margin-top: 1.5rem;
+}
+.blog-posts-wrap:hover {
+  overflow-y: scroll;
 }
 
 .post-link {
