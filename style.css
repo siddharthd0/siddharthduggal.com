@@ -409,11 +409,10 @@ a:hover i {
 }
 
 .footer-text {
-  margin-top: 3.5rem;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   text-align: center;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 } 
 .website-button {
   background-color: #121212;
@@ -461,11 +460,9 @@ a:hover i {
 .footer-left {
   float: left;
 }
-.footer-right {
-  float: right;
-}
+
 .page-container {
-  max-width: 1300px;
+  max-width: 800px;
   margin: auto;
   margin: auto;
   padding: 0 2rem;
@@ -485,7 +482,7 @@ footer p a:hover {
 
 
   margin-top: 1rem;
-  background-image: url('/imgs/background-towers.png');
+  background-image: url('/imgs/g.png');
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover;
@@ -507,7 +504,7 @@ footer p a:hover {
 .sub-container-about h2{
 font-size: 2rem ;
 font-weight:bold !important;
-color:white !important;
+color:rgb(255, 255, 255) !important;
 
 }
 .sub-container-about a{
