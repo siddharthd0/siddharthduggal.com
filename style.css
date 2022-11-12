@@ -29,7 +29,7 @@ body {
 *,
 a {
   color: #ffffff;
-  transition: 500ms;
+  transition: 300ms;
 }
 h1,
 h2,
@@ -415,21 +415,13 @@ a:hover i {
   align-items: center;
   margin-bottom: 3rem;
 } 
-.website-button {
-  background-color: #121212;
-  padding: 5px 5px 3px 5px !important;
-  border-radius: 12px;
-  margin-top: 0.25rem;
-  transition: 400ms;
-  color: #B3C0FF
-  
-}
+
 .project-descriptions {
   margin-bottom: 0.8rem;
 }
 .website-button:hover {
   color: #c2efee;
-  background-color: #182545;
+
 }
 .blog-image {
   max-width: 500px;
@@ -601,4 +593,11 @@ p {
     background-color: #e3b6c7;
     border-radius: 10px;
 
+  }
+  .webs-img {
+    filter: brightness(70%);
+    bottom:5px;
+  }
+  .webs-img:hover {
+    filter: brightness(200%)
   }
