@@ -513,7 +513,7 @@ footer p a:hover {
   display: flex;
   max-width: 900px;
   margin: auto !important;
-  border-radius: 20px;
+  border-radius: 10px;
 
   height: 300px;
 }
