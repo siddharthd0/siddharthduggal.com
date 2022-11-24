@@ -455,7 +455,7 @@ a:hover i {
 }
 
 .page-container {
-  max-width: 800px;
+  max-width: 1900px;
   margin: auto;
   margin: auto;
   padding: 0 2rem;
@@ -488,7 +488,7 @@ footer p a:hover {
 .sub-container-about {
   padding: 1.2rem;
   display:flex;
-  max-width:800px;
+  max-width:900px;
   margin:auto !important;
   border-radius:20px;
   
