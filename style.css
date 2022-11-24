@@ -31,6 +31,7 @@ a {
   color: #ffffff;
   transition: 300ms;
 }
+
 h1,
 h2,
 h3,
@@ -39,6 +40,7 @@ h4 {
   font-family: "Edu TAS Beginner", cursive;
   font-family: "Quicksand", sans-serif;
 }
+
 p {
   font-weight: 10;
   color: #f8f8ff;
@@ -46,21 +48,21 @@ p {
 }
 
 #container {
-
   margin-top: 3rem;
   margin-bottom: 1rem;
-
-
 }
+
 .sub-title-container {
   animation-name: floating;
   animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
+
 #container h1 {
- color:white;
+  color: white;
 }
+
 #container p {
   padding: 0.5rem;
 }
@@ -71,12 +73,10 @@ p {
   height: 280px;
   background: #0e0e0ea6;
   box-sizing: border-box;
-
   color: white;
   padding: 20px;
   margin: 1rem;
   --borderWidth: 10px;
-
   position: relative;
   border-radius: var(--borderWidth);
   transition: transform 0.3s;
@@ -90,7 +90,6 @@ p {
   height: 75px;
   background: #0e0e0ea6;
   box-sizing: border-box;
-
   color: white;
   padding: 10px;
   margin: 1rem;
@@ -107,15 +106,16 @@ p {
   height: 340px;
   overflow: hidden;
   width: 700px;
-  MARGIN:AUto;
+  MARGIN: AUto;
   margin-top: 1.5rem;
-  transition:500ms; 
+  transition: 500ms;
 
-  
+
 }
+
 .project-showcase-section:hover {
   overflow-y: scroll;
-  transition:500ms; 
+  transition: 500ms;
 }
 
 /* overflow-wrap: break-word;
@@ -126,9 +126,11 @@ p {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -168,6 +170,7 @@ p {
   opacity: 1;
   transform: translateX(-6px);
 }
+
 /* End of Slide Button  */
 
 p {
@@ -177,13 +180,14 @@ p {
 .project-date {
   color: #7a7a7a;
   font-size: 12px;
-  margin-right:12px;
+  margin-right: 12px;
   vertical-align: center;
-  margin:auto;
+  margin: auto;
   margin-left: 0 !important;
 }
+
 .github {
-  margin-left:5px;
+  margin-left: 5px;
 }
 
 /* */
@@ -191,12 +195,13 @@ p {
 a {
   text-decoration: none;
 }
+
 .blog-posts-wrap {
   width: 80%;
 
   overflow-x: hidden;
   overflow-y: hidden;
-  margin:auto !important;
+  margin: auto !important;
 
   white-space: nowrap;
 
@@ -206,9 +211,10 @@ a {
   height: 250px;
 
   width: 700px;
-  MARGIN:AUto;
+  MARGIN: AUto;
   margin-top: 1.5rem;
 }
+
 .blog-posts-wrap:hover {
   overflow-y: scroll;
 }
@@ -224,9 +230,7 @@ a {
   top: 0;
   border-radius: 10px;
   overflow: hidden;
-
   text-align: center;
-  margin: 1rem;
   border: 1.5px solid transparent;
 }
 
@@ -276,9 +280,11 @@ a {
 
 /*BLOG CSS FOR POSTS*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
 * {
   line-height: 140%;
 }
+
 body,
 p,
 h1,
@@ -303,6 +309,7 @@ mark {
   transition: all 0.4s ease;
   opacity: 0.8;
 }
+
 .wrapperRight {
   padding: 100px;
   margin: 0 0 50px 0;
@@ -313,6 +320,7 @@ mark {
   transition: all 0.4s ease;
   opacity: 0.8;
 }
+
 .articleText {
   margin: 0 10% 30px 20%;
   width: 60%;
@@ -323,9 +331,11 @@ mark {
 
   transition: all 0.4s ease;
 }
+
 .introduction {
   margin-bottom: 20px;
 }
+
 .accountInfo {
   transition: all ease 0.5s;
   display: none;
@@ -334,6 +344,7 @@ mark {
   background: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .accountInfo .header {
   background: url("https://source.unsplash.com/V6s1cmE39XM/250x250") no-repeat;
   height: 120px;
@@ -347,6 +358,7 @@ mark {
 }
 
 @media only screen and (max-width: 1000px) {
+
   /* For tablets: */
   .articleText {
     margin: 0 10% 30px 10%;
@@ -356,16 +368,20 @@ mark {
     border: 0;
   }
 }
+
 @media only screen and (max-width: 768px) {
+
   /* For mobile phones: */
   .articleText {
     margin: 0 5% 30px 5%;
     width: 90%;
   }
+
   .wrapper {
     padding: 5%;
   }
 }
+
 /*END BLOG CSS*/
 
 /*Contact Email button CSS*/
@@ -386,7 +402,7 @@ a:hover i {
   transition: 300ms;
   border-radius: 10px;
   border: 3.5px solid transparent;
-  color:black;
+  color: black;
   filter: brightness(70%);
 }
 
@@ -396,7 +412,6 @@ a:hover i {
   cursor: pointer;
 
   filter: brightness(200%)
-
 }
 
 
@@ -409,7 +424,7 @@ a:hover i {
   background-color: rgba(255, 255, 255, 0.02);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  border-radius:10px;
+  border-radius: 10px;
 }
 
 .footer-text {
@@ -417,15 +432,17 @@ a:hover i {
   text-align: center;
   align-items: center;
   margin-bottom: 3rem;
-} 
+}
 
 .project-descriptions {
   margin-bottom: 0.8rem;
 }
+
 .website-button:hover {
   color: #c2efee;
 
 }
+
 .blog-image {
   max-width: 500px;
 }
@@ -433,12 +450,14 @@ a:hover i {
 .ebuy-coffee {
   margin: 1rem;
 }
+
 .my-resume {
   float: right;
   margin-right: 1rem;
   padding: 0;
   margin-top: 0.5rem;
 }
+
 .my-resume a {
   background-color: #4d798c;
   border-radius: 25px;
@@ -449,10 +468,12 @@ a:hover i {
 .box p {
   font-weight: 100;
 }
+
 .smallerwidth {
   width: 1000px;
   margin: auto;
 }
+
 .footer-left {
   float: left;
 }
@@ -464,11 +485,13 @@ a:hover i {
   padding: 0 2rem;
   overflow: hidden;
 }
+
 footer p a {
   text-decoration-line: underline;
   text-decoration-style: wavy;
   transition: 400ms;
 }
+
 footer p a:hover {
   text-decoration-line: underline;
   text-decoration-style: solid;
@@ -479,8 +502,8 @@ footer p a:hover {
 
   margin-top: 1rem;
   background-image: url('/imgs/g.png');
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -488,33 +511,38 @@ footer p a:hover {
   margin: 0 !important;
   padding: 0 !important;
 }
+
 .sub-container-about {
   padding: 1.2rem;
-  display:flex;
-  max-width:900px;
-  margin:auto !important;
-  border-radius:20px;
-  
-  height:300px;
+  display: flex;
+  max-width: 900px;
+  margin: auto !important;
+  border-radius: 20px;
+
+  height: 300px;
 }
-.sub-container-about h2{
-font-size: 2rem ;
-font-weight:bold !important;
-color:rgb(255, 255, 255) !important;
+
+.sub-container-about h2 {
+  font-size: 2rem;
+  font-weight: bold !important;
+  color: rgb(255, 255, 255) !important;
 
 }
-.sub-container-about a{
+
+.sub-container-about a {
   text-decoration: underline;
-  transition:500ms;
+  transition: 500ms;
 
 }
 
 .sub-container-about a:hover {
   text-decoration: none;
 }
+
 p {
   line-height: 1.5rem;
 }
+
 .big-font-weight-or-smth-idrk-lol {
   font-weight: bold !important;
 }
@@ -522,9 +550,11 @@ p {
 .sub-text {
   font-size: 1.2rem;
 }
+
 .main-description-about {
-  float:left;
+  float: left;
 }
+
 .text-bg {
   border-radius: 10px;
   padding: 1rem;
@@ -533,29 +563,31 @@ p {
   backdrop-filter: blur(5px);
   margin-top: 12%;
 
-  
+
 }
 
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #650b2e;
-  }
-
-  
-  *::-webkit-scrollbar {
-    width: 1px;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #650b2e;
+}
 
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #e3b6c7;
-    border-radius: 10px;
+*::-webkit-scrollbar {
+  width: 1px;
+}
 
-  }
-  .webs-img {
-    filter: brightness(70%);
-    bottom:5px;
-  }
-  .webs-img:hover {
-    filter: brightness(200%)
-  }
+
+*::-webkit-scrollbar-thumb {
+  background-color: #e3b6c7;
+  border-radius: 10px;
+
+}
+
+.webs-img {
+  filter: brightness(70%);
+  bottom: 5px;
+}
+
+.webs-img:hover {
+  filter: brightness(200%)
+}
