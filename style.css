@@ -396,19 +396,17 @@ a:hover i {
 }
 
 .social-icon {
-  margin: 5px;
-  transition-duration: 0.14s;
+  margin: 2px;
   transition: 300ms;
   border-radius: 10px;
   border: 3.5px solid transparent;
   color: black;
-  filter: brightness(70%);
+  filter: brightness(50%);
 }
 
 .social-icon:hover {
-  transform: scale(1.1);
   cursor: pointer;
-  filter: brightness(200%)
+  filter: brightness(150%)
 }
 
 
