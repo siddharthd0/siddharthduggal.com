@@ -401,12 +401,14 @@ a:hover i {
   border-radius: 10px;
   border: 3.5px solid transparent;
   color: black;
-  filter: brightness(50%);
+  filter: brightness(70%);
+  opacity: .6;
 }
 
 .social-icon:hover {
   cursor: pointer;
-  filter: brightness(150%)
+  filter: brightness(150%);
+  opacity: 1;
 }
 
 
@@ -556,8 +558,6 @@ p {
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   margin-top: 13%;
-
-
 }
 
 * {
