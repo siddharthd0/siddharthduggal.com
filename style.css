@@ -12,9 +12,7 @@ body {
   margin: 0px;
   padding: 0px;
   min-height: 100vh;
-  background: #020202;
-  font-family: "Abel", sans-serif !important;
-  font-family: "Edu TAS Beginner", cursive !important;
+  background: #000000;
   font-family: "Quicksand", sans-serif !important;
   letter-spacing: 0.5px;
   line-height: 0.5px;
@@ -70,7 +68,7 @@ p {
 /*CSS for projects section on home page*/
 .box {
   width: 300px;
-  height: 280px;
+  height: 260px;
   background: #0e0e0ea6;
   box-sizing: border-box;
   color: white;
@@ -79,10 +77,14 @@ p {
   --borderWidth: 10px;
   position: relative;
   border-radius: var(--borderWidth);
-  transition: transform 0.3s;
   align-items: center;
-  transition: 400ms;
-  border: 1.5px solid transparent;
+  border: 1px solid transparent;
+  transition: 260ms !important;
+}
+
+.box:hover {
+  transition: 260ms !important;
+  background: #313131a6;
 }
 
 .see-more-box {
@@ -103,7 +105,7 @@ p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  height: 340px;
+  height: 370px;
   overflow: hidden;
   width: 700px;
   MARGIN: AUto;
@@ -117,10 +119,6 @@ p {
   overflow-y: scroll;
   transition: 500ms;
 }
-
-/* overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;*/
 
 @keyframes animatedgradient {
   0% {
@@ -235,11 +233,9 @@ a {
 }
 
 .post-wrap:hover {
-  top: 30px;
-  transform: scale(1.037);
-  transition-duration: 0.5s;
-  -webkit-box-shadow: 5px 5px 50px 1px rgba(119, 119, 119, 0.27);
-  box-shadow: 5px 5px 50px 1px rgba(119, 119, 119, 0.27);
+  transform: scale(1.033);
+  transition-duration: 300ms;
+  background: #313131a6;
 }
 
 .post-image {
@@ -432,6 +428,7 @@ a:hover i {
 
 .project-descriptions {
   margin-bottom: 0.8rem;
+  margin-top: 5px;
 }
 
 .website-button:hover {
