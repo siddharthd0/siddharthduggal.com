@@ -4,7 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Abel&family=Edu+TAS+Beginner:wght@500&family=Quicksand:wght@300&display=swap");
 
 html {
-  font-size: 100%;
   box-sizing: border-box;
 }
 
@@ -206,7 +205,7 @@ a {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  height: 250px;
+  height: 320px;
 
   width: 700px;
   MARGIN: AUto;
@@ -419,12 +418,7 @@ a:hover i {
   border-radius: 10px;
 }
 
-.footer-text {
-  font-size: 1.05rem;
-  text-align: center;
-  align-items: center;
-  margin-bottom: 3rem;
-}
+
 
 .project-descriptions {
   margin-bottom: 0.8rem;
@@ -467,9 +461,7 @@ a:hover i {
   margin: auto;
 }
 
-.footer-left {
-  float: left;
-}
+
 
 .page-container {
   max-width: 1900px;
@@ -479,16 +471,9 @@ a:hover i {
   overflow: hidden;
 }
 
-footer p a {
-  text-decoration-line: underline;
-  text-decoration-style: wavy;
-  transition: 400ms;
-}
 
-footer p a:hover {
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-}
+
+
 
 .sub-container-about {
 
@@ -582,3 +567,4 @@ p {
 .webs-img:hover {
   filter: brightness(200%)
 }
+

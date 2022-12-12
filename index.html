@@ -133,7 +133,12 @@
           Projects
         </h1>
         <!--<h2 style="text-align:center; font-weight: 5;line-height:1; margin-top:2rem; color: grey;">My recent public creations</h2>-->
-        <div class="project-showcase-section">
+        <div
+          data-aos-duration="1000"
+          data-aos="fade-right"
+          data-aos-delay="500"
+          class="project-showcase-section"
+        >
           <div
             data-aos-duration="3000"
             data-aos="fade-right"
@@ -319,7 +324,6 @@
 
           <div class="box">
             <div class="content">
-              
               <h3 class="project-date">July 2021 - December 2021</h3>
               <h2
                 class="big-font-weight-or-smth-idrk-lol"
@@ -327,7 +331,7 @@
               >
                 Aprim
               </h2>
-              <p style="margin-top:2px;"class="project-descriptions enlarge">
+              <p style="margin-top: 2px" class="project-descriptions enlarge">
                 An all-in-one advanced calculator app. Aprim allows you to do
                 stiochiometry equations, find the velocity of an unkown object,
                 solve complex math problems and more.
@@ -340,9 +344,9 @@
       <!-- Blog Preview Section -->
       <br />
       <h1
-      data-aos-duration="800"
-      data-aos="zoom-in"
-      data-aos-delay="100"
+        data-aos-duration="800"
+        data-aos="zoom-in"
+        data-aos-delay="100"
         style="
           text-align: center;
           font-size: 3rem;
@@ -360,10 +364,20 @@
         data-aos-delay="100"
         class="blog-posts-wrap"
       >
+        <a class="post-link" href="./posts/discord-dead.html">
+          <div class="post-wrap">
+            <div class="post-body">
+              <div class="post-title">
+                <h2>Is Discord Dead?</h2>
+              </div>
+              <div class="post-meta">
+                <p>by Siddharth Duggal, on December 11th, 2022</p>
+              </div>
+            </div>
+          </div>
+        </a>
         <a class="post-link" href="./posts/future-of-web-dev-ai.html">
           <div class="post-wrap">
-            <!-- <div class='post-image' style='background-image: url("https://imageio.forbes.com/specials-images/imageserve/5f2d73b24712425de529ff94/AI--Artificial-Intelligence--concept--Communication-network-/960x0.jpg?fit=bounds")'>
-      </div>    -->
             <div class="post-body">
               <div class="post-title">
                 <h2>The future of AI</h2>
@@ -376,9 +390,6 @@
         </a>
         <a class="post-link" href="./posts/elon-musk-twitter.html">
           <div class="post-wrap">
-            <!-- <div class='post-image' style='background-image: url("https://imageio.forbes.com/specials-images/imageserve/5f2d73b24712425de529ff94/AI--Artificial-Intelligence--concept--Communication-network-/960x0.jpg?fit=bounds")'>
-      </div>    -->
-
             <div class="post-body">
               <div class="post-title">
                 <h2>Elon Musk's Recent Purchase</h2>
@@ -392,8 +403,6 @@
 
         <a class="post-link" href="../posts/apcsp-bigdata-blog.html">
           <div class="post-wrap">
-            <!-- <div class='post-image' style='background-image: url("https://imageio.forbes.com/specials-images/imageserve/5f2d73b24712425de529ff94/AI--Artificial-Intelligence--concept--Communication-network-/960x0.jpg?fit=bounds")'>
-      </div>    -->
             <div class="post-body">
               <div class="post-title">
                 <h2>Big Data...</h2>
@@ -420,17 +429,20 @@
           </div>
         </a>
       </div>
-
-      <!--Socials Section-->
-      <br /><br /><br />
-      <p
-        data-aos-duration="1000"
-        data-aos="fade-right"
-        data-aos-delay="100"
-        style="text-align: center; margin: auto; width: 50%"
-      ></p>
-      <br />
     </div>
+
+    <footer class="footer" style="text-align: center; margin: auto">
+      <br />
+      <br />
+      <br />
+      <p style="color: rgb(137, 135, 135); margin: auto">
+        Made with <span style="color: #bc1c1c">&#9829;</span> by
+        <span style="color: rgb(186, 184, 184)">Siddharth Duggal</span>
+      </p>
+      <br />
+      <br />
+    </footer>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
