@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import {
+  Image,
   Stack,
   Divider,
   Link,
@@ -24,13 +24,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex
-        mt="7rem !important"
+        mt="5rem !important"
         margin={"auto"}
-        maxW={"600px"}
+        maxW={"680px"}
         direction="column"
       >
-        <Flex alignItems={"center"}>
-          <Heading>Siddharth Duggal</Heading>
+        <Image width={"130px"} borderRadius={"10px"}src="me.png"/>
+        <Flex mt="1rem" alignItems={"center"}>
+          <Heading >Siddharth Duggal</Heading>
           <Spacer />
           <Stack direction={"row"} gap={"4px"}>
             <Link isExternal _hover={
@@ -65,6 +66,8 @@ export default function Home() {
           }
         ></New>
       </Flex>
+      <br/>
+      <br/>
     </>
   );
 }
