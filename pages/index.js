@@ -28,6 +28,7 @@ export default function Home() {
         margin={"auto"}
         maxW={"680px"}
         direction="column"
+        px="2rem"
       >
         <Image width={"130px"} borderRadius={"10px"}src="me.png"/>
         <Flex mt="1rem" alignItems={"center"}>
