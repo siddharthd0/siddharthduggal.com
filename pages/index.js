@@ -118,9 +118,9 @@ export default function Home() {
             );
           })}
       
+      <Text fontSize={"sm"} mb="6px" mt="18px">Website made with ❤️ in Next.js using Chakra UI</Text>
       </Flex>
-      <br />
-      <br />
+     
     </>
   );
 }
