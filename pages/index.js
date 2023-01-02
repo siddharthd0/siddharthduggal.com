@@ -69,6 +69,7 @@ export default function Home() {
               <BsGithub className="icons" size={"22px"} />
             </Link>
             <Link
+            className="icons"
               isExternal
               _hover={{
                 background: "none",

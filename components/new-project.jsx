@@ -8,6 +8,7 @@ export default function NewProject({ link, description, title, dates }) {
         <Flex alignItems={"center"}>
           <Heading fontSize={"2xl"}>{title}</Heading>
           <Link
+            isExternal
             _hover={{
               backgroundColor: "transparent",
               color: "grey.900 !important",

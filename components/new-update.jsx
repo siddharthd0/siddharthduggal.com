@@ -4,7 +4,7 @@ export default function Volunteer({ date, description, image }) {
   return (
     <>
       <Box mt="6px" borderColor={"grey !important"} borderTop={"1px"}>
-        <Flex my={"10px"} direction={["column", "row"]}  alignItems={"center"}>
+        <Flex my={"10px"} direction={["column", "row"]} alignItems={"center"}>
           <Text fontSize="sm" color="gray.500">
             {date}
           </Text>
