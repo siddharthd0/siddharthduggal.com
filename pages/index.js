@@ -8,6 +8,7 @@ import {
   Text,
   Box,
   Spacer,
+  Tooltip,
 } from "@chakra-ui/react";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { useEffect, useState } from "react";
@@ -54,35 +55,37 @@ export default function Home() {
         <Image width={"130px"} borderRadius={"10px"} src="me.png" />
         <Flex mt="1rem" alignItems={"center"}>
           <Heading>Siddharth Duggal</Heading>
-          
-          
+
           <Spacer />
-         
+
           <Stack mt="5px" direction={"row"} gap={"4px"}>
-            <Link
-              isExternal
-              _hover={{
-                background: "none",
-              }}
-              href="https://github.com/siddharthd0"
-            >
-              <BsGithub className="icons" size={"22px"} />
-            </Link>
-            <Link
-            className="icons"
-              isExternal
-              _hover={{
-                background: "none",
-              }}
-              href="https://www.linkedin.com/in/siddharth-duggal/"
-            >
-              <BsLinkedin className="icons" size={"22px"} />
-            </Link>
+            <Tooltip hasArrow label="Github" bg="gray.900" color="white">
+              <Link
+                isExternal
+                _hover={{
+                  background: "none",
+                }}
+                href="https://github.com/siddharthd0"
+              >
+                <BsGithub className="icons" size={"22px"} />
+              </Link>
+            </Tooltip>
+            <Tooltip hasArrow label="Linkedin" bg="gray.900" color="white">
+              <Link
+                className="icons"
+                isExternal
+                _hover={{
+                  background: "none",
+                }}
+                href="https://www.linkedin.com/in/siddharth-duggal/"
+              >
+                <BsLinkedin className="icons" size={"22px"} />
+              </Link>
+            </Tooltip>
           </Stack>
-         
         </Flex>
         <Link href="./project" maxW={"125px"} mx="1px">
-        <Text >View my Projects</Text>
+          <Text>View my Projects</Text>
         </Link>
         <Text maxW={"500px"} my="10px" mb="10px" fontSize={"md"}>
           Hey! I'm Siddharth and I enjoy coding for fun. I'm mainly working on
@@ -121,10 +124,11 @@ export default function Home() {
               </>
             );
           })}
-      
-      <Text fontSize={"sm"} mb="6px" mt="18px">Website made with ❤️ in Next.js using Chakra UI</Text>
+
+        <Text fontSize={"sm"} mb="6px" mt="18px">
+          Website made with ❤️ in Next.js using Chakra UI
+        </Text>
       </Flex>
-     
     </>
   );
 }

@@ -6,6 +6,7 @@ import {
   Flex,
   Text,
   Spacer,
+  Tooltip,
 } from "@chakra-ui/react";
 import Project from "../components/new-project";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
@@ -28,25 +29,30 @@ export default function ProjectPage() {
             <Spacer />
 
             <Stack mt="5px" direction={"row"} gap={"4px"}>
-              <Link
-                isExternal
-                _hover={{
-                  background: "none",
-                }}
-                href="https://github.com/siddharthd0"
-              >
-                <BsGithub className="icons" size={"22px"} />
-              </Link>
-              <Link
-                isExternal
-                _hover={{
-                  background: "none",
-                }}
-                href="https://www.linkedin.com/in/siddharth-duggal/"
-              >
-                <BsLinkedin className="icons" size={"22px"} />
-              </Link>
-            </Stack>
+          <Tooltip hasArrow label='Github' bg='gray.900' color='white'>
+            <Link
+              isExternal
+              _hover={{
+                background: "none",
+              }}
+              href="https://github.com/siddharthd0"
+            >
+              <BsGithub className="icons" size={"22px"} />
+            </Link>
+            </Tooltip>
+            <Tooltip hasArrow label='Linkedin' bg='gray.900' color='white'>
+            <Link
+            className="icons"
+              isExternal
+              _hover={{
+                background: "none",
+              }}
+              href="https://www.linkedin.com/in/siddharth-duggal/"
+            >
+              <BsLinkedin className="icons" size={"22px"} />
+            </Link>
+            </Tooltip>
+          </Stack>
           </Flex>
           <Link href="./" maxW={"117px"} mx="1px">
             <Text>Return to Home</Text>

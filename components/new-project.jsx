@@ -1,4 +1,12 @@
-import { Link, Heading, Text, Flex, Box, Spacer } from "@chakra-ui/react";
+import {
+  Tooltip,
+  Link,
+  Heading,
+  Text,
+  Flex,
+  Box,
+  Spacer,
+} from "@chakra-ui/react";
 import { FiExternalLink } from "react-icons/fi";
 
 export default function NewProject({ link, description, title, dates }) {
@@ -7,16 +15,18 @@ export default function NewProject({ link, description, title, dates }) {
       <Box borderRadius={"10px"} padding="1rem" className="tinted-bg" mt="14px">
         <Flex alignItems={"center"}>
           <Heading fontSize={"2xl"}>{title}</Heading>
-          <Link
-            isExternal
-            _hover={{
-              backgroundColor: "transparent",
-              color: "grey.900 !important",
-            }}
-            href={link}
-          >
-            <FiExternalLink className="project-link" />
-          </Link>
+          <Tooltip label={"Check out  " + title} placement="right">
+            <Link
+              isExternal
+              _hover={{
+                backgroundColor: "transparent",
+                color: "grey.900 !important",
+              }}
+              href={link}
+            >
+              <FiExternalLink className="project-link" />
+            </Link>
+          </Tooltip>
           <Spacer />
           <Text fontSize="sm" color="gray.500">
             {dates}
