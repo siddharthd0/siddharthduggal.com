@@ -1,10 +1,7 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
-import styles from "../styles/Home.module.css";
 import {
   Image,
   Stack,
-  Divider,
   Link,
   Heading,
   Flex,
@@ -12,7 +9,6 @@ import {
   Box,
   Spacer,
 } from "@chakra-ui/react";
-import New from "../components/new-update";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { useEffect, useState } from "react";
 
@@ -58,8 +54,11 @@ export default function Home() {
         <Image width={"130px"} borderRadius={"10px"} src="me.png" />
         <Flex mt="1rem" alignItems={"center"}>
           <Heading>Siddharth Duggal</Heading>
+          
+          
           <Spacer />
-          <Stack direction={"row"} gap={"4px"}>
+         
+          <Stack mt="5px" direction={"row"} gap={"4px"}>
             <Link
               isExternal
               _hover={{
@@ -79,8 +78,12 @@ export default function Home() {
               <BsLinkedin className="icons" size={"22px"} />
             </Link>
           </Stack>
+         
         </Flex>
-        <Text maxW={"500px"} my="10px" fontSize={"md"}>
+        <Link href="./project" maxW={"125px"} mx="1px">
+        <Text >View my Projects</Text>
+        </Link>
+        <Text maxW={"500px"} my="10px" mb="10px" fontSize={"md"}>
           Hey! I'm Siddharth and I enjoy coding for fun. I'm mainly working on
           my non-profit,{" "}
           <Link isExternal href="https://techoptimum.org">
@@ -97,7 +100,7 @@ export default function Home() {
             return (
               <>
                 <Flex
-                  mb="1rem"
+                  mb=".5rem"
                   direction={"column"}
                   borderTopColor="grey.500 !important"
                   borderTop={"1px"}
