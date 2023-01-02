@@ -16,11 +16,7 @@ export default function NewProject({ link, description, title, dates }) {
         <Flex alignItems={"center"}>
           <Heading fontSize={"2xl"}>{title}</Heading>
           <Tooltip label={"Check out  " + title} placement="right">
-            <Link
-              isExternal
-   
-              href={link}
-            >
+            <Link isExternal href={link}>
               <FiExternalLink className="project-link" />
             </Link>
           </Tooltip>

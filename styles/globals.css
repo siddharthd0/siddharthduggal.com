@@ -27,8 +27,6 @@ a {
 
 a:hover {
   text-decoration: none !important;
-  background-color: black;
-  color: white;
 }
 
 .icons {
@@ -36,14 +34,10 @@ a:hover {
   transition: 500ms !important;
 }
 
-
-
 .project-link {
   margin-left: 7px;
   margin-bottom: -2px;
 }
-
-
 
 .post-card {
   border-top: 1px solid rgb(139, 139, 143);

@@ -1,16 +1,9 @@
 import Head from "next/head";
-import {
-  Image,
-  Link,
-  Flex,
-  Text,
-  Box,
-  Spacer,
-} from "@chakra-ui/react";
+import { Image, Link, Flex, Text, Box, Spacer } from "@chakra-ui/react";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import Footer from "../components/footer";
-import Header from "../components/header"
+import Header from "../components/header";
 
 export default function Home() {
   const [dateArray, setDateArray] = useState([]);
@@ -51,7 +44,7 @@ export default function Home() {
         direction="column"
         px="2rem"
       >
-       <Header/>
+        <Header />
         <Link href="./project" maxW={"125px"} mx="1px">
           <Text>View my Projects</Text>
         </Link>
@@ -92,7 +85,7 @@ export default function Home() {
             );
           })}
 
-       <Footer/>
+        <Footer />
       </Flex>
     </>
   );
