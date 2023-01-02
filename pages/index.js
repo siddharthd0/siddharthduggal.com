@@ -1,17 +1,16 @@
 import Head from "next/head";
 import {
   Image,
-  Stack,
   Link,
-  Heading,
   Flex,
   Text,
   Box,
   Spacer,
-  Tooltip,
 } from "@chakra-ui/react";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import Footer from "../components/footer";
+import Header from "../components/header"
 
 export default function Home() {
   const [dateArray, setDateArray] = useState([]);
@@ -52,38 +51,7 @@ export default function Home() {
         direction="column"
         px="2rem"
       >
-        <Image width={"130px"} borderRadius={"10px"} src="me.png" />
-        <Flex mt="1rem" alignItems={"center"}>
-          <Heading>Siddharth Duggal</Heading>
-
-          <Spacer />
-
-          <Stack mt="5px" direction={"row"} gap={"4px"}>
-            <Tooltip hasArrow label="Github" bg="gray.900" color="white">
-              <Link
-                isExternal
-                _hover={{
-                  background: "none",
-                }}
-                href="https://github.com/siddharthd0"
-              >
-                <BsGithub className="icons" size={"22px"} />
-              </Link>
-            </Tooltip>
-            <Tooltip hasArrow label="Linkedin" bg="gray.900" color="white">
-              <Link
-                className="icons"
-                isExternal
-                _hover={{
-                  background: "none",
-                }}
-                href="https://www.linkedin.com/in/siddharth-duggal/"
-              >
-                <BsLinkedin className="icons" size={"22px"} />
-              </Link>
-            </Tooltip>
-          </Stack>
-        </Flex>
+       <Header/>
         <Link href="./project" maxW={"125px"} mx="1px">
           <Text>View my Projects</Text>
         </Link>
@@ -104,17 +72,16 @@ export default function Home() {
             return (
               <>
                 <Flex
-                  mb=".5rem"
+                  mb=".6rem"
                   direction={"column"}
-                  borderTopColor="grey.500 !important"
-                  borderTop={"1px"}
+                  className="post-card"
                   key={i}
                 >
                   <Flex mt="8px">
-                    <Text color="gray.500">{item.description}</Text>
+                    <Text color="gray.200">{item.description}</Text>
                     <Spacer />
 
-                    <Text color="gray.500"> {item.date}</Text>
+                    <Text color="gray.400"> {item.date}</Text>
                   </Flex>
 
                   <Box mt="10px" maxWidth={"450px"}>
@@ -125,9 +92,7 @@ export default function Home() {
             );
           })}
 
-        <Text fontSize={"sm"} mb="6px" mt="18px">
-          Website made with ❤️ in Next.js using Chakra UI
-        </Text>
+       <Footer/>
       </Flex>
     </>
   );

@@ -11,12 +11,12 @@ body {
 }
 
 body {
-  color: black;
-  background-color: rgb(236, 236, 236) !important;
+  background-color: black !important;
+  color: white !important;
 }
 
 .tinted-bg {
-  background-color: rgb(244, 244, 244) !important;
+  background-color: rgb(21, 20, 20) !important;
 }
 
 a {
@@ -32,22 +32,19 @@ a:hover {
 }
 
 .icons {
-  color: black;
+  color: rgb(220, 220, 220);
   transition: 500ms !important;
 }
 
-.icons:hover {
 
-  color: rgb(108, 107, 107);
-  cursor: pointer;
-}
 
 .project-link {
   margin-left: 7px;
   margin-bottom: -2px;
 }
 
-.project-link:hover {
-  color: rgb(108, 107, 107);
-  cursor: pointer;
+
+
+.post-card {
+  border-top: 1px solid rgb(139, 139, 143);
 }

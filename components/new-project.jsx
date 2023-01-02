@@ -18,23 +18,20 @@ export default function NewProject({ link, description, title, dates }) {
           <Tooltip label={"Check out  " + title} placement="right">
             <Link
               isExternal
-              _hover={{
-                backgroundColor: "transparent",
-                color: "grey.900 !important",
-              }}
+   
               href={link}
             >
               <FiExternalLink className="project-link" />
             </Link>
           </Tooltip>
           <Spacer />
-          <Text fontSize="sm" color="gray.500">
+          <Text fontSize="sm" color="gray.400">
             {dates}
           </Text>
         </Flex>
         <Flex my={"7px"} direction={["column", "column"]}>
           <Spacer />
-          <Text fontSize="sm" color="gray.700">
+          <Text fontSize="sm" color="gray.200">
             {description}
           </Text>
         </Flex>
