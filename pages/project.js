@@ -85,6 +85,15 @@ export default function ProjectPage() {
           suggestions!"
             link="https://skyline.arnavpandey722.repl.co/"
           />
+          <Project
+            
+            title="Launchpad Development"
+            dates="December 2020 - March 2021"
+            description={
+              "Launchpad Development was a freelancing company I created providing things like websites, minecraft servers, discord bots, and more to over hundreds of clients. The company is now disolved"
+            }
+          />
+          <Project title="Aprim" dates="December 2020 - August 2021" description={"Aprim was a web and game hosting company I created with a friend providing hosting to over 50+ clients. The company is now disolved."} />
         </Flex>
 
         <Footer />
