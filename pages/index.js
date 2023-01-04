@@ -48,13 +48,13 @@ export default function Home() {
         <Link href="./project" maxW={"125px"} mx="1px">
           <Text>View my Projects</Text>
         </Link>
-        <Text maxW={"500px"} my="10px" mb="10px" fontSize={"md"}>
-          Hey! I'm Siddharth and I enjoy coding for fun. I'm mainly working on
+        <Text maxW={"1000px"} my="10px" mb="13px" fontSize={"md"}>
+          Greetings, I'm Siddharth! Coding is a hobby of mine that brings joy and allows me to create for the internet.  Currently, I'm working on 
           my non-profit,{" "}
           <Link isExternal href="https://techoptimum.org">
             Tech Optimum
           </Link>
-          , right now. If you need to contact me, feel free to message me on{" "}
+          . If you need to contact me, feel free to message me through{" "}
           <Link isExternal href="https://discord.com/@910659572199464990">
             Discord
           </Link>{" "}
