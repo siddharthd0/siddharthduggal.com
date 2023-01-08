@@ -52,23 +52,36 @@ export default function Home() {
         px="2rem"
       >
         <Header />
-        <Tooltip
-        openDelay={250}
-          placement="right"
-          label="Check out a few of my cool coding projects."
-        >
-          <Link href="./project" maxW={"125px"} mx="1px">
-            <Text>View my Projects</Text>
+        <Flex maxW={"305px"}>
+          <Tooltip
+            openDelay={250}
+            placement="right"
+            label="Check out a few of my cool coding projects."
+          >
+            <Link className="nav-link" href="./project" mx="1px">
+              <Text>Projects</Text>
+            </Link>
+          </Tooltip>
+          <Spacer />
+          <Link href="./experience" className="nav-link">
+            <Text>Experience</Text>
           </Link>
-        </Tooltip>
+          <Spacer />
+          <Link href="./awards" className="nav-link">
+            <Text>Awards</Text>
+          </Link>
+        </Flex>
         <Text maxW={"1000px"} my="10px" mb="13px" fontSize={"md"}>
           Greetings, I'm Siddharth! Coding is a hobby of mine that brings joy
           and allows me to create for the internet. Currently, I'm working on my
           non-profit,{" "}
-          <Tooltip openDelay={250} label="Tech Optimum is a student-led organization dedicated to helping high schoolers and college students in CS. ">
-          <Link isExternal href="https://techoptimum.org">
-            Tech Optimum
-          </Link>
+          <Tooltip
+            openDelay={250}
+            label="Tech Optimum is a student-led organization dedicated to helping high schoolers and college students in CS. "
+          >
+            <Link isExternal href="https://techoptimum.org">
+              Tech Optimum
+            </Link>
           </Tooltip>
           . If you need to contact me, feel free to message me through{" "}
           <Link isExternal href="https://discord.com/@910659572199464990">

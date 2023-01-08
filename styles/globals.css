@@ -42,3 +42,14 @@ a:hover {
 .post-card {
   border-top: 1px solid rgb(139, 139, 143);
 }
+.nav-link {
+  margin-top: 5px;
+  background: rgb(79, 79, 177);
+  padding: 0 14px;
+  text-decoration: none !important;
+  border-radius: 8px;
+  transition: 300ms;
+}
+.nav-link:hover {
+  opacity: .8;
+}
