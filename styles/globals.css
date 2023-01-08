@@ -44,7 +44,7 @@ a:hover {
 }
 .nav-link {
   margin-top: 5px;
-  background: rgb(79, 79, 177);
+  background: rgb(54, 54, 54);
   padding: 0 14px;
   text-decoration: none !important;
   border-radius: 8px;
@@ -52,4 +52,7 @@ a:hover {
 }
 .nav-link:hover {
   opacity: .8;
+}
+.nav-icons {
+  margin-top: 1px;
 }

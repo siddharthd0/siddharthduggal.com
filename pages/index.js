@@ -6,11 +6,13 @@ import {
   Flex,
   Text,
   Box,
+  Button,
   Spacer,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Footer from "../components/footer";
 import Header from "../components/header";
+import { BsTrophy,BsBriefcaseFill,BsCodeSlash } from "react-icons/bs";
 
 export default function Home() {
   const [dateArray, setDateArray] = useState([]);
@@ -52,24 +54,54 @@ export default function Home() {
         px="2rem"
       >
         <Header />
-        <Flex maxW={"305px"}>
+        <Flex maxW={"395px"}>
           <Tooltip
             openDelay={250}
             placement="right"
             label="Check out a few of my cool coding projects."
           >
-            <Link className="nav-link" href="./project" mx="1px">
-              <Text>Projects</Text>
+            <Link textDecor={"none !important"} href="./project">
+              <Button
+              py={"-10px !important"}
+              _hover={{ bg: "gray.700" }}
+                variant="ghost"
+              className="nav-link"
+                rightIcon={
+                  <BsCodeSlash position={"relative"} className="nav-icons" />
+                }
+              >
+                Projects{" "}
+              </Button>
             </Link>
           </Tooltip>
           <Spacer />
-          <Link href="./experience" className="nav-link">
-            <Text>Experience</Text>
-          </Link>
+          <Link textDecor={"none !important"} href="./experience">
+              <Button
+              py={"-10px !important"}
+              _hover={{ bg: "gray.700" }}
+                variant="ghost"
+              className="nav-link"
+                rightIcon={
+                  <BsBriefcaseFill position={"relative"} className="nav-icons" />
+                }
+              >
+               Experience
+              </Button>
+            </Link>
           <Spacer />
-          <Link href="./awards" className="nav-link">
-            <Text>Awards</Text>
-          </Link>
+          <Link textDecor={"none !important"} href="./">
+              <Button
+              py={"-10px !important"}
+              _hover={{ bg: "gray.700" }}
+                variant="ghost"
+              className="nav-link"
+                rightIcon={
+                  <BsTrophy position={"relative"} className="nav-icons" />
+                }
+              >
+               Awards
+              </Button>
+            </Link>
         </Flex>
         <Text maxW={"1000px"} my="10px" mb="13px" fontSize={"md"}>
           Greetings, I'm Siddharth! Coding is a hobby of mine that brings joy
