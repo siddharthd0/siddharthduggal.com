@@ -54,7 +54,7 @@ export default function Home() {
         px="2rem"
       >
         <Header />
-        <Flex maxW={"395px"}>
+        <Flex direction={["column", "row"]} maxW={"395px"}>
           <Tooltip
             openDelay={250}
             placement="right"
