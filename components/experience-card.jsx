@@ -12,7 +12,7 @@ import styled from "styled-components";
 
 export const StyledLink = styled.a`
     cursor: pointer;
-    text-decoration: disabled;
+    text-decoration: none !important;
     display: block;
     height: auto;
     float:left;
