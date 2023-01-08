@@ -10,14 +10,6 @@ import {
 import { FiExternalLink } from "react-icons/fi";
 import styled from "styled-components";
 
-export const StyledLink = styled.a`
-    cursor: pointer;
-    text-decoration: none !important;
-    display: block;
-    height: auto;
-    float:left;
-`;
-
 export default function ExperienceCard({
   link,
   descriptions,
@@ -34,7 +26,7 @@ export default function ExperienceCard({
           borderRadius={"10px"}
           className="tinted-bg"
         >
-             <StyledLink href={link}>
+             <Link textDecoration={"none !important"} href={link}>
           <Flex alignContent={"center"}>
             <Flex direction={"column"}>
               <Heading fontSize={"md"}>{position}</Heading>
@@ -54,7 +46,7 @@ export default function ExperienceCard({
               })}
             </ul>
           </Flex>
-          </StyledLink>
+          </Link>
         </Box>
 
     </>
