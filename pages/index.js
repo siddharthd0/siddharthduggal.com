@@ -1,6 +1,13 @@
 import Head from "next/head";
-import { Image, Link, Flex, Text, Box, Spacer } from "@chakra-ui/react";
-import { BsLinkedin, BsGithub } from "react-icons/bs";
+import {
+  Tooltip,
+  Image,
+  Link,
+  Flex,
+  Text,
+  Box,
+  Spacer,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Footer from "../components/footer";
 import Header from "../components/header";
@@ -45,15 +52,24 @@ export default function Home() {
         px="2rem"
       >
         <Header />
-        <Link href="./project" maxW={"125px"} mx="1px">
-          <Text>View my Projects</Text>
-        </Link>
+        <Tooltip
+        openDelay={250}
+          placement="right"
+          label="Check out a few of my cool coding projects."
+        >
+          <Link href="./project" maxW={"125px"} mx="1px">
+            <Text>View my Projects</Text>
+          </Link>
+        </Tooltip>
         <Text maxW={"1000px"} my="10px" mb="13px" fontSize={"md"}>
-          Greetings, I'm Siddharth! Coding is a hobby of mine that brings joy and allows me to create for the internet.  Currently, I'm working on 
-          my non-profit,{" "}
+          Greetings, I'm Siddharth! Coding is a hobby of mine that brings joy
+          and allows me to create for the internet. Currently, I'm working on my
+          non-profit,{" "}
+          <Tooltip openDelay={250} label="Tech Optimum is a student-led organization dedicated to helping high schoolers and college students in CS. ">
           <Link isExternal href="https://techoptimum.org">
             Tech Optimum
           </Link>
+          </Tooltip>
           . If you need to contact me, feel free to message me through{" "}
           <Link isExternal href="https://discord.com/@910659572199464990">
             Discord
