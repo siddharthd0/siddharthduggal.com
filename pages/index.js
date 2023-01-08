@@ -62,6 +62,7 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./project">
               <Button
+                fontWeight={"400"}
               py={"-10px !important"}
               _hover={{ bg: "gray.700" }}
                 variant="ghost"
@@ -75,8 +76,14 @@ export default function Home() {
             </Link>
           </Tooltip>
           <Spacer />
+          <Tooltip
+            openDelay={250}
+            placement="right"
+            label="Check out my work experience."
+          >
           <Link textDecor={"none !important"} href="./experience">
               <Button
+              fontWeight={"400"}
               py={"-10px !important"}
               _hover={{ bg: "gray.700" }}
                 variant="ghost"
@@ -88,9 +95,16 @@ export default function Home() {
                Experience
               </Button>
             </Link>
+            </Tooltip>
           <Spacer />
+          <Tooltip
+            openDelay={250}
+            placement="right"
+            label="Check some of the cool awards I've won."
+          >
           <Link textDecor={"none !important"} href="./">
               <Button
+                fontWeight={"400"}
               py={"-10px !important"}
               _hover={{ bg: "gray.700" }}
                 variant="ghost"
@@ -102,6 +116,7 @@ export default function Home() {
                Awards
               </Button>
             </Link>
+            </Tooltip>
         </Flex>
         <Text maxW={"1000px"} my="10px" mb="13px" fontSize={"md"}>
           Greetings, I'm Siddharth! Coding is a hobby of mine that brings joy
