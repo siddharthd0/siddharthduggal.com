@@ -12,7 +12,7 @@ import { BsLinkedin, BsGithub } from "react-icons/bs";
 export default function Footer() {
   return (
     <>
-    <Tooltip openDelay={'200'} placement="right" label="Me in Catalina Island, CA">
+    <Tooltip openDelay={'200'} placement="right" label="Photo taken in Catalina Island, California (Winter 2022)">
       <Image width={"130px"} borderRadius={"14px"} src="me.png" />
       </Tooltip>
       <Flex mt="1rem" alignItems={"center"}>

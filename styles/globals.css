@@ -56,3 +56,6 @@ a:hover {
 .nav-icons {
   margin-top: 1px;
 }
+.grey-text {
+  color: rgb(177, 175, 175) !important;
+}

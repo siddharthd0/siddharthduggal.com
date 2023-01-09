@@ -19,19 +19,19 @@ export default function ExperienceCard({
 }) {
   return (
     <>
-     
-        <Box
-          maxW="300px"
-          padding={"1rem"}
-          borderRadius={"10px"}
-          className="tinted-bg"
-        >
-             <Link textDecoration={"none !important"} href={link}>
+      <Box
+        maxW="300px"
+        padding={"1rem"}
+        borderRadius={"10px"}
+        className="tinted-bg"
+        
+      >
+        <Link textDecoration={"none !important"} href={link}>
           <Flex alignContent={"center"}>
             <Flex direction={"column"}>
               <Heading fontSize={"md"}>{position}</Heading>
 
-              <Text mt="4px" color={"grey.900 !important"} fontSize={"12px"}>
+              <Text mt="4px" className="grey-text" fontSize={"12px"}>
                 {dates}
               </Text>
             </Flex>
@@ -46,9 +46,8 @@ export default function ExperienceCard({
               })}
             </ul>
           </Flex>
-          </Link>
-        </Box>
-
+        </Link>
+      </Box>
     </>
   );
 }

@@ -75,15 +75,7 @@ export default function ProjectPage() {
             "Gathered 50,000+ views.",
           ]}
         />
-        <ExperienceCard
-          position={"Web Developer"}
-          company="School Simplified"
-          dates="April 2022 - Present"
-          descriptions={[
-            "Writing code for the website in NextJs and Chakra",
-            "Taking requests by other departments",
-          ]}
-        />
+    
         <ExperienceCard
           dates="April 2020 - November 2021"
           position="Community Owner"
@@ -105,6 +97,22 @@ export default function ProjectPage() {
             "Developed websites, Minecraft servers, Discord bots, and more for over 50 clients. ",
             "Handled $400+ in revenue",
             "Used languages like Javascript, Java, and PHP",
+          ]}
+        />
+        <ExperienceCard
+        dates="June 2020 - Present"
+        position={"Personal Projects"}
+        descriptions={[
+          "I've been working on personal projects since 2020. I've built websites, Discord bots, Minecraft servers, and more. Most of my projects are private, but I've released a few to the public. Check out my Github to view them. ",
+        ]}
+        /> 
+           <ExperienceCard
+          position={"Web Developer"}
+          company="School Simplified"
+          dates="April 2022 - Present"
+          descriptions={[
+            "Writing code for the website in NextJs and Chakra",
+            "Taking requests by other departments",
           ]}
         />
       </Wrap>
