@@ -54,7 +54,7 @@ export default function Home() {
         px="2rem"
       >
         <Header />
-        <Flex mt="5px" direction={["column", "row"]} maxW={"395px"}>
+        <Flex mt="5px" direction={["column", "row"]} maxW={"3px"}>
           <Tooltip
             openDelay={250}
             placement="right"
@@ -105,28 +105,7 @@ export default function Home() {
             </Link>
           </Tooltip>
           <Spacer />
-          <Tooltip
-            openDelay={250}
-            placement="right"
-            label="Check some of the cool awards I've won."
-          >
-            <Link textDecor={"none !important"} href="./">
-              <Button
-                  transition={"all 0.2s ease-in-out"}
-                  fontWeight={"400"}
-                  _hover={{ bg: "gray.900"}}
-                  border="1px"
-                  borderColor="gray.600"
-                  backgroundColor="transparent"
-                  className="nav-link"
-                rightIcon={
-                  <BsTrophy position={"relative"} className="nav-icons" />
-                }
-              >
-                Awards
-              </Button>
-            </Link>
-          </Tooltip>
+     
         </Flex>
         <Text maxW={"1000px"} my="10px" mb="13px" fontSize={"15px "}>
           Hey, I'm Siddharth! Coding is a hobby of mine that brings joy and
@@ -157,7 +136,7 @@ export default function Home() {
                   key={i}
                 >
                   <Flex mt="8px">
-                    <Text color="gray.200">{item.description}</Text>
+                    <Text maxW={"460px"} color="gray.200">{item.description}</Text>
                     <Spacer />
 
                     <Text color="gray.400"> {item.date}</Text>
