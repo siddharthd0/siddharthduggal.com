@@ -59,9 +59,10 @@ a:hover {
 .grey-text {
   color: rgb(177, 175, 175) !important;
 }
-.marquee {
-  display: flex; 
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
+.blink_img {
+  animation: blinker 1.5s linear infinite;
 }
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
