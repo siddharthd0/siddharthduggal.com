@@ -9,14 +9,56 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
+import { useLastFM } from "use-last-fm";
+import Marquee from 'react-double-marquee';
+
 export default function Footer() {
+
+  
+  
+  const lastFM = useLastFM(
+    "siddharthduggal",
+    "47e0d12807288412db27e146abba1aff"
+  );
   return (
     <>
-    <Tooltip openDelay={'200'} placement="right" label="Photo taken in Catalina Island, California (Winter 2022)">
-      <Image width={"130px"} borderRadius={"14px"} src="me.png" />
-      </Tooltip>
+      <Flex>
+        <Tooltip
+          openDelay={"200"}
+          placement="right"
+          label="Photo taken in Catalina Island, California (Winter 2022)"
+        >
+          <Image width={"130px"} borderRadius={"14px"} src="me.png" />
+        </Tooltip>
+        <Spacer />
+        {lastFM.status === "playing" ? (
+          <Flex maxW={"300px"} alignItems={"center"}>
+            <Tooltip label={lastFM.song.album}>
+              <Image
+                borderRadius={"10px"}
+                height="75px"
+                width={"75px"}
+                src={lastFM.song.art}
+              />
+            </Tooltip>
+
+          
+              <Text ml="14px">
+              I am listening to{" "}
+              <Link isExternal href={lastFM.song.url}>
+                {lastFM.song.name} by {lastFM.song.artist}
+              </Link>{" "}
+              on Spotify right now.
+              </Text>
+
+          </Flex>
+        ) : (
+          <p></p>
+        )}
+      </Flex>
+      
       <Flex mt="1rem" alignItems={"center"}>
-        <Heading >Siddharth Duggal</Heading>
+        <Heading>Siddharth Duggal</Heading>
 
         <Spacer />
 

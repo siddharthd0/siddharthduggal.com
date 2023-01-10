@@ -14,7 +14,9 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import { BsTrophy, BsBriefcaseFill, BsCodeSlash } from "react-icons/bs";
 
+
 export default function Home() {
+
   const [dateArray, setDateArray] = useState([]);
   const [descriptionArray, setDescriptionArray] = useState([]);
   const [data, setData] = useState([]);
