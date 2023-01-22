@@ -129,7 +129,7 @@ export default function Home() {
                   />
                 }
               >
-                Resume
+                Résumé
               </Button>
             </Link>
           </Tooltip>
