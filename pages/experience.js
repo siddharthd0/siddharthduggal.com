@@ -94,9 +94,9 @@ export default function ProjectPage() {
           position={"Co-founder"}
           company="Launchpad Dev."
           descriptions={[
-            "Developed websites, Minecraft servers, Discord bots, and more for over 50 clients. ",
+            "Developed websites, Minecraft servers, Discord bots, and more for over 80 clients ",
             "Handled $400+ in revenue",
-            "Used languages like Javascript, Java, and PHP",
+            "Used languages like Javascript, Java, HTML, CSS, and PHP",
           ]}
         />
         <ExperienceCard
