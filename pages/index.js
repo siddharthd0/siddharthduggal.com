@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import { BsTrophy, BsBriefcaseFill, BsCodeSlash } from "react-icons/bs";
+import { GiMeshNetwork } from "react-icons/gi";
 
 
 export default function Home() {
@@ -56,7 +57,7 @@ export default function Home() {
         px="2rem"
       >
         <Header />
-        <Flex mt="5px" direction={["column", "row"]} maxW={"290px"}>
+        <Flex mt="5px" direction={["column", "row"]} maxW={"410px"}>
           <Tooltip
             openDelay={250}
             placement="right"
@@ -103,6 +104,32 @@ export default function Home() {
                 }
               >
                 Experience
+              </Button>
+            </Link>
+          </Tooltip>
+          <Spacer/>
+          <Tooltip
+            openDelay={250}
+            placement="right"
+            label="Check out my resume."
+          >
+            <Link textDecor={"none !important"} href="./resume.pdf">
+              <Button
+              transition={"all 0.2s ease-in-out"}
+                fontWeight={"400"}
+                _hover={{ bg: "gray.900"}}
+                border="1px"
+                borderColor="gray.600"
+                backgroundColor="transparent"
+                className="nav-link"
+                rightIcon={
+                  <GiMeshNetwork
+                    position={"relative"}
+                    className="nav-icons"
+                  />
+                }
+              >
+                Resume
               </Button>
             </Link>
           </Tooltip>
