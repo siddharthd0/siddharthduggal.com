@@ -47,6 +47,7 @@ export default function ProjectPage() {
 
       <Wrap pt="16px" spacing="16px" px="2rem" margin={"auto"} maxW={"680px"}>
         <ExperienceCard
+        link="https://techoptimum.org"
           dates={"January 2022 - Present"}
           position={"Founder & CEO"}
           company="Tech Optimum"
@@ -95,6 +96,7 @@ export default function ProjectPage() {
           ]}
         />
         <ExperienceCard
+        link="https://github.com/siddharthd0"
           dates="June 2020 - Present"
           position={"Personal Projects"}
           descriptions={[
@@ -102,6 +104,7 @@ export default function ProjectPage() {
           ]}
         />
         <ExperienceCard
+        link="https://schoolsimplified.org"
           position={"Web Developer"}
           company="School Simplified"
           dates="April 2022 - Present"

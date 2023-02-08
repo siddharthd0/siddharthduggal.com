@@ -25,7 +25,7 @@ export default function ExperienceCard({
         borderRadius={"10px"}
         className="tinted-bg"
       >
-        <Link textDecoration={"none !important"} href={link}>
+        <Link isExternal textDecoration={"none !important"} href={link}>
           <Flex alignContent={"center"}>
             <Flex direction={"column"}>
               <Heading fontWeight={"600"} fontSize={"md"}>{position}</Heading>
