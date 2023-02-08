@@ -9,6 +9,9 @@ import {
   Tooltip,
   Wrap,
   Box,
+  Breadcrumb,
+  BreadcrumbLink,
+  BreadcrumbItem,
 } from "@chakra-ui/react";
 import ExperienceCard from "../components/experience-card";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
@@ -25,31 +28,26 @@ export default function ProjectPage() {
         direction="column"
         px="2rem"
       >
-        <Flex paddingBottom={"1rem"} borderBottom={"1px"} direction="column">
-          <Header />
-          <Link href="./" maxW={"117px"} mx="1px">
-            <Text>Return to Home</Text>
-          </Link>
+        <Flex
+          pb=".88rem"
+          borderColor={"gray.500 !important"}
+          borderBottom={"1px"}
+          alignContent={"center"}
+          alignItems={"center"}
+        >
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">siddharthduggal.com</BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink href="#">experience</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <Spacer />
         </Flex>
       </Flex>
-      <Heading
-        pt="13px"
-        px="2rem"
-        margin={"auto"}
-        maxW={"680px"}
-        fontSize={"2xl"}
-      >
-        Work Experience
-      </Heading>
-      <Text
-        px="2rem"
-        margin={"auto"}
-        maxW={"680px"}
-        color="grey.200 !important"
-        mt="6px"
-      >
-        Some of the organizations and companies I've worked on.
-      </Text>
+      
       <Wrap pt="16px" spacing="16px" px="2rem" margin={"auto"} maxW={"680px"}>
         <ExperienceCard
           dates={"January 2022 - Present"}

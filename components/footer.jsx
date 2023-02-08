@@ -3,7 +3,7 @@ import { Tooltip, Link, Text } from "@chakra-ui/react";
 export default function Footer() {
   return (
     <>
-      <Text fontSize={"sm"} mb="20px" mt="18px">
+      <Text color="gray.500" fontSize={"sm"} mb="20px" mt="18px">
         Website made with ❤️ in{" "}
         <Tooltip
         placement="top"

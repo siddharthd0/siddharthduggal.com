@@ -15,9 +15,7 @@ import Header from "../components/header";
 import { BsTrophy, BsBriefcaseFill, BsCodeSlash } from "react-icons/bs";
 import { GiMeshNetwork } from "react-icons/gi";
 
-
 export default function Home() {
-
   const [dateArray, setDateArray] = useState([]);
   const [descriptionArray, setDescriptionArray] = useState([]);
   const [data, setData] = useState([]);
@@ -50,29 +48,29 @@ export default function Home() {
         <link rel="icon" href="/me.png" />
       </Head>
       <Flex
-        mt="5rem !important"
-        margin={"auto"}
-        maxW={"680px"}
-        direction="column"
-        px="2rem"
+        justifyContent={"center !important"}
+        alignItems="center"
+        direction={"column"}
+        textAlign="center"
+        height="95vh"
       >
         <Header />
-        <Flex mt="5px" direction={["column", "row"]} maxW={"410px"}>
+        <Flex mt="1rem" direction={["column", "row"]} maxW={"1000px"}>
           <Tooltip
             openDelay={250}
             placement="right"
             label="Check out a few of my cool coding projects."
-            py={"10px"}
           >
             <Link textDecor={"none !important"} href="./project">
               <Button
-                 transition={"all 0.2s ease-in-out"}
-                 fontWeight={"400"}
-                 _hover={{ bg: "gray.900"}}
-                 border="1px"
-                 borderColor="gray.600"
-                 backgroundColor="transparent"
-                 className="nav-link"
+                fontSize={"sm"}
+                transition={"all 0.14s ease-in-out"}
+                fontWeight={"300"}
+                _hover={{ bg: "gray.600" }}
+                border="1px"
+                borderColor="gray.600"
+                backgroundColor="transparent"
+                className="nav-link"
                 rightIcon={
                   <BsCodeSlash position={"relative"} className="nav-icons" />
                 }
@@ -89,9 +87,11 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./experience">
               <Button
-              transition={"all 0.2s ease-in-out"}
-                fontWeight={"400"}
-                _hover={{ bg: "gray.900"}}
+                fontSize={"sm"}
+                ml="1rem"
+                transition={"all 0.14s ease-in-out"}
+                fontWeight={"300"}
+                _hover={{ bg: "gray.600" }}
                 border="1px"
                 borderColor="gray.600"
                 backgroundColor="transparent"
@@ -107,7 +107,7 @@ export default function Home() {
               </Button>
             </Link>
           </Tooltip>
-          <Spacer/>
+          <Spacer />
           <Tooltip
             openDelay={250}
             placement="right"
@@ -115,18 +115,17 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./resume.pdf">
               <Button
-              transition={"all 0.2s ease-in-out"}
-                fontWeight={"400"}
-                _hover={{ bg: "gray.900"}}
+                fontSize={"sm"}
+                ml="1rem"
+                transition={"all 0.14s ease-in-out"}
+                fontWeight={"300"}
+                _hover={{ bg: "gray.600" }}
                 border="1px"
                 borderColor="gray.600"
                 backgroundColor="transparent"
                 className="nav-link"
                 rightIcon={
-                  <GiMeshNetwork
-                    position={"relative"}
-                    className="nav-icons"
-                  />
+                  <GiMeshNetwork position={"relative"} className="nav-icons" />
                 }
               >
                 Résumé
@@ -134,9 +133,9 @@ export default function Home() {
             </Link>
           </Tooltip>
           <Spacer />
-     
         </Flex>
-        <Text maxW={"1000px"} my="10px" mb="13px" fontSize={"15px "}>
+      </Flex>
+      {/*  <Text maxW={"1000px"} my="10px" mb="13px" fontSize={"15px "}>
           Hey, I'm Siddharth! Coding is a hobby of mine that brings joy and
           allows me to create for the internet. Currently, I'm working on my
           non-profit,{" "}
@@ -180,7 +179,7 @@ export default function Home() {
           })}
 
         <Footer />
-      </Flex>
+      </Flex> */}
     </>
   );
 }

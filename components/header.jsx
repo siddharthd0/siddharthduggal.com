@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { useLastFM } from "use-last-fm";
-import Marquee from "react-double-marquee";
 
 export default function Footer() {
   const lastFM = useLastFM(
@@ -19,80 +18,45 @@ export default function Footer() {
   );
   return (
     <>
-      <Flex>
+      <Flex justifyContent={"center"} alignItems={"center"} maxW={"500px"}>
         <Tooltip
           placement="right"
           label="Photo taken in Catalina Island, California (Winter 2022)"
         >
-          <Image width={"140px"} borderRadius={"14px"} src="me.png" />
+          <Image width={"100px"} borderRadius={"full"} src="me.png" />
         </Tooltip>
-        <Spacer />
-        {lastFM.status === "playing" ? (
-          <Flex maxW={"300px"} alignItems={"center"}>
-            <Tooltip label={lastFM.song.album}>
-              <Image
-                borderRadius={"10px"}
-                height="75px"
-                width={"75px"}
-                src={lastFM.song.art}
-              />
-            </Tooltip>
 
-            <Text ml="14px">
-              <Flex alignItems={"center"} class="blink_img">
-                <Image
-                  className="blink_img"
-                  src="https://msingermany.co.in/wp-content/uploads/2020/03/dot.png"
-                  width={"12px"}
-                  height="12px"
-                />{" "}
-                <Text fontSize="11px" ml="4px">
-                  Live
-                </Text>
-              </Flex>
-              I am listening to{" "}
-              <Link isExternal href={lastFM.song.url}>
-                {lastFM.song.name} by {lastFM.song.artist}
-              </Link>{" "}
-              on Spotify right now.
-            </Text>
-          </Flex>
-        ) : (
-          <p></p>
-        )}
+        <Flex direction={"column"} ml="2rem" alignItems={"center"}>
+          <Heading fontWeight={"200"}>Siddharth Duggal</Heading>
+          <Text fontWeight={"100"} mt="4px">CS & Business Enthusaist</Text>
+        </Flex>
       </Flex>
 
-      <Flex mt="1rem" alignItems={"center"}>
-        <Heading>Siddharth Duggal</Heading>
-
-        <Spacer />
-
-        <Stack mt="5px" direction={"row"} gap={"4px"}>
-          <Tooltip hasArrow label="Github" bg="gray.700" color="white">
-            <Link
-              isExternal
-              _hover={{
-                background: "none",
-              }}
-              href="https://github.com/siddharthd0"
-            >
-              <BsGithub className="icons" size={"22px"} />
-            </Link>
-          </Tooltip>
-          <Tooltip hasArrow label="Linkedin" bg="gray.700" color="white">
-            <Link
-              className="icons"
-              isExternal
-              _hover={{
-                background: "none",
-              }}
-              href="https://www.linkedin.com/in/siddharth-duggal/"
-            >
-              <BsLinkedin className="icons" size={"22px"} />
-            </Link>
-          </Tooltip>
-        </Stack>
-      </Flex>
+      {/*   <Stack direction={"row"} gap={"4px"}>
+        <Tooltip hasArrow label="Github" bg="gray.700" color="white">
+          <Link
+            isExternal
+            _hover={{
+              background: "none",
+            }}
+            href="https://github.com/siddharthd0"
+          >
+            <BsGithub className="icons" size={"22px"} />
+          </Link>
+        </Tooltip>
+        <Tooltip hasArrow label="Linkedin" bg="gray.700" color="white">
+          <Link
+            className="icons"
+            isExternal
+            _hover={{
+              background: "none",
+            }}
+            href="https://www.linkedin.com/in/siddharth-duggal/"
+          >
+            <BsLinkedin className="icons" size={"22px"} />
+          </Link>
+        </Tooltip>
+      </Stack> */}
     </>
   );
 }

@@ -7,6 +7,10 @@ import {
   Text,
   Spacer,
   Tooltip,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
 } from "@chakra-ui/react";
 import Project from "../components/new-project";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
@@ -23,20 +27,26 @@ export default function ProjectPage() {
         direction="column"
         px="2rem"
       >
-        <Flex paddingBottom={"1rem"} borderBottom={"1px"} direction="column">
-          <Header />
-          <Link href="./" maxW={"117px"} mx="1px">
-            <Text>Return to Home</Text>
-          </Link>
+        <Flex
+          pb=".88rem"
+          borderColor={"gray.500 !important"}
+          borderBottom={"1px"}
+          alignContent={"center"}
+          alignItems={"center"}
+        >
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">siddharthduggal.com</BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink href="#">projects</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <Spacer />
         </Flex>
 
         <Flex direction={"column"} marginTop={"10px"}>
-          <Heading mt="8px" fontSize={"2xl"}>
-            My Projects
-          </Heading>
-          <Text color="grey.200 !important" mt="6px">
-            A list of some of the projects I've worked on.
-          </Text>
           <Project
             link="https://techoptimum.org"
             dates="January 2022 - Present"
@@ -85,7 +95,6 @@ export default function ProjectPage() {
           suggestions!"
             link="https://skyline.arnavpandey722.repl.co/"
           />
-        
         </Flex>
 
         <Footer />
