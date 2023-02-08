@@ -6,6 +6,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  Spinner,
   Box,
 } from "@chakra-ui/react";
 import Footer from "../components/footer";
@@ -16,6 +17,7 @@ export default function ProjectPage() {
   const [dateArray, setDateArray] = useState([]);
   const [descriptionArray, setDescriptionArray] = useState([]);
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://brainy.ruiwenge2.repl.co/sid/myformsdata/json")
@@ -34,6 +36,7 @@ export default function ProjectPage() {
           return desc.description;
         });
         setDescriptionArray(descriptions);
+        setIsLoading(false);
       });
   }, [data]);
   return (
@@ -63,37 +66,46 @@ export default function ProjectPage() {
           </Breadcrumb>
           <Spacer />
         </Flex>
-        <Flex direction={"column"}>
-          {data &&
-            data.map((item, i) => {
-              return (
-                <>
-                  <Flex
-                    mb=".6rem"
-                    direction={"column"}
-                    className="post-card"
-                    key={i}
-                  >
-                    <Flex mt="8px">
-                      <Text fontSize="sm" maxW={"460px"} color="gray.200">
-                        {item.description}
-                      </Text>
-                      <Spacer />
+        {isLoading ? (
+          <>
+          <Flex alignItems={"center"}>
+            <Text mt="1rem">Loading images & content...</Text>{" "}
+            <Spinner mt=".7rem" ml="1rem" size="sm" color="teal.300" />
+            </Flex>
+          </>
+        ) : (
+          <Flex direction={"column"}>
+            {data &&
+              data.map((item, i) => {
+                return (
+                  <>
+                    <Flex
+                      mb=".6rem"
+                      direction={"column"}
+                      className="post-card"
+                      key={i}
+                    >
+                      <Flex mt="8px">
+                        <Text fontSize="sm" maxW={"460px"} color="gray.200">
+                          {item.description}
+                        </Text>
+                        <Spacer />
 
-                      <Text fontSize="sm" color="gray.400">
-                        {" "}
-                        {item.date}
-                      </Text>
+                        <Text fontSize="sm" color="gray.400">
+                          {" "}
+                          {item.date}
+                        </Text>
+                      </Flex>
+
+                      <Box mt="10px">
+                        <Image borderRadius={"7px"} src={item.image} />
+                      </Box>
                     </Flex>
-
-                    <Box mt="10px">
-                      <Image borderRadius={"7px"} src={item.image} />
-                    </Box>
-                  </Flex>
-                </>
-              );
-            })}
-        </Flex>
+                  </>
+                );
+              })}
+          </Flex>
+        )}
 
         <Footer />
       </Flex>
