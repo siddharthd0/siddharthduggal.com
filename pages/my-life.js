@@ -4,6 +4,7 @@ import {
   Text,
   Spacer,
   Breadcrumb,
+  Heading,
   BreadcrumbItem,
   BreadcrumbLink,
   Spinner,
@@ -48,14 +49,14 @@ export default function ProjectPage() {
         direction="column"
         px="2rem"
       >
-        <Flex
+       <Flex
+          direction="column"
           pb=".88rem"
           borderColor={"gray.500 !important"}
           borderBottom={"1px"}
-          alignContent={"center"}
-          alignItems={"center"}
         >
-          <Breadcrumb>
+          <Heading>Random Things in my Life</Heading>
+          <Breadcrumb mt="3px" color="gray.500">
             <BreadcrumbItem>
               <BreadcrumbLink href="/">siddharthduggal.com</BreadcrumbLink>
             </BreadcrumbItem>

@@ -116,8 +116,7 @@ const renderBlock = (block) => {
         </details>
         </Box>
       );
-    case "child_page":
-      return <p>{value.title}</p>;
+    
     case "image":
       const src =
         value.type === "external" ? value.external.url : value.file.url;
@@ -210,9 +209,7 @@ export default function Post({ page, blocks }) {
             ← Back 
             </button>
            
-            <p className="report-bugs"> Report course errors to our&nbsp;
-            <a rel="noreferrer"target={"_blank"} href="https://discord.gg/HpRfm7kp3U">Discord Server</a>
-            </p>
+          
             </div>
        
         </section>

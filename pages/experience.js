@@ -4,6 +4,7 @@ import {
   Wrap,
   Box,
   Breadcrumb,
+  Heading,
   BreadcrumbLink,
   BreadcrumbItem,
 } from "@chakra-ui/react";
@@ -23,13 +24,13 @@ export default function ProjectPage() {
         px="2rem"
       >
         <Flex
+          direction="column"
           pb=".88rem"
           borderColor={"gray.500 !important"}
           borderBottom={"1px"}
-          alignContent={"center"}
-          alignItems={"center"}
         >
-          <Breadcrumb>
+          <Heading>My Experience</Heading>
+          <Breadcrumb mt="3px" color="gray.500">
             <BreadcrumbItem>
               <BreadcrumbLink href="/">siddharthduggal.com</BreadcrumbLink>
             </BreadcrumbItem>

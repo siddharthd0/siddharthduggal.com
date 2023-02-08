@@ -104,6 +104,31 @@ export default function Home() {
               </Button>
             </Link>
           </Tooltip>
+          <Tooltip
+            openDelay={250}
+            placement="right"
+            label="Read my blog posts."
+          >
+            <Link textDecor={"none !important"} href="./posts">
+              <Button
+              mt={["1rem", "0rem"]}
+                fontSize={"sm"}
+                ml="1rem"
+                transition={"all 0.14s ease-in-out"}
+                fontWeight={"300"}
+                _hover={{ bg: "gray.600" }}
+                border="1px"
+                borderColor="gray.600"
+                backgroundColor="transparent"
+                className="nav-link"
+                rightIcon={
+                  <GiMeshNetwork position={"relative"} className="nav-icons" />
+                }
+              >
+                Blog
+              </Button>
+            </Link>
+          </Tooltip>
           <Spacer />
           <Tooltip
             openDelay={250}

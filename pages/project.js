@@ -4,6 +4,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  Heading,
 } from "@chakra-ui/react";
 import Project from "../components/new-project";
 import Footer from "../components/footer";
@@ -19,13 +20,15 @@ export default function ProjectPage() {
         px="2rem"
       >
         <Flex
+        direction="column"
           pb=".88rem"
           borderColor={"gray.500 !important"}
           borderBottom={"1px"}
-          alignContent={"center"}
-          alignItems={"center"}
+         
+         
         >
-          <Breadcrumb>
+          <Heading>Projects</Heading>
+          <Breadcrumb mt="3px" color="gray.500">
             <BreadcrumbItem>
               <BreadcrumbLink href="/">siddharthduggal.com</BreadcrumbLink>
             </BreadcrumbItem>
