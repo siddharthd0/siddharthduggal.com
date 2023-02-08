@@ -12,7 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import { BsTrophy, BsBriefcaseFill, BsCodeSlash } from "react-icons/bs";
+import { BsTrophy, BsBriefcaseFill, BsCodeSlash,BsFillPersonFill } from "react-icons/bs";
 import { GiMeshNetwork } from "react-icons/gi";
 
 export default function Home() {
@@ -56,6 +56,33 @@ export default function Home() {
       >
         <Header />
         <Flex mt="1rem" direction={["column", "row"]} maxW={"1000px"}>
+        <Tooltip
+            openDelay={250}
+            placement="right"
+            label="New things that are happening right now."
+          >
+            <Link textDecor={"none !important"} href="./my-life">
+              <Button
+                fontSize={"sm"}
+                ml="1rem"
+                transition={"all 0.14s ease-in-out"}
+                fontWeight={"300"}
+                _hover={{ bg: "gray.600" }}
+                border="1px"
+                borderColor="gray.600"
+                backgroundColor="transparent"
+                className="nav-link"
+                rightIcon={
+                  <BsFillPersonFill
+                    position={"relative"}
+                    className="nav-icons"
+                  />
+                }
+              >
+               My Life
+              </Button>
+            </Link>
+          </Tooltip>
           <Tooltip
             openDelay={250}
             placement="right"
@@ -63,6 +90,7 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./project">
               <Button
+              ml="1rem"
                 fontSize={"sm"}
                 transition={"all 0.14s ease-in-out"}
                 fontWeight={"300"}
@@ -135,51 +163,7 @@ export default function Home() {
           <Spacer />
         </Flex>
       </Flex>
-      {/*  <Text maxW={"1000px"} my="10px" mb="13px" fontSize={"15px "}>
-          Hey, I'm Siddharth! Coding is a hobby of mine that brings joy and
-          allows me to create for the internet. Currently, I'm working on my
-          non-profit,{" "}
-          <Tooltip
-            openDelay={250}
-            label="Tech Optimum is a student-led organization dedicated to helping high schoolers and college students in CS. "
-          >
-            <Link isExternal href="https://techoptimum.org">
-              Tech Optimum
-            </Link>
-          </Tooltip>
-          . If you need to contact me, feel free to message me through{" "}
-          <Link isExternal href="https://discord.com/@910659572199464990">
-            Discord
-          </Link>{" "}
-          or by <a href="mailto:siddharthduggal2013@gmail.com">Email</a>.
-        </Text>
-        {data &&
-          data.map((item, i) => {
-            return (
-              <>
-                <Flex
-                  mb=".6rem"
-                  direction={"column"}
-                  className="post-card"
-                  key={i}
-                >
-                  <Flex mt="8px">
-                    <Text maxW={"460px"} color="gray.200">{item.description}</Text>
-                    <Spacer />
-
-                    <Text color="gray.400"> {item.date}</Text>
-                  </Flex>
-
-                  <Box mt="10px" maxWidth={"450px"}>
-                    <Image borderRadius={"7px"} src={item.image} />
-                  </Box>
-                </Flex>
-              </>
-            );
-          })}
-
-        <Footer />
-      </Flex> */}
+      
     </>
   );
 }
