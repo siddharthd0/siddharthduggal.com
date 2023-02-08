@@ -62,7 +62,9 @@ export default function ProjectPage() {
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="#">my-life</BreadcrumbLink>
+              <BreadcrumbLink _hover={{
+                textDecoration: "none !important",
+              }}  href="#">my-life</BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
           <Spacer />

@@ -7,7 +7,9 @@ import {
   Heading,
   BreadcrumbLink,
   BreadcrumbItem,
+  Button,
   SimpleGrid,
+  Link,
 } from "@chakra-ui/react";
 import ExperienceCard from "../components/experience-card";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
@@ -15,7 +17,7 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 
 import Head from "next/head";
-import Link from "next/link";
+
 import { getDatabase } from "../lib/notion";
 import { Text } from "./[id].js";
 
@@ -44,12 +46,14 @@ export default function ProjectPage({ posts }) {
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="#">posts</BreadcrumbLink>
+              <BreadcrumbLink _hover={{
+                textDecoration: "none !important",
+              }} href="#">posts</BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
           <Spacer />
         </Flex>
-        <SimpleGrid columns={{ sm: 2, md: 3 }} spacing="14px">
+        <SimpleGrid columns={{ sm: 1, md: 2 }} spacing="14px">
           {posts.reverse().map((post) => {
             const date = new Date(post.last_edited_time).toLocaleString(
               "en-US",
@@ -61,29 +65,51 @@ export default function ProjectPage({ posts }) {
             );
 
             return (
-              <Box
-                borderRadius={"10px"}
-                py="10px"
-                px="1rem"
-                marginTop={"1rem"}
-               backgroundColor="gray.900"
-               _hover={{
-                backgroundColor: "gray.800",
-               }}
-                key={post.id}
+              <Link
+                textDecoration={"none !important"}
+                className="readMoreLink"
+                href={`/${post.id}`}
               >
-                <h3 className="postTitle">
-                  <Text text={post.properties.Name.title} />
-                </h3>
+                <Box
+                  transition={"200ms"}
+                  borderRadius={"9px"}
+                  marginTop={"1rem"}
+                  border="1px"
+                  borderColor={"transparent"}
+                  _hover={{
+                    border: "1px",
+                  }}
+                >
+                  <Box
+                    transition={"200ms"}
+                    margin="6px"
+                    borderRadius={"6px"}
+                    py="10px"
+                    px="1rem"
+                    backgroundColor="gray.900"
+                    _hover={{
+                      backgroundColor: "gray.800",
+                    }}
+                    key={post.id}
+                  >
+                    <Heading fontWeight={"500"} fontSize="2xl">
+                      <Text text={post.properties.Name.title} />
+                    </Heading>
 
-                <p className="postDescription">
-                  <Text text={post.properties.Description.text} />
-                </p>
-                <p className="postDescription">{date}</p>
-                <Link className="readMoreLink" href={`/${post.id}`}>
-                  Read more →{" "}
-                </Link>
-              </Box>
+                    <Heading
+                      mt="6px"
+                      fontSize="sm"
+                      fontWeight={"thin"}
+                      className="postDescription"
+                    >
+                      {date}
+                    </Heading>
+                    <Heading mt="5px" fontSize="sm" fontWeight={"thin"}>
+                      View →{" "}
+                    </Heading>
+                  </Box>
+                </Box>
+              </Link>
             );
           })}
         </SimpleGrid>

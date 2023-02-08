@@ -5,12 +5,21 @@ import { getDatabase, getPage, getBlocks } from "../lib/notion";
 import { databaseId } from "./posts.js";
 import styles from "./post.module.css";
 import Image from "next/image";
-import {Link,Box, Heading} from "@chakra-ui/react";
+import {
+  Spacer,
+  Wrap,
+  Box,
+  Flex,
+  Breadcrumb,
+  Heading,
+  BreadcrumbLink,
+  BreadcrumbItem,
+  Button,
+  SimpleGrid,
+  Link,} from "@chakra-ui/react";
 
 
-function goToPreviousURL() { 
-    window.history.back(); 
-    } 
+
 export const Text = ({ text }) => {
   if (!text) {
     return null;
@@ -186,28 +195,82 @@ export default function Post({ page, blocks }) {
   if (!page || !blocks) {
     return <div />;
   }
+  const date = new Date(page.last_edited_time).toLocaleString(
+    "en-US",
+    {
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+    }
+  );
   return (
     <div>
       <Head>
         <title>{page.properties.Name.title[0].plain_text}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    
+      <Flex
+        mt="5rem !important"
+        margin={"auto"}
+        maxW={"680px"}
+        direction="column"
+        px="2rem"
+      >
+        <Flex
+          direction="column"
+          pb=".88rem"
+          borderColor={"gray.500 !important"}
+          borderBottom={"1px"}
+        >
+          <Heading> <Text text={page.properties.Name.title} /></Heading>
+          <Flex alignItems={"center"}>
+            <Flex>
+          <Breadcrumb mt="3px" color="gray.500">
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">siddharthduggal.com</BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem>
+              <BreadcrumbLink href="posts">posts</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink href="#"><Text text={page.properties.Name.title}/> </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+          </Flex>
+          <Spacer />
+         
+          <Flex>
+          <Heading fontWeight={400} color="gray.500" fontSize="sm">
+           Posted on {date}
+          </Heading>
+          </Flex>
+        </Flex>
+        </Flex>
     <div className="page-cont">
      
       <article className={styles.container}>
-        <h1 className={styles.name}>
-          <Text text={page.properties.Name.title} />
-        </h1>
+       
         <section>
           {blocks.map((block) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
           <div className="flexbox">
-         <button onClick={ goToPreviousURL }
-          className="previous-button">
+            <Link textDecor={"none !important"} href="posts">
+         <Button
+         mt="2rem"
+         transition={"all 0.14s ease-in-out"}
+         fontWeight={"300"}
+         _hover={{ bg: "gray.600" }}
+         border="1px"
+         borderColor="gray.600"
+         backgroundColor="transparent"
+         className="nav-link"
+         fontSize="sm"
+         >
             ← Back 
-            </button>
+            </Button>
+            </Link>
            
           
             </div>
@@ -215,6 +278,7 @@ export default function Post({ page, blocks }) {
         </section>
       </article>
       </div>
+      </Flex>
     </div>
     
   );
