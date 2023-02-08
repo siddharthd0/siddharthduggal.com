@@ -8,7 +8,6 @@ import {
   Box,
   Button,
   Spacer,
-  Heading,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Footer from "../components/footer";
@@ -16,7 +15,9 @@ import Header from "../components/header";
 import { BsTrophy, BsBriefcaseFill, BsCodeSlash } from "react-icons/bs";
 import { GiMeshNetwork } from "react-icons/gi";
 
+
 export default function Home() {
+
   const [dateArray, setDateArray] = useState([]);
   const [descriptionArray, setDescriptionArray] = useState([]);
   const [data, setData] = useState([]);
@@ -65,13 +66,13 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./project">
               <Button
-                transition={"all 0.2s ease-in-out"}
-                fontWeight={"400"}
-                _hover={{ bg: "gray.900" }}
-                border="1px"
-                borderColor="gray.600"
-                backgroundColor="transparent"
-                className="nav-link"
+                 transition={"all 0.2s ease-in-out"}
+                 fontWeight={"400"}
+                 _hover={{ bg: "gray.900"}}
+                 border="1px"
+                 borderColor="gray.600"
+                 backgroundColor="transparent"
+                 className="nav-link"
                 rightIcon={
                   <BsCodeSlash position={"relative"} className="nav-icons" />
                 }
@@ -88,9 +89,9 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./experience">
               <Button
-                transition={"all 0.2s ease-in-out"}
+              transition={"all 0.2s ease-in-out"}
                 fontWeight={"400"}
-                _hover={{ bg: "gray.900" }}
+                _hover={{ bg: "gray.900"}}
                 border="1px"
                 borderColor="gray.600"
                 backgroundColor="transparent"
@@ -106,7 +107,7 @@ export default function Home() {
               </Button>
             </Link>
           </Tooltip>
-          <Spacer />
+          <Spacer/>
           <Tooltip
             openDelay={250}
             placement="right"
@@ -114,15 +115,18 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./resume.pdf">
               <Button
-                transition={"all 0.2s ease-in-out"}
+              transition={"all 0.2s ease-in-out"}
                 fontWeight={"400"}
-                _hover={{ bg: "gray.900" }}
+                _hover={{ bg: "gray.900"}}
                 border="1px"
                 borderColor="gray.600"
                 backgroundColor="transparent"
                 className="nav-link"
                 rightIcon={
-                  <GiMeshNetwork position={"relative"} className="nav-icons" />
+                  <GiMeshNetwork
+                    position={"relative"}
+                    className="nav-icons"
+                  />
                 }
               >
                 Résumé
@@ -130,8 +134,9 @@ export default function Home() {
             </Link>
           </Tooltip>
           <Spacer />
+     
         </Flex>
-        <Text maxW={"1000px"} mt="10px" mb="13px" fontSize={"15px "}>
+        <Text maxW={"1000px"} my="10px" mb="13px" fontSize={"15px "}>
           Hey, I'm Siddharth! Coding is a hobby of mine that brings joy and
           allows me to create for the internet. Currently, I'm working on my
           non-profit,{" "}
@@ -149,14 +154,6 @@ export default function Home() {
           </Link>{" "}
           or by <a href="mailto:siddharthduggal2013@gmail.com">Email</a>.
         </Text>
-        <Tooltip
-          placement="left"
-          label="Check out what's going on in my life below!"
-        >
-          <Heading mb="15px" fontSize={"2xl"}>
-            My Life
-          </Heading>
-        </Tooltip>
         {data &&
           data.map((item, i) => {
             return (
@@ -168,18 +165,13 @@ export default function Home() {
                   key={i}
                 >
                   <Flex mt="8px">
-                    <Text fontSize={"sm"} maxW={"400px"} color="gray.200">
-                      {item.description}
-                    </Text>
+                    <Text maxW={"460px"} color="gray.200">{item.description}</Text>
                     <Spacer />
 
-                    <Text fontSize={"sm"} color="gray.400">
-                      {" "}
-                      {item.date}
-                    </Text>
+                    <Text color="gray.400"> {item.date}</Text>
                   </Flex>
 
-                  <Box mt="10px" maxWidth={"400px"}>
+                  <Box mt="10px" maxWidth={"450px"}>
                     <Image borderRadius={"7px"} src={item.image} />
                   </Box>
                 </Flex>
