@@ -1,12 +1,6 @@
 import {
-  Image,
-  Stack,
-  Link,
-  Heading,
   Flex,
-  Text,
   Spacer,
-  Tooltip,
   Wrap,
   Box,
   Breadcrumb,
@@ -47,7 +41,7 @@ export default function ProjectPage() {
           <Spacer />
         </Flex>
       </Flex>
-      
+
       <Wrap pt="16px" spacing="16px" px="2rem" margin={"auto"} maxW={"680px"}>
         <ExperienceCard
           dates={"January 2022 - Present"}
@@ -73,7 +67,7 @@ export default function ProjectPage() {
             "Gathered 50,000+ views.",
           ]}
         />
-    
+
         <ExperienceCard
           dates="April 2020 - November 2021"
           position="Community Owner"
@@ -98,13 +92,13 @@ export default function ProjectPage() {
           ]}
         />
         <ExperienceCard
-        dates="June 2020 - Present"
-        position={"Personal Projects"}
-        descriptions={[
-          "I've been working on personal projects since 2020. I've built websites, Discord bots, Minecraft servers, and more. Most of my projects are private, but I've released a few to the public. Check out my Github to view them. ",
-        ]}
-        /> 
-           <ExperienceCard
+          dates="June 2020 - Present"
+          position={"Personal Projects"}
+          descriptions={[
+            "I've been working on personal projects since 2020. I've built websites, Discord bots, Minecraft servers, and more. Most of my projects are private, but I've released a few to the public. Check out my Github to view them. ",
+          ]}
+        />
+        <ExperienceCard
           position={"Web Developer"}
           company="School Simplified"
           dates="April 2022 - Present"

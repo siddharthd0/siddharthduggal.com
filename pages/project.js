@@ -1,21 +1,12 @@
 import {
-  Image,
-  Stack,
-  Link,
-  Heading,
   Flex,
-  Text,
   Spacer,
-  Tooltip,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
 } from "@chakra-ui/react";
 import Project from "../components/new-project";
-import { BsLinkedin, BsGithub } from "react-icons/bs";
 import Footer from "../components/footer";
-import Header from "../components/header";
 
 export default function ProjectPage() {
   return (

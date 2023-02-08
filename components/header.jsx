@@ -28,7 +28,7 @@ export default function Footer() {
 
         <Flex direction={"column"} ml="2rem" alignItems={"center"}>
           <Heading fontWeight={"200"}>Siddharth Duggal</Heading>
-          <Text fontWeight={"100"} mt="4px">CS & Business Enthusaist</Text>
+          <Text fontWeight={"100"} mt="4px">CS & Business Enthusiast</Text>
         </Flex>
       </Flex>
 

@@ -1,44 +1,10 @@
 import Head from "next/head";
-import {
-  Tooltip,
-  Image,
-  Link,
-  Flex,
-  Text,
-  Box,
-  Button,
-  Spacer,
-} from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import Footer from "../components/footer";
+import { Tooltip, Link, Flex, Button, Spacer } from "@chakra-ui/react";
 import Header from "../components/header";
-import { BsTrophy, BsBriefcaseFill, BsCodeSlash,BsFillPersonFill } from "react-icons/bs";
+import { BsBriefcaseFill, BsCodeSlash, BsFillPersonFill } from "react-icons/bs";
 import { GiMeshNetwork } from "react-icons/gi";
 
 export default function Home() {
-  const [dateArray, setDateArray] = useState([]);
-  const [descriptionArray, setDescriptionArray] = useState([]);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch("https://brainy.ruiwenge2.repl.co/sid/myformsdata/json")
-      .then((response) => response.json())
-      .then((response) => {
-        const respArray = Object.values(response);
-
-        setData(respArray.reverse());
-
-        const dates = data.map((element) => {
-          return element.date;
-        });
-        setDateArray(dates);
-
-        const descriptions = data.map((desc) => {
-          return desc.description;
-        });
-        setDescriptionArray(descriptions);
-      });
-  }, [data]);
   return (
     <>
       <Head>
@@ -56,7 +22,7 @@ export default function Home() {
       >
         <Header />
         <Flex mt="1rem" direction={["column", "row"]} maxW={"1000px"}>
-        <Tooltip
+          <Tooltip
             openDelay={250}
             placement="right"
             label="New things that are happening right now."
@@ -79,7 +45,7 @@ export default function Home() {
                   />
                 }
               >
-               My Life
+                My Life
               </Button>
             </Link>
           </Tooltip>
@@ -90,7 +56,7 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./project">
               <Button
-              ml="1rem"
+                ml="1rem"
                 fontSize={"sm"}
                 transition={"all 0.14s ease-in-out"}
                 fontWeight={"300"}
@@ -163,7 +129,6 @@ export default function Home() {
           <Spacer />
         </Flex>
       </Flex>
-      
     </>
   );
 }
