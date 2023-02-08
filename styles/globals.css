@@ -74,3 +74,10 @@ li::marker {
 
   color: rgb(88, 88, 88);
 }
+
+.inputs {
+  background-color: black;
+  border-radius: 5px;
+  margin: 3rem;
+  border: .5px solid white;
+}
