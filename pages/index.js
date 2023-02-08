@@ -29,6 +29,7 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./my-life">
               <Button
+              
                 fontSize={"sm"}
                 ml="1rem"
                 transition={"all 0.14s ease-in-out"}
@@ -56,6 +57,7 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./project">
               <Button
+              mt={["1rem", "0rem"]}
                 ml="1rem"
                 fontSize={"sm"}
                 transition={"all 0.14s ease-in-out"}
@@ -81,6 +83,7 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./experience">
               <Button
+              mt={["1rem", "0rem"]}
                 fontSize={"sm"}
                 ml="1rem"
                 transition={"all 0.14s ease-in-out"}
@@ -109,6 +112,7 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./resume.pdf">
               <Button
+              mt={["1rem", "0rem"]}
                 fontSize={"sm"}
                 ml="1rem"
                 transition={"all 0.14s ease-in-out"}

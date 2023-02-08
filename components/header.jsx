@@ -18,7 +18,7 @@ export default function Footer() {
   );
   return (
     <>
-      <Flex justifyContent={"center"} alignItems={"center"} maxW={"500px"}>
+      <Flex direction={["column", "row"]} justifyContent={"center"} alignItems={"center"} maxW={"500px"}>
         <Tooltip
           placement="right"
           label="Photo taken in Catalina Island, California (Winter 2022)"
@@ -26,7 +26,7 @@ export default function Footer() {
           <Image width={"100px"} borderRadius={"full"} src="me.png" />
         </Tooltip>
 
-        <Flex direction={"column"} ml="2rem" alignItems={"center"}>
+        <Flex mt={["1rem", "0rem"]} direction={"column"} ml="2rem" alignItems={"center"}>
           <Heading fontWeight={"200"}>Siddharth Duggal</Heading>
           <Text fontWeight={"100"} mt="4px">CS & Business Enthusiast</Text>
         </Flex>
