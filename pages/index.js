@@ -29,7 +29,7 @@ export default function Home() {
           >
             <Link textDecor={"none !important"} href="./my-life">
               <Button
-              
+              mt={[".1rem", "0rem"]}
                 fontSize={"sm"}
                 ml="1rem"
                 transition={"all 0.14s ease-in-out"}
