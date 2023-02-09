@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [password, setPassword] = useState("");
+
+
 
   useEffect(() => {
     axios
@@ -28,7 +31,7 @@ const Home = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (password === process.env.PASSWORD) {
+    if (password === "") {
       setIsLoggedIn(true);
     }
   };
@@ -38,13 +41,13 @@ const Home = () => {
       {!isLoggedIn ? (
         <form onSubmit={handleLogin}>
           <input
-            className="inputs"
+          className="inputs"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />
-          <button type="submit">Enter the cool dimension</button>
+          <button type="submit">Submit</button>
         </form>
       ) : (
         <>
