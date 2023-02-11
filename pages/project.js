@@ -15,7 +15,7 @@ export default function ProjectPage() {
       <Flex
         mt="5rem !important"
         margin={"auto"}
-        maxW={"680px"}
+        maxW={"800px"}
         direction="column"
         px="2rem"
       >

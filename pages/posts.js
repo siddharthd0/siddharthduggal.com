@@ -29,7 +29,7 @@ export default function ProjectPage({ posts }) {
       <Flex
         mt="5rem !important"
         margin={"auto"}
-        maxW={"680px"}
+        maxW={"800px"}
         direction="column"
         px="2rem"
       >
@@ -46,21 +46,26 @@ export default function ProjectPage({ posts }) {
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink _hover={{
-                textDecoration: "none !important",
-              }} href="#">posts</BreadcrumbLink>
+              <BreadcrumbLink
+                _hover={{
+                  textDecoration: "none !important",
+                }}
+                href="#"
+              >
+                posts
+              </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
           <Spacer />
         </Flex>
-        <SimpleGrid columns={{ sm: 1, md: 2 }} spacing="14px">
-          {posts.reverse().map((post) => {
+        <SimpleGrid>
+          {posts.map((post) => {
             const date = new Date(post.last_edited_time).toLocaleString(
               "en-US",
               {
-                month: "short",
+                month: "2-digit",
                 day: "2-digit",
-                year: "numeric",
+                year: "2-digit",
               }
             );
 
@@ -73,40 +78,41 @@ export default function ProjectPage({ posts }) {
                 <Box
                   transition={"200ms"}
                   borderRadius={"9px"}
-                  marginTop={"1rem"}
-                  border="1px"
-                  borderColor={"transparent"}
-                  _hover={{
-                    border: "1px",
-                  }}
+                  marginTop={".5rem"}
                 >
                   <Box
-                    transition={"200ms"}
+                    transition={"300ms"}
                     margin="6px"
                     borderRadius={"6px"}
                     py="10px"
-                    px="1rem"
-                    backgroundColor="gray.900"
-                    _hover={{
-                      backgroundColor: "gray.800",
-                    }}
                     key={post.id}
+                    _hover={{
+                      color: "white",
+                      transform: "scale(1.1)",
+                    }}
                   >
-                    <Heading fontWeight={"500"} fontSize="2xl">
-                      <Text text={post.properties.Name.title} />
-                    </Heading>
-
-                    <Heading
-                      mt="6px"
-                      fontSize="sm"
-                      fontWeight={"thin"}
-                      className="postDescription"
-                    >
-                      {date}
-                    </Heading>
-                    <Heading mt="5px" fontSize="sm" fontWeight={"thin"}>
-                      View →{" "}
-                    </Heading>
+                    <Flex>
+                      <Heading
+                        color="gray.500 !important"
+                        fontWeight={"500"}
+                        fontSize="xl"
+                        _hover={{
+                          color: "white !important",
+                        }}
+                      >
+                        <Text text={post.properties.Name.title} />
+                      </Heading>
+                      <Spacer />
+                      <Heading
+                        color="grey.400"
+                        mt="6px"
+                        fontSize="sm"
+                        fontWeight={"thin"}
+                        className="postDescription"
+                      >
+                        {date}
+                      </Heading>
+                    </Flex>
                   </Box>
                 </Box>
               </Link>
@@ -115,7 +121,7 @@ export default function ProjectPage({ posts }) {
         </SimpleGrid>
       </Flex>
 
-      <Box px="2rem" maxW={"680px"} margin="auto">
+      <Box px="2rem" maxW={"800px"} margin="auto">
         <Footer />
       </Box>
     </>
