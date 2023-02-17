@@ -6,31 +6,14 @@ import PageLoader from '../components/page-loader';
 
 class MyApp extends App {
   state = {
-    isLoading: false,
-  };
-
-  startLoading = () => {
-    this.setState({ isLoading: true });
-  };
-
-  stopLoading = () => {
-    this.setState({ isLoading: false });
+    isLoading: true,
   };
 
   componentDidMount() {
-    const { router } = this.props;
-
-    router.events.on('routeChangeStart', this.startLoading);
-    router.events.on('routeChangeComplete', this.stopLoading);
-    router.events.on('routeChangeError', this.stopLoading);
-  }
-
-  componentWillUnmount() {
-    const { router } = this.props;
-
-    router.events.off('routeChangeStart', this.startLoading);
-    router.events.off('routeChangeComplete', this.stopLoading);
-    router.events.off('routeChangeError', this.stopLoading);
+    // Hide the loader after 3 seconds
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 2500);
   }
 
   render() {
@@ -39,7 +22,9 @@ class MyApp extends App {
 
     return (
       <ChakraProvider>
-        <PageLoader style={{ display: isLoading ? 'block' : 'none' }} />
+        <div style={{ display: isLoading ? 'block' : 'none' }}> {/*change to none*/}
+          <PageLoader />
+        </div>
         <Component {...pageProps} />
       </ChakraProvider>
     );

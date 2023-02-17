@@ -1,10 +1,13 @@
 import React from 'react';
+import { Heading } from '@chakra-ui/react';
+import { Spinner,Spacer } from '@chakra-ui/react';
 
 const PageLoader = () => {
   return (
-    <div style={{ display: 'none' }}>
+    <div style={{ display: 'flex'}}>
       {/* Your loader animation goes here */}
-      <h1 >Loading...</h1>
+      <Spacer/>
+      <Spinner mt="1.5rem" mx="2rem" size="sm" color="teal.300" />
     </div>
   );
 };
