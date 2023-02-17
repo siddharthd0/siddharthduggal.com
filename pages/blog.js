@@ -31,7 +31,7 @@ const Home = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (password === "") {
+    if (password === "test") {
       setIsLoggedIn(true);
     }
   };
