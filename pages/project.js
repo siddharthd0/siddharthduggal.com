@@ -20,12 +20,10 @@ export default function ProjectPage() {
         px="2rem"
       >
         <Flex
-        direction="column"
+          direction="column"
           pb=".88rem"
           borderColor={"gray.500 !important"}
           borderBottom={"1px"}
-         
-         
         >
           <Heading>Projects</Heading>
           <Breadcrumb mt="3px" color="gray.500">
@@ -34,15 +32,27 @@ export default function ProjectPage() {
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink _hover={{
-                textDecoration: "none !important",
-              }}  href="#">projects</BreadcrumbLink>
+              <BreadcrumbLink
+                _hover={{
+                  textDecoration: "none !important",
+                }}
+                href="#"
+              >
+                projects
+              </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
           <Spacer />
         </Flex>
 
         <Flex direction={"column"} marginTop={"10px"}>
+          <Project
+            link="https://resumate.tech"
+            title="Resumate"
+            dates="Febuary 2022 - Febuary 2022"
+            description="Resumate is a resume builder that helps you create a resume 
+          in minutes. It is a simple and easy to use resume builder that allows you to combine Markdown and CSS with ease to create a PF resume, custom to you."
+          />
           <Project
             link="https://techoptimum.org"
             dates="January 2022 - Present"

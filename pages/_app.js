@@ -22,7 +22,7 @@ class MyApp extends App {
 
     return (
       <ChakraProvider>
-        <div style={{ display: isLoading ? 'block' : 'none' }}> {/*change to none*/}
+        <div style={{ display: isLoading ? 'none' : 'none' }}> {/*change to none*/}
           <PageLoader />
         </div>
         <Component {...pageProps} />

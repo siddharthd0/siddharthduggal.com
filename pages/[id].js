@@ -258,6 +258,7 @@ export default function Post({ page, blocks }) {
           <div className="flexbox">
             <Link textDecor={"none !important"} href="posts">
          <Button
+         mb="3rem"
          mt="2rem"
          transition={"all 0.14s ease-in-out"}
          fontWeight={"300"}
