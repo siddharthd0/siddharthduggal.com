@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Tooltip, Link, Flex, Button, Spacer } from "@chakra-ui/react";
 import Header from "../components/header";
-import { BsBriefcaseFill, BsCodeSlash, BsFillPersonFill } from "react-icons/bs";
+import { BsFillPencilFill,BsBriefcaseFill, BsCodeSlash, BsFillPersonFill } from "react-icons/bs";
 import { GiMeshNetwork } from "react-icons/gi";
 import { motion } from "framer-motion";
 
@@ -16,9 +16,8 @@ export default function Home() {
       opacity: 1,
       transition: {
         type: "spring",
-        damping: 10,
-        stiffness: 150,
-       
+        damping: 20,
+        stiffness: 100,
       },
     },
   };
@@ -46,20 +45,20 @@ export default function Home() {
             label="New things that are happening right now."
           >
             <Link textDecor={"none !important"} href="./my-life">
-            <motion.div
-            variants={{
-              ...buttonVariants,
-              visible: {
-                ...buttonVariants.visible,
-                transition: {
-                  ...buttonVariants.visible.transition,
-                  delay: buttonDelay * 1,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="visible"
-          >
+              <motion.div
+                variants={{
+                  ...buttonVariants,
+                  visible: {
+                    ...buttonVariants.visible,
+                    transition: {
+                      ...buttonVariants.visible.transition,
+                      delay: buttonDelay * 1,
+                    },
+                  },
+                }}
+                initial="hidden"
+                animate="visible"
+              >
                 <Button
                   mt={[".1rem", "0rem"]}
                   fontSize={"sm"}
@@ -89,20 +88,20 @@ export default function Home() {
             label="Check out a few of my cool coding projects."
           >
             <Link textDecor={"none !important"} href="./project">
-            <motion.div
-            variants={{
-              ...buttonVariants,
-              visible: {
-                ...buttonVariants.visible,
-                transition: {
-                  ...buttonVariants.visible.transition,
-                  delay: buttonDelay * 2,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="visible"
-          >
+              <motion.div
+                variants={{
+                  ...buttonVariants,
+                  visible: {
+                    ...buttonVariants.visible,
+                    transition: {
+                      ...buttonVariants.visible.transition,
+                      delay: buttonDelay * 2,
+                    },
+                  },
+                }}
+                initial="hidden"
+                animate="visible"
+              >
                 <Button
                   mt={["1rem", "0rem"]}
                   ml="1rem"
@@ -115,10 +114,7 @@ export default function Home() {
                   backgroundColor="transparent"
                   className="nav-link"
                   rightIcon={
-                    <BsCodeSlash
-                      position={"relative"}
-                      className="nav-icons"
-                    />
+                    <BsCodeSlash position={"relative"} className="nav-icons" />
                   }
                 >
                   Projects{" "}
@@ -135,41 +131,40 @@ export default function Home() {
 experience."
           >
             <Link textDecor={"none !important"} href="./experience">
-     
-            <motion.div
-            variants={{
-              ...buttonVariants,
-              visible: {
-                ...buttonVariants.visible,
-                transition: {
-                  ...buttonVariants.visible.transition,
-                  delay: buttonDelay * 3,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="visible"
-          >
-              <Button
-              mt={["1rem", "0rem"]}
-                fontSize={"sm"}
-                ml="1rem"
-                transition={"all 0.14s ease-in-out"}
-                fontWeight={"300"}
-                _hover={{ bg: "gray.600" }}
-                border="1px"
-                borderColor="gray.600"
-                backgroundColor="transparent"
-                className="nav-link"
-                rightIcon={
-                  <BsBriefcaseFill
-                    position={"relative"}
-                    className="nav-icons"
-                  />
-                }
+              <motion.div
+                variants={{
+                  ...buttonVariants,
+                  visible: {
+                    ...buttonVariants.visible,
+                    transition: {
+                      ...buttonVariants.visible.transition,
+                      delay: buttonDelay * 3,
+                    },
+                  },
+                }}
+                initial="hidden"
+                animate="visible"
               >
-                Experience
-              </Button>
+                <Button
+                  mt={["1rem", "0rem"]}
+                  fontSize={"sm"}
+                  ml="1rem"
+                  transition={"all 0.14s ease-in-out"}
+                  fontWeight={"300"}
+                  _hover={{ bg: "gray.600" }}
+                  border="1px"
+                  borderColor="gray.600"
+                  backgroundColor="transparent"
+                  className="nav-link"
+                  rightIcon={
+                    <BsBriefcaseFill
+                      position={"relative"}
+                      className="nav-icons"
+                    />
+                  }
+                >
+                  Experience
+                </Button>
               </motion.div>
             </Link>
           </Tooltip>
@@ -179,37 +174,40 @@ experience."
             label="Read my blog posts."
           >
             <Link textDecor={"none !important"} href="./posts">
-            <motion.div
-            variants={{
-              ...buttonVariants,
-              visible: {
-                ...buttonVariants.visible,
-                transition: {
-                  ...buttonVariants.visible.transition,
-                  delay: buttonDelay * 4,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="visible"
-          >
-              <Button
-              mt={["1rem", "0rem"]}
-                fontSize={"sm"}
-                ml="1rem"
-                transition={"all 0.14s ease-in-out"}
-                fontWeight={"300"}
-                _hover={{ bg: "gray.600" }}
-                border="1px"
-                borderColor="gray.600"
-                backgroundColor="transparent"
-                className="nav-link"
-                rightIcon={
-                  <GiMeshNetwork position={"relative"} className="nav-icons" />
-                }
+              <motion.div
+                variants={{
+                  ...buttonVariants,
+                  visible: {
+                    ...buttonVariants.visible,
+                    transition: {
+                      ...buttonVariants.visible.transition,
+                      delay: buttonDelay * 4,
+                    },
+                  },
+                }}
+                initial="hidden"
+                animate="visible"
               >
-                Blog
-              </Button>
+                <Button
+                  mt={["1rem", "0rem"]}
+                  fontSize={"sm"}
+                  ml="1rem"
+                  transition={"all 0.14s ease-in-out"}
+                  fontWeight={"300"}
+                  _hover={{ bg: "gray.600" }}
+                  border="1px"
+                  borderColor="gray.600"
+                  backgroundColor="transparent"
+                  className="nav-link"
+                  rightIcon={
+                    <BsFillPencilFill
+                      position={"relative"}
+                      className="nav-icons"
+                    />
+                  }
+                >
+                  Blog
+                </Button>
               </motion.div>
             </Link>
           </Tooltip>
@@ -220,37 +218,40 @@ experience."
             label="Check out my resume."
           >
             <Link textDecor={"none !important"} href="./resume.pdf">
-            <motion.div
-            variants={{
-              ...buttonVariants,
-              visible: {
-                ...buttonVariants.visible,
-                transition: {
-                  ...buttonVariants.visible.transition,
-                  delay: buttonDelay * 5,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="visible"
-          >
-              <Button
-              mt={["1rem", "0rem"]}
-                fontSize={"sm"}
-                ml="1rem"
-                transition={"all 0.14s ease-in-out"}
-                fontWeight={"300"}
-                _hover={{ bg: "gray.600" }}
-                border="1px"
-                borderColor="gray.600"
-                backgroundColor="transparent"
-                className="nav-link"
-                rightIcon={
-                  <GiMeshNetwork position={"relative"} className="nav-icons" />
-                }
+              <motion.div
+                variants={{
+                  ...buttonVariants,
+                  visible: {
+                    ...buttonVariants.visible,
+                    transition: {
+                      ...buttonVariants.visible.transition,
+                      delay: buttonDelay * 5,
+                    },
+                  },
+                }}
+                initial="hidden"
+                animate="visible"
               >
-                Résumé
-              </Button>
+                <Button
+                  mt={["1rem", "0rem"]}
+                  fontSize={"sm"}
+                  ml="1rem"
+                  transition={"all 0.14s ease-in-out"}
+                  fontWeight={"300"}
+                  _hover={{ bg: "gray.600" }}
+                  border="1px"
+                  borderColor="gray.600"
+                  backgroundColor="transparent"
+                  className="nav-link"
+                  rightIcon={
+                    <GiMeshNetwork
+                      position={"relative"}
+                      className="nav-icons"
+                    />
+                  }
+                >
+                  Résumé
+                </Button>
               </motion.div>
             </Link>
           </Tooltip>

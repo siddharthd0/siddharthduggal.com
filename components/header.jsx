@@ -25,7 +25,7 @@ export default function Footer() {
     visible: {
       opacity: 1,
       transition: {
-        delay: 0.2,
+        delay: 0.5,
         staggerChildren: 0.5,
       },
     },
@@ -39,6 +39,9 @@ export default function Footer() {
     visible: {
       opacity: 1,
       y: 0,
+      transition: {
+        duration: 0.8,
+      },
     },
   };
 
@@ -70,7 +73,6 @@ export default function Footer() {
               initial="hidden"
               animate="visible"
               drag
-             
             >
               <Image
                 width={"100px"}
