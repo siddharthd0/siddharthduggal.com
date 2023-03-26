@@ -3,6 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import React from 'react';
 import App from 'next/app';
 import PageLoader from '../components/page-loader';
+import { Analytics } from '@vercel/analytics/react';
 
 class MyApp extends App {
   state = {
@@ -26,6 +27,7 @@ class MyApp extends App {
           <PageLoader />
         </div>
         <Component {...pageProps} />
+        <Analytics />
       </ChakraProvider>
     );
   }
