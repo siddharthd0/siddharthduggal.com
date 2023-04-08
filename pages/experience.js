@@ -72,19 +72,7 @@ export default function ProjectPage() {
           ]}
         />
 
-        <ExperienceCard
-          dates="April 2020 - November 2021"
-          position="Community Owner"
-          company="Ace's Castle"
-          descriptions={[
-            "Founded Ace's Castle/Echo Circle",
-            "Chat-space open to all topics of discussion",
-            "Grew a community of 3,300+ members",
-            "Managed a team of 20+ people",
-            "Went through 200+ moderator applications",
-            "Discord server got deleted in November 2021",
-          ]}
-        />
+     
         <ExperienceCard
           dates="Dec. 2020 - April 2021"
           position={"Co-founder"}
@@ -107,7 +95,7 @@ export default function ProjectPage() {
         link="https://schoolsimplified.org"
           position={"Web Developer"}
           company="School Simplified"
-          dates="April 2022 - Present"
+          dates="April 2022 - February 2023"
           descriptions={[
             "Writing code for the website in NextJs and Chakra",
             "Taking requests by other departments",
