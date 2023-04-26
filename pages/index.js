@@ -217,7 +217,7 @@ experience."
             placement="right"
             label="Check out my resume."
           >
-            <Link textDecor={"none !important"} href="./resume.pdf">
+            <Link textDecor={"none !important"} href="./sid-resume.pdf">
               <motion.div
                 variants={{
                   ...buttonVariants,
