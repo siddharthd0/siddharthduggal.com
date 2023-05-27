@@ -18,18 +18,16 @@ export default function NewProject({ link, description, title, dates }) {
   return (
     <Box borderRadius={"10px"} mt="14px" role="group">
       <Accordion p="0" allowToggle>
-        <AccordionItem
-          transition="300ms"
-          _hover={{
-            color: "white",
-            transform: "scale(1.1)",
-            bg: "none",
-          }}
-          mb="2px"
-          p="0"
-          border="none"
-        >
-          <AccordionButton p="0">
+        <AccordionItem mb="2px" p="0" border="none">
+          <AccordionButton
+            transition="300ms"
+            _hover={{
+              color: "white",
+              transform: "scale(1.1)",
+              bg: "none !important",
+            }}
+            p="0"
+          >
             <Box flex="1" textAlign="left">
               <Flex alignItems={"center"}>
                 <Link textDecor="none !important" isExternal href={link}>

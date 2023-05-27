@@ -8,6 +8,7 @@ import {
   SimpleGrid,
   Box,
   Heading,
+  HStack,
   BreadcrumbLink,
   chakra,
   BreadcrumbItem,
@@ -15,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import Giscus from "@giscus/react";
 import {
   BsFillPencilFill,
   BsBriefcaseFill,
@@ -27,6 +29,7 @@ import Clock from "../components/clock";
 import { getDatabase } from "../lib/notion";
 import { Text } from "./[id].js";
 import Project from "../components/new-project";
+import { FaTwitter, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
@@ -62,24 +65,64 @@ export default function Home({ posts }) {
         maxW={"400px !important"}
       >
         <Header />
-        <Heading
-          mt="2rem !important"
-          fontSize="xl"
-          fontWeight="500"
-          color="whiteAlpha.800"
-          pb="10px"
-        >
-          Intro
-        </Heading>
-        <chakra.p color="whiteAlpha.700" fontSSize="sm">
-          I&apos;m a 17-year old creator currently living in the USA. I&apos;m
-          passionate about building products that help people. I&apos;m
-          currently working on{" "}
+        <Flex alignItemss="center" pb="10px" mt="2rem !important">
+          <Heading fontSize="xl" fontWeight="500" color="whiteAlpha.800">
+            Intro
+          </Heading>
+          <Spacer />
+          <HStack spacing={3}>
+            <Link
+              _hover={{
+                color: "twitter.500 !important",
+              }}
+              href="https://twitter.com/siddharthd01"
+              isExternal
+              color="whiteAlpha.500"
+            >
+              <FaTwitter size={20} />
+            </Link>
+            <Link
+              _hover={{
+                color: "red.500 !important",
+              }}
+              href="https://www.instagram.com/siddharth.duggal/"
+              isExternal
+              color="whiteAlpha.500"
+            >
+              <FaInstagram size={20} />
+            </Link>
+            <Link
+              _hover={{
+                color: "linkedin.500 !important",
+              }}
+              href="https://www.linkedin.com/in/siddharth-duggal/"
+              isExternal
+              color="whiteAlpha.500"
+            >
+              <FaLinkedin size={20} />
+            </Link>
+            <Link
+              _hover={{
+                color: "gray.200 !important",
+              }}
+              href="https://github.com/siddharthd0"
+              isExternal
+              color="whiteAlpha.500"
+            >
+              <FaGithub size={20} />
+            </Link>
+          </HStack>
+        </Flex>
+        <chakra.p color="whiteAlpha.700" fontSSize="xs">
+          I&apos;m a 17-year-old based in the USA, deeply interested in tech. I
+          love creating things that can help people. Currently, I&apos;m working
+          on{" "}
           <Link href="https://techoptimum.org" textDecoration="none !important">
             Tech Optimum
           </Link>
-          , a non-profit platform that allows students to learn about
-          programming and technology.
+          . Tech Optimum is a nonprofit committed to offering free programming
+          education, striving to be the all-in-one platform for students eager
+          to dive into the world of tech.
         </chakra.p>
 
         <Heading
@@ -214,6 +257,30 @@ export default function Home({ posts }) {
             link="https://skyline.arnavpandey722.repl.co/"
           />
         </Flex>
+
+        <Heading
+          mt="2rem !important"
+          fontSize="xl"
+          fontWeight="500"
+          color="whiteAlpha.800"
+          mb="1rem"
+        >
+          Wall of Something?
+        </Heading>
+        <Giscus
+          id="comments"
+          repo="siddharthd0/siddharthduggal.com"
+          repoId="R_kgDOG4vHow"
+          category="General"
+          categoryId="DIC_kwDOG4vHo84CWyJT"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="top"
+          theme="dark"
+          lang="en"
+          loading="lazy"
+        />
+
         <Footer />
       </Flex>
     </>
