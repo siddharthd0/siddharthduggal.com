@@ -6,11 +6,13 @@ import {
   Heading,
   Tooltip,
   Spacer,
+  Box,
   Link,
   Text,
 } from "@chakra-ui/react";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { useLastFM } from "use-last-fm";
+import Clock from "./clock";
 
 export default function Footer() {
   const lastFM = useLastFM(
@@ -53,51 +55,39 @@ export default function Footer() {
         animate="visible"
       >
         <Flex
+          alignItems="center"
           as={motion.div}
           variants={childVariants}
           initial="hidden"
           animate="visible"
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          direction={["column", "row"]}
-          justifyContent={"center"}
-          alignItems={"center"}
-          maxW={"500px"}
+          maxW={"800px"}
         >
-          <Tooltip
-            placement="right"
-            label="Photo taken in Catalina Island, California (Winter 2022)"
-          >
-            <motion.div
-              variants={childVariants}
-              initial="hidden"
-              animate="visible"
-              drag
-            >
-              <Image
-                width={"100px"}
-                borderRadius={"full"}
-                src="me.png"
-                alt="profile picture"
-              />
-            </motion.div>
-          </Tooltip>
-
-          <Flex
-            as={motion.div}
+          <motion.div
             variants={childVariants}
             initial="hidden"
             animate="visible"
-            mt={["1rem", "0rem"]}
-            direction={"column"}
-            ml="2rem"
-            alignItems={"center"}
           >
-            <Heading fontWeight={"200"}>Siddharth Duggal</Heading>
-            <Text fontWeight={"100"} mt="4px">
-              Tech & Business Enthusiast
-            </Text>
-          </Flex>
+            <Image
+              mr="2rem"
+              width={"70px"}
+              borderRadius={"md"}
+              src="me.png"
+              alt="profile picture"
+            />
+          </motion.div>
+
+          <Box>
+            <Heading fontSize="4xl" color="whiteAlpha.900" fontWeight={"300"}>
+              Siddharth Duggal
+            </Heading>
+            <Flex mt="4px" alignItems="center">
+              <Text fontSize="sm" color="whiteAlpha.800" fontWeight={"100"}>
+                Tech & Business
+              </Text>
+              <Spacer />
+              <Clock />
+            </Flex>
+          </Box>
         </Flex>
       </motion.div>
     </>

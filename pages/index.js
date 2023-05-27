@@ -1,11 +1,36 @@
 import Head from "next/head";
-import { Tooltip, Link, Flex, Button, Spacer } from "@chakra-ui/react";
+import {
+  Tooltip,
+  Link,
+  Flex,
+  Button,
+  Spacer,
+  SimpleGrid,
+  Box,
+  Heading,
+  BreadcrumbLink,
+  chakra,
+  BreadcrumbItem,
+  Breadcrumb,
+} from "@chakra-ui/react";
 import Header from "../components/header";
-import { BsFillPencilFill,BsBriefcaseFill, BsCodeSlash, BsFillPersonFill } from "react-icons/bs";
+import Footer from "../components/footer";
+import {
+  BsFillPencilFill,
+  BsBriefcaseFill,
+  BsCodeSlash,
+  BsFillPersonFill,
+} from "react-icons/bs";
 import { GiMeshNetwork } from "react-icons/gi";
 import { motion } from "framer-motion";
+import Clock from "../components/clock";
+import { getDatabase } from "../lib/notion";
+import { Text } from "./[id].js";
+import Project from "../components/new-project";
 
-export default function Home() {
+export const databaseId = process.env.NOTION_DATABASE_ID;
+
+export default function Home({ posts }) {
   const buttonVariants = {
     hidden: {
       y: 50,
@@ -31,233 +56,176 @@ export default function Home() {
         <link rel="icon" href="/me.png" />
       </Head>
       <Flex
-        justifyContent={"center !important"}
-        alignItems="center"
         direction={"column"}
-        textAlign="center"
-        height="95vh"
+        mt="10rem !important"
+        margin={"auto"}
+        maxW={"400px !important"}
       >
         <Header />
-        <Flex mt="1rem" direction={["column", "row"]} maxW={"1000px"}>
-          <Tooltip
-            openDelay={250}
-            placement="right"
-            label="New things that are happening right now."
-          >
-            <Link textDecor={"none !important"} href="./my-life">
-              <motion.div
-                variants={{
-                  ...buttonVariants,
-                  visible: {
-                    ...buttonVariants.visible,
-                    transition: {
-                      ...buttonVariants.visible.transition,
-                      delay: buttonDelay * 1,
-                    },
-                  },
-                }}
-                initial="hidden"
-                animate="visible"
-              >
-                <Button
-                  mt={[".1rem", "0rem"]}
-                  fontSize={"sm"}
-                  ml="1rem"
-                  transition={"all 0.14s ease-in-out"}
-                  fontWeight={"300"}
-                  _hover={{ bg: "gray.600" }}
-                  border="1px"
-                  borderColor="gray.600"
-                  backgroundColor="transparent"
-                  className="nav-link"
-                  rightIcon={
-                    <BsFillPersonFill
-                      position={"relative"}
-                      className="nav-icons"
-                    />
-                  }
-                >
-                  My Life
-                </Button>
-              </motion.div>
-            </Link>
-          </Tooltip>
-          <Tooltip
-            openDelay={250}
-            placement="right"
-            label="Check out a few of my cool coding projects."
-          >
-            <Link textDecor={"none !important"} href="./project">
-              <motion.div
-                variants={{
-                  ...buttonVariants,
-                  visible: {
-                    ...buttonVariants.visible,
-                    transition: {
-                      ...buttonVariants.visible.transition,
-                      delay: buttonDelay * 2,
-                    },
-                  },
-                }}
-                initial="hidden"
-                animate="visible"
-              >
-                <Button
-                  mt={["1rem", "0rem"]}
-                  ml="1rem"
-                  fontSize={"sm"}
-                  transition={"all 0.14s ease-in-out"}
-                  fontWeight={"300"}
-                  _hover={{ bg: "gray.600" }}
-                  border="1px"
-                  borderColor="gray.600"
-                  backgroundColor="transparent"
-                  className="nav-link"
-                  rightIcon={
-                    <BsCodeSlash position={"relative"} className="nav-icons" />
-                  }
-                >
-                  Projects{" "}
-                </Button>
-              </motion.div>
-            </Link>
-          </Tooltip>
-          <Spacer />
-          <Tooltip
-            openDelay={250}
-            placement="right"
-            label="Check out my work
+        <Heading
+          mt="2rem !important"
+          fontSize="xl"
+          fontWeight="500"
+          color="whiteAlpha.800"
+          pb="10px"
+        >
+          Intro
+        </Heading>
+        <chakra.p color="whiteAlpha.700" fontSSize="sm">
+          I&apos;m a 17-year old creator currently living in the USA. I&apos;m
+          passionate about building products that help people. I&apos;m
+          currently working on{" "}
+          <Link href="https://techoptimum.org" textDecoration="none !important">
+            Tech Optimum
+          </Link>
+          , a non-profit platform that allows students to learn about
+          programming and technology.
+        </chakra.p>
 
-experience."
-          >
-            <Link textDecor={"none !important"} href="./experience">
-              <motion.div
-                variants={{
-                  ...buttonVariants,
-                  visible: {
-                    ...buttonVariants.visible,
-                    transition: {
-                      ...buttonVariants.visible.transition,
-                      delay: buttonDelay * 3,
-                    },
-                  },
-                }}
-                initial="hidden"
-                animate="visible"
-              >
-                <Button
-                  mt={["1rem", "0rem"]}
-                  fontSize={"sm"}
-                  ml="1rem"
-                  transition={"all 0.14s ease-in-out"}
-                  fontWeight={"300"}
-                  _hover={{ bg: "gray.600" }}
-                  border="1px"
-                  borderColor="gray.600"
-                  backgroundColor="transparent"
-                  className="nav-link"
-                  rightIcon={
-                    <BsBriefcaseFill
-                      position={"relative"}
-                      className="nav-icons"
-                    />
-                  }
-                >
-                  Experience
-                </Button>
-              </motion.div>
-            </Link>
-          </Tooltip>
-          <Tooltip
-            openDelay={250}
-            placement="right"
-            label="Read my blog posts."
-          >
-            <Link textDecor={"none !important"} href="./posts">
-              <motion.div
-                variants={{
-                  ...buttonVariants,
-                  visible: {
-                    ...buttonVariants.visible,
-                    transition: {
-                      ...buttonVariants.visible.transition,
-                      delay: buttonDelay * 4,
-                    },
-                  },
-                }}
-                initial="hidden"
-                animate="visible"
-              >
-                <Button
-                  mt={["1rem", "0rem"]}
-                  fontSize={"sm"}
-                  ml="1rem"
-                  transition={"all 0.14s ease-in-out"}
-                  fontWeight={"300"}
-                  _hover={{ bg: "gray.600" }}
-                  border="1px"
-                  borderColor="gray.600"
-                  backgroundColor="transparent"
-                  className="nav-link"
-                  rightIcon={
-                    <BsFillPencilFill
-                      position={"relative"}
-                      className="nav-icons"
-                    />
-                  }
-                >
-                  Blog
-                </Button>
-              </motion.div>
-            </Link>
-          </Tooltip>
-          <Spacer />
-          <Tooltip
-            openDelay={250}
-            placement="right"
-            label="Check out my resume."
-          >
-            <Link textDecor={"none !important"} href="./resume.pdf">
-              <motion.div
-                variants={{
-                  ...buttonVariants,
-                  visible: {
-                    ...buttonVariants.visible,
-                    transition: {
-                      ...buttonVariants.visible.transition,
-                      delay: buttonDelay * 5,
-                    },
-                  },
-                }}
-                initial="hidden"
-                animate="visible"
-              >
-                <Button
-                  mt={["1rem", "0rem"]}
-                  fontSize={"sm"}
-                  ml="1rem"
-                  transition={"all 0.14s ease-in-out"}
-                  fontWeight={"300"}
-                  _hover={{ bg: "gray.600" }}
-                  border="1px"
-                  borderColor="gray.600"
-                  backgroundColor="transparent"
-                  className="nav-link"
-                  rightIcon={
-                    <GiMeshNetwork
-                      position={"relative"}
-                      className="nav-icons"
-                    />
-                  }
-                >
-                  Résumé
-                </Button>
-              </motion.div>
-            </Link>
-          </Tooltip>
-          <Spacer />
+        <Heading
+          mt="2rem !important"
+          fontSize="xl"
+          fontWeight="500"
+          color="whiteAlpha.800"
+          pb="10px"
+        >
+          Posts
+        </Heading>
+        <SimpleGrid>
+          {posts.map((post) => {
+            const date = new Date(post.last_edited_time).toLocaleString(
+              "en-US",
+              {
+                month: "2-digit",
+                day: "2-digit",
+                year: "2-digit",
+              }
+            );
+
+            return (
+              <Link textDecoration={"none !important"} href={`/${post.id}`}>
+                <Box transition={"200ms"} borderRadius={"9px"} role="group">
+                  <Box
+                    transition={"300ms"}
+                    pb="18px"
+                    borderRadius={"6px"}
+                    key={post.id}
+                    _hover={{
+                      color: "white",
+                      transform: "scale(1.1)",
+                    }}
+                  >
+                    <Flex alignItems="center">
+                      <Heading
+                        color="whiteAlpha.600 !important"
+                        fontWeight={"500"}
+                        fontSize="md"
+                        transition={"300ms"}
+                        _groupHover={{
+                          color: "blue.500 !important",
+                        }}
+                      >
+                        <Text text={post.properties.Name.title} />
+                      </Heading>
+                      <Spacer />
+                      <Heading
+                        transition={"300ms"}
+                        pl="1rem"
+                        color="whiteAlpha.500"
+                        mt="6px"
+                        fontSize="xs"
+                        fontWeight={"thin"}
+                        className="postDescription"
+                        _groupHover={{
+                          color: "blue.700 !important",
+                        }}
+                      >
+                        {date}
+                      </Heading>
+                    </Flex>
+                  </Box>
+                </Box>
+              </Link>
+            );
+          })}
+        </SimpleGrid>
+        <Heading
+          mt="2rem !important"
+          fontSize="xl"
+          fontWeight="500"
+          color="whiteAlpha.800"
+        >
+          Projects
+        </Heading>
+        <Flex direction={"column"}>
+          <Project
+            link="https://resumate.tech"
+            title="Resumate"
+            dates="Febuary 2022 - Febuary 2022"
+            description="Resumate is a resume builder that helps you create a resume 
+          in minutes. It is a simple and easy to use resume builder that allows you to combine Markdown and CSS with ease to create a PF resume, custom to you."
+          />
+          <Project
+            link="https://techoptimum.org"
+            dates="January 2022 - Present"
+            description={
+              "Tech Optimum is a student-led non-profit dedicated to helping high schoolers and college students in computer science"
+            }
+            title="Tech Optimum"
+          />
+          <Project
+            title="Lite Designs"
+            link="https://www.litedesigns.pro"
+            dates="December 2022 - Present"
+            description={
+              "Lite Design provides simple & easy to interpret code that you can understand without much problem. We want to help you save time when it comes to building your next project, which is why we built Lite Designs."
+            }
+          />
+          <Project
+            title="A Small Universe"
+            dates="May 2022 - May 2022"
+            description="I made A Small Universe for my AP computer science class. A Small Universe is a web application where you can entertain
+          yourself by looking
+          at comets, stars, and more! Put your cursor where you desire, and you will explore more!"
+            link="https://ap-csp-universe-project.siddharthdugg.repl.co"
+          />
+          <Project
+            title={"Aeolus"}
+            dates="January - Febuary 2022"
+            description="Aeolus is a pollution assistant. It can help you determine if
+          the area you are in is polluted, and can tell you what to do
+          depending on different variables. Data collected by EPA."
+            link="https://aeolus.roryjames.repl.co/"
+          />
+          <Project
+            title="Carbonara"
+            dates="July 2022 - July 2022"
+            description=" Carbonara is a unique carbon footprint calculator geared towards
+          travelers. Carbonara is focused on the impacts of a vacation on
+          the climate."
+            link="https://carbonara.roryjames.repl.co"
+          />
+          <Project
+            title="Skyline"
+            dates="July 2022 - July 2022"
+            description="Skyline is the best way to find the perfect clothing for the
+          perfect weather. Input your location to get various clothing
+          suggestions!"
+            link="https://skyline.arnavpandey722.repl.co/"
+          />
         </Flex>
+        <Footer />
       </Flex>
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const database = await getDatabase(databaseId);
+  return {
+    props: {
+      posts: database,
+    },
+    revalidate: 1,
+  };
+};
