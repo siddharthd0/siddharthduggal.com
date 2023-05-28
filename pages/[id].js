@@ -214,7 +214,7 @@ export default function Post({ page, blocks }) {
       <Flex
         direction={"column"}
         mt="10rem !important"
-        margin={"auto"}
+        margin={"auto !important"}
         maxW={"400px !important"}
         mx="1rem !important"
       >
