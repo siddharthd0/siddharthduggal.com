@@ -3,6 +3,7 @@ import Head from "next/head";
 import { getDatabase, getPage, getBlocks } from "../lib/notion";
 
 import { databaseId } from "./posts.js";
+import Footer from "../components/footer";
 import styles from "./post.module.css";
 import Image from "next/image";
 import {
@@ -17,6 +18,7 @@ import {
   Button,
   SimpleGrid,
   Link,} from "@chakra-ui/react";
+  import Header from "../components/header";
 
 
 
@@ -73,25 +75,25 @@ const renderBlock = (block) => {
   switch (type) {
     case "paragraph":
       return (
-        <Box color="brand.900" mt="10px" >
+        <Box color="whiteAlpha.700" fontSize="sm" mt="10px" >
           <Text text={value.rich_text} />
         </Box>
       );
     case "heading_1":
       return (
-        <Heading color="brand.800 !important" >
+        <Heading color="whiteAlpha.800"  fontWeight="medium">
           <Text text={value.rich_text} />
         </Heading>
       );
     case "heading_2":
       return (
-        <Heading   color="brand.800 !important" my="13px" fontSize={"2xl"}>
+        <Heading  color="whiteAlpha.800"  fontWeight="medium"my="13px" fontSize={"xl"}>
           <Text text={value.rich_text} />
           </Heading>
       );
     case "heading_3":
       return (
-        <Heading color="brand.800" my="10px" fontSize={"xl"}>
+        <Heading color="whiteAlpha.800"  fontWeight="medium"my="10px" fontSize={"lg"}>
           <Text text={value.rich_text} />
           </Heading>
       );
@@ -210,75 +212,57 @@ export default function Post({ page, blocks }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex
-        mt="5rem !important"
+        direction={"column"}
+        mt="10rem !important"
         margin={"auto"}
-        maxW={"680px"}
-        direction="column"
-        px="2rem"
+        maxW={"400px !important"}
       >
+        <Header />
         <Flex
           direction="column"
-          pb=".88rem"
-          borderColor={"gray.500 !important"}
+          pb="10px"
+          borderColor={"whiteAlpha.100 !important"}
           borderBottom={"1px"}
         >
-          <Heading> <Text text={page.properties.Name.title} /></Heading>
-          <Flex alignItems={"center"}>
-            <Flex>
-          <Breadcrumb mt="3px" color="gray.500">
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">siddharthduggal.com</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbItem>
-              <BreadcrumbLink href="posts">posts</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="#"><Text text={page.properties.Name.title}/> </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-          </Flex>
-          <Spacer />
-         
-          <Flex>
-          <Heading fontWeight={400} color="gray.500" fontSize="sm">
+          <Flex  pt="1rem"alignItems="center">
+          <Heading
+           fontWeight={400}
+            color="whiteAlpha.500"
+            fontSize="sm"
+           
+            
+          >
+            /posts</Heading>
+            <Spacer/>
+             
+          <Heading fontWeight={400} color="whiteAlpha.500" fontSize="sm">
            Posted on {date}
           </Heading>
           </Flex>
+          <Heading mt="6px" fontWeight="500" fontSize="xl" color="whiteAlpha.800"> <Text text={page.properties.Name.title} /></Heading>
+        
         </Flex>
-        </Flex>
-    <div className="page-cont">
+    <div >
      
-      <article className={styles.container}>
+      <article>
        
         <section>
           {blocks.map((block) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
-          <div className="flexbox">
-            <Link textDecor={"none !important"} href="posts">
-         <Button
-         mb="3rem"
-         mt="2rem"
-         transition={"all 0.14s ease-in-out"}
-         fontWeight={"300"}
-         _hover={{ bg: "gray.600" }}
-         border="1px"
-         borderColor="gray.600"
-         backgroundColor="transparent"
-         className="nav-link"
-         fontSize="sm"
-         >
-            ← Back 
-            </Button>
-            </Link>
-           
-          
-            </div>
+        
        
         </section>
       </article>
       </div>
+      <Button textDecor={"none !important"} as="a" href="/" size="sm" colorScheme="blue" variant="outline" 
+      _hover={{
+        background: "blue.900",
+        color: "blue.500"
+      }}>
+        Return Home
+      </Button>
+      <Footer/>
       </Flex>
     </div>
     
