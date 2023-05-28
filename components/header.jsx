@@ -55,12 +55,13 @@ export default function Footer() {
         animate="visible"
       >
         <Flex
-          alignItems="center"
+          alignItems={["none","center"]}
           as={motion.div}
           variants={childVariants}
           initial="hidden"
           animate="visible"
           maxW={"800px"}
+          direction={{ base: "column", md: "row" }}
         >
           <motion.div
             variants={childVariants}

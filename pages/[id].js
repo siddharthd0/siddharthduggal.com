@@ -216,6 +216,7 @@ export default function Post({ page, blocks }) {
         mt="10rem !important"
         margin={"auto"}
         maxW={"400px !important"}
+        mx="1rem !important"
       >
         <Header />
         <Flex

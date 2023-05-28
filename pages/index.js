@@ -69,6 +69,7 @@ export default function Home({ posts }) {
         mt="10rem !important"
         margin={"auto"}
         maxW={"400px !important"}
+        px="1rem"
       >
         <Header />
         <motion.div variants={containerVariants} initial="hidden" animate="visible">
