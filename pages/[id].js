@@ -214,9 +214,9 @@ export default function Post({ page, blocks }) {
       <Flex
         direction={"column"}
         mt="10rem !important"
-        margin={"auto !important"}
+       mx={["1rem ", "auto"]}
         maxW={"400px !important"}
-        mx="1rem !important"
+       
       >
         <Header />
         <Flex
