@@ -40,11 +40,11 @@ export default function Home({ posts }) {
       opacity: 1,
       transition: {
         delayChildren: 1,
-        staggerChildren: 0.2
-      }
+        staggerChildren: 0.2,
+      },
     },
   };
-  
+
   const childVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -55,7 +55,7 @@ export default function Home({ posts }) {
       },
     },
   };
-  
+
   return (
     <>
       <Head>
@@ -72,8 +72,18 @@ export default function Home({ posts }) {
         px="1rem"
       >
         <Header />
-        <motion.div variants={containerVariants} initial="hidden" animate="visible">
-          <Flex as={motion.div} variants={childVariants} alignItemss="center" pb="10px" mt="2rem !important">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <Flex
+            as={motion.div}
+            variants={childVariants}
+            alignItemss="center"
+            pb="10px"
+            mt="2rem !important"
+          >
             <Heading fontSize="xl" fontWeight="500" color="whiteAlpha.800">
               Intro
             </Heading>
@@ -122,19 +132,39 @@ export default function Home({ posts }) {
             </HStack>
           </Flex>
           <Box as={motion.div} variants={childVariants}>
-          <chakra.p color="whiteAlpha.700" fontSize="sm">
-            I&apos;m a 17-year-old based in the USA, deeply interested in tech. I
-            love creating things that can help people. Currently, I&apos;m working
-            on{" "}
-            <Link href="https://techoptimum.org" textDecoration="none !important">
-              Tech Optimum
-            </Link>
-            . Tech Optimum is a nonprofit committed to offering free programming
-            education, striving to be the all-in-one platform for students eager
-            to dive into the world of tech.
-          </chakra.p>
+            <chakra.p color="whiteAlpha.600" fontSize="sm">
+              As an incoming college freshman with a keen interest in computer
+              science, I&apos;m passionate about leveraging code to create
+              impactful digital solutions that change the world for the better.
+              Currently, my main project is{" "}
+              <Link
+                color="whiteAlpha.800"
+                href="https://techoptimum.org"
+                textDecoration="none !important"
+                _hover={{
+                  color: "blue.500 !important",
+                }}
+              >
+                Tech Optimum
+              </Link>
+              , a dedicated initiative aiming to dismantle the hurdles in
+              programming education. We&apos;re focused on transforming Tech
+              Optimum into the premier platform for aspiring developers,
+              providing them with the{" "}
+              <Link
+                color="whiteAlpha.800"
+                href="https://dashboard.techoptimum.org"
+                textDecoration="none !important"
+                _hover={{
+                  color: "blue.500 !important",
+                }}
+              >
+                tools and skills
+              </Link>{" "}
+              to excel in the tech industry.
+            </chakra.p>
           </Box>
-         
+
           <Heading
             mt="2rem !important"
             fontSize="xl"
@@ -205,8 +235,8 @@ export default function Home({ posts }) {
             })}
           </SimpleGrid>
           <Heading
-          as={motion.div}
-          variants={childVariants}
+            as={motion.div}
+            variants={childVariants}
             mt="2rem !important"
             fontSize="xl"
             fontWeight="500"
@@ -215,86 +245,85 @@ export default function Home({ posts }) {
             Projects
           </Heading>
           <Flex as={motion.div} variants={childVariants} direction={"column"}>
-           
-          <Project
-            link="https://resumate.tech"
-            title="Resumate"
-            dates="Febuary 2022 - Febuary 2022"
-            description="Resumate is a resume builder that helps you create a resume 
+            <Project
+              link="https://resumate.tech"
+              title="Resumate"
+              dates="Febuary 2022 - Febuary 2022"
+              description="Resumate is a resume builder that helps you create a resume 
           in minutes. It is a simple and easy to use resume builder that allows you to combine Markdown and CSS with ease to create a PF resume, custom to you."
-          />
-          <Project
-            link="https://techoptimum.org"
-            dates="January 2022 - Present"
-            description={
-              "Tech Optimum is a student-led non-profit dedicated to helping high schoolers and college students in computer science"
-            }
-            title="Tech Optimum"
-          />
-          <Project
-            title="Lite Designs"
-            link="https://www.litedesigns.pro"
-            dates="December 2022 - Present"
-            description={
-              "Lite Design provides simple & easy to interpret code that you can understand without much problem. We want to help you save time when it comes to building your next project, which is why we built Lite Designs."
-            }
-          />
-          <Project
-            title="A Small Universe"
-            dates="May 2022 - May 2022"
-            description="I made A Small Universe for my AP computer science class. A Small Universe is a web application where you can entertain
+            />
+            <Project
+              link="https://techoptimum.org"
+              dates="January 2022 - Present"
+              description={
+                "Tech Optimum is a student-led non-profit dedicated to helping high schoolers and college students in computer science"
+              }
+              title="Tech Optimum"
+            />
+            <Project
+              title="Lite Designs"
+              link="https://www.litedesigns.pro"
+              dates="December 2022 - Present"
+              description={
+                "Lite Design provides simple & easy to interpret code that you can understand without much problem. We want to help you save time when it comes to building your next project, which is why we built Lite Designs."
+              }
+            />
+            <Project
+              title="A Small Universe"
+              dates="May 2022 - May 2022"
+              description="I made A Small Universe for my AP computer science class. A Small Universe is a web application where you can entertain
           yourself by looking
           at comets, stars, and more! Put your cursor where you desire, and you will explore more!"
-            link="https://ap-csp-universe-project.siddharthdugg.repl.co"
-          />
-          <Project
-            title={"Aeolus"}
-            dates="January - Febuary 2022"
-            description="Aeolus is a pollution assistant. It can help you determine if
+              link="https://ap-csp-universe-project.siddharthdugg.repl.co"
+            />
+            <Project
+              title={"Aeolus"}
+              dates="January - Febuary 2022"
+              description="Aeolus is a pollution assistant. It can help you determine if
           the area you are in is polluted, and can tell you what to do
           depending on different variables. Data collected by EPA."
-            link="https://aeolus.roryjames.repl.co/"
-          />
-          <Project
-            title="Carbonara"
-            dates="July 2022 - July 2022"
-            description=" Carbonara is a unique carbon footprint calculator geared towards
+              link="https://aeolus.roryjames.repl.co/"
+            />
+            <Project
+              title="Carbonara"
+              dates="July 2022 - July 2022"
+              description=" Carbonara is a unique carbon footprint calculator geared towards
           travelers. Carbonara is focused on the impacts of a vacation on
           the climate."
-            link="https://carbonara.roryjames.repl.co"
-          />
-          <Project
-            title="Skyline"
-            dates="July 2022 - July 2022"
-            description="Skyline is the best way to find the perfect clothing for the
+              link="https://carbonara.roryjames.repl.co"
+            />
+            <Project
+              title="Skyline"
+              dates="July 2022 - July 2022"
+              description="Skyline is the best way to find the perfect clothing for the
           perfect weather. Input your location to get various clothing
           suggestions!"
-            link="https://skyline.arnavpandey722.repl.co/"
-          />
-        </Flex>
+              link="https://skyline.arnavpandey722.repl.co/"
+            />
+          </Flex>
 
-        <Heading
-          mt="2rem !important"
-          fontSize="xl"
-          fontWeight="500"
-          color="whiteAlpha.800"
-          mb="1rem"
-        >
-          Wall of Something?
-        </Heading>
-        <Giscus
-          id="comments"
-          repo="siddharthd0/siddharthduggal.com"
-          repoId="R_kgDOG4vHow"
-          category="General"
-          categoryId="DIC_kwDOG4vHo84CWyJT"
-          reactionsEnabled="1"
-          emitMetadata="0"
-          inputPosition="top"
-          theme="dark"
-          lang="en"
-          loading="lazy"
-        />
+          <Heading
+            mt="2rem !important"
+            fontSize="xl"
+            fontWeight="500"
+            color="whiteAlpha.800"
+            mb="1rem"
+          >
+            Wall of Something?
+          </Heading>
+          <Giscus
+            id="comments"
+            repo="siddharthd0/siddharthduggal.com"
+            repoId="R_kgDOG4vHow"
+            category="General"
+            categoryId="DIC_kwDOG4vHo84CWyJT"
+            reactionsEnabled="1"
+            emitMetadata="0"
+            inputPosition="top"
+            theme="dark"
+            lang="en"
+            loading="lazy"
+          />
         </motion.div>
         <Footer />
       </Flex>
