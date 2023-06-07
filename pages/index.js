@@ -89,6 +89,7 @@ export default function Home({ posts }) {
             </Heading>
             <Spacer />
             <HStack spacing={3}>
+              <Tooltip label="Twitter" borderRadius="md" bg="gray.800">
               <Link
                 _hover={{
                   color: "twitter.500 !important",
@@ -99,6 +100,8 @@ export default function Home({ posts }) {
               >
                 <FaTwitter size={20} />
               </Link>
+              </Tooltip>
+              <Tooltip label="Instagram" borderRadius="md" bg="gray.800">
               <Link
                 _hover={{
                   color: "red.500 !important",
@@ -109,6 +112,9 @@ export default function Home({ posts }) {
               >
                 <FaInstagram size={20} />
               </Link>
+              </Tooltip>
+                
+               <Tooltip label="LinkedIn" borderRadius="md" bg="gray.800">
               <Link
                 _hover={{
                   color: "linkedin.500 !important",
@@ -119,6 +125,8 @@ export default function Home({ posts }) {
               >
                 <FaLinkedin size={20} />
               </Link>
+              </Tooltip>
+              <Tooltip label="GitHub" borderRadius="md" bg="gray.800">
               <Link
                 _hover={{
                   color: "gray.200 !important",
@@ -129,6 +137,7 @@ export default function Home({ posts }) {
               >
                 <FaGithub size={20} />
               </Link>
+              </Tooltip>
             </HStack>
           </Flex>
           <Box as={motion.div} variants={childVariants}>

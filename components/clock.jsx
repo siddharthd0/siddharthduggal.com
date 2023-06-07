@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text,Tooltip } from "@chakra-ui/react";
 import { DateTime } from "luxon";
 import { BsClock } from "react-icons/bs";
 
@@ -28,12 +28,14 @@ function Clock() {
   return (
     <>
       {" "}
+      <Tooltip label="Current time in Idaho (MDT)" bg="gray.800" borderRadius="md">
       <Flex color="whiteAlpha.700" fontSize="sm" alignItems="center">
         <BsClock />
         <Text pl="8px" fontSize="sm" color="whiteAlpha.700">
           {time}
         </Text>
       </Flex>
+      </Tooltip>
     </>
   );
 }
