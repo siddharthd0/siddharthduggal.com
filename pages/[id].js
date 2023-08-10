@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import Head from "next/head";
 import { getDatabase, getPage, getBlocks } from "../lib/notion";
 
-import { databaseId } from "./posts.js";
+import { databaseId } from "../components/posts.js";
 import Footer from "../components/footer";
 import styles from "./post.module.css";
 import Image from "next/image";
@@ -18,7 +18,7 @@ import {
   Button,
   SimpleGrid,
   Link,} from "@chakra-ui/react";
-  import Header from "../components/header";
+
 
 
 

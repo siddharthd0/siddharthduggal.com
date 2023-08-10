@@ -10,8 +10,7 @@ import {
 } from "@chakra-ui/react";
 import ExperienceCard from "../components/experience-card";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
-import Footer from "../components/footer";
-import Header from "../components/header";
+
 
 export default function ProjectPage() {
   return (

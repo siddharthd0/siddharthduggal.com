@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth !important;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@500&display=swap');
@@ -9,27 +10,22 @@
 
 html {
   font-family: Urbanist, sans-serif !important;
+  scroll-behavior: smooth !important;
 }
+
 body {
-  background-color: rgb(22, 22, 22) !important;
+  background-color: rgb(15 23 42) !important;
   color: white !important;
   padding: 0;
   margin: 0;
   font-family: Urbanist, sans-serif !important;
+  scroll-behavior: smooth !important;
 }
 
 .tinted-bg {
   background-color: rgb(21, 20, 20) !important;
 }
 
-a {
-  text-decoration: underline !important;
-  transition: 100ms;
-}
-
-a:hover {
-  text-decoration: none !important;
-}
 
 .icons {
   color: rgb(220, 220, 220);
@@ -45,6 +41,7 @@ a:hover {
 .post-card {
   border-top: 1px solid rgb(139, 139, 143);
 }
+
 .nav-link {
   margin-top: 5px;
   background: rgb(54, 54, 54);
@@ -58,14 +55,19 @@ a:hover {
   margin-top: 1px;
   font-size: 14px;
 }
+
 .grey-text {
   color: rgb(177, 175, 175) !important;
 }
+
 .blink_img {
   animation: blinker 1.5s linear infinite;
 }
+
 @keyframes blinker {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 
@@ -80,4 +82,13 @@ li::marker {
   border-radius: 5px;
   margin: 3rem;
   border: .5px solid white;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 3s linear infinite;
 }

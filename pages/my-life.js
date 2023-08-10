@@ -49,7 +49,7 @@ export default function ProjectPage() {
         direction="column"
         px="2rem"
       >
-       <Flex
+        <Flex
           direction="column"
           pb=".88rem"
           borderColor={"gray.500 !important"}
@@ -62,18 +62,23 @@ export default function ProjectPage() {
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink _hover={{
-                textDecoration: "none !important",
-              }}  href="#">my-life</BreadcrumbLink>
+              <BreadcrumbLink
+                _hover={{
+                  textDecoration: "none !important",
+                }}
+                href="#"
+              >
+                my-life
+              </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
           <Spacer />
         </Flex>
         {isLoading ? (
           <>
-          <Flex alignItems={"center"}>
-            <Text mt="1rem">Loading images & content...</Text>{" "}
-            <Spinner mt=".7rem" ml="1rem" size="sm" color="teal.300" />
+            <Flex alignItems={"center"}>
+              <Text mt="1rem">Loading images & content...</Text>{" "}
+              <Spinner mt=".7rem" ml="1rem" size="sm" color="teal.300" />
             </Flex>
           </>
         ) : (

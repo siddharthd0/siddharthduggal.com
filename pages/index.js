@@ -1,60 +1,136 @@
 import Head from "next/head";
 import {
-  Tooltip,
   Link,
   Flex,
-  Button,
-  Spacer,
-  SimpleGrid,
+  Text,
   Box,
+  Image,
   Heading,
+  Spacer,
   HStack,
-  BreadcrumbLink,
   chakra,
+  Tooltip,
+  BreadcrumbLink,
+  Center,
+  useDisclosure,
+  Badge,
+  Fade,
   BreadcrumbItem,
   Breadcrumb,
 } from "@chakra-ui/react";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import Giscus from "@giscus/react";
-import {
-  BsFillPencilFill,
-  BsBriefcaseFill,
-  BsCodeSlash,
-  BsFillPersonFill,
-} from "react-icons/bs";
-import { GiMeshNetwork } from "react-icons/gi";
-import { motion } from "framer-motion";
-import Clock from "../components/clock";
-import { getDatabase } from "../lib/notion";
-import { Text } from "./[id].js";
-import Project from "../components/new-project";
 import { FaTwitter, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { LinkBox, LinkOverlay } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-export const databaseId = process.env.NOTION_DATABASE_ID;
+const MotionBox = motion(Box);
 
-export default function Home({ posts }) {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 1,
-        staggerChildren: 0.2,
-      },
-    },
-  };
+function Project({ dates, title, role, link, description }) {
+  return (
+    <LinkBox
+      mb="1rem"
+      textDecor="none !important"
+      p={4}
+      borderWidth="1px"
+      borderRadius="lg"
+      borderColor="rgba(255,255,255,0)"
+      boxShadow="lg"
+      transition="0.4s"
+      _hover={{
+        borderColor: "blue.900",
+        bg: "rgba(15 23 42)",
+        transform: "translateY(-5px)",
+        boxShadow: "xl",
+        filter: "brightness(1.2)", // This adds the white tint
+      }}
+    >
+      <LinkOverlay textDecor="none !important" href={link} isExternal>
+        <HStack spacing={2}>
+          <Text color="whiteAlpha.800" fontWeight="medium">
+            {title}
+          </Text>
+          <Spacer />
+          <Text color="whiteAlpha.700" fontSize="xs" fontWeight={"thin"}>
+            {dates}
+          </Text>
+        </HStack>
+        <Text mt={3} color="whiteAlpha.700">
+          {description}
+        </Text>
+      </LinkOverlay>
+    </LinkBox>
+  );
+}
 
-  const childVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { stiffness: 1000, velocity: -100 },
-      },
-    },
-  };
+function ExperienceCard({
+  date,
+  company,
+  role,
+  link,
+  description,
+  technologies,
+}) {
+  return (
+    <LinkBox
+      mb="1rem"
+      textDecor="none !important"
+      p={4}
+      borderWidth="1px"
+      borderRadius="lg"
+      borderColor="rgba(255,255,255,0)"
+      boxShadow="lg"
+      transition="0.4s"
+      _hover={{
+        borderColor: "blue.900",
+        bg: "rgba(15 23 42)",
+        transform: "translateY(-5px)",
+        boxShadow: "xl",
+        filter: "brightness(1.2)", // This adds the white tint
+      }}
+    >
+      <LinkOverlay textDecor="none !important" href={link} isExternal>
+        <HStack spacing={2}>
+          <Text color="whiteAlpha.800" fontWeight="medium">
+            {role} @ {company}
+          </Text>
+          <Spacer />
+          <Text color="whiteAlpha.700" fontSize="xs" fontWeight={"thin"}>
+            {date}
+          </Text>
+        </HStack>
+        <Text mt={3} color="whiteAlpha.700">
+          {description}
+        </Text>
+        <HStack mt={3} spacing={2}>
+          {technologies.map((tech) => (
+            <Badge
+              fontWeight={"medium"}
+              borderRadius="full"
+              px={2}
+              py={1}
+              key={tech}
+              variant="outline"
+              colorScheme="blue"
+              color="blue.300"
+            >
+              {tech}
+            </Badge>
+          ))}
+        </HStack>
+      </LinkOverlay>
+    </LinkBox>
+  );
+}
+
+export default function Home({}) {
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -64,32 +140,180 @@ export default function Home({ posts }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/me.png" />
       </Head>
-      <Flex
-        direction={"column"}
-        mt="10rem !important"
-        margin={"auto"}
-        maxW={"400px !important"}
-        px="1rem"
-      >
-        <Header />
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <Flex
-            as={motion.div}
-            variants={childVariants}
-            alignItemss="center"
-            pb="10px"
-            mt="2rem !important"
+      <AnimatePresence>
+        {showSplash && (
+          <MotionBox
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 1 }}
+            position="fixed"
+            top="0"
+            left="0"
+            right="0"
+            bottom="0"
+            bg="rgb(15 23 42)"
+            zIndex="modal"
+            height="100vh"
+            width="100vw"
+            overflow="hidden"
           >
-            <Heading fontSize="xl" fontWeight="500" color="whiteAlpha.800">
-              Intro
-            </Heading>
-            <Spacer />
-            <HStack spacing={3}>
-              <Tooltip label="Twitter" borderRadius="md" bg="gray.800">
+            <Flex direction="column" align="center" justify="center" h="100%">
+              <Text>
+                <Image
+                  className="spin"
+                  mx="auto"
+                  src="me.png"
+                  boxSize="50px"
+                  borderRadius="full"
+                  mb="1rem"
+                />
+
+                <chakra.span fontWeight="bold" color="whiteAlpha.900">
+                  Siddharth Duggal
+                </chakra.span>
+              </Text>
+            </Flex>
+          </MotionBox>
+        )}
+      </AnimatePresence>
+
+      <Flex px={["2rem", "10rem"]} flexDirection={["column", "row"]}>
+        <Flex
+          direction="column"
+          overflowX={"hidden !important"}
+          px="1rem"
+          as="aside"
+          position={["none", "sticky"]}
+          top="0"
+          height="100vh"
+          overflowY="auto"
+          pt="5rem"
+          flex="1"
+        >
+          <Image src="/me.png" borderRadius="full" boxSize="100px" />
+          <Heading
+            color="whiteAlpha.900"
+            fontWeight="500"
+            mt="1rem"
+            fontSize="5xl"
+          >
+            Siddharth Duggal
+          </Heading>
+          <Text
+            mt=".4rem"
+            color="whiteAlpha.900"
+            fontSize="xl"
+            fontWeight="medium"
+          >
+            Founder of Tech Optimum
+          </Text>
+          <Box mt="2rem">
+            <Link
+              href="#intro"
+              textDecoration="none"
+              mb={2}
+              _hover={{ textDecoration: "none" }}
+            >
+              <Box
+                fontSize="xl"
+                as="span"
+                fontWeight="500"
+                position="relative"
+                _before={{
+                  content: '""',
+                  backgroundColor: "blue.400",
+                  position: "absolute",
+                  left: "0",
+                  bottom: "-2px",
+                  width: "full",
+                  height: "3px",
+                  zIndex: "-1",
+                  transition: "all .3s ease-in-out",
+                }}
+                _hover={{
+                  _before: {
+                    bottom: "0",
+                    height: "100%",
+                  },
+                }}
+              >
+                Intro
+              </Box>
+            </Link>
+          </Box>
+          <Box mt="1rem">
+            <Link
+              href="#experience"
+              textDecoration="none"
+              mb={2}
+              _hover={{ textDecoration: "none" }}
+            >
+              <Box
+                fontSize="xl"
+                as="span"
+                fontWeight="500"
+                position="relative"
+                _before={{
+                  content: '""',
+                  backgroundColor: "blue.400",
+                  position: "absolute",
+                  left: "0",
+                  bottom: "-2px",
+                  width: "full",
+                  height: "3px",
+                  zIndex: "-1",
+                  transition: "all .3s ease-in-out",
+                }}
+                _hover={{
+                  _before: {
+                    bottom: "0",
+                    height: "100%",
+                  },
+                }}
+              >
+                Experience
+              </Box>
+            </Link>
+          </Box>
+          <Box mt="1rem">
+            <Link
+              href="#projects"
+              textDecoration="none"
+              mb={2}
+              _hover={{ textDecoration: "none" }}
+            >
+              <Box
+                fontSize="xl"
+                as="span"
+                fontWeight="500"
+                position="relative"
+                _before={{
+                  content: '""',
+                  backgroundColor: "blue.400",
+                  position: "absolute",
+                  left: "0",
+                  bottom: "-2px",
+                  width: "full",
+                  height: "3px",
+                  zIndex: "-1",
+                  transition: "all .3s ease-in-out",
+                }}
+                _hover={{
+                  _before: {
+                    bottom: "0",
+                    height: "100%",
+                  },
+                }}
+              >
+                Projects
+              </Box>
+            </Link>
+          </Box>
+
+          <Spacer />
+
+          <HStack mt={["2rem", "0"]} mb="3rem" spacing={4}>
+            <Tooltip label="Twitter" borderRadius="md" bg="gray.800">
               <Link
                 _hover={{
                   color: "twitter.500 !important",
@@ -98,10 +322,10 @@ export default function Home({ posts }) {
                 isExternal
                 color="whiteAlpha.500"
               >
-                <FaTwitter size={20} />
+                <FaTwitter size={25} />
               </Link>
-              </Tooltip>
-              <Tooltip label="Instagram" borderRadius="md" bg="gray.800">
+            </Tooltip>
+            <Tooltip label="Instagram" borderRadius="md" bg="gray.800">
               <Link
                 _hover={{
                   color: "red.500 !important",
@@ -110,11 +334,11 @@ export default function Home({ posts }) {
                 isExternal
                 color="whiteAlpha.500"
               >
-                <FaInstagram size={20} />
+                <FaInstagram size={25} />
               </Link>
-              </Tooltip>
-                
-               <Tooltip label="LinkedIn" borderRadius="md" bg="gray.800">
+            </Tooltip>
+
+            <Tooltip label="LinkedIn" borderRadius="md" bg="gray.800">
               <Link
                 _hover={{
                   color: "linkedin.500 !important",
@@ -123,10 +347,10 @@ export default function Home({ posts }) {
                 isExternal
                 color="whiteAlpha.500"
               >
-                <FaLinkedin size={20} />
+                <FaLinkedin size={25} />
               </Link>
-              </Tooltip>
-              <Tooltip label="GitHub" borderRadius="md" bg="gray.800">
+            </Tooltip>
+            <Tooltip label="GitHub" borderRadius="md" bg="gray.800">
               <Link
                 _hover={{
                   color: "gray.200 !important",
@@ -135,125 +359,123 @@ export default function Home({ posts }) {
                 isExternal
                 color="whiteAlpha.500"
               >
-                <FaGithub size={20} />
+                <FaGithub size={25} />
               </Link>
-              </Tooltip>
-            </HStack>
-          </Flex>
-          <Box as={motion.div} variants={childVariants}>
-            <chakra.p color="whiteAlpha.600" fontSize="sm">
-              As an incoming college freshman with a keen interest in computer
-              science, I&apos;m passionate about leveraging code to create
-              impactful digital solutions that change the world for the better.
-              Currently, my main project is{" "}
-              <Link
-                color="whiteAlpha.800"
-                href="https://techoptimum.org"
-                textDecoration="none !important"
-                _hover={{
-                  color: "blue.500 !important",
-                }}
-              >
-                Tech Optimum
-              </Link>
-              , a dedicated initiative aiming to dismantle the hurdles in
-              programming education. We&apos;re focused on transforming Tech
-              Optimum into the premier platform for aspiring developers,
-              providing them with the{" "}
-              <Link
-                color="whiteAlpha.800"
-                href="https://dashboard.techoptimum.org"
-                textDecoration="none !important"
-                _hover={{
-                  color: "blue.500 !important",
-                }}
-              >
-                tools and skills
-              </Link>{" "}
-              to excel in the tech industry.
-            </chakra.p>
+            </Tooltip>
+          </HStack>
+        </Flex>
+        {/* Right Section */}
+        <Box py="5rem" flex="1">
+          <Heading
+            id="intro"
+            pt="2rem"
+            color="whiteAlpha.900"
+            fontWeight="medium"
+            px={4}
+            fontSize="3xl"
+          >
+            Intro
+          </Heading>
+          <Text mt="1rem" color="whiteAlpha.800" px={4}>
+            Three years ago, I began experimenting with{" "}
+            <chakra.span fontWeight="semibold" color="white">
+              JavaScript
+            </chakra.span>{" "}
+            and started building{" "}
+            <chakra.span fontWeight="semibold" color="white">
+              Discord bots
+            </chakra.span>
+            . This was more than a hobby. Within a year, I was creating Discord
+            bots, websites, and{" "}
+            <chakra.span fontWeight="semibold" color="white">
+              Minecraft servers
+            </chakra.span>{" "}
+            for clients. Concurrently, I developed a hosting platform, making it
+            simpler for developers to host their projects.
+          </Text>
+          <Text color="whiteAlpha.800" px={4} mt={2}>
+            Today, I channel my energies and expertise into{" "}
+            <Link
+              _hover={{
+                color: "blue.200",
+              }}
+              href="https://techoptimum.org"
+              fontWeight="semibold"
+              color="white"
+            >
+              Tech Optimum
+            </Link>
+            , my own non-profit initiative. We're on a mission to disrupt
+            conventional
+            <chakra.span fontWeight="600" color="white">
+              {" "}
+              coding education
+            </chakra.span>
+            . By championing a project-centric learning approach, we aim to
+            reflect the real-world experiences and challenges of tech
+            internships and roles. It's not just about education—it's a holistic
+            coding journey tailored for today's tech enthusiasts.
+          </Text>
+
+          <Box>
+            <Heading
+              id="experience"
+              pt="2rem"
+              color="whiteAlpha.900"
+              fontWeight="medium"
+              px={4}
+              fontSize="3xl"
+              mb="1rem"
+            >
+              Experience
+            </Heading>
+            <ExperienceCard
+              date="January 2022 - Present"
+              company="Tech Optimum"
+              role="Founder"
+              link="https://techoptimum.org"
+              description="Tech Optimum is a non-profit initiative that aims to create a project-centric approach to learning. We're on a mission to create the worlds first sustainble project-based learning platform."
+              technologies={[
+                "Google Cloud",
+                "Javascript",
+                "Next.js",
+                "Chakra UI",
+              ]}
+            />
+            <ExperienceCard
+              date="April 2022 - Febuary 2023"
+              company="School Simplified"
+              role="Web Developer"
+              link="https://schoolsimplified.org"
+              description="School Simplified offers a number of free resources to help students with their studies. I was responsible for building & maintaining the website."
+              technologies={["React", "TypeScript", "Next.js", "Chakra UI"]}
+            />
+            <ExperienceCard
+              date="December 2020 - August 2021"
+              company="Aprim"
+              role="Lead Developer"
+              link="https://aprim.xyz"
+              description="Aprim was a web & game hosting platform that allowed you to host your website or game server with ease. I was responsible for building the Pterodactyl panel, the billing system, and the website."
+              technologies={[
+                "Pterodactyl",
+                "Javascript",
+                "Express.js",
+                "Discord.js",
+              ]}
+            />
           </Box>
-
-          <Heading
-            mt="2rem !important"
-            fontSize="xl"
-            fontWeight="500"
-            color="whiteAlpha.800"
-            pb="10px"
-            as={motion.div}
-            variants={childVariants}
-          >
-            Posts
-          </Heading>
-          <SimpleGrid as={motion.div} variants={childVariants}>
-            {posts.map((post) => {
-              const date = new Date(post.last_edited_time).toLocaleString(
-                "en-US",
-                {
-                  month: "2-digit",
-                  day: "2-digit",
-                  year: "2-digit",
-                }
-              );
-
-              return (
-                <Link textDecoration={"none !important"} href={`/${post.id}`}>
-                  <Box transition={"200ms"} borderRadius={"9px"} role="group">
-                    <Box
-                      transition={"300ms"}
-                      pb="18px"
-                      borderRadius={"6px"}
-                      key={post.id}
-                      _hover={{
-                        color: "white",
-                        transform: "scale(1.1)",
-                      }}
-                    >
-                      <Flex alignItems="center">
-                        <Heading
-                          color="whiteAlpha.600 !important"
-                          fontWeight={"500"}
-                          fontSize="md"
-                          transition={"300ms"}
-                          _groupHover={{
-                            color: "blue.500 !important",
-                          }}
-                        >
-                          <Text text={post.properties.Name.title} />
-                        </Heading>
-                        <Spacer />
-                        <Heading
-                          transition={"300ms"}
-                          pl="1rem"
-                          color="whiteAlpha.500"
-                          mt="6px"
-                          fontSize="xs"
-                          fontWeight={"thin"}
-                          className="postDescription"
-                          _groupHover={{
-                            color: "blue.700 !important",
-                          }}
-                        >
-                          {date}
-                        </Heading>
-                      </Flex>
-                    </Box>
-                  </Box>
-                </Link>
-              );
-            })}
-          </SimpleGrid>
-          <Heading
-            as={motion.div}
-            variants={childVariants}
-            mt="2rem !important"
-            fontSize="xl"
-            fontWeight="500"
-            color="whiteAlpha.800"
-          >
-            Projects
-          </Heading>
-          <Flex as={motion.div} variants={childVariants} direction={"column"}>
+          <Box mt={5}>
+            <Heading
+              pt="2rem"
+              mb="1rem"
+              px={4}
+              id="projects"
+              color="whiteAlpha.900"
+              fontWeight="medium"
+              fontSize="3xl"
+            >
+              Projects
+            </Heading>
             <Project
               link="https://resumate.tech"
               title="Resumate"
@@ -261,14 +483,7 @@ export default function Home({ posts }) {
               description="Resumate is a resume builder that helps you create a resume 
           in minutes. It is a simple and easy to use resume builder that allows you to combine Markdown and CSS with ease to create a PF resume, custom to you."
             />
-            <Project
-              link="https://techoptimum.org"
-              dates="January 2022 - Present"
-              description={
-                "Tech Optimum is a student-led non-profit dedicated to helping high schoolers and college students in computer science"
-              }
-              title="Tech Optimum"
-            />
+
             <Project
               title="Lite Designs"
               link="https://www.litedesigns.pro"
@@ -309,43 +524,9 @@ export default function Home({ posts }) {
           suggestions!"
               link="https://skyline.arnavpandey722.repl.co/"
             />
-          </Flex>
-
-          <Heading
-            mt="2rem !important"
-            fontSize="xl"
-            fontWeight="500"
-            color="whiteAlpha.800"
-            mb="1rem"
-          >
-            Wall of Something?
-          </Heading>
-          <Giscus
-            id="comments"
-            repo="siddharthd0/siddharthduggal.com"
-            repoId="R_kgDOG4vHow"
-            category="General"
-            categoryId="DIC_kwDOG4vHo84CWyJT"
-            reactionsEnabled="1"
-            emitMetadata="0"
-            inputPosition="top"
-            theme="dark"
-            lang="en"
-            loading="lazy"
-          />
-        </motion.div>
-        <Footer />
+          </Box>
+        </Box>
       </Flex>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const database = await getDatabase(databaseId);
-  return {
-    props: {
-      posts: database,
-    },
-    revalidate: 1,
-  };
 }
