@@ -450,7 +450,7 @@ export default function Home({}) {
               company="Tech Optimum"
               role="Founder"
               link="https://techoptimum.org"
-              description="Tech Optimum is a non-profit initiative that aims to create a project-centric approach to learning. We're on a mission to create the worlds first sustainble project-based learning platform."
+              description="Tech Optimum is a non-profit initiative that aims to create a project-centric approach to learning. We're on a mission to create the worlds first sustainable project-based learning platform."
               technologies={[
                 "Google Cloud",
                 "Javascript",
