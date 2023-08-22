@@ -207,6 +207,22 @@ export default function Home({}) {
           >
             Founder of Tech Optimum
           </Text>
+          <Text 
+            mt=".8rem"
+            color="whiteAlpha.900"
+            fontSize="md"
+            fontWeight="500"
+          >
+           “We’re here to put a dent in the universe. Otherwise why else even be here?”
+          </Text>
+          <Text
+            mt=".6rem"
+            color="whiteAlpha.800"
+            fontSize="sm"
+            fontWeight="medium"
+          >
+            — Steve Jobs
+          </Text>
           <Box mt="2rem">
             <Link
               href="#intro"
