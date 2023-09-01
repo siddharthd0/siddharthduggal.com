@@ -4,59 +4,72 @@ import {
   Flex,
   Text,
   Box,
+  VStack,
   Image,
   Heading,
   Spacer,
   HStack,
   chakra,
   Tooltip,
-  BreadcrumbLink,
-  Center,
-  useDisclosure,
   Badge,
   Fade,
-  BreadcrumbItem,
-  Breadcrumb,
 } from "@chakra-ui/react";
 import { FaTwitter, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { LinkBox, LinkOverlay } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
 
 const MotionBox = motion(Box);
 
-function Project({ dates, title, role, link, description }) {
+function Project({ title, description, link, technologies }) {
   return (
     <LinkBox
       mb="1rem"
-      textDecor="none !important"
-      p={4}
+      p={5}
       borderWidth="1px"
       borderRadius="lg"
+      bg="#111"
       borderColor="rgba(255,255,255,0)"
-      boxShadow="lg"
-      transition="0.4s"
+      transition="all 0.25s ease"
       _hover={{
-        borderColor: "blue.900",
-        bg: "rgba(15 23 42)",
+        bg: "black",
         transform: "translateY(-5px)",
-        boxShadow: "xl",
-        filter: "brightness(1.2)", // This adds the white tint
+
+        borderColor: "rgba(255,255,255,0.2)",
       }}
     >
-      <LinkOverlay textDecor="none !important" href={link} isExternal>
-        <HStack spacing={2}>
-          <Text color="whiteAlpha.800" fontWeight="medium">
-            {title}
+      <LinkOverlay href={link} isExternal>
+        <VStack align="start" spacing={3}>
+          {" "}
+          <HStack spacing={2}>
+            <Text color="whiteAlpha.900" fontWeight="medium" fontSize="lg">
+              {title}
+            </Text>
+          </HStack>
+          <Text mt={2} color="whiteAlpha.600" fontSize="md">
+            {description}
           </Text>
-          <Spacer />
-          <Text color="whiteAlpha.700" fontSize="xs" fontWeight={"thin"}>
-            {dates}
-          </Text>
-        </HStack>
-        <Text mt={3} color="whiteAlpha.700">
-          {description}
-        </Text>
+          <HStack mt={2} spacing={3}>
+            {technologies.map((tech) => (
+              <Badge
+                fontWeight="medium"
+                borderRadius="lg"
+                px={3}
+                py={1}
+                key={tech}
+                variant="outline"
+                color="whiteAlpha.900"
+                _hover={{
+                  transform: "scale(1.1)",
+                  background: "#333",
+                }}
+              >
+                {tech}
+              </Badge>
+            ))}
+          </HStack>
+        </VStack>
       </LinkOverlay>
     </LinkBox>
   );
@@ -70,53 +83,75 @@ function ExperienceCard({
   description,
   technologies,
 }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <LinkBox
       mb="1rem"
-      textDecor="none !important"
-      p={4}
+      p={5}
       borderWidth="1px"
       borderRadius="lg"
+      bg="#111"
       borderColor="rgba(255,255,255,0)"
-      boxShadow="lg"
-      transition="0.4s"
+      transition="all 0.25s ease"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       _hover={{
-        borderColor: "blue.900",
-        bg: "rgba(15 23 42)",
+        bg: "black",
         transform: "translateY(-5px)",
-        boxShadow: "xl",
-        filter: "brightness(1.2)", // This adds the white tint
+        borderColor: "rgba(255,255,255,0.2)",
       }}
     >
-      <LinkOverlay textDecor="none !important" href={link} isExternal>
-        <HStack spacing={2}>
-          <Text color="whiteAlpha.800" fontWeight="medium">
-            {role} @ {company}
-          </Text>
-          <Spacer />
-          <Text color="whiteAlpha.700" fontSize="xs" fontWeight={"thin"}>
-            {date}
-          </Text>
-        </HStack>
-        <Text mt={3} color="whiteAlpha.700">
-          {description}
-        </Text>
-        <HStack mt={3} spacing={2}>
-          {technologies.map((tech) => (
-            <Badge
-              fontWeight={"medium"}
-              borderRadius="full"
-              px={2}
-              py={1}
-              key={tech}
-              variant="outline"
-              colorScheme="blue"
-              color="blue.300"
-            >
-              {tech}
-            </Badge>
-          ))}
-        </HStack>
+      <LinkOverlay href={link} isExternal>
+        {isHovered ? (
+          <>
+            <HStack alignItems="center" spacing={2}>
+              <Text color="whiteAlpha.900" fontWeight="medium" fontSize="lg">
+                {role}, {company}
+              </Text>
+
+              <Spacer />
+              <Text color="whiteAlpha.700" fontSize="sm" fontWeight="medium">
+                {date}
+              </Text>
+            </HStack>
+            <Text py="9px" color="whiteAlpha.900" fontWeight="medium" fontSize="sm">
+              {description}
+            </Text>
+            <HStack mt={2} spacing={3}>
+              {technologies.map((tech) => (
+                <Badge
+                  fontWeight="medium"
+                  borderRadius="full"
+                  px={3}
+                  py={1}
+                  key={tech}
+                  variant="outline"
+                  borderColor="#fff" // White border
+                  color="whiteAlpha.800"
+                  _hover={{
+                    transform: "scale(1.1)",
+                    background: "#333",
+                  }}
+                >
+                  {tech}
+                </Badge>
+              ))}
+            </HStack>
+          </>
+        ) : (
+          <VStack align="start" spacing={3}>
+            <HStack alignItems="center" spacing={2}>
+              <Text color="whiteAlpha.900" fontWeight="medium" fontSize="lg">
+                {role}, {company}
+              </Text>
+              <Spacer />
+              <Text color="whiteAlpha.700" fontSize="sm" fontWeight="medium">
+                {date}
+              </Text>
+            </HStack>
+          </VStack>
+        )}
       </LinkOverlay>
     </LinkBox>
   );
@@ -124,12 +159,39 @@ function ExperienceCard({
 
 export default function Home({}) {
   const [showSplash, setShowSplash] = useState(true);
+  const [currentSection, setCurrentSection] = useState("intro");
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
     }, 1200);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const intro = document.getElementById("intro").getBoundingClientRect();
+      const experience = document
+        .getElementById("experience")
+        .getBoundingClientRect();
+      const projects = document
+        .getElementById("projects")
+        .getBoundingClientRect();
+
+      if (intro.top <= 0 && intro.bottom >= 0) {
+        setCurrentSection("intro");
+      } else if (experience.top <= 0 && experience.bottom >= 0) {
+        setCurrentSection("experience");
+      } else if (projects.top <= 0 && projects.bottom >= 0) {
+        setCurrentSection("projects");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -199,25 +261,19 @@ export default function Home({}) {
           >
             Siddharth Duggal
           </Heading>
+
           <Text
-            mt=".4rem"
-            color="whiteAlpha.900"
-            fontSize="xl"
-            fontWeight="medium"
-          >
-            Founder of Tech Optimum
-          </Text>
-          <Text 
             mt=".8rem"
             color="whiteAlpha.900"
             fontSize="md"
             fontWeight="500"
           >
-           “We’re here to put a dent in the universe. Otherwise why else even be here?”
+            “We’re here to put a dent in the universe. Otherwise why else even
+            be here?”
           </Text>
           <Text
             mt=".6rem"
-            color="whiteAlpha.800"
+            color="whiteAlpha.600"
             fontSize="sm"
             fontWeight="medium"
           >
@@ -231,27 +287,14 @@ export default function Home({}) {
               _hover={{ textDecoration: "none" }}
             >
               <Box
+                transition="200ms"
+                color={currentSection === "intro" ? "white" : "whiteAlpha.500"}
+                _hover={{
+                  color: "gray.200 !important",
+                }}
                 fontSize="xl"
                 as="span"
                 fontWeight="500"
-                position="relative"
-                _before={{
-                  content: '""',
-                  backgroundColor: "blue.400",
-                  position: "absolute",
-                  left: "0",
-                  bottom: "-2px",
-                  width: "full",
-                  height: "3px",
-                  zIndex: "-1",
-                  transition: "all .3s ease-in-out",
-                }}
-                _hover={{
-                  _before: {
-                    bottom: "0",
-                    height: "100%",
-                  },
-                }}
               >
                 Intro
               </Box>
@@ -265,27 +308,16 @@ export default function Home({}) {
               _hover={{ textDecoration: "none" }}
             >
               <Box
+                transition="200ms"
+                color={
+                  currentSection === "experience" ? "white" : "whiteAlpha.500"
+                }
+                _hover={{
+                  color: "gray.200 !important",
+                }}
                 fontSize="xl"
                 as="span"
                 fontWeight="500"
-                position="relative"
-                _before={{
-                  content: '""',
-                  backgroundColor: "blue.400",
-                  position: "absolute",
-                  left: "0",
-                  bottom: "-2px",
-                  width: "full",
-                  height: "3px",
-                  zIndex: "-1",
-                  transition: "all .3s ease-in-out",
-                }}
-                _hover={{
-                  _before: {
-                    bottom: "0",
-                    height: "100%",
-                  },
-                }}
               >
                 Experience
               </Box>
@@ -298,64 +330,35 @@ export default function Home({}) {
               mb={2}
               _hover={{ textDecoration: "none" }}
             >
-              <Box
+              <Text
+                transition="200ms"
+                color={
+                  currentSection === "projects" ? "white" : "whiteAlpha.500"
+                }
+                _hover={{
+                  color: "gray.200 !important",
+                }}
                 fontSize="xl"
                 as="span"
                 fontWeight="500"
-                position="relative"
-                _before={{
-                  content: '""',
-                  backgroundColor: "blue.400",
-                  position: "absolute",
-                  left: "0",
-                  bottom: "-2px",
-                  width: "full",
-                  height: "3px",
-                  zIndex: "-1",
-                  transition: "all .3s ease-in-out",
-                }}
-                _hover={{
-                  _before: {
-                    bottom: "0",
-                    height: "100%",
-                  },
-                }}
               >
                 Projects
-              </Box>
+              </Text>
             </Link>
           </Box>
 
           <Spacer />
 
           <HStack mt={["2rem", "0"]} mb="3rem" spacing={4}>
-            <Tooltip label="Twitter" borderRadius="md" bg="gray.800">
+            <Tooltip
+              placement="top"
+              label="LinkedIn"
+              borderRadius="md"
+              bg="gray.800"
+            >
               <Link
-                _hover={{
-                  color: "twitter.500 !important",
-                }}
-                href="https://twitter.com/siddharthd01"
-                isExternal
-                color="whiteAlpha.500"
-              >
-                <FaTwitter size={25} />
-              </Link>
-            </Tooltip>
-            <Tooltip label="Instagram" borderRadius="md" bg="gray.800">
-              <Link
-                _hover={{
-                  color: "red.500 !important",
-                }}
-                href="https://www.instagram.com/siddharth.duggal/"
-                isExternal
-                color="whiteAlpha.500"
-              >
-                <FaInstagram size={25} />
-              </Link>
-            </Tooltip>
-
-            <Tooltip label="LinkedIn" borderRadius="md" bg="gray.800">
-              <Link
+                alignItems="center"
+                display={"flex"}
                 _hover={{
                   color: "linkedin.500 !important",
                 }}
@@ -363,19 +366,27 @@ export default function Home({}) {
                 isExternal
                 color="whiteAlpha.500"
               >
-                <FaLinkedin size={25} />
+                <FaLinkedin size={25} />{" "}
+                <Text ml="8px">/in/siddharth-duggal</Text>
               </Link>
             </Tooltip>
-            <Tooltip label="GitHub" borderRadius="md" bg="gray.800">
+            <Tooltip
+              placement="top"
+              label="GitHub"
+              borderRadius="md"
+              bg="gray.800"
+            >
               <Link
+                alignItems="center"
+                display={"flex"}
+                color="whiteAlpha.500"
                 _hover={{
                   color: "gray.200 !important",
                 }}
                 href="https://github.com/siddharthd0"
                 isExternal
-                color="whiteAlpha.500"
               >
-                <FaGithub size={25} />
+                <FaGithub size={25} /> <Text ml="8px">/siddharthd0</Text>
               </Link>
             </Tooltip>
           </HStack>
@@ -392,7 +403,7 @@ export default function Home({}) {
           >
             Intro
           </Heading>
-          <Text mt="1rem" color="whiteAlpha.800" px={4}>
+          <Text mt="1rem" color="whiteAlpha.600" px={4}>
             Three years ago, I began experimenting with{" "}
             <chakra.span fontWeight="semibold" color="white">
               JavaScript
@@ -409,7 +420,7 @@ export default function Home({}) {
             for clients. Concurrently, I developed a hosting platform, making it
             simpler for developers to host their projects.
           </Text>
-          <Text color="whiteAlpha.800" px={4} mt={2}>
+          <Text color="whiteAlpha.600" px={4} mt={2}>
             Today, I channel my energies and expertise into{" "}
             <Link
               _hover={{
@@ -493,11 +504,19 @@ export default function Home({}) {
               Projects
             </Heading>
             <Project
+              link="https://dashboard.techoptimum.org"
+              title="Tech Optimum Learning Platform"
+              dates="Febuary 2022 - Present"
+              description="Built the learning platform in Next.js and Chakra UI from the ground up, creating a full-stack application"
+              technologies={["React", "JavaScript", "Next.js", "Chakra UI"]}
+            />
+            <Project
               link="https://resumate.tech"
               title="Resumate"
               dates="Febuary 2022 - Febuary 2022"
               description="Resumate is a resume builder that helps you create a resume 
           in minutes. It is a simple and easy to use resume builder that allows you to combine Markdown and CSS with ease to create a PF resume, custom to you."
+              technologies={["React", "TypeScript", "Next.js", "Chakra UI"]}
             />
 
             <Project
@@ -507,6 +526,7 @@ export default function Home({}) {
               description={
                 "Lite Design provides simple & easy to interpret code that you can understand without much problem. We want to help you save time when it comes to building your next project, which is why we built Lite Designs."
               }
+              technologies={["React", "TypeScript", "Next.js", "Chakra UI"]}
             />
             <Project
               title="A Small Universe"
@@ -515,6 +535,7 @@ export default function Home({}) {
           yourself by looking
           at comets, stars, and more! Put your cursor where you desire, and you will explore more!"
               link="https://ap-csp-universe-project.siddharthdugg.repl.co"
+              technologies={["Javascript", "HTML", "CSS"]}
             />
             <Project
               title={"Aeolus"}
@@ -523,6 +544,7 @@ export default function Home({}) {
           the area you are in is polluted, and can tell you what to do
           depending on different variables. Data collected by EPA."
               link="https://aeolus.roryjames.repl.co/"
+              technologies={["React", "TypeScript", "Tailwind CSS"]}
             />
             <Project
               title="Carbonara"
@@ -531,6 +553,7 @@ export default function Home({}) {
           travelers. Carbonara is focused on the impacts of a vacation on
           the climate."
               link="https://carbonara.roryjames.repl.co"
+              technologies={["React", "TypeScript", "Tailwind CSS"]}
             />
             <Project
               title="Skyline"
@@ -539,6 +562,7 @@ export default function Home({}) {
           perfect weather. Input your location to get various clothing
           suggestions!"
               link="https://skyline.arnavpandey722.repl.co/"
+              technologies={["Python", "Flask", "HTML", "CSS"]}
             />
           </Box>
         </Box>
