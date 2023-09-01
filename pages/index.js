@@ -359,7 +359,7 @@ export default function Home({}) {
             left="0"
             right="0"
             bottom="0"
-            bg="rgb(15 23 42)"
+            bg="black"
             zIndex="modal"
             height="100vh"
             width="100vw"
@@ -649,7 +649,7 @@ export default function Home({}) {
             >
               Projects
             </Heading>
-            <Wrap spacing={3} mb={4}>
+            <Wrap spacing={3} mb={8}>
               {allTags.map((tag) => (
                 <Badge
                   key={tag}
