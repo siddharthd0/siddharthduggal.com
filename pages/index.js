@@ -415,26 +415,25 @@ export default function Home({}) {
             py=".8rem"
             bg="#111"
           >
-           
-              <Text color="whiteAlpha.900" fontSize="md" fontWeight="500">
-                <chakra.span
-                  color="whiteAlpha.500"
-                  fontWeight="bold"
-                  fontSize="2xl"
-                >
-                  "
-                </chakra.span>{" "}
-                We’re here to put a dent in the universe. Otherwise why else
-                even be here?{" "}
-                <chakra.span
-                  color="whiteAlpha.500"
-                  fontWeight="bold"
-                  fontSize="2xl"
-                >
-                  "
-                </chakra.span>
-              </Text>
-      
+            <Text color="whiteAlpha.900" fontSize="md" fontWeight="500">
+              <chakra.span
+                color="whiteAlpha.500"
+                fontWeight="bold"
+                fontSize="2xl"
+              >
+                "
+              </chakra.span>{" "}
+              We’re here to put a dent in the universe. Otherwise why else even
+              be here?{" "}
+              <chakra.span
+                color="whiteAlpha.500"
+                fontWeight="bold"
+                fontSize="2xl"
+              >
+                "
+              </chakra.span>
+            </Text>
+
             <Text
               mt=".6rem"
               color="whiteAlpha.600"
