@@ -415,7 +415,7 @@ export default function Home({}) {
             py=".8rem"
             bg="#111"
           >
-            <Box borderColor="whiteAlpha.200 !important" pl=".7rem" borderLeft="1px">
+           
               <Text color="whiteAlpha.900" fontSize="md" fontWeight="500">
                 <chakra.span
                   color="whiteAlpha.500"
@@ -434,7 +434,7 @@ export default function Home({}) {
                   "
                 </chakra.span>
               </Text>
-            </Box>
+      
             <Text
               mt=".6rem"
               color="whiteAlpha.600"
