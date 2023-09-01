@@ -1,32 +1,67 @@
 import Head from "next/head";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
   Link,
   Flex,
   Text,
   Box,
   VStack,
+  Button,
   Image,
   Heading,
   Spacer,
+  Wrap,
   HStack,
   chakra,
   Tooltip,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody,
+  ModalCloseButton,
   Badge,
   Fade,
 } from "@chakra-ui/react";
-import { FaTwitter, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { LinkBox, LinkOverlay } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { AiOutlineLink } from "react-icons/ai";
 
+import Slider from "react-slick";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MotionBox = motion(Box);
 
-function Project({ title, description, link, technologies }) {
+function Project({
+  title,
+  description,
+  link,
+  technologies,
+  code,
+  selectedTags,
+  images,
+}) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const isVisible =
+    selectedTags.length === 0 ||
+    technologies.some((tech) => selectedTags.includes(tech));
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  if (!isVisible) return null;
+
   return (
     <LinkBox
       mb="1rem"
-      p={5}
       borderWidth="1px"
       borderRadius="lg"
       bg="#111"
@@ -35,13 +70,21 @@ function Project({ title, description, link, technologies }) {
       _hover={{
         bg: "black",
         transform: "translateY(-5px)",
-
         borderColor: "rgba(255,255,255,0.2)",
       }}
+      onClick={onOpen}
     >
-      <LinkOverlay href={link} isExternal>
-        <VStack align="start" spacing={3}>
-          {" "}
+      <LinkOverlay>
+        <Image
+          src={images[0]} // Show the first image by default
+          alt={title}
+          borderTopRightRadius="lg"
+          borderTopLeftRadius="lg"
+          objectFit="cover"
+          height="200px"
+          width="100%"
+        />
+        <VStack p={5} align="start" spacing={3}>
           <HStack spacing={2}>
             <Text color="whiteAlpha.900" fontWeight="medium" fontSize="lg">
               {title}
@@ -71,6 +114,81 @@ function Project({ title, description, link, technologies }) {
           </HStack>
         </VStack>
       </LinkOverlay>
+
+      <Modal size="2xl" w="100%" isCentered isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay
+          bg="none"
+          backdropFilter="auto"
+          backdropInvert="80%"
+          backdropBlur="2px"
+        />
+        <ModalContent w="100%" p="1rem" bg="black">
+          <ModalCloseButton />
+          <ModalBody>
+            <Heading fontWeight="medium" mt=".5rem" mb="1rem" fontSize="2xl">
+              {title}
+            </Heading>
+            <Text pb="1rem" color="whiteAlpha.600" fontSize="md">
+              {description}
+            </Text>
+            <Slider {...settings}>
+              {images.map((img, index) => (
+                <Image
+                  borderRadius="md"
+                  key={index}
+                  src={img}
+                  alt={title}
+                  objectFit="cover"
+                  height="300px"
+                  width="100%"
+                />
+              ))}
+            </Slider>
+            <Button
+              leftIcon={<AiOutlineLink />}
+              fontWeight="medium"
+              borderWidth="1px"
+              borderRadius="lg"
+              bg="#111"
+              borderColor="rgba(255,255,255,0)"
+              transition="all 0.25s ease"
+              _hover={{
+                bg: "black",
+                transform: "translateY(-5px)",
+                borderColor: "rgba(255,255,255,0.2)",
+              }}
+              href={link}
+              as="a"
+              isExternal
+              mt="1rem"
+            >
+              View Project
+            </Button>
+            <Button
+              ml="1rem"
+              leftIcon={<FaGithub />}
+              fontWeight="medium"
+              borderWidth="1px"
+              borderRadius="lg"
+              bg="#111"
+              borderColor="rgba(255,255,255,0)"
+              transition="all 0.25s ease"
+              _hover={{
+                bg: "black",
+                transform: "translateY(-5px)",
+                borderColor: "rgba(255,255,255,0.2)",
+              }}
+              href={code}
+              as="a"
+              isExternal
+              mt="1rem"
+              isDisabled={!code} // Disable the button if there's no GitHub link
+            >
+              View on GitHub
+            </Button>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </LinkBox>
   );
 }
@@ -115,7 +233,12 @@ function ExperienceCard({
                 {date}
               </Text>
             </HStack>
-            <Text py="9px" color="whiteAlpha.900" fontWeight="medium" fontSize="sm">
+            <Text
+              py="9px"
+              color="whiteAlpha.900"
+              fontWeight="medium"
+              fontSize="sm"
+            >
               {description}
             </Text>
             <HStack mt={2} spacing={3}>
@@ -193,6 +316,29 @@ export default function Home({}) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  const allTags = [
+    "React",
+    "JavaScript",
+    "Next.js",
+    "Chakra UI",
+    "TypeScript",
+    "HTML",
+    "CSS",
+    "Tailwind CSS",
+    "Python",
+    "Flask",
+    // ... (add more if needed)
+  ];
+
+  const toggleTag = (tag) => {
+    setSelectedTags((prevTags) =>
+      prevTags.includes(tag)
+        ? prevTags.filter((t) => t !== tag)
+        : [...prevTags, tag]
+    );
+  };
 
   return (
     <>
@@ -261,24 +407,44 @@ export default function Home({}) {
           >
             Siddharth Duggal
           </Heading>
+          <Box
+            maxW="400px"
+            borderRadius="lg"
+            my=".7rem"
+            px=".8rem"
+            py=".8rem"
+            bg="#111"
+          >
+            <Box borderColor="whiteAlpha.200 !important" pl=".7rem" borderLeft="1px">
+              <Text color="whiteAlpha.900" fontSize="md" fontWeight="500">
+                <chakra.span
+                  color="whiteAlpha.500"
+                  fontWeight="bold"
+                  fontSize="2xl"
+                >
+                  "
+                </chakra.span>{" "}
+                We’re here to put a dent in the universe. Otherwise why else
+                even be here?{" "}
+                <chakra.span
+                  color="whiteAlpha.500"
+                  fontWeight="bold"
+                  fontSize="2xl"
+                >
+                  "
+                </chakra.span>
+              </Text>
+            </Box>
+            <Text
+              mt=".6rem"
+              color="whiteAlpha.600"
+              fontSize="sm"
+              fontWeight="medium"
+            >
+              — Steve Jobs
+            </Text>
+          </Box>
 
-          <Text
-            mt=".8rem"
-            color="whiteAlpha.900"
-            fontSize="md"
-            fontWeight="500"
-          >
-            “We’re here to put a dent in the universe. Otherwise why else even
-            be here?”
-          </Text>
-          <Text
-            mt=".6rem"
-            color="whiteAlpha.600"
-            fontSize="sm"
-            fontWeight="medium"
-          >
-            — Steve Jobs
-          </Text>
           <Box mt="2rem">
             <Link
               href="#intro"
@@ -398,50 +564,32 @@ export default function Home({}) {
             pt="2rem"
             color="whiteAlpha.900"
             fontWeight="medium"
-            px={4}
             fontSize="3xl"
           >
             Intro
           </Heading>
-          <Text mt="1rem" color="whiteAlpha.600" px={4}>
+          <Text mt="1rem" color="whiteAlpha.600">
             Three years ago, I began experimenting with{" "}
-            <chakra.span fontWeight="semibold" color="white">
-              JavaScript
-            </chakra.span>{" "}
-            and started building{" "}
-            <chakra.span fontWeight="semibold" color="white">
-              Discord bots
-            </chakra.span>
-            . This was more than a hobby. Within a year, I was creating Discord
-            bots, websites, and{" "}
-            <chakra.span fontWeight="semibold" color="white">
-              Minecraft servers
-            </chakra.span>{" "}
-            for clients. Concurrently, I developed a hosting platform, making it
-            simpler for developers to host their projects.
+            <chakra.span color="white">JavaScript</chakra.span> and started
+            building <chakra.span color="white">Discord bots</chakra.span>. This
+            was more than a hobby. Within a year, I was creating Discord bots,
+            websites, and Minecraft servers for clients. Concurrently, I
+            developed a hosting platform, making it simpler for developers to
+            host their projects.
           </Text>
-          <Text color="whiteAlpha.600" px={4} mt={2}>
+          <Text color="whiteAlpha.600" mt={2}>
             Today, I channel my energies and expertise into{" "}
             <Link
               _hover={{
                 color: "blue.200",
               }}
               href="https://techoptimum.org"
-              fontWeight="semibold"
               color="white"
             >
               Tech Optimum
             </Link>
-            , my own non-profit initiative. We're on a mission to disrupt
-            conventional
-            <chakra.span fontWeight="600" color="white">
-              {" "}
-              coding education
-            </chakra.span>
-            . By championing a project-centric learning approach, we aim to
-            reflect the real-world experiences and challenges of tech
-            internships and roles. It's not just about education—it's a holistic
-            coding journey tailored for today's tech enthusiasts.
+            , my own non-profit initiative. We're on a mission to create the
+            worlds first free all in one eco-system for learning how to code.
           </Text>
 
           <Box>
@@ -450,7 +598,6 @@ export default function Home({}) {
               pt="2rem"
               color="whiteAlpha.900"
               fontWeight="medium"
-              px={4}
               fontSize="3xl"
               mb="1rem"
             >
@@ -495,7 +642,6 @@ export default function Home({}) {
             <Heading
               pt="2rem"
               mb="1rem"
-              px={4}
               id="projects"
               color="whiteAlpha.900"
               fontWeight="medium"
@@ -503,30 +649,57 @@ export default function Home({}) {
             >
               Projects
             </Heading>
+            <Wrap spacing={3} mb={4}>
+              {allTags.map((tag) => (
+                <Badge
+                  key={tag}
+                  onClick={() => toggleTag(tag)}
+                  cursor="pointer"
+                  variant={selectedTags.includes(tag) ? "solid" : "outline"}
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </Wrap>
             <Project
               link="https://dashboard.techoptimum.org"
               title="Tech Optimum Learning Platform"
               dates="Febuary 2022 - Present"
               description="Built the learning platform in Next.js and Chakra UI from the ground up, creating a full-stack application"
               technologies={["React", "JavaScript", "Next.js", "Chakra UI"]}
+              selectedTags={selectedTags}
+              images={["dashboard-preview.png", "dashboard-preview-2.png"]}
             />
             <Project
+              code="https://github.com/siddharthd0/resumate"
               link="https://resumate.tech"
               title="Resumate"
               dates="Febuary 2022 - Febuary 2022"
               description="Resumate is a resume builder that helps you create a resume 
           in minutes. It is a simple and easy to use resume builder that allows you to combine Markdown and CSS with ease to create a PF resume, custom to you."
               technologies={["React", "TypeScript", "Next.js", "Chakra UI"]}
+              selectedTags={selectedTags}
+              images={[
+                "resumate-preview.png",
+                "resumate-preview-2.png",
+                "resumate-preview-3.png",
+              ]}
             />
 
             <Project
-              title="Lite Designs"
-              link="https://www.litedesigns.pro"
+              title="Launchpad Labs"
+              link="https:/www.launchpadlabs.pro"
               dates="December 2022 - Present"
               description={
-                "Lite Design provides simple & easy to interpret code that you can understand without much problem. We want to help you save time when it comes to building your next project, which is why we built Lite Designs."
+                "Launchpad Labs is a web development agency that I founded. We offer a number of services including web development, web design, and more!"
               }
               technologies={["React", "TypeScript", "Next.js", "Chakra UI"]}
+              selectedTags={selectedTags}
+              images={[
+                "launchpad-preview.png",
+                "launchpad-preview-2.png",
+                "launchpad-preview-3.png",
+              ]}
             />
             <Project
               title="A Small Universe"
@@ -536,6 +709,8 @@ export default function Home({}) {
           at comets, stars, and more! Put your cursor where you desire, and you will explore more!"
               link="https://ap-csp-universe-project.siddharthdugg.repl.co"
               technologies={["Javascript", "HTML", "CSS"]}
+              selectedTags={selectedTags}
+              images={["universe-preview.png", "universe-preview-2.png"]}
             />
             <Project
               title={"Aeolus"}
@@ -543,8 +718,16 @@ export default function Home({}) {
               description="Aeolus is a pollution assistant. It can help you determine if
           the area you are in is polluted, and can tell you what to do
           depending on different variables. Data collected by EPA."
-              link="https://aeolus.roryjames.repl.co/"
+              link="https://aeolus-air.vercel.app/"
               technologies={["React", "TypeScript", "Tailwind CSS"]}
+              selectedTags={selectedTags}
+              images={[
+                "aeolus-preview.png",
+                "aeolus-preview-2.png",
+                "aeolus-preview-3.png",
+                "aeolus-preview-4.png",
+              ]}
+              code="https://github.com/siddharthd0/Aeolus"
             />
             <Project
               title="Carbonara"
@@ -554,6 +737,9 @@ export default function Home({}) {
           the climate."
               link="https://carbonara.roryjames.repl.co"
               technologies={["React", "TypeScript", "Tailwind CSS"]}
+              selectedTags={selectedTags}
+              images={["carbonara-preview.png", "carbonara-preview-2.png"]}
+              code="https://github.com/rjames187/Carbonara"
             />
             <Project
               title="Skyline"
@@ -563,6 +749,9 @@ export default function Home({}) {
           suggestions!"
               link="https://skyline.arnavpandey722.repl.co/"
               technologies={["Python", "Flask", "HTML", "CSS"]}
+              selectedTags={selectedTags}
+              images={["skyline-preview.png", "skyline-preview-2.png"]}
+              code="https://github.com/siddharthd0/skyline"
             />
           </Box>
         </Box>
