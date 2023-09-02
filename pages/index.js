@@ -119,8 +119,8 @@ function Project({
         <ModalOverlay
           bg="none"
           backdropFilter="auto"
-          backdropInvert="80%"
-          backdropBlur="2px"
+        
+          backdropBlur="12px"
         />
         <ModalContent w="100%" p="1rem" bg="black">
           <ModalCloseButton />
