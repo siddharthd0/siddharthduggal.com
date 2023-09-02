@@ -18,16 +18,24 @@ import {
   useDisclosure,
   Modal,
   ModalOverlay,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
   ModalContent,
   ModalBody,
   ModalCloseButton,
+  IconButton,
   Badge,
   Fade,
 } from "@chakra-ui/react";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import {FaExternalLinkAlt, FaLinkedin, FaGithub } from "react-icons/fa";
 import { LinkBox, LinkOverlay } from "@chakra-ui/react";
+import { InfoIcon, CloseIcon } from '@chakra-ui/icons';
 import { useEffect, useState } from "react";
 import { AiOutlineLink } from "react-icons/ai";
+
 
 import Slider from "react-slick";
 import { motion, AnimatePresence } from "framer-motion";
@@ -116,12 +124,7 @@ function Project({
       </LinkOverlay>
 
       <Modal size="2xl" w="100%" isCentered isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay
-          bg="none"
-          backdropFilter="auto"
-        
-          backdropBlur="12px"
-        />
+        <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="12px" />
         <ModalContent w="100%" p="1rem" bg="black">
           <ModalCloseButton />
           <ModalBody>
@@ -193,93 +196,99 @@ function Project({
   );
 }
 
-function ExperienceCard({
-  date,
-  company,
-  role,
-  link,
-  description,
-  technologies,
-}) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <LinkBox
-      mb="1rem"
-      p={5}
-      borderWidth="1px"
-      borderRadius="lg"
-      bg="#111"
-      borderColor="rgba(255,255,255,0)"
-      transition="all 0.25s ease"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      _hover={{
-        bg: "black",
-        transform: "translateY(-5px)",
-        borderColor: "rgba(255,255,255,0.2)",
-      }}
-    >
-      <LinkOverlay href={link} isExternal>
-        {isHovered ? (
-          <>
-            <HStack alignItems="center" spacing={2}>
-              <Text color="whiteAlpha.900" fontWeight="medium" fontSize="lg">
-                {role}, {company}
-              </Text>
-
-              <Spacer />
-              <Text color="whiteAlpha.700" fontSize="sm" fontWeight="medium">
-                {date}
-              </Text>
-            </HStack>
-            <Text
-              py="9px"
-              color="whiteAlpha.900"
-              fontWeight="medium"
-              fontSize="sm"
+    function ExperienceCard({ date, company, role, link, description, technologies }) {
+      return (
+        <LinkBox mb="1rem" position="relative">
+          <Accordion allowToggle>
+            <AccordionItem
+              borderWidth="1px"
+              borderRadius="lg"
+              bg="#111"
+              borderColor="rgba(255,255,255,0)"
+              transition="all 0.25s ease"
+              _hover={{
+                bg: "black",
+                transform: "translateY(-5px)",
+                borderColor: "rgba(255,255,255,0.2)"
+              }}
             >
-              {description}
-            </Text>
-            <HStack mt={2} spacing={3}>
-              {technologies.map((tech) => (
-                <Badge
-                  fontWeight="medium"
-                  borderRadius="full"
-                  px={3}
-                  py={1}
-                  key={tech}
-                  variant="outline"
-                  borderColor="#fff" // White border
-                  color="whiteAlpha.800"
+              <AccordionButton>
+                <VStack align="start" spacing={3} flex="1">
+                  <HStack alignItems="center" spacing={2}>
+                    <Text color="whiteAlpha.900" fontWeight="medium" fontSize="md">
+                      {role}, {company}
+                    </Text>
+                    <Spacer />
+                    <Text color="whiteAlpha.700" fontSize="xs" fontWeight="medium">
+                      {date}
+                    </Text>
+                  </HStack>
+                </VStack>
+                <IconButton
+                mr="8px"
+                  size="sm"
+                  icon={<FaExternalLinkAlt />}
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  bg="black"
+                  borderColor="rgba(255,255,255,0)"
+                  transition="all 0.25s ease"
                   _hover={{
-                    transform: "scale(1.1)",
-                    background: "#333",
+                    bg: "black",
+                    transform: "translateY(-5px)",
+                    borderColor: "rgba(255,255,255,0.2)",
                   }}
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </HStack>
-          </>
-        ) : (
-          <VStack align="start" spacing={3}>
-            <HStack alignItems="center" spacing={2}>
-              <Text color="whiteAlpha.900" fontWeight="medium" fontSize="lg">
-                {role}, {company}
-              </Text>
-              <Spacer />
-              <Text color="whiteAlpha.700" fontSize="sm" fontWeight="medium">
-                {date}
-              </Text>
-            </HStack>
-          </VStack>
-        )}
-      </LinkOverlay>
-    </LinkBox>
-  );
-}
+                  href={link}
+                  as="a"
+                  isExternal
+                />
+                <IconButton
+                  size="sm"
+                  icon={<AccordionIcon boxSize={4} />}
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  bg="black"
+                  borderColor="rgba(255,255,255,0)"
+                  transition="all 0.25s ease"
+                  _hover={{
+                    bg: "black",
+                    transform: "translateY(-5px)",
+                    borderColor: "rgba(255,255,255,0.2)",
+                  }}
+                />
+              
+              </AccordionButton>
+              <AccordionPanel pb={4}>
+                <Text pb="9px" color="whiteAlpha.900" fontWeight="medium" fontSize="sm">
+                  {description}
+                </Text>
+                <HStack mt={2} spacing={3}>
+                  {technologies.map((tech, index) => (
+                    <Badge
+                      key={index}
+                      fontWeight="medium"
+                      borderRadius="full"
+                      px={3}
+                      py={1}
+                      variant="outline"
+                      borderColor="#fff"
+                      color="whiteAlpha.800"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </HStack>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
 
+        </LinkBox>
+      );
+    }
+    
+ 
+    
+ 
 export default function Home({}) {
   const [showSplash, setShowSplash] = useState(true);
   const [currentSection, setCurrentSection] = useState("intro");
@@ -348,7 +357,6 @@ export default function Home({}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/me.png" />
       </Head>
-      
 
       <Flex px={["2rem", "10rem"]} flexDirection={["column", "row"]}>
         <Flex
@@ -384,18 +392,18 @@ export default function Home({}) {
               <chakra.span
                 color="whiteAlpha.500"
                 fontWeight="bold"
-                fontSize="2xl"
+                fontSize="3xl"
               >
-                "
-              </chakra.span>{" "}
+                ❝&nbsp;
+              </chakra.span>
               We’re here to put a dent in the universe. Otherwise why else even
-              be here?{" "}
+              be here?
               <chakra.span
                 color="whiteAlpha.500"
                 fontWeight="bold"
-                fontSize="2xl"
+                fontSize="3xl"
               >
-                "
+                &nbsp;❞
               </chakra.span>
             </Text>
 
