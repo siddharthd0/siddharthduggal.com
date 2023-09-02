@@ -613,7 +613,7 @@ export default function Home({}) {
           <Box mt={5}>
             <Heading
               pt="2rem"
-              mb="1rem"
+              
               id="projects"
               color="whiteAlpha.900"
               fontWeight="medium"
@@ -621,13 +621,27 @@ export default function Home({}) {
             >
               Projects
             </Heading>
-            <Wrap spacing={3} mb={8}>
+            <Wrap pt="1rem" spacing={3} mb={8}>
               {allTags.map((tag) => (
                 <Badge
+                px=".4rem"
                   key={tag}
                   onClick={() => toggleTag(tag)}
                   cursor="pointer"
+                  color={selectedTags.includes(tag) ? "white" : "whiteAlpha.700"}
                   variant={selectedTags.includes(tag) ? "solid" : "outline"}
+                  transform={selectedTags.includes(tag) ? "scale(1.05)" : ""}
+                  borderWidth="1px"
+                  borderRadius="lg"
+                 
+                  bg="#111"
+                  borderColor="rgba(255,255,255,0)"
+                  transition="all 0.25s ease"
+                  _hover={{
+                    bg: "black",
+                    transform: "translateY(-5px)",
+                    borderColor: "rgba(255,255,255,0.2)"
+                  }}
                 >
                   {tag}
                 </Badge>
