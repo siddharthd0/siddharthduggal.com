@@ -348,42 +348,7 @@ export default function Home({}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/me.png" />
       </Head>
-      <AnimatePresence>
-        {showSplash && (
-          <MotionBox
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ duration: 1 }}
-            position="fixed"
-            top="0"
-            left="0"
-            right="0"
-            bottom="0"
-            bg="black"
-            zIndex="modal"
-            height="100vh"
-            width="100vw"
-            overflow="hidden"
-          >
-            <Flex direction="column" align="center" justify="center" h="100%">
-              <Text>
-                <Image
-                  className="spin"
-                  mx="auto"
-                  src="me.png"
-                  boxSize="50px"
-                  borderRadius="full"
-                  mb="1rem"
-                />
-
-                <chakra.span fontWeight="bold" color="whiteAlpha.900">
-                  Siddharth Duggal
-                </chakra.span>
-              </Text>
-            </Flex>
-          </MotionBox>
-        )}
-      </AnimatePresence>
+      
 
       <Flex px={["2rem", "10rem"]} flexDirection={["column", "row"]}>
         <Flex
