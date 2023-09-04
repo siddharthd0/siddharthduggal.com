@@ -16,6 +16,7 @@ import {
   chakra,
   Tooltip,
   useDisclosure,
+  useToast,
   Modal,
   ModalOverlay,
   Accordion,
@@ -24,18 +25,21 @@ import {
   AccordionPanel,
   AccordionIcon,
   ModalContent,
+  FormControl,
+  FormLabel,
+  Input,
+  Textarea,
   ModalBody,
   ModalCloseButton,
   IconButton,
   Badge,
   Fade,
 } from "@chakra-ui/react";
-import {FaExternalLinkAlt, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt, FaLinkedin, FaGithub } from "react-icons/fa";
 import { LinkBox, LinkOverlay } from "@chakra-ui/react";
-import { InfoIcon, CloseIcon } from '@chakra-ui/icons';
+import { InfoIcon, CloseIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import { AiOutlineLink } from "react-icons/ai";
-
 
 import Slider from "react-slick";
 import { motion, AnimatePresence } from "framer-motion";
@@ -101,7 +105,7 @@ function Project({
           <Text mt={2} color="whiteAlpha.600" fontSize="md">
             {description}
           </Text>
-          <HStack mt={2} spacing={3}>
+          <Wrap mt={2} spacing={3}>
             {technologies.map((tech) => (
               <Badge
                 fontWeight="medium"
@@ -119,7 +123,7 @@ function Project({
                 {tech}
               </Badge>
             ))}
-          </HStack>
+          </Wrap>
         </VStack>
       </LinkOverlay>
 
@@ -185,7 +189,7 @@ function Project({
               as="a"
               isExternal
               mt="1rem"
-              isDisabled={!code} // Disable the button if there's no GitHub link
+              isDisabled={!code}
             >
               View on GitHub
             </Button>
@@ -196,100 +200,189 @@ function Project({
   );
 }
 
-    function ExperienceCard({ date, company, role, link, description, technologies }) {
-      return (
-        <LinkBox mb="1rem" position="relative">
-          <Accordion allowToggle>
-            <AccordionItem
+function ExperienceCard({
+  date,
+  company,
+  role,
+  link,
+  description,
+  technologies,
+}) {
+  return (
+    <LinkBox mb="1rem" position="relative">
+      <Accordion allowToggle>
+        <AccordionItem
+          borderWidth="1px"
+          borderRadius="lg"
+          bg="#111"
+          borderColor="rgba(255,255,255,0)"
+          transition="all 0.25s ease"
+          _hover={{
+            bg: "black",
+            transform: "translateY(-5px)",
+            borderColor: "rgba(255,255,255,0.2)",
+          }}
+        >
+          <AccordionButton>
+            <VStack align="start" spacing={3} flex="1">
+              <HStack alignItems="center" spacing={2}>
+                <Text color="whiteAlpha.900" fontWeight="medium" fontSize="md">
+                  {role}, {company}
+                </Text>
+                <Spacer />
+                <Text color="whiteAlpha.700" fontSize="xs" fontWeight="medium">
+                  {date}
+                </Text>
+              </HStack>
+            </VStack>
+            <IconButton
+              mr="8px"
+              size="sm"
+              icon={<FaExternalLinkAlt />}
               borderWidth="1px"
               borderRadius="lg"
-              bg="#111"
+              bg="black"
               borderColor="rgba(255,255,255,0)"
               transition="all 0.25s ease"
               _hover={{
                 bg: "black",
                 transform: "translateY(-5px)",
-                borderColor: "rgba(255,255,255,0.2)"
+                borderColor: "rgba(255,255,255,0.2)",
               }}
+              href={link}
+              as="a"
+              isExternal
+            />
+            <IconButton
+              size="sm"
+              icon={<AccordionIcon boxSize={4} />}
+              borderWidth="1px"
+              borderRadius="lg"
+              bg="black"
+              borderColor="rgba(255,255,255,0)"
+              transition="all 0.25s ease"
+              _hover={{
+                bg: "black",
+                transform: "translateY(-5px)",
+                borderColor: "rgba(255,255,255,0.2)",
+              }}
+            />
+          </AccordionButton>
+          <AccordionPanel pb={4}>
+            <Text
+              pb="9px"
+              color="whiteAlpha.900"
+              fontWeight="medium"
+              fontSize="sm"
             >
-              <AccordionButton>
-                <VStack align="start" spacing={3} flex="1">
-                  <HStack alignItems="center" spacing={2}>
-                    <Text color="whiteAlpha.900" fontWeight="medium" fontSize="md">
-                      {role}, {company}
-                    </Text>
-                    <Spacer />
-                    <Text color="whiteAlpha.700" fontSize="xs" fontWeight="medium">
-                      {date}
-                    </Text>
-                  </HStack>
-                </VStack>
-                <IconButton
-                mr="8px"
-                  size="sm"
-                  icon={<FaExternalLinkAlt />}
-                  borderWidth="1px"
-                  borderRadius="lg"
-                  bg="black"
-                  borderColor="rgba(255,255,255,0)"
-                  transition="all 0.25s ease"
-                  _hover={{
-                    bg: "black",
-                    transform: "translateY(-5px)",
-                    borderColor: "rgba(255,255,255,0.2)",
-                  }}
-                  href={link}
-                  as="a"
-                  isExternal
-                />
-                <IconButton
-                  size="sm"
-                  icon={<AccordionIcon boxSize={4} />}
-                  borderWidth="1px"
-                  borderRadius="lg"
-                  bg="black"
-                  borderColor="rgba(255,255,255,0)"
-                  transition="all 0.25s ease"
-                  _hover={{
-                    bg: "black",
-                    transform: "translateY(-5px)",
-                    borderColor: "rgba(255,255,255,0.2)",
-                  }}
-                />
-              
-              </AccordionButton>
-              <AccordionPanel pb={4}>
-                <Text pb="9px" color="whiteAlpha.900" fontWeight="medium" fontSize="sm">
-                  {description}
-                </Text>
-                <HStack mt={2} spacing={3}>
-                  {technologies.map((tech, index) => (
-                    <Badge
-                      key={index}
-                      fontWeight="medium"
-                      borderRadius="full"
-                      px={3}
-                      py={1}
-                      variant="outline"
-                      borderColor="#fff"
-                      color="whiteAlpha.800"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </HStack>
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
+              {description}
+            </Text>
+            <HStack mt={2} spacing={3}>
+              {technologies.map((tech, index) => (
+                <Badge
+                  key={index}
+                  fontWeight="medium"
+                  borderRadius="full"
+                  px={3}
+                  py={1}
+                  variant="outline"
+                  borderColor="#fff"
+                  color="whiteAlpha.800"
+                >
+                  {tech}
+                </Badge>
+              ))}
+            </HStack>
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+    </LinkBox>
+  );
+}
 
-        </LinkBox>
-      );
-    }
-    
- 
-    
- 
 export default function Home({}) {
+  const [isLoading, setIsLoading] = useState(false);
+  const toast = useToast();
+
+  const inputStyles = {
+    borderWidth: "1px",
+    borderRadius: "lg",
+    bg: "#111",
+    borderColor: "rgba(255, 255, 255, 0)",
+    transition: "all 0.25s ease",
+    _hover: {
+      bg: "black",
+      transform: "translateY(-5px)",
+      borderColor: "rgba(255, 255, 255, 0.2)",
+    },
+   
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    // Form data
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+    };
+
+    // Discord embed payload
+    const payload = JSON.stringify({
+      embeds: [
+        {
+          title: "New Contact Form Submission",
+          fields: [
+            { name: "Name", value: formData.name },
+            { name: "Email", value: formData.email },
+            { name: "Message", value: formData.message },
+          ],
+        },
+      ],
+    });
+
+    const webhookURL = process.env.NEXT_PUBLIC_DISCORD_WEBHOOK_URL;
+
+    try {
+      const response = await fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: payload,
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Form submitted.",
+          description: "We've received your submission.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "Form submission failed.",
+          description: "Something went wrong. Please try again.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "An error occurred.",
+        description: "Unable to submit the form.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
   const [showSplash, setShowSplash] = useState(true);
   const [currentSection, setCurrentSection] = useState("intro");
 
@@ -338,7 +431,6 @@ export default function Home({}) {
     "Tailwind CSS",
     "Python",
     "Flask",
-    // ... (add more if needed)
   ];
 
   const toggleTag = (tag) => {
@@ -362,13 +454,13 @@ export default function Home({}) {
         <Flex
           direction="column"
           overflowX={"hidden !important"}
-          px="1rem"
+          px={["0", "1rem"]}
           as="aside"
           position={["none", "sticky"]}
           top="0"
           height="100vh"
           overflowY="auto"
-          pt="5rem"
+          pt="4rem"
           flex="1"
         >
           <Image src="/me.png" borderRadius="full" boxSize="100px" />
@@ -376,7 +468,7 @@ export default function Home({}) {
             color="whiteAlpha.900"
             fontWeight="500"
             mt="1rem"
-            fontSize="5xl"
+            fontSize={["4xl", "5xl"]}
           >
             Siddharth Duggal
           </Heading>
@@ -484,6 +576,29 @@ export default function Home({}) {
               </Text>
             </Link>
           </Box>
+          <Box mt="1rem">
+            <Link
+              href="#contact"
+              textDecoration="none"
+              mb={2}
+              _hover={{ textDecoration: "none" }}
+            >
+              <Text
+                transition="200ms"
+                color={
+                  currentSection === "contact" ? "white" : "whiteAlpha.500"
+                }
+                _hover={{
+                  color: "gray.200 !important",
+                }}
+                fontSize="xl"
+                as="span"
+                fontWeight="500"
+              >
+                Contact
+              </Text>
+            </Link>
+          </Box>
 
           <Spacer />
 
@@ -530,10 +645,10 @@ export default function Home({}) {
           </HStack>
         </Flex>
         {/* Right Section */}
-        <Box py="5rem" flex="1">
+        <Box py={["0", "2rem"]} flex="1">
           <Heading
             id="intro"
-            pt="2rem"
+            pt={["0", "2rem"]}
             color="whiteAlpha.900"
             fontWeight="medium"
             fontSize="3xl"
@@ -613,7 +728,6 @@ export default function Home({}) {
           <Box mt={5}>
             <Heading
               pt="2rem"
-              
               id="projects"
               color="whiteAlpha.900"
               fontWeight="medium"
@@ -624,23 +738,24 @@ export default function Home({}) {
             <Wrap pt="1rem" spacing={3} mb={8}>
               {allTags.map((tag) => (
                 <Badge
-                px=".4rem"
+                  px=".4rem"
                   key={tag}
                   onClick={() => toggleTag(tag)}
                   cursor="pointer"
-                  color={selectedTags.includes(tag) ? "white" : "whiteAlpha.700"}
+                  color={
+                    selectedTags.includes(tag) ? "white" : "whiteAlpha.700"
+                  }
                   variant={selectedTags.includes(tag) ? "solid" : "outline"}
                   transform={selectedTags.includes(tag) ? "scale(1.05)" : ""}
                   borderWidth="1px"
                   borderRadius="lg"
-                 
                   bg="#111"
                   borderColor="rgba(255,255,255,0)"
                   transition="all 0.25s ease"
                   _hover={{
                     bg: "black",
                     transform: "translateY(-5px)",
-                    borderColor: "rgba(255,255,255,0.2)"
+                    borderColor: "rgba(255,255,255,0.2)",
                   }}
                 >
                   {tag}
@@ -739,6 +854,69 @@ export default function Home({}) {
               images={["skyline-preview.png", "skyline-preview-2.png"]}
               code="https://github.com/siddharthd0/skyline"
             />
+          </Box>
+          <Box>
+            <Heading
+              pt="2rem"
+              id="contact"
+              color="whiteAlpha.900"
+              fontWeight="medium"
+              fontSize="3xl"
+            >
+              Contact
+            </Heading>
+            <Box pt="1rem" as="form" onSubmit={handleSubmit}>
+              <FormControl id="name" mb={4} isDisabled={isLoading}>
+                <FormLabel>Name</FormLabel>
+                <Input
+                  isRequired
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  {...inputStyles}
+                />
+              </FormControl>
+
+              <FormControl id="email" mb={4} isDisabled={isLoading}>
+                <FormLabel>Email</FormLabel>
+                <Input
+                  isRequired
+                  name="email"
+                  type="email"
+                  placeholder="Your email"
+                  {...inputStyles}
+                />
+              </FormControl>
+
+              <FormControl id="message" mb={4} isDisabled={isLoading}>
+                <FormLabel>Message</FormLabel>
+                <Textarea
+                  isRequired
+                  name="message"
+                  placeholder="Your message"
+                  {...inputStyles}
+                />
+              </FormControl>
+
+              <Button
+                my={2}
+                borderWidth="1px"
+                borderRadius="lg"
+                bg="#111"
+                borderColor="rgba(255, 255, 255, 0)"
+                transition="all 0.25s ease"
+                _hover={{
+                  bg: "black",
+                  transform: "translateY(-5px)",
+                  borderColor: "rgba(255, 255, 255, 0.2)",
+                }}
+                type="submit"
+                colorScheme="teal"
+                isLoading={isLoading}
+              >
+                Send
+              </Button>
+            </Box>
           </Box>
         </Box>
       </Flex>
