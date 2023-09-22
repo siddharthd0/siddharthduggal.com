@@ -174,12 +174,12 @@ function Project({
               href={link}
               as="a"
               isExternal
-              mt="2rem"
+              mt="3rem"
             >
               View Project
             </Button>
             <Button
-              ml={["0","1rem"]}
+              ml={[".5rem","1rem"]}
               leftIcon={<FaGithub />}
               fontWeight={"medium"}
               color="black"
@@ -195,7 +195,7 @@ function Project({
               href={code}
               as="a"
               isExternal
-              mt={[".5rem","2rem"]}
+              mt={["3rem"]}
               isDisabled={!code}
             >
               View on GitHub
@@ -339,6 +339,7 @@ export default function Home({}) {
   const inputStyles = {
     borderWidth: "1px",
     borderRadius: "lg",
+    color: "black",
 
     transition: "all 0.25s ease",
     _hover: {
@@ -382,16 +383,16 @@ export default function Home({}) {
 
       if (response.ok) {
         toast({
-          title: "Form submitted.",
-          description: "We've received your submission.",
+          title: "Sent",
+          description: "Siddharth will contact you ASAP. ",
           status: "success",
           duration: 5000,
           isClosable: true,
         });
       } else {
         toast({
-          title: "Form submission failed.",
-          description: "Something went wrong. Please try again.",
+          title: "Oops",
+          description: "Something went wrong :/ Email me at siddharth@techoptimum.org",
           status: "error",
           duration: 5000,
           isClosable: true,
@@ -486,15 +487,15 @@ export default function Home({}) {
           top="0"
           height="100vh"
           overflowY="auto"
-          pt="4rem"
+          pt="3.5rem"
           flex="1"
         >
-          <Image src="/me.png" borderRadius="full" boxSize="90px" />
+          <Image ml="-1rem" src="/siddharth-white.png" borderRadius="full" boxSize="120px" />
           <Heading
             color="blackAlpha.800"
-            fontWeight="400"
+            fontWeight="500"
             my="1rem"
-            fontSize={["4xl", "5xl"]}
+            fontSize={["3xl", "4xl"]}
           >
             Siddharth Duggal
           </Heading>
@@ -650,7 +651,7 @@ export default function Home({}) {
           </HStack>
         </Flex>
         {/* Right Section */}
-        <Box py={["0", "2rem"]} flex="1">
+        <Box py={["0", "4rem"]} flex="1">
           <Heading
             id="intro"
             pt={["0", "2rem"]}
