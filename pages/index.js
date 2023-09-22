@@ -33,11 +33,9 @@ import {
   ModalCloseButton,
   IconButton,
   Badge,
-  Fade,
 } from "@chakra-ui/react";
 import { FaExternalLinkAlt, FaLinkedin, FaGithub } from "react-icons/fa";
 import { LinkBox, LinkOverlay } from "@chakra-ui/react";
-import { InfoIcon, CloseIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import { AiOutlineLink } from "react-icons/ai";
 
@@ -73,14 +71,12 @@ function Project({
 
   return (
     <LinkBox
+      color="black"
       mb="1rem"
       borderWidth="1px"
       borderRadius="lg"
-      bg="#111"
-      borderColor="rgba(255,255,255,0)"
       transition="all 0.25s ease"
       _hover={{
-        bg: "black",
         transform: "translateY(-5px)",
         borderColor: "rgba(255,255,255,0.2)",
       }}
@@ -98,27 +94,23 @@ function Project({
         />
         <VStack p={5} align="start" spacing={3}>
           <HStack spacing={2}>
-            <Text color="whiteAlpha.900" fontWeight="medium" fontSize="lg">
+            <Text color="blackAlpha.800" fontWeight="medium" fontSize="lg">
               {title}
             </Text>
           </HStack>
-          <Text mt={2} color="whiteAlpha.600" fontSize="md">
+          <Text mt={2} color="blackAlpha.700" fontSize="md">
             {description}
           </Text>
           <Wrap mt={2} spacing={3}>
             {technologies.map((tech) => (
               <Badge
-                fontWeight="medium"
-                borderRadius="lg"
+                key={tech}
+                fontWeight="500"
+                borderRadius="md"
                 px={3}
                 py={1}
-                key={tech}
-                variant="outline"
-                color="whiteAlpha.900"
-                _hover={{
-                  transform: "scale(1.1)",
-                  background: "#333",
-                }}
+                borderColor="gray.100 !important"
+                color="blackAlpha.800"
               >
                 {tech}
               </Badge>
@@ -127,17 +119,31 @@ function Project({
         </VStack>
       </LinkOverlay>
 
-      <Modal size="2xl" w="100%" isCentered isOpen={isOpen} onClose={onClose}>
+      <Modal
+        color="black"
+        size="2xl"
+        w="100%"
+        isCentered
+        isOpen={isOpen}
+        onClose={onClose}
+      >
         <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="12px" />
-        <ModalContent w="100%" p="1rem" bg="black">
-          <ModalCloseButton />
+        <ModalContent w="100%" p="1rem" bg="white">
+          <ModalCloseButton color="black" />
           <ModalBody>
-            <Heading fontWeight="medium" mt=".5rem" mb="1rem" fontSize="2xl">
+            <Heading
+              color="black"
+              fontWeight="medium"
+              mt=".5rem"
+              mb="1rem"
+              fontSize="2xl"
+            >
               {title}
             </Heading>
-            <Text pb="1rem" color="whiteAlpha.600" fontSize="md">
+            <Text pb="1rem" color="blackAlpha.700" fontSize="md">
               {description}
             </Text>
+
             <Slider {...settings}>
               {images.map((img, index) => (
                 <Image
@@ -151,44 +157,45 @@ function Project({
                 />
               ))}
             </Slider>
+
             <Button
               leftIcon={<AiOutlineLink />}
-              fontWeight="medium"
+              fontWeight={"medium"}
+              color="black"
+              my={2}
               borderWidth="1px"
               borderRadius="lg"
-              bg="#111"
-              borderColor="rgba(255,255,255,0)"
+              borderColor="rgba(255, 255, 255, 0)"
               transition="all 0.25s ease"
               _hover={{
-                bg: "black",
                 transform: "translateY(-5px)",
-                borderColor: "rgba(255,255,255,0.2)",
+                borderColor: "rgba(255, 255, 255, 0.2)",
               }}
               href={link}
               as="a"
               isExternal
-              mt="1rem"
+              mt="2rem"
             >
               View Project
             </Button>
             <Button
-              ml="1rem"
+              ml={["0","1rem"]}
               leftIcon={<FaGithub />}
-              fontWeight="medium"
+              fontWeight={"medium"}
+              color="black"
+              my={2}
               borderWidth="1px"
               borderRadius="lg"
-              bg="#111"
-              borderColor="rgba(255,255,255,0)"
+              borderColor="rgba(255, 255, 255, 0)"
               transition="all 0.25s ease"
               _hover={{
-                bg: "black",
                 transform: "translateY(-5px)",
-                borderColor: "rgba(255,255,255,0.2)",
+                borderColor: "rgba(255, 255, 255, 0.2)",
               }}
               href={code}
               as="a"
               isExternal
-              mt="1rem"
+              mt={[".5rem","2rem"]}
               isDisabled={!code}
             >
               View on GitHub
@@ -206,6 +213,7 @@ function ExperienceCard({
   role,
   link,
   description,
+  image,
   technologies,
 }) {
   return (
@@ -214,23 +222,41 @@ function ExperienceCard({
         <AccordionItem
           borderWidth="1px"
           borderRadius="lg"
-          bg="#111"
-          borderColor="rgba(255,255,255,0)"
           transition="all 0.25s ease"
           _hover={{
-            bg: "black",
             transform: "translateY(-5px)",
             borderColor: "rgba(255,255,255,0.2)",
           }}
         >
-          <AccordionButton>
+          <AccordionButton
+            _hover={{
+              bg: "none",
+            }}
+          >
             <VStack align="start" spacing={3} flex="1">
               <HStack alignItems="center" spacing={2}>
-                <Text color="whiteAlpha.900" fontWeight="medium" fontSize="md">
+                <Image
+                  mr=".3rem"
+                  borderRadius="full"
+                  src={image}
+                  alt={company}
+                  height="28px"
+                  width="28px"
+                />
+                <Text
+                  color="blackAlpha.800"
+                  fontWeight="medium"
+                  fontSize={["sm", "md"]}
+                >
                   {role}, {company}
                 </Text>
                 <Spacer />
-                <Text color="whiteAlpha.700" fontSize="xs" fontWeight="medium">
+                <Text
+                  display={["none", "block"]}
+                  color="blackAlpha.800"
+                  fontSize="xs"
+                  fontWeight="medium"
+                >
                   {date}
                 </Text>
               </HStack>
@@ -241,11 +267,10 @@ function ExperienceCard({
               icon={<FaExternalLinkAlt />}
               borderWidth="1px"
               borderRadius="lg"
-              bg="black"
+              color="black"
               borderColor="rgba(255,255,255,0)"
               transition="all 0.25s ease"
               _hover={{
-                bg: "black",
                 transform: "translateY(-5px)",
                 borderColor: "rgba(255,255,255,0.2)",
               }}
@@ -258,11 +283,10 @@ function ExperienceCard({
               icon={<AccordionIcon boxSize={4} />}
               borderWidth="1px"
               borderRadius="lg"
-              bg="black"
+              color="black"
               borderColor="rgba(255,255,255,0)"
               transition="all 0.25s ease"
               _hover={{
-                bg: "black",
                 transform: "translateY(-5px)",
                 borderColor: "rgba(255,255,255,0.2)",
               }}
@@ -270,29 +294,37 @@ function ExperienceCard({
           </AccordionButton>
           <AccordionPanel pb={4}>
             <Text
-              pb="9px"
-              color="whiteAlpha.900"
+            pb=".5rem"
+              display={["block", "none"]}
+              color="blackAlpha.800"
+              fontSize="xs"
+              fontWeight="medium"
+            >
+              {date}
+            </Text>
+            <Text
+              pb="8px"
+              color="blackAlpha.800"
               fontWeight="medium"
               fontSize="sm"
             >
               {description}
             </Text>
-            <HStack mt={2} spacing={3}>
+            <Wrap mt={2} spacing={3}>
               {technologies.map((tech, index) => (
                 <Badge
                   key={index}
-                  fontWeight="medium"
-                  borderRadius="full"
+                  fontWeight="500"
+                  borderRadius="md"
                   px={3}
                   py={1}
-                  variant="outline"
-                  borderColor="#fff"
-                  color="whiteAlpha.800"
+                  borderColor="gray.100 !important"
+                  color="blackAlpha.800"
                 >
                   {tech}
                 </Badge>
               ))}
-            </HStack>
+            </Wrap>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
@@ -307,29 +339,23 @@ export default function Home({}) {
   const inputStyles = {
     borderWidth: "1px",
     borderRadius: "lg",
-    bg: "#111",
-    borderColor: "rgba(255, 255, 255, 0)",
+
     transition: "all 0.25s ease",
     _hover: {
-      bg: "black",
       transform: "translateY(-5px)",
-      borderColor: "rgba(255, 255, 255, 0.2)",
     },
-   
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Form data
     const formData = {
       name: e.target.name.value,
       email: e.target.email.value,
       message: e.target.message.value,
     };
 
-    // Discord embed payload
     const payload = JSON.stringify({
       embeds: [
         {
@@ -463,45 +489,24 @@ export default function Home({}) {
           pt="4rem"
           flex="1"
         >
-          <Image src="/me.png" borderRadius="full" boxSize="100px" />
+          <Image src="/me.png" borderRadius="full" boxSize="90px" />
           <Heading
-            color="whiteAlpha.900"
-            fontWeight="500"
-            mt="1rem"
+            color="blackAlpha.800"
+            fontWeight="400"
+            my="1rem"
             fontSize={["4xl", "5xl"]}
           >
             Siddharth Duggal
           </Heading>
-          <Box
-            maxW="400px"
-            borderRadius="lg"
-            my=".7rem"
-            px=".8rem"
-            py=".8rem"
-            bg="#111"
-          >
-            <Text color="whiteAlpha.900" fontSize="md" fontWeight="500">
-              <chakra.span
-                color="whiteAlpha.500"
-                fontWeight="bold"
-                fontSize="3xl"
-              >
-                ❝&nbsp;
-              </chakra.span>
-              We’re here to put a dent in the universe. Otherwise why else even
-              be here?
-              <chakra.span
-                color="whiteAlpha.500"
-                fontWeight="bold"
-                fontSize="3xl"
-              >
-                &nbsp;❞
-              </chakra.span>
+          <Box maxW="400px" borderRadius="lg">
+            <Text color="blackAlpha.800" fontSize="md" fontWeight="500">
+              "We’re here to put a dent in the universe. Otherwise why else even
+              be here?"
             </Text>
 
             <Text
-              mt=".6rem"
-              color="whiteAlpha.600"
+              mt=".5rem"
+              color="blackAlpha.700"
               fontSize="sm"
               fontWeight="medium"
             >
@@ -518,9 +523,9 @@ export default function Home({}) {
             >
               <Box
                 transition="200ms"
-                color={currentSection === "intro" ? "white" : "whiteAlpha.500"}
+                color={currentSection === "intro" ? "black" : "blackAlpha.500"}
                 _hover={{
-                  color: "gray.200 !important",
+                  color: "gray.800 !important",
                 }}
                 fontSize="xl"
                 as="span"
@@ -540,10 +545,10 @@ export default function Home({}) {
               <Box
                 transition="200ms"
                 color={
-                  currentSection === "experience" ? "white" : "whiteAlpha.500"
+                  currentSection === "experience" ? "black" : "blackAlpha.500"
                 }
                 _hover={{
-                  color: "gray.200 !important",
+                  color: "gray.800 !important",
                 }}
                 fontSize="xl"
                 as="span"
@@ -563,10 +568,10 @@ export default function Home({}) {
               <Text
                 transition="200ms"
                 color={
-                  currentSection === "projects" ? "white" : "whiteAlpha.500"
+                  currentSection === "projects" ? "black" : "blackAlpha.500"
                 }
                 _hover={{
-                  color: "gray.200 !important",
+                  color: "gray.800 !important",
                 }}
                 fontSize="xl"
                 as="span"
@@ -586,10 +591,10 @@ export default function Home({}) {
               <Text
                 transition="200ms"
                 color={
-                  currentSection === "contact" ? "white" : "whiteAlpha.500"
+                  currentSection === "contact" ? "black" : "blackAlpha.500"
                 }
                 _hover={{
-                  color: "gray.200 !important",
+                  color: "gray.800 !important",
                 }}
                 fontSize="xl"
                 as="span"
@@ -617,7 +622,7 @@ export default function Home({}) {
                 }}
                 href="https://www.linkedin.com/in/siddharth-duggal/"
                 isExternal
-                color="whiteAlpha.500"
+                color="blackAlpha.500"
               >
                 <FaLinkedin size={25} />{" "}
                 <Text ml="8px">/in/siddharth-duggal</Text>
@@ -632,9 +637,9 @@ export default function Home({}) {
               <Link
                 alignItems="center"
                 display={"flex"}
-                color="whiteAlpha.500"
+                color="blackAlpha.500"
                 _hover={{
-                  color: "gray.200 !important",
+                  color: "gray.800 !important",
                 }}
                 href="https://github.com/siddharthd0"
                 isExternal
@@ -649,29 +654,29 @@ export default function Home({}) {
           <Heading
             id="intro"
             pt={["0", "2rem"]}
-            color="whiteAlpha.900"
+            color="blackAlpha.800"
             fontWeight="medium"
             fontSize="3xl"
           >
             Intro
           </Heading>
-          <Text mt="1rem" color="whiteAlpha.600">
+          <Text mt="1rem" color="blackAlpha.700">
             Three years ago, I began experimenting with{" "}
-            <chakra.span color="white">JavaScript</chakra.span> and started
-            building <chakra.span color="white">Discord bots</chakra.span>. This
+            <chakra.span color="black">JavaScript</chakra.span> and started
+            building <chakra.span color="black">Discord bots</chakra.span>. This
             was more than a hobby. Within a year, I was creating Discord bots,
             websites, and Minecraft servers for clients. Concurrently, I
             developed a hosting platform, making it simpler for developers to
             host their projects.
           </Text>
-          <Text color="whiteAlpha.600" mt={2}>
+          <Text color="blackAlpha.700" mt={2}>
             Today, I channel my energies and expertise into{" "}
             <Link
               _hover={{
                 color: "blue.200",
               }}
               href="https://techoptimum.org"
-              color="white"
+              color="black"
             >
               Tech Optimum
             </Link>
@@ -683,16 +688,17 @@ export default function Home({}) {
             <Heading
               id="experience"
               pt="2rem"
-              color="whiteAlpha.900"
+              color="blackAlpha.800"
               fontWeight="medium"
               fontSize="3xl"
-              mb="1rem"
+              mb="1.3rem"
             >
               Experience
             </Heading>
             <ExperienceCard
               date="January 2022 - Present"
               company="Tech Optimum"
+              image={"./tech-optimum.png"}
               role="Founder"
               link="https://techoptimum.org"
               description="Tech Optimum is a non-profit initiative that aims to create a project-centric approach to learning. We're on a mission to create the worlds first sustainable project-based learning platform."
@@ -706,7 +712,8 @@ export default function Home({}) {
             <ExperienceCard
               date="April 2022 - Febuary 2023"
               company="School Simplified"
-              role="Web Developer"
+              role="Developer"
+              image={"./school-simplified.jpeg"}
               link="https://schoolsimplified.org"
               description="School Simplified offers a number of free resources to help students with their studies. I was responsible for building & maintaining the website."
               technologies={["React", "TypeScript", "Next.js", "Chakra UI"]}
@@ -715,6 +722,7 @@ export default function Home({}) {
               date="December 2020 - August 2021"
               company="Aprim"
               role="Lead Developer"
+              image={"./aprim.png"}
               link="https://aprim.xyz"
               description="Aprim was a web & game hosting platform that allowed you to host your website or game server with ease. I was responsible for building the Pterodactyl panel, the billing system, and the website."
               technologies={[
@@ -729,32 +737,29 @@ export default function Home({}) {
             <Heading
               pt="2rem"
               id="projects"
-              color="whiteAlpha.900"
+              color="blackAlpha.800"
               fontWeight="medium"
               fontSize="3xl"
             >
               Projects
             </Heading>
-            <Wrap pt="1rem" spacing={3} mb={8}>
+            <Wrap pl=".16rem" pt="1rem" spacing={3} mb={8}>
               {allTags.map((tag) => (
                 <Badge
+                  fontWeight="medium"
+                  borderRadius="md"
+                  transition="300ms"
                   px=".4rem"
                   key={tag}
                   onClick={() => toggleTag(tag)}
                   cursor="pointer"
                   color={
-                    selectedTags.includes(tag) ? "white" : "whiteAlpha.700"
+                    selectedTags.includes(tag) ? "black" : "blackAlpha.700"
                   }
-                  variant={selectedTags.includes(tag) ? "solid" : "outline"}
+                  variant={selectedTags.includes(tag) ? "outline" : "ghost"}
                   transform={selectedTags.includes(tag) ? "scale(1.05)" : ""}
-                  borderWidth="1px"
-                  borderRadius="lg"
-                  bg="#111"
-                  borderColor="rgba(255,255,255,0)"
-                  transition="all 0.25s ease"
                   _hover={{
-                    bg: "black",
-                    transform: "translateY(-5px)",
+                    transform: "translateY(-4px)",
                     borderColor: "rgba(255,255,255,0.2)",
                   }}
                 >
@@ -855,19 +860,22 @@ export default function Home({}) {
               code="https://github.com/siddharthd0/skyline"
             />
           </Box>
-          <Box>
+          <Box mb="2rem">
             <Heading
               pt="2rem"
               id="contact"
-              color="whiteAlpha.900"
+              color="blackAlpha.800"
               fontWeight="medium"
               fontSize="3xl"
+              pb={".5rem"}
             >
               Contact
             </Heading>
-            <Box pt="1rem" as="form" onSubmit={handleSubmit}>
-              <FormControl id="name" mb={4} isDisabled={isLoading}>
-                <FormLabel>Name</FormLabel>
+            <Box as="form" onSubmit={handleSubmit}>
+              <FormControl id="name" isDisabled={isLoading}>
+                <FormLabel mt={4} color="black">
+                  Name
+                </FormLabel>
                 <Input
                   isRequired
                   name="name"
@@ -877,8 +885,10 @@ export default function Home({}) {
                 />
               </FormControl>
 
-              <FormControl id="email" mb={4} isDisabled={isLoading}>
-                <FormLabel>Email</FormLabel>
+              <FormControl id="email" isDisabled={isLoading}>
+                <FormLabel mt={4} color="black">
+                  Email
+                </FormLabel>
                 <Input
                   isRequired
                   name="email"
@@ -888,8 +898,10 @@ export default function Home({}) {
                 />
               </FormControl>
 
-              <FormControl id="message" mb={4} isDisabled={isLoading}>
-                <FormLabel>Message</FormLabel>
+              <FormControl id="message" mb={1} isDisabled={isLoading}>
+                <FormLabel mt={4} color="black">
+                  Message
+                </FormLabel>
                 <Textarea
                   isRequired
                   name="message"
@@ -899,19 +911,18 @@ export default function Home({}) {
               </FormControl>
 
               <Button
+                fontWeight={"medium"}
+                color="black"
                 my={2}
                 borderWidth="1px"
                 borderRadius="lg"
-                bg="#111"
                 borderColor="rgba(255, 255, 255, 0)"
                 transition="all 0.25s ease"
                 _hover={{
-                  bg: "black",
                   transform: "translateY(-5px)",
                   borderColor: "rgba(255, 255, 255, 0.2)",
                 }}
                 type="submit"
-                colorScheme="teal"
                 isLoading={isLoading}
               >
                 Send
