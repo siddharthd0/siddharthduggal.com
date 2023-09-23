@@ -681,8 +681,7 @@ export default function Home({}) {
             >
               Tech Optimum
             </Link>
-            , my own non-profit initiative. We're on a mission to create the
-            worlds first free all in one eco-system for learning how to code.
+            , my own non-profit initiative. We're on a mission to create the world's first free all-in-one ecosystem for learning how to code.
           </Text>
 
           <Box>
