@@ -34,7 +34,7 @@ import {
   IconButton,
   Badge,
 } from "@chakra-ui/react";
-import { FaExternalLinkAlt, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt, FaLinkedin, FaGithub, FaTiktok } from "react-icons/fa";
 import { LinkBox, LinkOverlay } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AiOutlineLink } from "react-icons/ai";
@@ -646,6 +646,25 @@ export default function Home({}) {
                 isExternal
               >
                 <FaGithub size={25} /> <Text ml="8px">/siddharthd0</Text>
+              </Link>
+            </Tooltip>
+            <Tooltip
+              placement="top"
+              label="TikTok"
+              borderRadius="md"
+              bg="gray.800"
+            >
+              <Link
+                alignItems="center"
+                display={"flex"}
+                color="blackAlpha.500"
+                _hover={{
+                  color: "red.500 !important",
+                }}
+                href="https://www.tiktok.com/@siddharthduggal_"
+                isExternal
+              >
+                <FaTiktok size={25} /> <Text ml="8px">@siddharthduggal_</Text>
               </Link>
             </Tooltip>
           </HStack>
