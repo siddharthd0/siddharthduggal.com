@@ -813,7 +813,7 @@ export default function Home({}) {
 
             <Project
               title="Launchpad Labs"
-              link="https:/www.launchpadlabs.pro"
+              link="https://launchpadlabs.pro"
               dates="December 2022 - Present"
               description={
                 "Launchpad Labs is a web development agency that I founded. We offer a number of services including web development, web design, and more!"
