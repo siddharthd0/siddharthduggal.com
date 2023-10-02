@@ -6,27 +6,27 @@ const nextConfig = {
       {
         source: '/career4all',
         destination: 'https://devpost.com/software/career4all',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/skyline',
         destination: 'https://devpost.com/software/skyline-a9084w',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/carbonara',
         destination: 'https://devpost.com/software/carbonara-8491qs',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/aeolus',
         destination: 'https://devpost.com/software/aeolus',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/devpost',
         destination: 'https://www.devpost.com/siddharthduggal2013',
-        permanent: false,
+        permanent: true,
       },
     ];
   },
