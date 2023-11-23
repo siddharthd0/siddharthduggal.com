@@ -360,18 +360,17 @@ export default function Home() {
   useEffect(() => {
     const fetchTime = async () => {
       try {
-        const res = await fetch(
-          "http://worldtimeapi.org/api/timezone/America/Denver"
-        );
+        const res = await fetch("/api/time");
         const data = await res.json();
         setCurrentTime(data.datetime);
       } catch (error) {
         console.error("Error fetching time:", error);
       }
     };
-
+  
     fetchTime();
   }, []);
+  
 
   const formatMDTTime = () => {
     if (!currentTime) return "";
