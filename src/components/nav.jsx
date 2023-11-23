@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { IoMdCube } from "react-icons/io";
 
 const SimpleFloatingNav = () => {
   return (
-    <nav className="fixed left-[50%] z-10 top-8 flex w-fit -translate-x-[50%] items-center gap-6 rounded-3xl  dark:bg-blue-600/20 backdrop-blur-md p-4 pr-8 text-sm text-blue-300">
-      <Logo />
+    <nav className="fixed left-[50%] z-10 top-8 flex w-fit -translate-x-[50%] items-center gap-6 rounded-3xl  dark:bg-blue-600/20 backdrop-blur-md p-4 pl-6 pr-8 text-sm text-blue-300">
+     <IoMdCube className="text-2xl text-blue-200" />  
 
       <NavLink link="/">Home</NavLink>
       <NavLink link="/work">Work</NavLink>
