@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(16, 13, 33);
+}
+
+@font-face {
+  font-family: 'uber';
+  src: url('/UberMoveBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'uber';
+  src: url('/UberMoveMedium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: 'uber', sans-serif;
+}
+
+strong {
+  font-weight: bold; /* This will use the bold version of your custom font */
+}
+
+
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #3660d3 #000000;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #000000;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #3660d3;
+    border-radius: 10px;
+    border: 3px solid #3760d3;
+  }
