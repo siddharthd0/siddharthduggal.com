@@ -17,7 +17,7 @@ const Standup = ({ number, date, description, loomVideo, onDelete }) => {
   };
 
   return (
-    <div className="col-span-2 flex flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 py-8 dark:border-blue-500 dark:bg-blue-900/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-3">
+    <div className="col-span-6 flex flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 py-8 dark:border-blue-500 dark:bg-blue-900/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-3">
       <div className="space-y-4">
         <div className="items-center flex justify-between">
           <h1 className="text-xl text-blue-900 dark:text-blue-300">
@@ -164,11 +164,11 @@ export default function Standups() {
   return (
     <>
       <Nav />
-      <main className="z-10 mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-32">
+      <main className="z-10 mx-auto max-w-3xl grid grid-cols-1 sm:grid-cols-6 gap-6 px-6 pb-40 pt-32">
         <div className=" overflow-y-auto col-span-6 flex h-52 flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 py-8 dark:border-blue-500 dark:bg-blue-900/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-6">
           <div className="flex justify-between">
             <div className="">
-              <h1 className="pr-2 flex items-center justify-center space-x-1.5 text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
+              <h1 className="pr-2 flex items-center justify-center space-x-1.5 text-xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
                 {timeUntilNextStandup}
               </h1>
 

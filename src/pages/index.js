@@ -593,26 +593,28 @@ export default function Home() {
                     <FaGithub className="text-lg text-gray-100" />
                   </a>
                   <div className="flex flex-col">
-                  <a
-            href={vscodeStatus.repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm"
-          >
-            <span className="font-semibold text-blue-200">
-              {vscodeStatus.repoName.slice(0, 10) + (vscodeStatus.repoName.length > 10 ? '...' : '')}
-            </span>
-          </a>
-          <a
-            href={vscodeStatus.commitUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs"
-          >
-            <span className="text-gray-100 hover:text-white transition duration-200">
-              {vscodeStatus.commitMessage.slice(0, 14) + (vscodeStatus.commitMessage.length > 14 ? '...' : '')}
-            </span>
-          </a>
+                    <a
+                      href={vscodeStatus.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm"
+                    >
+                      <span className="font-semibold text-blue-200">
+                        {vscodeStatus.repoName.slice(0, 10) +
+                          (vscodeStatus.repoName.length > 10 ? "..." : "")}
+                      </span>
+                    </a>
+                    <a
+                      href={vscodeStatus.commitUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs"
+                    >
+                      <span className="text-gray-100 hover:text-white transition duration-200">
+                        {vscodeStatus.commitMessage.slice(0, 14) +
+                          (vscodeStatus.commitMessage.length > 14 ? "..." : "")}
+                      </span>
+                    </a>
                   </div>
                 </div>
               </div>
