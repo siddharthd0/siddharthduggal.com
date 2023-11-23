@@ -85,7 +85,7 @@ export default function Standups() {
   return (
     <>
       <Nav />
-      <main className="z-10 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-6 gap-6 px-6 pb-40 pt-32">
+      <main className="z-10 mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-32">
         <div className="col-span-2 flex h-52 flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 pt-8 pb-4 dark:border-blue-500 dark:bg-blue-900/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-6">
           <div className="flex justify-between">
             <div className="">
