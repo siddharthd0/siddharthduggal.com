@@ -3,9 +3,40 @@ import { motion } from "framer-motion";
 import { IoMdCube } from "react-icons/io";
 
 const SimpleFloatingNav = () => {
+  const cubeVariants = {
+    hover: {
+      scale: 1.1,
+      y: -5,
+      rotate: 360,
+      transition: {
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+        duration: 1,
+      },
+    },
+    initial: {
+      rotate: 0,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 160,
+        damping: 20,
+      },
+    },
+  };
+
   return (
     <nav className="fixed left-[50%] z-10 top-8 flex w-fit -translate-x-[50%] items-center gap-6 rounded-3xl  dark:bg-blue-600/20 backdrop-blur-md p-4 pl-6 pr-8 text-sm text-blue-300">
-     <IoMdCube className="text-2xl text-blue-200" />  
+      <motion.div
+        className="text-2xl text-blue-200 hover:text-slate-100 cursor-pointer"
+        variants={cubeVariants}
+        initial="initial"
+        whileHover="hover"
+      >
+        <IoMdCube />
+      </motion.div>
 
       <NavLink link="/">Home</NavLink>
       <NavLink link="/work">Work</NavLink>

@@ -85,14 +85,14 @@ export default function Standups() {
     <>
       <Nav />
       <main className="z-10 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-6 gap-6 px-6 pb-40 pt-32">
-        <div className="col-span-2 flex h-52 flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 py-8 dark:border-blue-500 dark:bg-blue-900/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-6">
+        <div className="col-span-2 flex h-52 flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 pt-8 pb-4 dark:border-blue-500 dark:bg-blue-900/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-6">
           <div className="flex justify-between">
             <div className="">
               <h1 className="pr-2 flex items-center justify-center space-x-1.5 text-xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
                 {timeUntilNextStandup}
               </h1>
 
-              <p className="py-1 text-gray-300">till the next standup</p>
+              <p className="py-1 text-sm text-gray-300">till the next standup</p>
             </div>
             <a
               href="https://twitter.com/siddharthd01"
@@ -110,7 +110,7 @@ export default function Standups() {
                 Weekly Standups
               </h1>
 
-              <p className="py-2 text-blue-600 dark:text-blue-300/80 dark:text-glow-blue-500/50">
+              <p className="pb-2 text-blue-600 dark:text-blue-300/80 dark:text-glow-blue-500/50">
                 Here I showcase what I&apos;ve been working on & shipping for
                 the past week.
               </p>
