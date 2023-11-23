@@ -36,6 +36,7 @@ const Standup = ({ number, date, description, loomVideo }) => {
               webkitallowfullscreen
               mozallowfullscreen
               allowfullscreen
+              className="w-full rounded-lg"
             ></iframe>
           </div>
         )}
@@ -92,14 +93,15 @@ export default function Standups() {
                 {timeUntilNextStandup}
               </h1>
 
-              <p className="py-1 text-sm text-gray-300">till the next standup</p>
+              <p className="py-1 text-sm text-gray-300">
+                till the next standup
+              </p>
             </div>
             <a
               href="https://twitter.com/siddharthd01"
               className="flex text-blue-900 dark:text-blue-300 dark:text-glow-blue-500/50 hover:text-white transition duration-300"
             >
-              <h1 className="pr-2 text-sm">Follow me on Twitter</h1>
-              <FaTwitter size="1.3em" />
+              <FaTwitter size="1.5em" />
             </a>
           </div>
           <div class=" h-72 w-72 animate-blob rounded-full bg-blue-900 opacity-8 mix-blend-normal blur-3xl shadow-lg shadow-blue-700/50 filter"></div>

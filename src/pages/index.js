@@ -425,6 +425,7 @@ export default function Home() {
   }, []);
 
   const custom = showAboutMe ? 1 : -1;
+  
   return (
     <>
       <Nav />
@@ -664,6 +665,9 @@ export default function Home() {
 
         <ContactForm />
       </main>
+      <footer className="flex items-center justify-center w-full h-16 text-blue-300 ">
+        Made with ❤️ by Siddharth Duggal
+      </footer>
     </>
   );
 }
