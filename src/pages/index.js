@@ -216,7 +216,7 @@ export const ContactForm = () => {
           >
             {" "}
             <p>
-              Siddharth will get back to you ASAP. {" "}It is currently{" "}
+              Siddharth will get back to you ASAP. It is currently{" "}
               {formatMDTTime()} for him right now.
             </p>
           </motion.div>
@@ -504,12 +504,13 @@ export default function Home() {
                 </div>
                 <p className="pt-4 text-blue-300 dark:text-blue-100/80 dark:text-glow-blue-300/50">
                   I'm a 17 year old full-stack developer and founder. I'm
-                  currently working on Bloon AI and Tech Optimum. I'm passionate about
-                  technology and entrepreneurship.
+                  currently working on Bloon AI and Tech Optimum. I'm passionate
+                  about technology and entrepreneurship.
                 </p>
                 <p className="pt-2 text-blue-300 dark:text-blue-100/80 dark:text-glow-blue-300/50">
                   My goal is to build something that is impactful and
-                  meaningful. I'm currently working on Bloon AI and Tech Optimum. 
+                  meaningful. I'm currently working on Bloon AI and Tech
+                  Optimum.
                 </p>
                 <p className="pt-2 text-blue-300 dark:text-blue-100/80 dark:text-glow-blue-300/50">
                   Feel free to connect with me!
@@ -519,7 +520,7 @@ export default function Home() {
           </div>
         </AnimatePresence>
 
-        <CardHoverEffect className="dark:border-blue-900/10 border-[2px] hover:border-blue-600 transition duration-300 dark:bg-blue-900/20 dark:backdrop-blur-2xl col-span-2 h-full md:col-span-2">
+        <CardHoverEffect className="dark:border-blue-900/10 border-[2px] hover:border-blue-600 transition duration-300 dark:bg-blue-900/20 dark:backdrop-blur-2xl col-span-4 h-full md:col-span-2">
           <div className="flex justify-between p-4 rounded-xl bg-gray-200 dark:bg-blue-700/20">
             {[
               {
@@ -561,7 +562,8 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-          <div className="mt-4 col-span-2 flex justify-between px-4 py-2 bg-gray-200 dark:bg-blue-700/20 rounded-xl shadow-md">
+
+          <div class="mt-4 col-span-2 flex justify-between px-4 py-2 bg-gray-200 dark:bg-blue-700/20 rounded-xl shadow-md ">
             {vscodeStatus ? (
               <div>
                 <motion.div
@@ -591,26 +593,26 @@ export default function Home() {
                     <FaGithub className="text-lg text-gray-100" />
                   </a>
                   <div className="flex flex-col">
-                    <a
-                      href={vscodeStatus.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-sm"
-                    >
-                      <span className="font-semibold text-blue-200">
-                        {vscodeStatus.repoName}
-                      </span>
-                    </a>
-                    <a
-                      href={vscodeStatus.commitUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-xs"
-                    >
-                      <span className="text-gray-100 text-xs hover:text-white transition duration-200">
-                        {vscodeStatus.commitMessage}
-                      </span>
-                    </a>
+                  <a
+            href={vscodeStatus.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm"
+          >
+            <span className="font-semibold text-blue-200">
+              {vscodeStatus.repoName.slice(0, 10) + (vscodeStatus.repoName.length > 10 ? '...' : '')}
+            </span>
+          </a>
+          <a
+            href={vscodeStatus.commitUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs"
+          >
+            <span className="text-gray-100 hover:text-white transition duration-200">
+              {vscodeStatus.commitMessage.slice(0, 14) + (vscodeStatus.commitMessage.length > 14 ? '...' : '')}
+            </span>
+          </a>
                   </div>
                 </div>
               </div>
