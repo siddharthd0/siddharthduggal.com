@@ -225,7 +225,7 @@ export const ContactForm = () => {
 };
 
 export const hoverClassName =
-  "transform-gpu transition-all duration-500 will-change-[outline,_transform] group-hover:scale-95 active:scale-100";
+  "transform-gpu transition-all will-change-[outline,_transform] group-hover:scale-95 active:scale-100";
 
 export function CardHoverEffect({ children, className }) {
   return (
@@ -258,21 +258,8 @@ export function TechnologyIcon({ icon: Icon, label }) {
 }
 
 export default function Home() {
-  const projects = [
-    {
-      title: "Bloon AI",
-      description: "AI-powered social media marketing.",
-      href: "https://bloonai.com",
-    },
-    {
-      title: "Tech Optimum",
-      description: "A technology blog.",
-      href: "https://techoptimum.com",
-    },
-  ];
   const [vscodeStatus, setVscodeStatus] = useState(null);
 
-  const [selectedProject, setSelectedProject] = useState(null);
 
   const openModal = (project) => {
     setSelectedProject(project);
