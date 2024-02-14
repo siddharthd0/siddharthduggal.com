@@ -87,10 +87,9 @@ export const ContactForm = () => {
         console.error("Error fetching time:", error);
       }
     };
-  
+
     fetchTime();
   }, []);
-  
 
   const formatMDTTime = () => {
     if (!currentTime) return "";
@@ -105,10 +104,7 @@ export const ContactForm = () => {
       <style jsx global>{`
         input:focus,
         textarea:focus {
-          outline: none; // This removes the default focus outline
-          // Optionally, add your own focus styles here
-          border-color: #yourColor; // Example: change border color on focus
-          // Other custom styles for focus state
+          outline: none;
         }
       `}</style>
       <style jsx>{`
@@ -131,7 +127,7 @@ export const ContactForm = () => {
         }
       `}</style>
 
-      <div className="rounded-2xl p-8 bg-gray-400/10 backdrop-blur-2xl col-span-4 h-full md:col-span-6">
+      <div className="rounded-2xl p-8 bg-zinc-800/30 backdrop-blur-2xl col-span-4 h-full md:col-span-6">
         <h1 className="pb-4 text-2xl text-gray-300">Get in Touch</h1>
         {!formSubmitted ? (
           <motion.div
@@ -153,8 +149,8 @@ export const ContactForm = () => {
                   id="name"
                   onChange={handleChange}
                   value={formData.name}
-                  className="block w-full rounded border border-gray-300/10 bg-transparent px-3 py-2 leading-6 text-neutral-200 placeholder-neutral-200 focus:border-gray-900 focus:ring-1 focus:ring-gray-500 hover:border-gray-300 transition duration-300"
-                  placeholder="Your name"
+                  className="block w-full rounded border border-gray-300/10 bg-transparent px-3 py-2 leading-6 text-neutral-200 placeholder-neutral-200 focus:border-gray-900 focus:ring-1 focus:ring-gray-500 hover:border-gray-600 transition duration-300"
+                  placeholder="Siddharth Duggal"
                 />
               </div>
 
@@ -171,8 +167,8 @@ export const ContactForm = () => {
                   id="email"
                   onChange={handleChange}
                   value={formData.email}
-                  className="block w-full rounded border border-gray-300/10 bg-transparent px-3 py-2 leading-6 text-neutral-200 placeholder-neutral-200 focus:border-white focus:ring-1 focus:ring-white hover:border-white transition duration-300"
-                  placeholder="Your email"
+                  className="block w-full rounded border border-gray-300/10 bg-transparent px-3 py-2 leading-6 text-neutral-200 placeholder-neutral-200 focus:border-gray-900 focus:ring-1 focus:ring-gray-500 hover:border-gray-600 transition duration-300"
+                  placeholder="siddharth@bloon.ai"
                 />
               </div>
 
@@ -189,14 +185,14 @@ export const ContactForm = () => {
                   rows="3"
                   onChange={handleChange}
                   value={formData.message}
-                  className="block w-full rounded border border-gray-300/10 bg-transparent px-3 py-2 leading-6 text-neutral-200 placeholder-neutral-200 focus:border-white focus:ring-1 focus:ring-white hover:border-white transition duration-300"
-                  placeholder="Your message"
+                  className="block w-full rounded border border-gray-300/10 bg-transparent px-3 py-2 leading-6 text-neutral-200 placeholder-neutral-200 focus:border-gray-900 focus:ring-1 focus:ring-gray-500 hover:border-gray-600 transition duration-300"
+                  placeholder="I would like to talk about..."
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="px-4 py-2 flex items-center justify-center space-x-1.5 rounded-md bg-blue-300 px-3 py-1 dark:bg-blue-500/10 transition duration-200 dark:hover:bg-blue-600 dark:hover:bg-opacity-50"
+                className="rounded-md px-6 py-2 flex items-center justify-center space-x-1.5 dark:bg-neutral-900 transition duration-200 dark:hover:bg-stone-900 border-[1px] border-blue-900/10 hover:border-zinc-600 transition duration-200 hover:text-white"
               >
                 {isSubmitting ? (
                   <div className="spinner"></div>
@@ -213,10 +209,7 @@ export const ContactForm = () => {
             transition={{ duration: 0.5 }}
           >
             {" "}
-            <p>
-              Siddharth will get back to you ASAP. It is currently{" "}
-              {formatMDTTime()} for him right now.
-            </p>
+            <p>Siddharth will get back to you ASAP.</p>
           </motion.div>
         )}
       </div>
@@ -259,7 +252,6 @@ export function TechnologyIcon({ icon: Icon, label }) {
 
 export default function Home() {
   const [vscodeStatus, setVscodeStatus] = useState(null);
-
 
   const openModal = (project) => {
     setSelectedProject(project);
@@ -352,10 +344,9 @@ export default function Home() {
         console.error("Error fetching time:", error);
       }
     };
-  
+
     fetchTime();
   }, []);
-  
 
   const formatMDTTime = () => {
     if (!currentTime) return "";
@@ -412,7 +403,7 @@ export default function Home() {
   }, []);
 
   const custom = showAboutMe ? 1 : -1;
-  
+
   return (
     <>
       <Nav />
@@ -425,7 +416,7 @@ export default function Home() {
                 {" "}
                 <div className="flex justify-between">
                   <Link
-                    className="flex items-center justify-center space-x-1.5 rounded-full bg-blue-300 px-3 py-1 dark:bg-blue-900/20 transition duration-200 dark:hover:bg-blue-800 dark:hover:bg-opacity-50"
+                    className="flex items-center justify-center space-x-1.5 rounded-full px-4 py-1 dark:bg-blue-900/20 transition duration-200 dark:hover:bg-blue-800/10 dark:hover:bg-opacity-50 border-[1px] border-blue-900/10 hover:border-blue-700 transition duration-200 hover:text-white"
                     target="_blank"
                     rel="noopener noreferrer"
                     href="/standups"
