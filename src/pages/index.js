@@ -445,7 +445,7 @@ export default function Home() {
                       </h1>
 
                       <p className="text-blue-600 dark:text-blue-300/80 dark:text-glow-blue-500/50">
-                        17 year old full-stack founder.
+                        18 year old full-stack founder.
                       </p>
                     </div>
                   </div>
