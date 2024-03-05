@@ -192,7 +192,7 @@ export const ContactForm = () => {
 
               <button
                 type="submit"
-                className="rounded-md px-6 py-2 flex items-center justify-center space-x-1.5 dark:bg-neutral-900 transition duration-200 dark:hover:bg-stone-900 border-[1px] border-blue-900/10 hover:border-zinc-600 transition duration-200 hover:text-white"
+                className="rounded-md px-6 py-2 flex items-center justify-center space-x-1.5  bg-neutral-900 transition duration-200  hover:bg-stone-900 border-[1px] border-blue-900/10 hover:border-zinc-600 transition duration-200 hover:text-white"
               >
                 {isSubmitting ? (
                   <div className="spinner"></div>
@@ -237,7 +237,7 @@ export function TechnologyIcon({ icon: Icon, label }) {
       key={label}
       initial="hidden"
       whileHover="visible"
-      className="flex flex-col items-center justify-center p-4 border dark:border-blue-900/20 dark:bg-purple-600/20 backdrop-blur-md rounded-lg dark:border-purple-900 border-[2px] hover:border-purple-500 transition duration-300 dark:border-blue-300 relative"
+      className="flex flex-col items-center justify-center p-4 border  border-blue-900/20  bg-purple-600/20 backdrop-blur-md rounded-lg  border-purple-900 border-[2px] hover:border-purple-500 transition duration-300  border-blue-300 relative"
     >
       <Icon className="text-3xl text-blue-200" />
       <motion.span
@@ -383,24 +383,6 @@ export default function Home() {
     },
   };
 
-  const [birthdayCountdown, setBirthdayCountdown] = useState("");
-  useEffect(() => {
-    const calculateBirthdayCountdown = () => {
-      const today = new Date();
-      let birthday = new Date(today.getFullYear(), 11, 7);
-      if (today > birthday) {
-        birthday.setFullYear(today.getFullYear() + 1);
-      }
-      const diff = birthday - today;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      setBirthdayCountdown(`${days}`);
-    };
-
-    calculateBirthdayCountdown();
-    const interval = setInterval(calculateBirthdayCountdown, 86400000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const custom = showAboutMe ? 1 : -1;
 
@@ -408,15 +390,15 @@ export default function Home() {
     <>
       <Nav />
 
-      <main className="z-10 mx-auto max-w-3xl grid grid-cols-1 sm:grid-cols-6 gap-6 px-6 pb-40 pt-32">
+      <main className="text-white z-10 mx-auto max-w-3xl grid grid-cols-1 sm:grid-cols-6 gap-6 px-6 pb-40 pt-32">
         <AnimatePresence custom={custom}>
-          <div className="col-span-4 flex h-52 flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 py-8 dark:border-blue-500 dark:bg-blue-900/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-4">
+          <div className="col-span-4 flex h-52 flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 py-8  border-blue-500  bg-blue-900/20  shadow-none  backdrop-blur-2xl md:col-span-4">
             {!showAboutMe ? (
               <>
                 {" "}
                 <div className="flex justify-between">
                   <Link
-                    className="flex items-center justify-center space-x-1.5 rounded-full px-4 py-1 dark:bg-blue-900/20 transition duration-200 dark:hover:bg-blue-800/10 dark:hover:bg-opacity-50 border-[1px] border-blue-900/10 hover:border-blue-700 transition duration-200 hover:text-white"
+                    className="flex items-center justify-center space-x-1.5 rounded-full px-4 py-1  bg-blue-900/20 transition duration-200  hover:bg-blue-800/10  hover:bg-opacity-50 border-[1px] border-blue-900/10 hover:border-blue-700 transition duration-200 hover:text-white"
                     target="_blank"
                     rel="noopener noreferrer"
                     href="/standups"
@@ -440,18 +422,18 @@ export default function Home() {
                 >
                   <div className="space-y-4">
                     <div>
-                      <h1 className="text-xl text-blue-900 dark:text-blue-300 dark:text-glow-blue-500/50">
+                      <h1 className="text-xl text-glow-blue-500/50">
                         Siddharth Duggal
                       </h1>
 
-                      <p className="text-blue-600 dark:text-blue-300/80 dark:text-glow-blue-500/50">
+                      <p className=" text-glow-blue-500/20">
                         18 year old full-stack founder.
                       </p>
                     </div>
                   </div>
 
                   <button
-                    className="flex items-center text-blue-600 dark:text-blue-300/80 dark:text-glow-blue-500/50 hover:text-gray-100 transition duration-300"
+                    className="flex items-center text-blue-400 hover:text-gray-100 transition duration-300"
                     onClick={handleReadMoreClick}
                   >
                     {" "}
@@ -468,27 +450,27 @@ export default function Home() {
                 className="overflow-y-auto pr-2"
               >
                 <div className="flex justify-between items-start">
-                  <h2 className="text-2xl text-blue-800 dark:text-blue-400 dark:text-glow-blue-900/50">
+                  <h2 className="text-2xl text-glow-blue-900/50">
                     About Me
                   </h2>
                   <button
                     onClick={handleReadMoreClick}
-                    className="text-blue-600 dark:text-blue-300/80 dark:text-glow-blue-500/50 hover:text-gray-100 transition duration-300"
+                    className="text-glow-blue-500/50 hover:text-gray-100 transition duration-300"
                   >
                     Back
                   </button>
                 </div>
-                <p className="pt-4 text-blue-300 dark:text-blue-100/80 dark:text-glow-blue-300/50">
+                <p className="pt-4 text-blue-300  text-blue-100/80  text-glow-blue-300/50">
                   I'm a 17 year old full-stack developer and founder. I'm
                   currently working on Bloon AI and Tech Optimum. I'm passionate
                   about technology and entrepreneurship.
                 </p>
-                <p className="pt-2 text-blue-300 dark:text-blue-100/80 dark:text-glow-blue-300/50">
+                <p className="pt-2 text-blue-300  text-blue-100/80  text-glow-blue-300/50">
                   My goal is to build something that is impactful and
                   meaningful. I'm currently working on Bloon AI and Tech
                   Optimum.
                 </p>
-                <p className="pt-2 text-blue-300 dark:text-blue-100/80 dark:text-glow-blue-300/50">
+                <p className="pt-2 text-blue-300  text-blue-100/80  text-glow-blue-300/50">
                   Feel free to connect with me!
                 </p>
               </motion.div>
@@ -496,8 +478,8 @@ export default function Home() {
           </div>
         </AnimatePresence>
 
-        <CardHoverEffect className="dark:border-blue-900/10 border-[2px] hover:border-blue-600 transition duration-300 dark:bg-blue-900/20 dark:backdrop-blur-2xl col-span-4 h-full md:col-span-2">
-          <div className="flex justify-between p-4 rounded-xl bg-gray-200 dark:bg-blue-700/20">
+        <CardHoverEffect className=" border-blue-900/10 border-[2px] hover:border-blue-600 transition duration-300  bg-blue-900/20  backdrop-blur-2xl col-span-4 h-full md:col-span-2">
+          <div className="flex justify-between p-4 rounded-xl  bg-blue-700/20">
             {[
               {
                 icon: FaGithub,
@@ -539,7 +521,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div class="mt-4 col-span-2 flex justify-between px-4 py-2 bg-gray-200 dark:bg-blue-700/20 rounded-xl shadow-md ">
+          <div class="mt-4 col-span-2 flex justify-between px-4 py-2 bg-blue-700/20 rounded-xl shadow-md ">
             {vscodeStatus ? (
               <div>
                 <motion.div
@@ -596,7 +578,7 @@ export default function Home() {
               </div>
             ) : (
               <div
-                class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-gray-800 rounded-full dark:text-white"
+                class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-gray-800 rounded-full  text-white"
                 role="status"
                 aria-label="loading"
               >
@@ -605,8 +587,8 @@ export default function Home() {
             )}
           </div>
         </CardHoverEffect>
-        <CardHoverEffect className="dark:border-green-900/10 border-[2px] hover:border-green-500 transition duration-300 dark:border-blue-300 dark:bg-green-800/30 dark:shadow-none dark:backdrop-blur-2xl col-span-3 h-full md:col-span-3">
-          <div className="mt-2 col-span-3 flex justify-center items-center px-4 py-2 bg-gray-200 dark:bg-green-700/20 rounded-xl shadow-md">
+        <CardHoverEffect className=" border-green-900/10 border-[2px] hover:border-green-500 transition duration-300  border-blue-300  bg-green-800/30  shadow-none  backdrop-blur-2xl col-span-3 h-full md:col-span-3">
+          <div className="mt-2 col-span-3 flex justify-center items-center px-4 py-2 bg-gray-200  bg-green-700/20 rounded-xl shadow-md">
             <div className="flex items-center justify-center space-x-3 text-sm">
               <a
                 href="https://open.spotify.com/playlist/37i9dQZF1E4qXw4kD6a8K7?si=8e9e9e9e9e9e9e9e"
@@ -631,7 +613,7 @@ export default function Home() {
             ></iframe>
           </div>
         </CardHoverEffect>
-        <div className="rounded-2xl p-8 dark:border-green-300 px-8 py-8 dark:border-green-800 bg-purple-900/20 dark:shadow-none dark:backdrop-blur-2xl col-span-3 h-full md:col-span-3 relative overflow-hidden">
+        <div className="rounded-2xl p-8  border-green-300 px-8 py-8  border-green-800 bg-purple-900/20  shadow-none  backdrop-blur-2xl col-span-3 h-full md:col-span-3 relative overflow-hidden">
           <div className="absolute top-0 left-0 h-72 w-72 animate-blob rounded-full bg-purple-900 opacity-8 mix-blend-normal blur-3xl shadow-lg shadow-purple-700/10 filter"></div>
 
           <div className="grid grid-cols-3 gap-4">

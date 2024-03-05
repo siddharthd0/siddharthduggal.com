@@ -88,8 +88,8 @@ export default function Projects() {
     <>
       <ModalProvider>
         <Nav />
-        <main className="z-10 mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-32">
-          <div className="col-span-6 flex h-52 flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 py-8 dark:border-blue-500 dark:bg-blue-900/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-2">
+        <main className="z-10 mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-32 text-white">
+          <div className="col-span-6 flex h-52 flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 py-8  border-blue-500  bg-blue-900/20  shadow-none  backdrop-blur-2xl md:col-span-2">
             <div className="flex justify-between">
               <FaPhoenixFramework className="text-3xl text-blue-200" />
             </div>
@@ -97,17 +97,17 @@ export default function Projects() {
 
             <div className="space-y-4">
               <div>
-                <h1 className="text-xl text-blue-900 dark:text-blue-300 dark:text-glow-blue-500/50">
+                <h1 className="text-xl text-blue-200">
                   My Work
                 </h1>
 
-                <p className="pt-2 text-blue-600 text-sm dark:text-blue-300/80 dark:text-glow-blue-500/50">
+                <p className="pt-2 text-sm  text-blue-300">
                   Check out what I&apos;ve been spending my time on.
                 </p>
               </div>
             </div>
           </div>
-          <div className="col-span-6 flex h-52 flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 py-8 dark:border-blue-500 dark:bg-blue-900/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-4">
+          <div className="col-span-6 flex h-52 flex-col justify-between overflow-hidden rounded-2xl bg-blue-200 px-8 py-8  border-blue-500  bg-blue-900/20  shadow-none  backdrop-blur-2xl md:col-span-4">
             <div className="flex items-center justify-between">
               <div>
                 <a
@@ -125,8 +125,8 @@ export default function Projects() {
 
             <div className="flex items-center space-between">
               <div>
-                <p className="pt-2 text-blue-600 text-sm dark:text-blue-300/80 dark:text-glow-blue-500/50">
-                  Free ecosystem to learn to code. Sponsored by Replit, OpenAI,
+                <p className="pt-2 text-sm  text-blue-200">
+                  Free ecosystem to learn to code. Sponsored by Replit, Desmos, OpenAI,
                   and more.
                 </p>
               </div>
@@ -235,7 +235,7 @@ export default function Projects() {
 
             <div className="flex items-center space-between">
               <div>
-                <p className="pt-2 text-zinc-500 text-sm dark:text-zinc-300/80 dark:text-glow-zinc-500/50">
+                <p className="pt-2 text-zinc-500 text-sm  text-zinc-300/80  text-glow-zinc-500/50">
                   Building the world&apos;s first AI-powered digital whiteboard
                   that can visually explain any concept in the world.
                 </p>
@@ -266,7 +266,7 @@ export default function Projects() {
               </div>
             </div>
           </div>
-          <div className="col-span-6 flex h-52 flex-col justify-between rounded-2xl dark:bg-pink-900/10 px-8 py-8 md:col-span-3">
+          <div className="col-span-6 flex h-52 flex-col justify-between rounded-2xl  bg-pink-900/10 px-8 py-8 md:col-span-3">
             <div className="flex items-center justify-between">
               <div>
                 <a
@@ -285,7 +285,7 @@ export default function Projects() {
 
             <div className="flex items-center space-between">
               <div>
-                <p className="pt-2 text-sm dark:text-pink-200">
+                <p className="pt-2 text-sm  text-pink-200">
                   Worked on internal tools for 300 volunteers to help 60k+
                   students.
                 </p>
