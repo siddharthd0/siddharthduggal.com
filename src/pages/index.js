@@ -19,6 +19,33 @@ export function CardHoverEffect({ children, className }) {
   );
 }
 
+const containerVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+      delayChildren: 0.2,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.5 },
+  visible: { opacity: 1, scale: 1 },
+};
+
+const blobVariants = {
+  animate: {
+    scale: [1, 1.2, 1],
+    rotate: [0, 180, 360],
+    transition: { duration: 8, ease: "linear", repeat: Infinity, repeatType: "loop" },
+  },
+};
+
 export default function Home() {
   const [showAboutMe, setShowAboutMe] = useState(false);
   const custom = showAboutMe ? 1 : -1;
@@ -51,14 +78,29 @@ export default function Home() {
 
       <main className="text-[#573c28] z-10 h-screen flex items-center justify-center">
         <AnimatePresence custom={custom}>
-          <div className="flex flex-col justify-between overflow-hidden rounded-2xl bg-[#f5e2cc] px-8 py-8 border-[#ad8b73] bg-[#f5e2cc]/20 shadow-none backdrop-blur-2xl">
-            <div className="h-18 w-32 animate-blob rounded-full bg-[#ad8b73]/50 opacity-2 mix-blend-normal blur-3xl shadow-lg shadow-[#ad8b73]/20 filter"></div>
+          <motion.div
+            className="flex flex-col justify-between overflow-hidden rounded-2xl bg-[#f5e2cc] px-8 py-8 border-[#ad8b73] bg-[#f5e2cc]/20 shadow-none backdrop-blur-2xl"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div
+              className="h-18 w-32 rounded-full bg-[#ad8b73]/50 opacity-2 mix-blend-normal blur-3xl shadow-lg shadow-[#ad8b73]/20 filter"
+              variants={blobVariants}
+              animate="animate"
+            ></motion.div>
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-4xl text-[#755d4c] font-alpina">
+                <motion.h1
+                  className="text-4xl text-[#755d4c] font-alpina"
+                  variants={itemVariants}
+                >
                   Siddharth Duggal
-                </h1>
-                <p className="text-[#ad8b73]  pt-2">
+                </motion.h1>
+                <motion.p
+                  className="text-[#ad8b73] pt-2"
+                  variants={itemVariants}
+                >
                   Founder of{" "}
                   <a
                     href="https://bloon.ai"
@@ -79,12 +121,17 @@ export default function Home() {
                       Tech Optimum
                     </span>
                   </a>
-                </p>
+                </motion.p>
               </div>
             </div>
 
-            <div className="justify-between flex items-center pt-6">
-              <div className="flex  space-x-4">
+            <motion.div
+              className="justify-between flex items-center pt-6"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.div className="flex space-x-4">
                 {[
                   {
                     icon: FaGithub,
@@ -109,36 +156,47 @@ export default function Home() {
                 ].map(({ icon: Icon, href, tip }, index) => (
                   <motion.div
                     key={index}
-                    className="text-md text-[#ad8b73] transition-colors duration-300 hover:text-[#8c5844] "
-                    initial="hidden"
-                    whileHover="visible"
+                    className="text-md text-[#ad8b73] transition-colors duration-300 hover:text-[#8c5844]"
+                    variants={itemVariants}
                   >
                     <Link href={href} target="_blank" rel="noopener noreferrer">
                       <Icon />
                     </Link>
                   </motion.div>
                 ))}
-              </div>
-              <button
-                className="flex items-center text-lg text-[#ad8b73] hover:text-[#8c5844] transition duration-300  rounded-full"
+              </motion.div>
+              <motion.button
+                className="flex items-center text-lg text-[#ad8b73] hover:text-[#8c5844] transition duration-300 rounded-full"
                 onClick={handleReadMoreClick}
+                variants={itemVariants}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <FiArrowUpRight />
-              </button>
-            </div>
-            <div className="flex space-x-4 pt-6 text-sm">
-              <Link href="/work">
-                <p className="text-[#ad8b73] hover:text-[#8c5844] transition duration-300">
-                  /work
-                </p>
-              </Link>
-              <Link href="/contact">
-                <p className="text-[#ad8b73] hover:text-[#8c5844] transition duration-300">
-                  /contact
-                </p>
-              </Link>
-            </div>
-          </div>
+              </motion.button>
+            </motion.div>
+            <motion.div
+              className="flex space-x-4 pt-6 text-sm"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.div variants={itemVariants}>
+                <Link href="/work">
+                  <p className="text-[#ad8b73] hover:text-[#8c5844] transition duration-300">
+                    /work
+                  </p>
+                </Link>
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <Link href="/contact">
+                  <p className="text-[#ad8b73] hover:text-[#8c5844] transition duration-300">
+                    /contact
+                  </p>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </AnimatePresence>
       </main>
 
@@ -167,22 +225,29 @@ export default function Home() {
                 &times;
               </button>
               <motion.div
-                initial={{ y: 20, opacity: 0 }}
+                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
               >
                 <div className="">
-                  <img
+                  <motion.img
                     src="/dubai.png"
                     alt="Siddharth Duggal"
                     className="w-40 rounded-md"
+                    
                   />
                   <div className="mt-4">
-                    <h2 className="text-2xl text-[#755d4c] font-alpina ">
+                    <motion.h2
+                      className="text-2xl text-[#755d4c] font-alpina"
+                     
+                    >
                       Hey, I&apos;m Siddharth!
-                    </h2>
+                    </motion.h2>
 
-                    <p className="text-[#ad8b73] mt-2 text-sm">
+                    <motion.p
+                      className="text-[#ad8b73] mt-2 text-sm"
+                      
+                    >
                       I enjoy creating things that live on the internet.
                       I&apos;m currently working on{" "}
                       <a
@@ -206,7 +271,7 @@ export default function Home() {
                       <br /> <br />
                       Other than that, I enjoy flying drones and playing table
                       tennis.
-                      <br /> <br /> Read more about my {""}
+                      <br /> <br /> Read more about my{" "}
                       <a
                         href="/work"
                         className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
@@ -220,7 +285,7 @@ export default function Home() {
                       >
                         get in touch with me.
                       </a>
-                    </p>
+                    </motion.p>
                   </div>
                 </div>
               </motion.div>
