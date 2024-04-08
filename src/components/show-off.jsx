@@ -21,7 +21,7 @@ const projects = [
           </a>
         </div>
         <p className="text-[#ad8b73]/80 mb-4">
-          I'm the Founder and CEO of Bloon AI, an AI-powered tutor that can
+          I&apos;m the Founder and CEO of Bloon AI, an AI-powered tutor that can
           visually and audibly explain complex concepts to students.
         </p>
       
@@ -49,7 +49,7 @@ const projects = [
           <span className="text-[#8c5844] font-bold">
             personalized, interactive explanations
           </span>{" "}
-          that adapt to each student's unique learning style, as if {" "}
+          that adapt to each student&apos;s unique learning style, as if {" "}
           <span className="text-[#8c5844] font-bold">
             a tutor was sitting right next to them.
           </span>
