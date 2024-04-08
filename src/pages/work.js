@@ -317,7 +317,8 @@ export default function Home() {
           <ShowOff />
           <a 
             href="https://www.linkedin.com/in/siddharth-duggal/"
-          className="mt-4 rounded-md gap-2 px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm w-2/3 mx-auto">
+          className="mt-4 rounded-md gap-2 px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm w-2/3 mx-auto "
+          >
             Check out what else I&apos;ve been up to on my LinkedIn <FiExternalLink className="size-4"/>
           </a>
         </div>

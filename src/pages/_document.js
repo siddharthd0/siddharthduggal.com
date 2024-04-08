@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-      <meta property="og:title" content="Siddharth Duggal - Portfolio" />
+      <meta property="og:title" content="Siddharth Duggal" />
           <meta property="og:description" content="Entrepreneur, experimenting with AI" />
           <meta property="og:image" content="https://siddharthduggal.com/siddharth-cover.png" />
           <meta property="og:url" content="https://siddharthduggal.com" />

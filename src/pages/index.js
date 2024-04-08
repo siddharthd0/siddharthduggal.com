@@ -153,7 +153,7 @@ export default function Home() {
             onClick={handleReadMoreClick}
           >
             <motion.div
-              className="max-w-sm bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] rounded-md p-4 overflow-y-auto shadow-lg py-8 px-6"
+              className="max-w-sm bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] rounded-md p-4 overflow-y-auto shadow-lg py-8 px-6 mx-4"
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 100, opacity: 0 }}
@@ -202,9 +202,10 @@ export default function Home() {
                       >
                         Tech Optimum
                       </a>{" "}
-                      to help students learn how to code for free. 
+                      to help students learn how to code for free.
                       <br /> <br />
-                      Other than that, I enjoy flying drones and playing table tennis.
+                      Other than that, I enjoy flying drones and playing table
+                      tennis.
                       <br /> <br /> Read more about my {""}
                       <a
                         href="/work"

@@ -11,7 +11,7 @@ const projects = [
     image: "/Screenshot 2024-04-07 at 7.52.41 PM.png",
     expandedContent: (
       <>
-       <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mb-4">
           <h2 className="text-3xl text-[#755d4c] font-alpina ">Bloon AI</h2>
           <a
             href="https://bloon.ai"
@@ -24,7 +24,7 @@ const projects = [
           I&apos;m the Founder and CEO of Bloon AI, an AI-powered tutor that can
           visually and audibly explain complex concepts to students.
         </p>
-      
+
         <h2 className="text-3xl text-[#755d4c] font-alpina pb-4 mt-8">
           The Problem
         </h2>
@@ -45,11 +45,11 @@ const projects = [
           What we&apos;re doing
         </h2>
         <p className="text-[#ad8b73]/80 mb-4">
-          Bloon AI leverages  AI technology to provide{" "}
+          Bloon AI leverages AI technology to provide{" "}
           <span className="text-[#8c5844] font-bold">
             personalized, interactive explanations
           </span>{" "}
-          that adapt to each student&apos;s unique learning style, as if {" "}
+          that adapt to each student&apos;s unique learning style, as if{" "}
           <span className="text-[#8c5844] font-bold">
             a tutor was sitting right next to them.
           </span>
@@ -101,18 +101,18 @@ const projects = [
             2 hackathons with over 500 participants combined
           </span>{" "}
           with sponsors like Desmos, Replit, and Microsoft Azure.
-         
         </p>
         <div className="grid grid-cols-2 gap-4 mb-4">
-        <img
+          <img
             src="Screenshot 2024-04-07 at 7.41.43 PM.png"
             alt="Tech Optimum"
             className="w-full rounded-md shadow-md "
           />
-            <img src="Screenshot 2024-04-07 at 7.43.18 PM.png"
+          <img
+            src="Screenshot 2024-04-07 at 7.43.18 PM.png"
             alt="Tech Optimum"
             className="w-full rounded-md shadow-md "
-            />
+          />
         </div>
         <h3 className="text-2xl text-[#755d4c] font-alpina pb-2">
           Free Coding Courses
@@ -129,15 +129,13 @@ const projects = [
       </>
     ),
   },
-
-  
 ];
 
 const ProjectDeck = () => {
   const [selectedCard, setSelectedCard] = useState(null);
 
   return (
-    <div className="grid grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {projects.map((project, index) => (
         <motion.div
           key={project.title}
@@ -175,7 +173,7 @@ const ProjectDeck = () => {
             onClick={() => setSelectedCard(null)}
           >
             <motion.div
-              className="max-w-xl max-h-[80vh] bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] rounded-xl p-8 overflow-y-auto shadow-2xl"
+              className="max-w-xl max-h-[80vh] bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] rounded-xl p-8 overflow-y-auto shadow-2xl mx-4"
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 100, opacity: 0 }}
