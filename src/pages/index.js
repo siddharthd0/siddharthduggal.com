@@ -231,7 +231,7 @@ export default function Home() {
               >
                 <div className="">
                   <motion.img
-                    src="/dubai.png"
+                    src="/dubai-fixed.png"
                     alt="Siddharth Duggal"
                     className="w-40 rounded-md"
                     
