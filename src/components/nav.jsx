@@ -28,19 +28,18 @@ const SimpleFloatingNav = () => {
   };
 
   return (
-    <nav className="fixed left-[50%] z-10 top-8 flex w-fit -translate-x-[50%] items-center gap-6 rounded-3xl bg-blue-600/20 backdrop-blur-md p-4 pl-6 pr-8 text-sm text-blue-300">
+    <nav className="fixed left-[50%] z-10 top-8 flex w-fit -translate-x-[50%] items-center gap-6 rounded-3xl bg-[#f5e2cc]/50 backdrop-blur-md p-4 pl-6 pr-8 text-sm text-[#ad8b73]">
       <motion.div
-        className="text-2xl text-blue-200 hover:text-slate-100 cursor-pointer"
+        className="text-2xl text-[#ad8b73] hover:text-[#8c5844] cursor-pointer"
         variants={cubeVariants}
         initial="initial"
         whileHover="hover"
       >
         <IoMdCube />
       </motion.div>
-
       <NavLink link="/">Home</NavLink>
       <NavLink link="/work">Work</NavLink>
-      <NavLink link="/standups">Updates</NavLink>
+     <NavLink link="/contact">Contact</NavLink>
     </nav>
   );
 };
@@ -53,7 +52,7 @@ const Logo = () => {
       viewBox="0 0 50 39"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="ml-2 fill-neutral-50"
+      className="ml-2 fill-[#573c28]"
     >
       <path
         d="M16.4992 2H37.5808L22.0816 24.9729H1L16.4992 2Z"
@@ -76,7 +75,7 @@ const NavLink = ({ children, link }) => {
         className="h-[20px]"
       >
         <span className="flex h-[20px] items-center">{children}</span>
-        <span className="flex h-[20px] items-center text-neutral-50">
+        <span className="flex h-[20px] items-center text-[#573c28]">
           {children}
         </span>
       </motion.div>

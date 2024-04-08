@@ -48,7 +48,7 @@ strong {
   /* Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #3660d3 #000000;
+    scrollbar-color: #e0d7ba #c5c5c5;
   }
 
   /* Chrome, Edge, and Safari */
@@ -57,11 +57,11 @@ strong {
   }
 
   *::-webkit-scrollbar-track {
-    background: #000000;
+    background: #e0d7ba;
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #3660d3;
+    background-color: #cdc39c;
     border-radius: 10px;
-    border: 3px solid #3760d3;
+    border: 3px solid #cdc39c;
   }

@@ -2,10 +2,12 @@ import Link from "next/link";
 import { FiLinkedin, FiTwitter, FiArrowUpRight } from "react-icons/fi";
 import React, { useEffect, useState } from "react";
 import Nav from "../components/nav";
-import { FaGithub, FaDiscord } from "react-icons/fa";
+import {
+  FaGithub,
+  FaDiscord,
+} from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import ShowOff from "../components/show-off";
-import { FiExternalLink } from "react-icons/fi";
 
 function formatTimeAgo(dateString) {
   const date = new Date(dateString);
@@ -122,7 +124,7 @@ export const ContactForm = () => {
       `}</style>
 
       <div className="rounded-2xl p-8 bg-[#f5e2cc]/30 backdrop-blur-2xl col-span-4 h-full md:col-span-6">
-        <h1 className="text-3xl text-[#755d4c] font-alpina pb-3">
+        <h1 className="text-3xl text-[#755d4c] font-alpina pb-6">
           Get in Touch
         </h1>
         {!formSubmitted ? (
@@ -188,7 +190,7 @@ export const ContactForm = () => {
 
               <button
                 type="submit"
-                className="rounded-md px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm"
+                className="rounded-md px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm w-full"
               >
                 {isSubmitting ? (
                   <div className="spinner"></div>
@@ -203,6 +205,7 @@ export const ContactForm = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
+            className="text-[#ad8b73]"
           >
             <p>Siddharth will get back to you ASAP.</p>
           </motion.div>
@@ -215,25 +218,12 @@ export const ContactForm = () => {
 export const hoverClassName =
   "transform-gpu transition-all will-change-[outline,_transform] group-hover:scale-95 active:scale-100";
 
-export function CardHoverEffect({ children, className }) {
-  return (
-    <motion.div
-      whileHover={{ scale: 0.95, rotate: "-2deg" }}
-      className={`group relative overflow-hidden rounded-2xl bg-[#f5e2cc] px-8 py-8 p-4 ${className}`}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 export default function Home() {
-  const [vscodeStatus, setVscodeStatus] = useState(null);
-  const [showAboutMe, setShowAboutMe] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
 
-  const handleReadMoreClick = () => {
-    setShowAboutMe(!showAboutMe);
-  };
+  const [showAboutMe, setShowAboutMe] = useState(false);
+
+
+ 
 
   useEffect(() => {
     async function fetchMyCommits() {
@@ -306,24 +296,15 @@ export default function Home() {
 
       <Nav />
 
-      <main className="text-[#573c28] z-10 mx-auto max-w-3xl grid grid-cols-1 sm:grid-cols-6 gap-6 px-6 pb-28 pt-32">
-        <div className=" col-span-4 h-full md:col-span-6">
-          <h1 className="text-4xl text-[#755d4c] font-alpina pb-3 text-center">
-            Building is Fun
-          </h1>
-          <h2 className="text-xl text-[#755d4c] font-alpina pb-8 text-center">
-            Here&apos;s what I&apos;ve been working on lately.
-            </h2>
-          <ShowOff />
-          <a 
-            href="https://www.linkedin.com/in/siddharth-duggal/"
-          className="mt-4 rounded-md gap-2 px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm w-2/3 mx-auto">
-            Check out what else I&apos;ve been up to on my LinkedIn <FiExternalLink className="size-4"/>
-          </a>
+      
+      <div className="max-w-3xl mx-auto p-8 mt-28">
+       
+        <ContactForm />
         </div>
-      </main>
 
-      <footer className="flex items-center justify-center w-full h-16 text-[#ad8b73] font-alpina">
+
+      <footer className="flex items-center justify-center w-full h-16 text-[#ad8b73] font-alpina mt-20"
+      >
         © 2024 Siddharth Duggal
       </footer>
     </>
