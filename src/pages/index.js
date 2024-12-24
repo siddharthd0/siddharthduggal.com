@@ -102,15 +102,11 @@ export default function Home() {
                   variants={itemVariants}
                 >
                   Founder of {""}
-                  <a
-                    href="https://heliumlabs.dev"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200">
-                      Helium Labs
+                
+                    <span className="text-[#ad8b73]">
+                      Helium Labs — AI venture studio
                     </span>
-                  </a>
+                  
      
                   
                 </motion.p>
@@ -240,21 +236,16 @@ export default function Home() {
                       className="text-2xl text-[#755d4c] font-alpina"
                      
                     >
-                      Hey, I&apos;m Siddharth!
+                      Hey, I&apos;m Siddharth
                     </motion.h2>
 
                     <motion.p
                       className="text-[#ad8b73] mt-2 text-sm"
                     >
-                      Hey, I'm building{" "}
-                      <a
-                        href="https://heliumlabs.dev"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
-                      >
+                      I'm building{" "}
+                   
                         Helium Labs
-                      </a>
+                 
                       , where we create AI products like{" "}
                       <a
                         href="https://ninjachat.ai"
