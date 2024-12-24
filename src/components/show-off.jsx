@@ -3,58 +3,92 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CardHoverEffect from "./card-hover";
 import { FiExternalLink } from "react-icons/fi";
+import { FaLightbulb, FaBolt } from "react-icons/fa";
+import { IoRocketSharp } from "react-icons/io5";
 
 const projects = [
   {
-    title: "Bloon AI",
-    description: "AI-powered tutor.",
+    title: "Helium Labs",
+    description: "AI-powered products.",
     image: "/Screenshot 2024-04-07 at 7.52.41 PM.png",
     expandedContent: (
       <>
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-3xl text-[#755d4c] font-alpina ">Bloon AI</h2>
-          <a
-            href="https://bloon.ai"
-            className="gap-2 rounded-md px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm "
-          >
-            Visit bloon.ai <FiExternalLink className="size-4" />
-          </a>
-        </div>
-        <p className="text-[#ad8b73]/80 mb-4">
-          I&apos;m the Founder and CEO of Bloon AI, an AI-powered tutor that can
-          visually and audibly explain complex concepts to students.
-        </p>
+        <div className="flex flex-col space-y-6">
+          {/* Header Section */}
+          <div className="flex justify-between items-center">
+            <h2 className="text-2xl md:text-3xl text-[#755d4c] font-alpina">Helium Labs</h2>
+          </div>
 
-        <h2 className="text-3xl text-[#755d4c] font-alpina pb-4 mt-8">
-          The Problem
-        </h2>
-        <div className="rounded-5xl bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] p-4 mb-4">
-          <p className="text-[#ad8b73]/80">
-            Over{" "}
-            <span className="text-[#8c5844] font-bold">
-              50 million students
-            </span>{" "}
-            struggle with understanding complex concepts, leading to a{" "}
-            <span className="text-[#8c5844] font-bold">
-              $50B+ annual tutoring market
-            </span>{" "}
-            that often fails to deliver effective solutions.
-          </p>
+          {/* Main Description */}
+          <div className="bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] p-4 md:p-6 rounded-xl">
+            <p className="text-[#ad8b73]/80 text-base md:text-lg">
+              An{" "}
+              <span className="text-[#8c5844] font-bold">
+                AI venture studio
+              </span>
+              {" "}building the future of AI products. 
+            </p>
+          </div>
+
+          {/* Products Section */}
+          <div className="space-y-2">
+            <h3 className="text-lg md:text-xl text-[#755d4c] font-alpina">Our Products</h3>
+            <div className="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-4">
+              <a
+                href="https://ninjachat.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 p-3 md:p-4 rounded-lg bg-[#f5e2cc]/50 hover:bg-[#f5e2cc] transition-all duration-200"
+              >
+                <h4 className="text-[#8c5844] font-bold text-sm md:text-base">Ninjachat.ai</h4>
+                <p className="text-[#ad8b73]/80 text-xs md:text-sm">All-in-one AI assistant</p>
+              </a>
+              <a
+                href="https://photogenius.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 p-3 md:p-4 rounded-lg bg-[#f5e2cc]/50 hover:bg-[#f5e2cc] transition-all duration-200"
+              >
+                <h4 className="text-[#8c5844] font-bold text-sm md:text-base">Photogenius.ai</h4>
+                <p className="text-[#ad8b73]/80 text-xs md:text-sm">All-in-one AI image generator</p>
+              </a>
+            </div>
+          </div>
+
+         
+
+          {/* Problem Statement */}
+          <div className="space-y-2">
+            <h3 className="text-lg md:text-xl text-[#755d4c] font-alpina">Our Mission</h3>
+            <div className="rounded-lg bg-[#f5e2cc]/30 p-3 md:p-4">
+              <p className="text-[#ad8b73]/80 text-sm md:text-base">
+                AI is{" "}
+                <span className="text-[#8c5844] font-bold">
+                  evolving at an unprecedented rate
+                </span>
+                . We make it accessible through{" "}
+                <span className="text-[#8c5844] font-bold">
+                  simple, intuitive tools
+                </span>
+                {" "}that anyone can use.
+              </p>
+            </div>
+          </div>
+
+          {/* Hiring Call-to-Action */}
+          <div className="bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] p-4 md:p-6 rounded-xl">
+            <h3 className="text-lg md:text-xl text-[#755d4c] font-alpina mb-2">Join Our Team</h3>
+            <p className="text-[#ad8b73]/80 text-sm md:text-base mb-3">
+              We&apos;re hiring smart, persistent, and versatile individuals who are ready to take a bet on themselves.{" "}
+              <a
+                href="mailto:siddharth@bloon.ai"
+                className="text-[#8c5844] font-bold hover:text-[#755d4c] transition duration-200"
+              >
+                Email siddharth@bloon.ai →
+              </a>
+            </p>
+          </div>
         </div>
-        <h2 className="text-3xl text-[#755d4c] font-alpina pb-4">
-          What we&apos;re doing
-        </h2>
-        <p className="text-[#ad8b73]/80 mb-4">
-          Bloon AI leverages AI technology to provide{" "}
-          <span className="text-[#8c5844] font-bold">
-            personalized, interactive explanations
-          </span>{" "}
-          that adapt to each student&apos;s unique learning style, as if{" "}
-          <span className="text-[#8c5844] font-bold">
-            a tutor was sitting right next to them.
-          </span>
-          .
-        </p>
       </>
     ),
   },
@@ -64,16 +98,16 @@ const projects = [
     image: "/Screenshot 2024-04-07 at 7.53.26 PM.png",
     expandedContent: (
       <>
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-3xl text-[#755d4c] font-alpina ">Tech Optimum</h2>
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-4">
+          <h2 className="text-2xl md:text-3xl text-[#755d4c] font-alpina">Tech Optimum</h2>
           <a
             href="https://techoptimum.org"
-            className="gap-2 rounded-md px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm "
+            className="gap-2 rounded-md px-4 md:px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-xs md:text-sm"
           >
-            Visit techoptimum.org <FiExternalLink className="size-4" />
+            Visit techoptimum.org <FiExternalLink className="size-3 md:size-4" />
           </a>
         </div>
-        <p className="text-[#ad8b73]/80 mb-4">
+        <p className="text-[#ad8b73]/80 mb-4 text-sm md:text-base">
           I founded Tech Optimum in January 2022. Tech Optimum provides free
           computer science education to students worldwide, aiming to{" "}
           <span className="text-[#8c5844] font-bold">
@@ -89,43 +123,50 @@ const projects = [
         <img
           src="/tech-dash.png"
           alt="Tech Optimum"
-          className="w-full rounded-md shadow-md "
+          className="w-full rounded-md shadow-md mb-6"
         />
 
-        <h3 className="text-2xl text-[#755d4c] font-alpina pb-2 mt-8">
-          Hackathons
-        </h3>
-        <p className="text-[#ad8b73]/80 mb-4">
-          Hosted{" "}
-          <span className="text-[#8c5844] font-bold">
-            2 hackathons with over 500 participants combined
-          </span>{" "}
-          with sponsors like Desmos, Replit, and Microsoft Azure.
-        </p>
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <img
-            src="Screenshot 2024-04-07 at 7.41.43 PM.png"
-            alt="Tech Optimum"
-            className="w-full rounded-md shadow-md "
-          />
-          <img
-            src="Screenshot 2024-04-07 at 7.43.18 PM.png"
-            alt="Tech Optimum"
-            className="w-full rounded-md shadow-md "
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-3">
+            <h3 className="text-xl md:text-2xl text-[#755d4c] font-alpina">
+              Hackathons
+            </h3>
+            <p className="text-[#ad8b73]/80 text-sm md:text-base">
+              Hosted{" "}
+              <span className="text-[#8c5844] font-bold">
+                2 hackathons with over 500 participants combined
+              </span>{" "}
+              with sponsors like Desmos, Replit, and Microsoft Azure.
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              <img
+                src="Screenshot 2024-04-07 at 7.41.43 PM.png"
+                alt="Tech Optimum Hackathon"
+                className="w-full rounded-md shadow-md"
+              />
+              <img
+                src="Screenshot 2024-04-07 at 7.43.18 PM.png"
+                alt="Tech Optimum Hackathon"
+                className="w-full rounded-md shadow-md"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-xl md:text-2xl text-[#755d4c] font-alpina">
+              Free Coding Courses
+            </h3>
+            <p className="text-[#ad8b73]/80 text-sm md:text-base">
+              Developed{" "}
+              <span className="text-[#8c5844] font-bold">
+                30+ beginner-friendly coding courses
+              </span>{" "}
+              in various programming languages and frameworks, reaching{" "}
+              <span className="text-[#8c5844] font-bold">5k+ learners</span>{" "}
+              globally.
+            </p>
+          </div>
         </div>
-        <h3 className="text-2xl text-[#755d4c] font-alpina pb-2">
-          Free Coding Courses
-        </h3>
-        <p className="text-[#ad8b73]/80 mb-4">
-          Developed{" "}
-          <span className="text-[#8c5844] font-bold">
-            30+ beginner-friendly coding courses
-          </span>{" "}
-          in various programming languages and frameworks, reaching{" "}
-          <span className="text-[#8c5844] font-bold">5k+ learners</span>{" "}
-          globally.
-        </p>
       </>
     ),
   },

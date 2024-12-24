@@ -39,7 +39,8 @@ const SimpleFloatingNav = () => {
       </motion.div>
       <NavLink link="/">Home</NavLink>
       <NavLink link="/work">Work</NavLink>
-     <NavLink link="/contact">Contact</NavLink>
+      <NavLink link="/thoughts">Thoughts</NavLink>
+      <NavLink link="/contact">Contact</NavLink>
     </nav>
   );
 };

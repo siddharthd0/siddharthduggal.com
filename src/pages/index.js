@@ -101,26 +101,18 @@ export default function Home() {
                   className="text-[#ad8b73] pt-2"
                   variants={itemVariants}
                 >
-                  Founder of{" "}
+                  Founder of {""}
                   <a
-                    href="https://bloon.ai"
+                    href="https://heliumlabs.dev"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <span className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200">
-                      Bloon AI
-                    </span>{" "}
-                    &{" "}
-                  </a>
-                  <a
-                    href="https://techoptimum.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200">
-                      Tech Optimum
+                      Helium Labs
                     </span>
                   </a>
+     
+                  
                 </motion.p>
               </div>
             </div>
@@ -189,6 +181,13 @@ export default function Home() {
                 </Link>
               </motion.div>
               <motion.div variants={itemVariants}>
+                <Link href="/thoughts">
+                  <p className="text-[#ad8b73] hover:text-[#8c5844] transition duration-300">
+                    /thoughts
+                  </p>
+                </Link>
+              </motion.div>
+              <motion.div variants={itemVariants}>
                 <Link href="/contact">
                   <p className="text-[#ad8b73] hover:text-[#8c5844] transition duration-300">
                     /contact
@@ -246,19 +245,37 @@ export default function Home() {
 
                     <motion.p
                       className="text-[#ad8b73] mt-2 text-sm"
-                      
                     >
-                      I enjoy creating things that live on the internet.
-                      I&apos;m currently working on{" "}
+                      Hey, I'm building{" "}
                       <a
-                        href="https://bloon.ai"
+                        href="https://heliumlabs.dev"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
                       >
-                        Bloon AI
-                      </a>{" "}
-                      to accelerate knowledge. I also run a non-profit,{" "}
+                        Helium Labs
+                      </a>
+                      , where we create AI products like{" "}
+                      <a
+                        href="https://ninjachat.ai"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
+                      >
+                        Ninjachat.ai
+                      </a>
+                      {" "}and{" "}
+                      <a
+                        href="https://photogenius.ai"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
+                      >
+                        Photogenius.ai
+                      </a>
+                      {" "}(plus a few more in stealth).
+                      <br /><br />
+                      I also founded{" "}
                       <a
                         href="https://techoptimum.org"
                         target="_blank"
@@ -266,25 +283,32 @@ export default function Home() {
                         className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
                       >
                         Tech Optimum
-                      </a>{" "}
-                      to help students learn how to code for free.
-                      <br /> <br />
-                      Other than that, I enjoy flying drones and playing table
-                      tennis.
-                      <br /> <br /> Read more about my{" "}
+                      </a>
+                      {" "}to help students learn to code.
+                      <br /><br />
+                      We're always looking for talented people to join Helium Labs. Drop me a line at{" "}
+                      <a
+                        href="mailto:siddharth@bloon.ai"
+                        className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
+                      >
+                        siddharth@bloon.ai
+                      </a>
+                      <br /><br />
+                      Check out my{" "}
                       <a
                         href="/work"
                         className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
                       >
                         work
-                      </a>{" "}
-                      or{" "}
+                      </a>
+                      {" "}or{" "}
                       <a
                         href="/contact"
                         className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
                       >
-                        get in touch with me.
+                        say hello
                       </a>
+                      .
                     </motion.p>
                   </div>
                 </div>
