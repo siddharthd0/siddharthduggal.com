@@ -3,112 +3,112 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CardHoverEffect from "./card-hover";
 import { FiExternalLink } from "react-icons/fi";
-import { FaLightbulb, FaBolt } from "react-icons/fa";
-import { IoRocketSharp } from "react-icons/io5";
+
+const PRODUCT_DATA = {
+  bloon: {
+    title: "Bloon AI",
+    description: "AI tools that work",
+    website: "https://bloon.ai",
+    products: [
+      {
+        name: "NinjaChat",
+        url: "https://ninjachat.ai",
+        favicon: "https://ninjachat.ai/favicon.ico",
+        description: "Chat with multiple AI models in one place. Access ChatGPT, Claude, and Gemini without switching between apps. Generate videos, chat with PDFs, compare AI models, and more."
+      },
+      {
+        name: "PhotoGenius",
+        url: "https://photogenius.ai",
+        favicon: "https://photogenius.ai/favicon.ico",
+        description: "Type what you want to see and get images instantly. Create visuals for social media, marketing, and personal projects without design skills."
+      }
+    ]
+  },
+  techOptimum: {
+    title: "Tech Optimum",
+    description: "Free coding education.",
+    website: "https://techoptimum.org",
+    foundedDate: "January 2022"
+  }
+};
+
+// Export product data separately from the component
+export const productData = PRODUCT_DATA;
 
 const projects = [
   {
-    title: "Helium Labs",
-    description: "AI-powered products.",
-    image: "/Screenshot 2024-04-07 at 7.52.41 PM.png",
+    ...PRODUCT_DATA.bloon,
+    image: "/Screenshot 2025-03-19 at 7.35.08 PM.png",
     expandedContent: (
       <>
-        <div className="flex flex-col space-y-6">
-          {/* Header Section */}
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl md:text-3xl text-[#755d4c] font-alpina">Helium Labs</h2>
-          </div>
-
-          {/* Main Description */}
-          <div className="bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] p-4 md:p-6 rounded-xl">
-            <p className="text-[#ad8b73]/80 text-base md:text-lg">
-              An{" "}
-              <span className="text-[#8c5844] font-bold">
-                AI venture studio
-              </span>
-              {" "}building the future of AI products. 
-            </p>
-          </div>
-
-          {/* Products Section */}
-          <div className="space-y-2">
-            <h3 className="text-lg md:text-xl text-[#755d4c] font-alpina">Our Products</h3>
-            <div className="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-4">
-              <a
-                href="https://ninjachat.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 p-3 md:p-4 rounded-lg bg-[#f5e2cc]/50 hover:bg-[#f5e2cc] transition-all duration-200"
-              >
-                <h4 className="text-[#8c5844] font-bold text-sm md:text-base">Ninjachat.ai</h4>
-                <p className="text-[#ad8b73]/80 text-xs md:text-sm">All-in-one AI assistant</p>
-              </a>
-              <a
-                href="https://photogenius.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 p-3 md:p-4 rounded-lg bg-[#f5e2cc]/50 hover:bg-[#f5e2cc] transition-all duration-200"
-              >
-                <h4 className="text-[#8c5844] font-bold text-sm md:text-base">Photogenius.ai</h4>
-                <p className="text-[#ad8b73]/80 text-xs md:text-sm">All-in-one AI image generator</p>
-              </a>
-            </div>
-          </div>
-
-         
-
-          {/* Problem Statement */}
-          <div className="space-y-2">
-            <h3 className="text-lg md:text-xl text-[#755d4c] font-alpina">Our Mission</h3>
-            <div className="rounded-lg bg-[#f5e2cc]/30 p-3 md:p-4">
-              <p className="text-[#ad8b73]/80 text-sm md:text-base">
-                AI is{" "}
-                <span className="text-[#8c5844] font-bold">
-                  evolving at an unprecedented rate
-                </span>
-                . We make it accessible through{" "}
-                <span className="text-[#8c5844] font-bold">
-                  simple, intuitive tools
-                </span>
-                {" "}that anyone can use.
-              </p>
-            </div>
-          </div>
-
-          {/* Hiring Call-to-Action */}
-          <div className="bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] p-4 md:p-6 rounded-xl">
-            <h3 className="text-lg md:text-xl text-[#755d4c] font-alpina mb-2">Join Our Team</h3>
-            <p className="text-[#ad8b73]/80 text-sm md:text-base mb-3">
-              We&apos;re hiring smart, persistent, and versatile individuals who are ready to take a bet on themselves.{" "}
-              <a
-                href="mailto:siddharth@bloon.ai"
-                className="text-[#8c5844] font-bold hover:text-[#755d4c] transition duration-200"
-              >
-                Email siddharth@bloon.ai →
-              </a>
-            </p>
-          </div>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-3xl text-[#755d4c] font-alpina ">{PRODUCT_DATA.bloon.title}</h2>
+          <a
+            href={PRODUCT_DATA.bloon.website}
+            className="gap-2 rounded-md px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm "
+          >
+            Visit bloon.ai <FiExternalLink className="size-4" />
+          </a>
         </div>
+        <p className="text-[#ad8b73]/80 mb-4">
+          Bloon AI makes useful AI tools that save you time. We build simple interfaces for powerful technology.
+        </p>
+
+        <h2 className="text-3xl text-[#755d4c] font-alpina pb-4 mt-8">
+          Current Products
+        </h2>
+        
+        <div className="space-y-6">
+          {PRODUCT_DATA.bloon.products.map((product, index) => (
+            <div key={index} className="rounded-5xl bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] p-4">
+              <div className="flex items-center gap-2 mb-2">
+             
+                <h3 className="text-xl text-[#755d4c] font-alpina">{product.name}</h3>
+              </div>
+              <p className="text-[#ad8b73]/80">
+                {product.description}
+              </p>
+              <a 
+                href={product.url}
+                className="text-[#8c5844] hover:underline text-sm font-medium mt-2 inline-flex items-center gap-1"
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <img 
+                  src={product.favicon} 
+                  alt="" 
+                  className="w-3 h-3 rounded-sm"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+                Visit {product.url.replace('https://', '')}
+              </a>
+            </div>
+          ))}
+        </div>
+
+        
       </>
     ),
   },
   {
-    title: "Tech Optimum",
-    description: "Free coding education.",
+    title: PRODUCT_DATA.techOptimum.title,
+    description: PRODUCT_DATA.techOptimum.description,
     image: "/Screenshot 2024-04-07 at 7.53.26 PM.png",
     expandedContent: (
       <>
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-4">
-          <h2 className="text-2xl md:text-3xl text-[#755d4c] font-alpina">Tech Optimum</h2>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-3xl text-[#755d4c] font-alpina ">{PRODUCT_DATA.techOptimum.title}</h2>
           <a
-            href="https://techoptimum.org"
-            className="gap-2 rounded-md px-4 md:px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-xs md:text-sm"
+            href={PRODUCT_DATA.techOptimum.website}
+            className="gap-2 rounded-md px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm "
           >
             Visit techoptimum.org <FiExternalLink className="size-3 md:size-4" />
           </a>
         </div>
-        <p className="text-[#ad8b73]/80 mb-4 text-sm md:text-base">
-          I founded Tech Optimum in January 2022. Tech Optimum provides free
+        <p className="text-[#ad8b73]/80 mb-4">
+          I founded Tech Optimum in {PRODUCT_DATA.techOptimum.foundedDate}. Tech Optimum provides free
           computer science education to students worldwide, aiming to{" "}
           <span className="text-[#8c5844] font-bold">
             bridge the digital divide
@@ -172,6 +172,7 @@ const projects = [
   },
 ];
 
+// Define the component with a name
 const ProjectDeck = () => {
   const [selectedCard, setSelectedCard] = useState(null);
 

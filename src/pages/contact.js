@@ -1,14 +1,8 @@
-import Link from "next/link";
-import { FiLinkedin, FiTwitter, FiArrowUpRight } from "react-icons/fi";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Nav from "../components/nav";
-import {
-  FaGithub,
-  FaDiscord,
-} from "react-icons/fa";
-import { AnimatePresence, motion } from "framer-motion";
-import ShowOff from "../components/show-off";
 
+// Helper function to format time
 function formatTimeAgo(dateString) {
   const date = new Date(dateString);
   const now = new Date();
@@ -25,24 +19,25 @@ function formatTimeAgo(dateString) {
   return `${weeks} weeks ago`;
 }
 
+// Animation variants
 const tooltipVariants = {
   hidden: { opacity: 0, y: 20, scale: 0.8 },
   visible: { opacity: 1, y: 0, scale: 1 },
 };
 
-export const ContactForm = () => {
+// Contact form component
+function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,38 +56,12 @@ export const ContactForm = () => {
         throw new Error("Network response was not ok");
       }
 
-      console.log("Message sent successfully");
       setIsSubmitting(false);
       setFormSubmitted(true);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
       setIsSubmitting(false);
     }
-  };
-
-  const [currentTime, setCurrentTime] = useState("");
-
-  useEffect(() => {
-    const fetchTime = async () => {
-      try {
-        const res = await fetch("/api/time");
-        const data = await res.json();
-        setCurrentTime(data.datetime);
-      } catch (error) {
-        console.error("Error fetching time:", error);
-      }
-    };
-
-    fetchTime();
-  }, []);
-
-  const formatMDTTime = () => {
-    if (!currentTime) return "";
-    const date = new Date(currentTime);
-    return date.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
   };
 
   return (
@@ -114,26 +83,23 @@ export const ContactForm = () => {
         }
 
         @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
         }
       `}</style>
 
-      <div className="rounded-2xl p-8 bg-[#f5e2cc]/30 backdrop-blur-2xl col-span-4 h-full md:col-span-6">
+      <div className="rounded-2xl p-8 bg-[#f5e2cc]/30 backdrop-blur-2xl h-full">
         <h1 className="text-3xl text-[#755d4c] font-alpina pb-6">
           Get in Touch
         </h1>
+        
         {!formSubmitted ? (
           <motion.div
             initial={{ opacity: 1 }}
-            animate={{ opacity: formSubmitted ? 0 : 1 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} method="post">
               <div className="mb-6">
                 <label
                   htmlFor="name"
@@ -149,6 +115,8 @@ export const ContactForm = () => {
                   value={formData.name}
                   className="block w-full rounded border border-[#d6ba9c]/30 bg-transparent px-3 py-2 leading-6 text-[#d6ba9c] placeholder-[#d6ba9c] focus:border-[#ad8b73] focus:ring-1 focus:ring-[#ad8b73] hover:border-[#ad8b73] transition duration-300"
                   placeholder="Siddharth Duggal"
+                  required
+                  aria-required="true"
                 />
               </div>
 
@@ -167,6 +135,8 @@ export const ContactForm = () => {
                   value={formData.email}
                   className="block w-full rounded border border-[#d6ba9c]/30 bg-transparent px-3 py-2 leading-6 text-[#d6ba9c] placeholder-[#d6ba9c]/70 focus:border-[#ad8b73] focus:ring-1 focus:ring-[#ad8b73] hover:border-[#ad8b73] transition duration-300"
                   placeholder="siddharth@bloon.ai"
+                  required
+                  aria-required="true"
                 />
               </div>
 
@@ -180,20 +150,24 @@ export const ContactForm = () => {
                 <textarea
                   name="message"
                   id="message"
-                  rows="3"
+                  rows="4"
                   onChange={handleChange}
                   value={formData.message}
                   className="block w-full rounded border border-[#d6ba9c]/30 bg-transparent px-3 py-2 leading-6 text-[#d6ba9c] placeholder-[#d6ba9c]/70 focus:border-[#ad8b73] focus:ring-1 focus:ring-[#ad8b73] hover:border-[#ad8b73] transition duration-300"
                   placeholder="I would like to talk about..."
+                  required
+                  aria-required="true"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="rounded-md px-6 py-2 flex items-center justify-center space-x-1.5 bg-[#f5e2cc] transition duration-200 hover:bg-[#ebd4bd] border-[1px] border-[#ad8b73]/30 hover:border-[#ad8b73] transition duration-200 hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm w-full"
+                className="rounded-md px-6 py-2 flex items-center justify-center bg-[#f5e2cc] transition-all duration-200 hover:bg-[#ebd4bd] border border-[#ad8b73]/30 hover:border-[#ad8b73] hover:text-[#8c5844] text-[#ad8b73] font-medium text-sm w-full"
+                disabled={isSubmitting}
+                aria-busy={isSubmitting}
               >
                 {isSubmitting ? (
-                  <div className="spinner"></div>
+                  <div className="spinner" aria-hidden="true"></div>
                 ) : (
                   "Send to Siddharth"
                 )}
@@ -205,70 +179,18 @@ export const ContactForm = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-[#ad8b73]"
+            className="text-[#ad8b73] bg-[#f5e2cc]/50 p-4 rounded-md border border-[#ad8b73]/30"
+            role="alert"
           >
-            <p>Siddharth will get back to you ASAP.</p>
+            <p className="font-medium">Siddharth will get back to you ASAP.</p>
           </motion.div>
         )}
       </div>
     </>
   );
-};
+}
 
-export const hoverClassName =
-  "transform-gpu transition-all will-change-[outline,_transform] group-hover:scale-95 active:scale-100";
-
-export default function Home() {
-
-  const [showAboutMe, setShowAboutMe] = useState(false);
-
-
- 
-
-  useEffect(() => {
-    async function fetchMyCommits() {
-      try {
-        const res = await fetch("/api/github");
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        const data = await res.json();
-        setVscodeStatus(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-
-    fetchMyCommits();
-  }, []);
-
-  const [currentTime, setCurrentTime] = useState("");
-
-  useEffect(() => {
-    const fetchTime = async () => {
-      try {
-        const res = await fetch("/api/time");
-        const data = await res.json();
-        setCurrentTime(data.datetime);
-      } catch (error) {
-        console.error("Error fetching time:", error);
-      }
-    };
-
-    fetchTime();
-  }, []);
-
-  const formatMDTTime = () => {
-    if (!currentTime) return "";
-    const date = new Date(currentTime);
-    return date.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
-
-  const custom = showAboutMe ? 1 : -1;
-
+export default function Contact() {
   return (
     <>
       <style jsx global>{`
@@ -283,29 +205,25 @@ export default function Home() {
         @font-face {
           font-family: "GT Alpina";
           src: url("/path/to/your/gt-alpina-font.woff2") format("woff2"),
-            url("/path/to/your/gt-alpina-font.woff") format("woff");
+               url("/path/to/your/gt-alpina-font.woff") format("woff");
           font-weight: normal;
           font-style: normal;
         }
 
         .font-alpina {
           font-family: "GT Alpina", ui-serif, Georgia, Cambria,
-            "Times New Roman", Times, serif;
+                       "Times New Roman", Times, serif;
         }
       `}</style>
 
       <Nav />
-
       
-      <div className="max-w-3xl mx-auto p-8 mt-28">
-       
+      <main className="max-w-3xl mx-auto p-8 mt-28">
         <ContactForm />
-        </div>
+      </main>
 
-
-      <footer className="flex items-center justify-center w-full h-16 text-[#ad8b73] font-alpina mt-20"
-      >
-        © 2024 Siddharth Duggal
+      <footer className="flex items-center justify-center w-full h-16 text-[#ad8b73] font-alpina mt-20">
+        © {new Date().getFullYear()} Siddharth Duggal
       </footer>
     </>
   );
