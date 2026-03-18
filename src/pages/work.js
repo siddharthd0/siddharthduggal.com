@@ -1,76 +1,98 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import Nav from "../components/nav";
-import ShowOff from "../components/show-off";
+const expoOut = [0.16, 1, 0.3, 1];
+
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: expoOut } },
+};
+
+function ArrowIcon() {
+  return (
+    <svg width="10" height="10" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1.5 9.5L9.5 1.5M9.5 1.5H3.5M9.5 1.5V7.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+const projects = [
+  {
+    name: "Bloon.ai",
+    description: "AI product studio.",
+    year: "2024",
+    url: "bloon.ai",
+    href: "https://bloon.ai",
+  },
+  {
+    name: "Tech Optimum",
+    description: "Free coding courses for students.",
+    year: "2022",
+    url: "techoptimum.org",
+    href: "https://techoptimum.org",
+  },
+];
 
 export default function Work() {
-  const [vscodeStatus, setVscodeStatus] = useState(null);
-
-  useEffect(() => {
-    async function fetchGithubData() {
-      try {
-        const res = await fetch("/api/github");
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        const data = await res.json();
-        setVscodeStatus(data);
-      } catch (error) {
-        console.error("Error fetching GitHub data:", error);
-      }
-    }
-
-    fetchGithubData();
-  }, []);
-
   return (
     <>
-      <style jsx global>{`
-        body {
-          background-color: #fcf7f2;
-          background-image: url("./Unknown-2.jpg");
-          background-size: cover;
-          background-position: center;
-          background-attachment: fixed;
-        }
+      <main className="relative z-10 min-h-screen flex items-center px-[max(2.5rem,8vw)]">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          className="w-full max-w-lg"
+        >
+          {/* Label */}
+          <motion.p
+            variants={item}
+            className="font-mono text-[11px] tracking-[0.22em] uppercase text-[#888] mb-10"
+          >
+            work
+          </motion.p>
 
-        @font-face {
-          font-family: "GT Alpina";
-          src: url("/path/to/your/gt-alpina-font.woff2") format("woff2"),
-               url("/path/to/your/gt-alpina-font.woff") format("woff");
-          font-weight: normal;
-          font-style: normal;
-        }
+          {/* Project list */}
+          <div>
+            {projects.map(({ name, description, year, url, href }) => (
+              <motion.div
+                key={name}
+                variants={item}
+                className="border-t border-[#ffffff12] py-7 flex items-start justify-between gap-6"
+              >
+                <div className="min-w-0">
+                  <h2
+                    className="font-display font-light text-[#f0ece4] leading-none mb-2"
+                    style={{ fontSize: "2.6rem" }}
+                  >
+                    {name}
+                  </h2>
+                  <p className="font-mono text-[11px] text-[#888] tracking-wide">
+                    {description}
+                  </p>
+                </div>
 
-        .font-alpina {
-          font-family: "GT Alpina", ui-serif, Georgia, Cambria,
-                      "Times New Roman", Times, serif;
-        }
-      `}</style>
-
-      <Nav />
-
-      <main className="text-[#573c28] z-10 mx-auto max-w-3xl grid grid-cols-1 sm:grid-cols-6 gap-6 px-6 pb-28 pt-32">
-        <div className="col-span-4 h-full md:col-span-6">
-          <h1 className="text-4xl text-[#755d4c] font-alpina pb-3 text-center">
-            Building is Fun
-          </h1>
-          <h2 className="text-xl text-[#755d4c] font-alpina pb-8 text-center">
-            Here&apos;s what I&apos;ve been working on lately.
-          </h2>
-          <ShowOff />
-          <p className="text-center text-sm text-[#ad8b73]/80 mt-4 max-w-lg mx-auto">
-            Always looking to meet new people, hacking on new stuff 24/7. 
-            Email me at <a href="mailto:siddharth@bloon.ai" className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200">
-              siddharth@bloon.ai
-            </a> if you want to chat.
-          </p>
-        </div>
+                <div className="flex flex-col items-end gap-2 shrink-0">
+                  <span className="font-mono text-[11px] text-[#666]">{year}</span>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[11px] text-[#888] hover:text-[#e8a030] transition-colors duration-150 flex items-center gap-1"
+                  >
+                    <ArrowIcon />
+                    {url}
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+            <motion.div variants={item} className="border-t border-[#ffffff12]" />
+          </div>
+        </motion.div>
       </main>
-
-      <footer className="flex items-center justify-center w-full h-16 text-[#ad8b73] font-alpina">
-        © 2024 Siddharth Duggal
-      </footer>
     </>
   );
 }

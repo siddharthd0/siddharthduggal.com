@@ -3,65 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg: #080808;
+  --text: #f0ece4;
+  --accent: #e8a030;
+  --muted: #333333;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(16, 13, 33);
+/* Dark scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333333 #080808;
 }
 
-@font-face {
-  font-family: 'uber';
-  src: url('/UberMoveBold.otf') format('opentype');
-  font-weight: bold;
-  font-style: normal;
+*::-webkit-scrollbar {
+  width: 4px;
 }
 
-@font-face {
-  font-family: 'uber';
-  src: url('/UberMoveMedium.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-body {
-  font-family: 'uber', sans-serif;
+*::-webkit-scrollbar-track {
+  background: #080808;
 }
 
-strong {
-  font-weight: bold; /* This will use the bold version of your custom font */
+*::-webkit-scrollbar-thumb {
+  background-color: #333333;
+  border-radius: 4px;
 }
-
-
-
-/* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #e0d7ba #c5c5c5;
-  }
-
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: #e0d7ba;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: #cdc39c;
-    border-radius: 10px;
-    border: 3px solid #cdc39c;
-  }

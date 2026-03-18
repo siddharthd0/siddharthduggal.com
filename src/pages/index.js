@@ -1,321 +1,99 @@
-import Link from "next/link";
-import { FiLinkedin, FiTwitter, FiArrowUpRight } from "react-icons/fi";
-import { FaGithub, FaDiscord } from "react-icons/fa";
-import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { productData } from "../components/show-off.jsx";
+import React from "react";
+import { motion } from "framer-motion";
 
-export const hoverClassName =
-  "transform-gpu transition-all will-change-[outline,_transform] group-hover:scale-95 active:scale-100";
+const expoOut = [0.16, 1, 0.3, 1];
 
-export function CardHoverEffect({ children, className }) {
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: expoOut } },
+};
+
+function GitHubIcon() {
   return (
-    <motion.div
-      whileHover={{ scale: 0.95, rotate: "-2deg" }}
-      className={`group relative overflow-hidden rounded-2xl bg-[#f5e2cc] px-8 py-8 ${className}`}
-    >
-      {children}
-    </motion.div>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 1C4.134 1 1 4.134 1 8c0 3.09 2.006 5.716 4.79 6.641.35.064.479-.152.479-.338 0-.166-.006-.607-.009-1.192-1.948.423-2.359-.939-2.359-.939-.318-.809-.778-1.024-.778-1.024-.636-.435.048-.426.048-.426.703.049 1.073.721 1.073.721.624 1.069 1.638.76 2.037.581.063-.452.244-.76.444-.935-1.555-.177-3.19-.778-3.19-3.46 0-.764.273-1.389.721-1.879-.072-.177-.312-.889.069-1.853 0 0 .588-.188 1.927.719A6.71 6.71 0 018 4.82a6.71 6.71 0 011.756.236c1.338-.907 1.925-.719 1.925-.719.382.964.142 1.676.07 1.853.449.49.72 1.115.72 1.879 0 2.689-1.638 3.281-3.198 3.455.251.217.475.645.475 1.3 0 .938-.009 1.694-.009 1.924 0 .188.127.406.482.337C12.997 13.714 15 11.09 15 8c0-3.866-3.134-7-7-7z" fill="currentColor"/>
+    </svg>
   );
 }
 
-const containerVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-      delayChildren: 0.2,
-      staggerChildren: 0.1,
-    },
-  },
-};
+function XIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 1L6 7.5M6 7.5L1 13H3.5L7 9.5L10.5 13H13L8 7.5M6 7.5L3.5 1H1L6 7.5M8 7.5L13 1H10.5L7 4.5L8 7.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
 
-const itemVariants = {
-  hidden: { opacity: 0, scale: 0.5 },
-  visible: { opacity: 1, scale: 1 },
-};
+function LinkedInIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0.5" y="0.5" width="14" height="14" rx="2.5" stroke="currentColor" strokeWidth="0.9"/>
+      <path d="M3.5 6V11.5M3.5 4.5V4.5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
+      <path d="M6.5 11.5V8.5C6.5 7.4 7.1 6.5 8 6.5C8.9 6.5 9.5 7.2 9.5 8.5V11.5M6.5 6V11.5" stroke="currentColor" strokeWidth="0.95" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
 
-const blobVariants = {
-  animate: {
-    scale: [1, 1.2, 1],
-    rotate: [0, 180, 360],
-    transition: { duration: 8, ease: "linear", repeat: Infinity, repeatType: "loop" },
-  },
-};
-
-const socialLinks = [
-  {
-    icon: FaGithub,
-    href: "https://github.com/siddharthd0",
-    tip: "@siddharthd0",
-  },
-  {
-    icon: FiLinkedin,
-    href: "https://www.linkedin.com/in/siddharth-duggal",
-    tip: "/in/siddharth-duggal",
-  },
-  {
-    icon: FiTwitter,
-    href: "https://twitter.com/siddharthd01",
-    tip: "@siddharthd01",
-  },
-  {
-    icon: FaDiscord,
-    href: "https://discord.com/users/910659572199464990",
-    tip: "@siddharth._",
-  },
+const socials = [
+  { icon: GitHubIcon, href: "https://github.com/siddharthd0", label: "GitHub" },
+  { icon: XIcon, href: "https://twitter.com/siddharthd01", label: "Twitter" },
+  { icon: LinkedInIcon, href: "https://www.linkedin.com/in/siddharth-duggal", label: "LinkedIn" },
 ];
 
 export default function Home() {
-  const [showAboutMe, setShowAboutMe] = useState(false);
-  
-  const handleReadMoreClick = () => setShowAboutMe(!showAboutMe);
-
   return (
-    <>
-      <style jsx global>{`
-        body {
-          background-color: #fcf7f2;
-          background-image: url("./Unknown-2.jpg");
-          background-size: cover;
-          background-position: center;
-          background-attachment: fixed;
-        }
-
-        @font-face {
-          font-family: "GT Alpina";
-          src: url("/path/to/your/gt-alpina-font.woff2") format("woff2"),
-            url("/path/to/your/gt-alpina-font.woff") format("woff");
-          font-weight: normal;
-          font-style: normal;
-        }
-
-        .font-alpina {
-          font-family: "GT Alpina", ui-serif, Georgia, Cambria,
-            "Times New Roman", Times, serif;
-        }
-      `}</style>
-
-      <main className="text-[#573c28] z-10 h-screen flex items-center justify-center">
-        <AnimatePresence>
-          <motion.div
-            className="flex flex-col justify-between overflow-hidden rounded-2xl bg-[#f5e2cc]/20 border-[#ad8b73] px-8 py-8 shadow-none backdrop-blur-2xl"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.div
-              className="h-18 w-32 rounded-full bg-[#ad8b73]/50 opacity-2 mix-blend-normal blur-3xl shadow-lg shadow-[#ad8b73]/20 filter"
-              variants={blobVariants}
-              animate="animate"
-            ></motion.div>
-            
-            <div className="flex items-center justify-between">
-              <div>
-                <motion.h1
-                  className="text-4xl text-[#755d4c] font-alpina"
-                  variants={itemVariants}
-                >
-                  Siddharth Duggal
-                </motion.h1>
-                <motion.p
-                  className="text-[#ad8b73] pt-2"
-                  variants={itemVariants}
-                >
-                  Founder of{" "}
-                  <span className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200">
-                    {productData.bloon.title}
-                  </span>{" "}
-                  &{" "}
-                  <a
-                    href={productData.techOptimum.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200">
-                      {productData.techOptimum.title}
-                    </span>
-                    </a>
-                  
-        
-                  
-                </motion.p> 
-              </div>
-            </div>
-
-            <motion.div
-              className="justify-between flex items-center pt-6"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.div className="flex space-x-4">
-                {socialLinks.map(({ icon: Icon, href, tip }, index) => (
-                  <motion.div
-                    key={index}
-                    className="text-md text-[#ad8b73] transition-colors duration-300 hover:text-[#8c5844]"
-                    variants={itemVariants}
-                    title={tip}
-                  >
-                    <Link href={href} target="_blank" rel="noopener noreferrer">
-                      <Icon />
-                    </Link>
-                  </motion.div>
-                ))}
-              </motion.div>
-              
-              <motion.button
-                className="flex items-center text-lg text-[#ad8b73] hover:text-[#8c5844] transition duration-300 rounded-full"
-                onClick={handleReadMoreClick}
-                variants={itemVariants}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Read more about me"
-              >
-                <FiArrowUpRight />
-              </motion.button>
-            </motion.div>
-            
-            <motion.nav
-              className="flex space-x-4 pt-6 text-sm"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.div variants={itemVariants}>
-                <Link href="/work">
-                  <p className="text-[#ad8b73] hover:text-[#8c5844] transition duration-300">
-                    /work
-                  </p>
-                </Link>
-              </motion.div>
-              <motion.div variants={itemVariants}>
-                <Link href="/thoughts">
-                  <p className="text-[#ad8b73] hover:text-[#8c5844] transition duration-300">
-                    /thoughts
-                  </p>
-                </Link>
-              </motion.div>
-              <motion.div variants={itemVariants}>
-                <Link href="/contact">
-                  <p className="text-[#ad8b73] hover:text-[#8c5844] transition duration-300">
-                    /contact
-                  </p>
-                </Link>
-              </motion.div>
-            </motion.nav>
-          </motion.div>
-        </AnimatePresence>
-      </main>
-
-      <AboutMeModal 
-        show={showAboutMe} 
-        onClose={handleReadMoreClick} 
-      />
-
-      <footer className="fixed bottom-0 left-0 right-0 flex items-center justify-center h-16 text-[#ad8b73] font-alpina">
-        © {new Date().getFullYear()} Siddharth Duggal
-      </footer>
-    </>
-  );
-}
-
-function AboutMeModal({ show, onClose }) {
-  if (!show) return null;
-  
-  return (
-    <AnimatePresence>
+    <main className="relative z-10 min-h-screen flex items-center px-[max(2.5rem,8vw)]">
       <motion.div
-        className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black/50 backdrop-blur-md z-50"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        onClick={onClose}
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="w-full max-w-lg"
       >
-        <motion.div
-          className="max-w-sm bg-gradient-to-br from-[#f5e2cc] to-[#e6c8a9] rounded-md p-4 overflow-y-auto shadow-lg py-8 px-6 mx-4"
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          onClick={(e) => e.stopPropagation()}
+        <motion.h1
+          variants={item}
+          className="font-display font-light text-[#f0ece4] leading-[0.95] mb-8"
+          style={{ fontSize: "clamp(3.8rem, 6vw, 5.5rem)" }}
         >
-          <button
-            className="absolute top-4 right-4 text-4xl text-[#ad8b73] hover:text-[#8c5844] transition duration-300"
-            onClick={onClose}
-            aria-label="Close modal"
-          >
-            &times;
-          </button>
-          
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-          >
-            <div>
-              <motion.img
-                src="/dubai-fixed.png"
-                alt="Siddharth Duggal"
-                className="w-40 rounded-md"
-                loading="lazy"
-              />
-              
-              <div className="mt-4">
-                <motion.h2 className="text-2xl text-[#755d4c] font-alpina">
-                  Hey, I&apos;m Siddharth!
-                </motion.h2>
+          Siddharth
+          <br />
+          Duggal
+        </motion.h1>
 
-                <motion.p className="text-[#ad8b73] mt-2 text-sm">
-                  I enjoy creating things that live on the internet.
-                  I&apos;m currently working on{" "}
-                  <span className="text-[#ad8b73]">
-                    {productData.bloon.title}
-                  </span>
-                  {" "}
-                  , an AI product studio. I also run a non-profit,{" "}
-                  <a
-                    href={productData.techOptimum.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
-                  >
-                    {productData.techOptimum.title}
-                  </a>
-                  {" "}
-                  to help students learn how to code for free.
+        <motion.p
+          variants={item}
+          className="font-mono text-[12px] text-[#888] leading-relaxed mb-8 max-w-xs"
+        >
+          I build software. Working on{" "}
+          <a href="https://bloon.ai" target="_blank" rel="noopener noreferrer" className="text-[#f0ece4]/60 hover:text-[#e8a030] transition-colors duration-150">
+            Bloon.ai
+          </a>
+          , and previously started{" "}
+          <a href="https://techoptimum.org" target="_blank" rel="noopener noreferrer" className="text-[#f0ece4]/60 hover:text-[#e8a030] transition-colors duration-150">
+            Tech Optimum
+          </a>
+          {" "}to get students into coding.
+        </motion.p>
 
-                  <div className="mt-4">
-                    Other than that, I enjoy flying drones and playing table
-                    tennis.
-                  </div>
-
-                  <div className="mt-4">
-                    Read more about my{" "}
-                    <a
-                      href="/work"
-                      className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
-                    >
-                      work
-                    </a>
-                    {" "}or{" "}
-                    <a
-                      href="/contact"
-                      className="text-[#ad8b73] hover:text-[#8c5844] transition duration-200"
-                    >
-                      get in touch with me.
-                    </a>
-                  </div>
-                </motion.p>
-              </div>
-            </div>
-          </motion.div>
+        <motion.div variants={item} className="flex items-center gap-4">
+          {socials.map(({ icon: Icon, href, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="text-[#888] hover:text-[#e8a030] transition-colors duration-150"
+            >
+              <Icon />
+            </a>
+          ))}
         </motion.div>
       </motion.div>
-    </AnimatePresence>
+    </main>
   );
 }
