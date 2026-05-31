@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import { motion, useMotionValue } from "framer-motion";
 
 const expoOut = [0.16, 1, 0.3, 1];
 
@@ -45,41 +45,277 @@ const socials = [
   { icon: LinkedInIcon, href: "https://www.linkedin.com/in/siddharth-duggal", label: "LinkedIn" },
 ];
 
+function BalloonSvg() {
+  return (
+    <svg width="22" height="44" viewBox="0 0 22 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+      <path
+        d="M11 1.2 C 16.4 1.2, 19.8 5.4, 19.8 11.4 C 19.8 16.9, 15.9 21.4, 11 21.9 C 6.1 21.4, 2.2 16.9, 2.2 11.4 C 2.2 5.4, 5.6 1.2, 11 1.2 Z"
+        fill="#e8a030"
+      />
+      <ellipse cx="7.6" cy="7" rx="2.2" ry="3" fill="#ffffff" fillOpacity="0.3" />
+      <ellipse cx="11" cy="18.8" rx="5.5" ry="2" fill="#000" fillOpacity="0.08" />
+      <path d="M9.6 21.9 L11 24.4 L12.4 21.9 Z" fill="#b8761c" />
+      <path
+        d="M11 24.4 Q 8.6 28 11 32 Q 13.4 36 10.6 40 Q 8.4 42.5 11 44"
+        stroke="#e8a030"
+        strokeOpacity="0.5"
+        strokeWidth="0.7"
+        fill="none"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function PopBurst() {
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 9 }, (_, i) => {
+        const angle = (i / 9) * Math.PI * 2 + (Math.random() - 0.5) * 0.4;
+        const radius = 18 + Math.random() * 10;
+        return {
+          id: i,
+          x: Math.cos(angle) * radius,
+          y: Math.sin(angle) * radius,
+          duration: 0.45 + Math.random() * 0.15,
+          size: 2.5 + Math.random() * 1.5,
+        };
+      }),
+    []
+  );
+
+  return (
+    <span className="relative block w-[22px] h-[22px]">
+      <motion.span
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[28px] h-[28px] rounded-full"
+        style={{ background: "#e8a030", filter: "blur(6px)" }}
+        initial={{ opacity: 0.55, scale: 0.5 }}
+        animate={{ opacity: 0, scale: 1.9 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      />
+      {particles.map((p) => (
+        <motion.span
+          key={p.id}
+          className="absolute left-1/2 top-1/2 rounded-full bg-[#e8a030]"
+          style={{
+            width: p.size,
+            height: p.size,
+            marginLeft: -p.size / 2,
+            marginTop: -p.size / 2,
+          }}
+          initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
+          animate={{ x: p.x, y: p.y, opacity: 0, scale: 0.3 }}
+          transition={{ duration: p.duration, ease: [0.16, 1, 0.3, 1] }}
+        />
+      ))}
+    </span>
+  );
+}
+
+const BALLOON_SPAWN_DUR = 0.5;
+const BALLOON_START_SCALE = 0.12;
+
+function Balloon({ onDone }) {
+  const [phase, setPhase] = useState("rise");
+  const xMv = useMotionValue(0);
+  const yMv = useMotionValue(0);
+  const rotateMv = useMotionValue(0);
+  const opacityMv = useMotionValue(0);
+  const scaleMv = useMotionValue(BALLOON_START_SCALE);
+
+  const params = useMemo(() => {
+    const TAU = Math.PI * 2;
+    return {
+      finalSize: 0.88 + Math.random() * 0.18,
+      duration: 3.6 + Math.random() * 1.0,
+      spawnX: (Math.random() - 0.5) * 4,
+      terminalVy: 64 + Math.random() * 18,
+      vyRampRate: 1.1 + Math.random() * 0.4,
+      drag: 1.55 + Math.random() * 0.35,
+      windAmp: 75 + Math.random() * 45,
+      windFreqA: (0.22 + Math.random() * 0.18) * TAU,
+      windFreqB: (0.55 + Math.random() * 0.3) * TAU,
+      windFreqC: (1.1 + Math.random() * 0.5) * TAU,
+      windPhaseA: Math.random() * TAU,
+      windPhaseB: Math.random() * TAU,
+      windPhaseC: Math.random() * TAU,
+      driftAccel: (Math.random() - 0.5) * 9,
+      bobAmp: 0.7 + Math.random() * 0.6,
+      bobFreq: (0.6 + Math.random() * 0.35) * TAU,
+      bobPhase: Math.random() * TAU,
+    };
+  }, []);
+
+  useEffect(() => {
+    let rafId = 0;
+    let stopped = false;
+    const t0 = performance.now();
+    let prevT = t0;
+    let xPos = params.spawnX;
+    let vx = 0;
+    let yPos = 0;
+    let smoothRot = 0;
+
+    const step = (now) => {
+      if (stopped) return;
+      const t = (now - t0) / 1000;
+      const dt = Math.min((now - prevT) / 1000, 1 / 30);
+      prevT = now;
+
+      if (t >= params.duration) {
+        setPhase("pop");
+        return;
+      }
+
+      const spawnRaw = Math.min(t / BALLOON_SPAWN_DUR, 1);
+      const easedOpacity = 1 - Math.pow(1 - spawnRaw, 5);
+      const c1 = 1.7;
+      const c3 = c1 + 1;
+      const easedScale =
+        1 + c3 * Math.pow(spawnRaw - 1, 3) + c1 * Math.pow(spawnRaw - 1, 2);
+      opacityMv.set(easedOpacity);
+      scaleMv.set(
+        BALLOON_START_SCALE + (params.finalSize - BALLOON_START_SCALE) * easedScale
+      );
+
+      const windWeight = spawnRaw;
+      const wind =
+        (Math.sin(t * params.windFreqA + params.windPhaseA) * params.windAmp * 0.6 +
+          Math.sin(t * params.windFreqB + params.windPhaseB) * params.windAmp * 0.3 +
+          Math.sin(t * params.windFreqC + params.windPhaseC) * params.windAmp * 0.15 +
+          params.driftAccel) *
+        windWeight;
+
+      const ax = wind - params.drag * vx;
+      vx += ax * dt;
+      xPos += vx * dt;
+
+      const vy = params.terminalVy * (1 - Math.exp(-params.vyRampRate * t));
+      yPos -= vy * dt;
+
+      const targetRot = -vx * 0.16;
+      smoothRot += (targetRot - smoothRot) * Math.min(dt * 9, 1);
+
+      const bob = Math.sin(t * params.bobFreq + params.bobPhase) * params.bobAmp;
+
+      xMv.set(xPos);
+      yMv.set(yPos + bob);
+      rotateMv.set(smoothRot);
+
+      rafId = requestAnimationFrame(step);
+    };
+
+    rafId = requestAnimationFrame(step);
+    return () => {
+      stopped = true;
+      cancelAnimationFrame(rafId);
+    };
+  }, [params, xMv, yMv, rotateMv, opacityMv, scaleMv]);
+
+  useEffect(() => {
+    if (phase === "pop") {
+      const t = setTimeout(onDone, 520);
+      return () => clearTimeout(t);
+    }
+  }, [phase, onDone]);
+
+  return (
+    <motion.span
+      className="absolute left-1/2 bottom-0 inline-block will-change-transform"
+      style={{
+        marginLeft: -11,
+        transformOrigin: "50% 100%",
+        x: xMv,
+        y: yMv,
+        rotate: rotateMv,
+        opacity: opacityMv,
+        scale: scaleMv,
+      }}
+    >
+      {phase === "rise" ? <BalloonSvg /> : <PopBurst />}
+    </motion.span>
+  );
+}
+
+function BloonLink({ href, children }) {
+  const [items, setItems] = useState([]);
+  const idRef = useRef(0);
+  const lastSpawn = useRef(0);
+
+  const handleEnter = useCallback(() => {
+    const now = Date.now();
+    if (now - lastSpawn.current < 180) return;
+    lastSpawn.current = now;
+    const id = idRef.current++;
+    setItems((prev) => [...prev, id]);
+  }, []);
+
+  const remove = useCallback((id) => {
+    setItems((prev) => prev.filter((x) => x !== id));
+  }, []);
+
+  return (
+    <span className="relative inline-block">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onMouseEnter={handleEnter}
+        className="text-[#f0ece4]/60 hover:text-white transition-colors duration-150"
+      >
+        {children}
+      </a>
+      <span className="pointer-events-none absolute left-0 bottom-full w-full h-0">
+        {items.map((id) => (
+          <Balloon key={id} onDone={() => remove(id)} />
+        ))}
+      </span>
+    </span>
+  );
+}
+
+function TechLink({ href, children }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-[#f0ece4]/60 hover:text-[#60a5fa] transition-colors duration-150"
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function Home() {
   return (
-    <main className="relative z-10 min-h-screen flex items-center px-[max(2.5rem,8vw)]">
+    <main className="relative z-10 min-h-screen flex items-center px-[max(1.75rem,6vw)] py-16">
       <motion.div
         variants={container}
         initial="hidden"
         animate="visible"
-        className="w-full max-w-lg"
+        className="w-full max-w-md"
       >
         <motion.h1
           variants={item}
-          className="font-display font-light text-[#f0ece4] leading-[0.95] mb-8"
-          style={{ fontSize: "clamp(3.8rem, 6vw, 5.5rem)" }}
+          className="font-display font-light text-[#f0ece4] leading-[1] mb-5 whitespace-nowrap tracking-tight"
+          style={{ fontSize: "clamp(2rem, 3vw, 2.75rem)" }}
         >
-          Siddharth
-          <br />
-          Duggal
+          Siddharth Duggal
         </motion.h1>
 
         <motion.p
           variants={item}
-          className="font-mono text-[12px] text-[#888] leading-relaxed mb-8 max-w-xs"
+          className="font-mono text-[11px] text-[#888] leading-[1.7] mb-6 max-w-[20rem]"
         >
           I build software. Working on{" "}
-          <a href="https://bloon.ai" target="_blank" rel="noopener noreferrer" className="text-[#f0ece4]/60 hover:text-[#e8a030] transition-colors duration-150">
-            Bloon.ai
-          </a>
+          <BloonLink href="https://bloon.ai">Bloon.ai</BloonLink>
           , and previously started{" "}
-          <a href="https://techoptimum.org" target="_blank" rel="noopener noreferrer" className="text-[#f0ece4]/60 hover:text-[#e8a030] transition-colors duration-150">
-            Tech Optimum
-          </a>
+          <TechLink href="https://techoptimum.org">Tech Optimum</TechLink>
           {" "}to get students into coding.
         </motion.p>
 
-        <motion.div variants={item} className="flex items-center gap-4">
+        <motion.div variants={item} className="flex items-center gap-5">
           {socials.map(({ icon: Icon, href, label }) => (
             <a
               key={label}
@@ -87,11 +323,17 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-[#888] hover:text-[#e8a030] transition-colors duration-150"
+              className="text-[#888] hover:text-[#f0ece4] transition-colors duration-150"
             >
               <Icon />
             </a>
           ))}
+          <a
+            href="mailto:siddharth@bloon.ai"
+            className="group font-mono text-[11px] text-[#888] hover:text-[#f0ece4] transition-colors duration-200"
+          >
+            siddharth<span className="inline-block origin-center transition-transform duration-[450ms] ease-[cubic-bezier(0.34,1.45,0.5,1)] group-hover:-rotate-[10deg] group-hover:scale-[1.18]">@</span>bloon.ai
+          </a>
         </motion.div>
       </motion.div>
     </main>
